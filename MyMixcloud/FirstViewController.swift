@@ -54,7 +54,17 @@ class FirstViewController: UIViewController {
     }
     
     private func dbgFollowingUsers() {
-        service.printFollowingUsers(identifier: "elena-ryabchikova", queue: DispatchQueue.global(qos: .userInitiated))
+        service.following(identifier: "elena-ryabchikova", queue: DispatchQueue.global(qos: .userInitiated)) { [weak self]  following, _ in
+            if let following = following {
+                self?.service.users(identifiers: following.identifiers, queue: DispatchQueue.global(qos: .userInitiated)) { users, _ in
+                    if let users = users {
+                        for u in users {
+                            print(u.name)
+                        }
+                    }
+                }
+            }
+        }
     }
     
     
