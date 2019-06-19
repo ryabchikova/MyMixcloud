@@ -8,6 +8,14 @@
 
 /* Begin PBXBuildFile section */
 		09FCD24CFF31A42404F9E277 /* Pods_MyMixcloud.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2CEC79FC10CFC172F0BB32F3 /* Pods_MyMixcloud.framework */; };
+		422EE0A722B3F1AB00451EED /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 422EE0A622B3F1AB00451EED /* User.swift */; };
+		422EE0A922B3F47A00451EED /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 422EE0A822B3F47A00451EED /* UserService.swift */; };
+		422EE0AB22B436D600451EED /* MixcloudApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 422EE0AA22B436D600451EED /* MixcloudApi.swift */; };
+		422EE0AE22B7EF4200451EED /* UserServiceImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 422EE0AD22B7EF4200451EED /* UserServiceImpl.swift */; };
+		422EE0B022B803C300451EED /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 422EE0AF22B803C300451EED /* Constants.swift */; };
+		422EE0B222B806F500451EED /* Following.swift in Sources */ = {isa = PBXBuildFile; fileRef = 422EE0B122B806F500451EED /* Following.swift */; };
+		422EE0B522BA180D00451EED /* whatever.swift in Sources */ = {isa = PBXBuildFile; fileRef = 422EE0B422BA180D00451EED /* whatever.swift */; };
+		422EE0B722BA2A0A00451EED /* MixcloudError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 422EE0B622BA2A0A00451EED /* MixcloudError.swift */; };
 		42DD63CB22B3E9E600A57196 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42DD63CA22B3E9E600A57196 /* AppDelegate.swift */; };
 		42DD63CD22B3E9E600A57196 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42DD63CC22B3E9E600A57196 /* FirstViewController.swift */; };
 		42DD63CF22B3E9E600A57196 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42DD63CE22B3E9E600A57196 /* SecondViewController.swift */; };
@@ -19,6 +27,14 @@
 /* Begin PBXFileReference section */
 		2CEC79FC10CFC172F0BB32F3 /* Pods_MyMixcloud.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MyMixcloud.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		414286C3B195E0AD9DF6DCC6 /* Pods-MyMixcloud.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyMixcloud.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MyMixcloud/Pods-MyMixcloud.debug.xcconfig"; sourceTree = "<group>"; };
+		422EE0A622B3F1AB00451EED /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		422EE0A822B3F47A00451EED /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
+		422EE0AA22B436D600451EED /* MixcloudApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MixcloudApi.swift; sourceTree = "<group>"; };
+		422EE0AD22B7EF4200451EED /* UserServiceImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserServiceImpl.swift; sourceTree = "<group>"; };
+		422EE0AF22B803C300451EED /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		422EE0B122B806F500451EED /* Following.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Following.swift; sourceTree = "<group>"; };
+		422EE0B422BA180D00451EED /* whatever.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = whatever.swift; sourceTree = "<group>"; };
+		422EE0B622BA2A0A00451EED /* MixcloudError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MixcloudError.swift; sourceTree = "<group>"; };
 		42DD63C722B3E9E600A57196 /* MyMixcloud.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyMixcloud.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		42DD63CA22B3E9E600A57196 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		42DD63CC22B3E9E600A57196 /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
@@ -42,6 +58,42 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		422EE0A422B3F14600451EED /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				422EE0A622B3F1AB00451EED /* User.swift */,
+				422EE0B122B806F500451EED /* Following.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		422EE0A522B3F15200451EED /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				422EE0A822B3F47A00451EED /* UserService.swift */,
+				422EE0AD22B7EF4200451EED /* UserServiceImpl.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		422EE0AC22B7EEB800451EED /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				422EE0AA22B436D600451EED /* MixcloudApi.swift */,
+				422EE0AF22B803C300451EED /* Constants.swift */,
+				422EE0B622BA2A0A00451EED /* MixcloudError.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		422EE0B322BA17A600451EED /* TestStuff */ = {
+			isa = PBXGroup;
+			children = (
+				422EE0B422BA180D00451EED /* whatever.swift */,
+			);
+			path = TestStuff;
+			sourceTree = "<group>";
+		};
 		42DD63BE22B3E9E600A57196 = {
 			isa = PBXGroup;
 			children = (
@@ -63,6 +115,10 @@
 		42DD63C922B3E9E600A57196 /* MyMixcloud */ = {
 			isa = PBXGroup;
 			children = (
+				422EE0B322BA17A600451EED /* TestStuff */,
+				422EE0AC22B7EEB800451EED /* Helpers */,
+				422EE0A522B3F15200451EED /* Services */,
+				422EE0A422B3F14600451EED /* Models */,
 				42DD63CA22B3E9E600A57196 /* AppDelegate.swift */,
 				42DD63CC22B3E9E600A57196 /* FirstViewController.swift */,
 				42DD63CE22B3E9E600A57196 /* SecondViewController.swift */,
@@ -211,9 +267,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				422EE0A722B3F1AB00451EED /* User.swift in Sources */,
+				422EE0B222B806F500451EED /* Following.swift in Sources */,
+				422EE0B722BA2A0A00451EED /* MixcloudError.swift in Sources */,
+				422EE0A922B3F47A00451EED /* UserService.swift in Sources */,
+				422EE0AB22B436D600451EED /* MixcloudApi.swift in Sources */,
 				42DD63CF22B3E9E600A57196 /* SecondViewController.swift in Sources */,
+				422EE0AE22B7EF4200451EED /* UserServiceImpl.swift in Sources */,
 				42DD63CB22B3E9E600A57196 /* AppDelegate.swift in Sources */,
 				42DD63CD22B3E9E600A57196 /* FirstViewController.swift in Sources */,
+				422EE0B022B803C300451EED /* Constants.swift in Sources */,
+				422EE0B522BA180D00451EED /* whatever.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
