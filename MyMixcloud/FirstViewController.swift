@@ -17,6 +17,8 @@ class FirstViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        RunLoop.current
+        
         dbgFollowingUsers()
         print("in VC")
     }
@@ -56,7 +58,7 @@ class FirstViewController: UIViewController {
     private func dbgFollowingUsers() {
         service.following(identifier: "elena-ryabchikova", queue: DispatchQueue.global(qos: .userInitiated)) { [weak self]  following, _ in
             if let following = following {
-                self?.service.users(identifiers: following.identifiers, queue: DispatchQueue.global(qos: .userInitiated)) { users, _ in
+                self?.service.usersSemaphore(identifiers: following.identifiers, queue: DispatchQueue.global(qos: .userInitiated)) { users, _ in
                     if let users = users {
                         for u in users {
                             print(u.name)
@@ -66,8 +68,5 @@ class FirstViewController: UIViewController {
             }
         }
     }
-    
-    
-    
 }
 

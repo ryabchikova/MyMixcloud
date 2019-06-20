@@ -14,7 +14,7 @@ protocol UserService {
     
     func user(identifier: String, queue: DispatchQueue?, completionHandler: @escaping (User?, Error?) -> Void)
     func users(identifiers: [String], queue: DispatchQueue?, completionHandler: @escaping ([User]?, Error?) -> Void)
-    func following(identifier: String, queue: DispatchQueue?, completionHandler: @escaping (Following?, Error?) -> Void)
+    func following(identifier: String, queue: DispatchQueue?, requestUrl: String?, completionHandler: @escaping (Following?, Error?) -> Void)
 }
 
 

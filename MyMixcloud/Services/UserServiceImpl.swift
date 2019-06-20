@@ -34,8 +34,9 @@ final class UserServiceImpl: UserService {
     
     func users(identifiers: [String], queue: DispatchQueue? = nil, completionHandler: @escaping ([User]?, Error?) -> Void) {
         var users: [User?] = Array(repeating: nil, count: identifiers.count)
+        let arrayAccessQueue = DispatchQueue(label: "ArrayAccessQueue", attributes: .concurrent)
+        
         let group = DispatchGroup()
-        let arrayAccessOueue = DispatchQueue(label: "ArrayAccessOueue", attributes: .concurrent)
         
         for (index, identifier) in identifiers.enumerated() {
             group.enter()
@@ -45,11 +46,10 @@ final class UserServiceImpl: UserService {
                     return
                 }
                 
-                arrayAccessOueue.sync(flags:.barrier) {
-                    print("add new user \(user?.name ?? "")")
+                arrayAccessQueue.sync(flags:.barrier) {
+                    // index use for store User objects in the same order as input identifiers
                     users[index] = user
                 }
-                print("leave group with user \(user?.name ?? "")")
                 group.leave()
             }
         }
@@ -59,10 +59,12 @@ final class UserServiceImpl: UserService {
         }
     }
     
-    func following(identifier: String, queue: DispatchQueue? = nil, completionHandler: @escaping (Following?, Error?) -> Void) {
-        let url = MixcloudApi.following.requestUrl(userIdentifier: identifier)
+    func following(identifier: String,
+                   queue: DispatchQueue? = nil,
+                   requestUrl: String? = nil,
+                   completionHandler: @escaping (Following?, Error?) -> Void) {
         
-        Alamofire.request(url)
+        Alamofire.request(requestUrl ?? MixcloudApi.following.requestUrl(userIdentifier: identifier))
             .validate()
             .responseData(queue: queue) { response in
                 guard let data = response.result.value else {
@@ -80,39 +82,59 @@ final class UserServiceImpl: UserService {
         }
     }
     
-//    func followingUsers(identifier: String, queue: DispatchQueue? = nil, completionHandler: @escaping ([User]?, Error?) -> Void) {
-//        following(identifier: identifier, queue: queue) { [weak self] following, error in
-//            guard let following = following, error == nil else {
-//                completionHandler(nil, error)
-//                return
-//            }
-//            
-//            guard let self = self else {
-//                completionHandler(nil, error)
-//                return
-//            }
-//            
-//            var users: [User?] = Array(repeating: nil, count: following.identifiers.count)
-//            let group = DispatchGroup()
-//            
-//            for (index, identifier) in following.identifiers.enumerated() {
-//                group.enter()
-//                self.user(identifier: identifier, queue: queue) { user, error in
-//                    if let error = error {
-//                        completionHandler(nil, error)
-//                        return
-//                    }
-//                    
-//                    users[index] = user
-//                    group.leave()
-//                }
-//            }
-//            
-//            group.notify(queue: DispatchQueue.main) {
-//                completionHandler(users.compactMap {$0}, nil)
-//            }
-//        }
-//    }
+    // Это Ок
+    func usersSemaphore(identifiers: [String], queue: DispatchQueue? = nil, completionHandler: @escaping ([User]?, Error?) -> Void) {
+        var users: [User?] = Array(repeating: nil, count: identifiers.count)
+        
+        let semaphore = DispatchSemaphore(value: 1)
+        let group = DispatchGroup()
+        
+        for (index, identifier) in identifiers.enumerated() {
+            group.enter()
+            self.user(identifier: identifier, queue: queue) { user, error in
+                if let error = error {
+                    completionHandler(nil, error)
+                    return
+                }
+                
+                semaphore.wait()
+                users[index] = user
+                group.leave()
+                semaphore.signal()
+            }
+        }
+        
+        group.notify(queue: DispatchQueue.main) {
+            completionHandler(users.compactMap {$0}, nil)
+        }
+    }
     
+    // Не подходит, задания выполняются не по порядку
+    func usersOnSerialQueue(identifiers: [String], completionHandler: @escaping ([User]?, Error?) -> Void) {
+        print(identifiers)
+        
+        var users = [User?]()
+        
+        let serialQueue = DispatchQueue(label: "SerialQueue")
+        let group = DispatchGroup()
+
+        for identifier in identifiers {
+            group.enter()
+            self.user(identifier: identifier, queue: serialQueue) { user, error in
+                if let error = error {
+                    completionHandler(nil, error)
+                    return
+                }
+
+                print("get user \(user?.name)")
+                users.append(user)
+                group.leave()
+            }
+        }
+
+        group.notify(queue: DispatchQueue.main) {
+            completionHandler(users.compactMap {$0}, nil)
+        }
+    }
     
 }
