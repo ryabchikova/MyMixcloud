@@ -10,21 +10,22 @@ import UIKit
 
 
 
+
+
 class FirstViewController: UIViewController {
     
-    let service = UserServiceImpl()
+    let service: UserService = UserServiceImpl()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        RunLoop.current
-        
-        dbgFollowingUsers()
+        dbgFollowing()
         print("in VC")
+        
     }
     
     private func dbgUser() {
-        service.user(identifier: "elena-ryabchikova", queue: DispatchQueue.global(qos: .userInitiated)) { user, error in
+        service.user(userId: "elena-ryabchikova") { user, error in
             DispatchQueue.main.async {
                 if let user = user {
                     print("SUCCESS")
@@ -40,31 +41,15 @@ class FirstViewController: UIViewController {
     }
     
     private func dbgFollowing() {
-        service.following(identifier: "elena-ryabchikova", queue: DispatchQueue.global(qos: .userInitiated)) { following, error in
-            DispatchQueue.main.async {
-                if let following = following {
-                    let next = following.nextPageUrl ?? "no"
-                    print("following list: \(following.identifiers) next page: \(next)")
-                }
-                
-                if let error = error {
-                    print("FAIL")
-                    print(error)
-                }
+        
+        service.following(userId: "elena-ryabchikova", page: 5) { users, error in
+            if let error = error {
+                print("Error: ", error.localizedDescription)
+                return
             }
-        }
-    }
-    
-    private func dbgFollowingUsers() {
-        service.following(identifier: "elena-ryabchikova", queue: DispatchQueue.global(qos: .userInitiated)) { [weak self]  following, _ in
-            if let following = following {
-                self?.service.usersSemaphore(identifiers: following.identifiers, queue: DispatchQueue.global(qos: .userInitiated)) { users, _ in
-                    if let users = users {
-                        for u in users {
-                            print(u.name)
-                        }
-                    }
-                }
+            
+            if let users = users {
+                print("Get \(users.count) following")
             }
         }
     }

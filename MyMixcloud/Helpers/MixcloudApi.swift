@@ -18,8 +18,8 @@ enum MixcloudApi {
         return "https://api.mixcloud.com/"
     }
     
-    func requestUrl(userIdentifier: String) -> String {
-        let userUrl = baseUrl + userIdentifier + "/"
+    func requestUrl(userId: String, page: Int? = nil) -> String {
+        let userUrl = baseUrl + userId + "/"
         
         switch self {
             case .user:
@@ -28,8 +28,10 @@ enum MixcloudApi {
                 return userUrl + "listens/"
             case .favorites:
                 return userUrl + "favorites/"
-            case .following:
-                return userUrl + "following/?limit=" + Constants.limit.description + "&offset=0"
+            case .following:                
+                let page = page ?? 0
+                let offset = page < 1 ? 0 : (page - 1) * Constants.limit
+                return userUrl + "following/?limit=" + Constants.limit.description + "&offset=" + offset.description
         }
     }
 }

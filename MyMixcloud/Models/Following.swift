@@ -11,7 +11,7 @@ import Foundation
 struct Following: Decodable {
 
     private let users: [User]
-    private let paging: Paging
+    private let paging: Paging      // TODO это м.б. не нужно
     
     private enum CodingKeys: String, CodingKey {
         case users = "data"
@@ -33,16 +33,12 @@ struct Following: Decodable {
 }
 
 extension Following {
-    var identifiers: [String] {
+    var userIds: [String] {
         return users.map{$0.identifier}
     }
     
     var hasNextPage: Bool {
         return paging.next != nil
-    }
-    
-    var nextPageUrl: String? {
-        return paging.next
     }
 }
 

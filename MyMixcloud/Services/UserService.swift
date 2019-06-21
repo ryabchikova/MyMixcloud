@@ -10,11 +10,10 @@ import Foundation
 
 protocol UserService {
     
-    // If queue is nil, DispatchQueue.main will be used to get data from network
+    func user(userId: String, completionHandler: @escaping (User?, Error?) -> Void)
     
-    func user(identifier: String, queue: DispatchQueue?, completionHandler: @escaping (User?, Error?) -> Void)
-    func users(identifiers: [String], queue: DispatchQueue?, completionHandler: @escaping ([User]?, Error?) -> Void)
-    func following(identifier: String, queue: DispatchQueue?, requestUrl: String?, completionHandler: @escaping (Following?, Error?) -> Void)
+    /// - parameter page: should be >= 1
+    func following(userId: String, page: Int, completionHandler: @escaping ([User]?, Error?) -> Void)
 }
 
 

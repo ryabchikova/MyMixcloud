@@ -58,3 +58,95 @@ func getArrayOfResourcesConcurently() {
 }
 
 
+/* ЭТУ БЕРЕМ
+ func users(identifiers: [String], queue: DispatchQueue? = nil, completionHandler: @escaping ([User]?, Error?) -> Void) {
+ var users: [User?] = Array(repeating: nil, count: identifiers.count)
+ let arrayAccessQueue = DispatchQueue(label: "ArrayAccessQueue", attributes: .concurrent)
+ 
+ let group = DispatchGroup()
+ 
+ for (index, identifier) in identifiers.enumerated() {
+ group.enter()
+ self.user(identifier: identifier, queue: queue) { user, error in
+ if let error = error {
+ completionHandler(nil, error)
+ return
+ }
+ 
+ //                arrayAccessQueue.sync(flags:.barrier) {
+ //                    // index use for store User objects in the same order as input identifiers
+ //                    users[index] = user
+ //                }
+ //                group.leave()
+ 
+ arrayAccessQueue.async(flags:.barrier) {
+ // index use for store User objects in the same order as input identifiers
+ users[index] = user
+ group.leave()
+ }
+ }
+ }
+ 
+ group.notify(queue: DispatchQueue.main) {
+ completionHandler(users.compactMap {$0}, nil)
+ }
+ }
+ */
+
+
+// Это Ок
+//    func usersSemaphore(identifiers: [String], queue: DispatchQueue? = nil, completionHandler: @escaping ([User]?, Error?) -> Void) {
+//        var users: [User?] = Array(repeating: nil, count: identifiers.count)
+//
+//        let semaphore = DispatchSemaphore(value: 1)
+//        let group = DispatchGroup()
+//
+//        for (index, identifier) in identifiers.enumerated() {
+//            group.enter()
+//            self.user(identifier: identifier, queue: queue) { user, error in
+//                if let error = error {
+//                    completionHandler(nil, error)
+//                    return
+//                }
+//
+//                semaphore.wait()
+//                users[index] = user
+//                group.leave()
+//                semaphore.signal()
+//            }
+//        }
+//
+//        group.notify(queue: DispatchQueue.main) {
+//            completionHandler(users.compactMap {$0}, nil)
+//        }
+//    }
+
+// Не подходит, задания выполняются не по порядку
+//    func usersOnSerialQueue(identifiers: [String], completionHandler: @escaping ([User]?, Error?) -> Void) {
+//        print(identifiers)
+//
+//        var users = [User?]()
+//
+//        let serialQueue = DispatchQueue(label: "SerialQueue")
+//        let group = DispatchGroup()
+//
+//        for identifier in identifiers {
+//            group.enter()
+//            self.user(identifier: identifier, queue: serialQueue) { user, error in
+//                if let error = error {
+//                    completionHandler(nil, error)
+//                    return
+//                }
+//
+//                print("get user \(user?.name)")
+//                users.append(user)
+//                group.leave()
+//            }
+//        }
+//
+//        group.notify(queue: DispatchQueue.main) {
+//            completionHandler(users.compactMap {$0}, nil)
+//        }
+//    }
+//
+
