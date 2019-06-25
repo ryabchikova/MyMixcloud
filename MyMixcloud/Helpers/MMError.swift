@@ -8,6 +8,6 @@
 
 import Foundation
 
-enum MixcloudError: Error {
+enum MMError: Error {
     case serverError(description: String)
 }

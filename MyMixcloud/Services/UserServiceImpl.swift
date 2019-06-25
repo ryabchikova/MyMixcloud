@@ -26,7 +26,7 @@ final class UserServiceImpl: UserService {
                 }
                 
                 guard let sSelf = self else {
-                    completionHandler(nil, MixcloudError.serverError(description: "User request failed"))
+                    completionHandler(nil, MMError.serverError(description: "User request failed"))
                     return
                 }
                 
@@ -54,7 +54,7 @@ final class UserServiceImpl: UserService {
                 }
                 
                 guard let sSelf = self else {
-                    completionHandler(nil, MixcloudError.serverError(description: "Following list request failed"))
+                    completionHandler(nil, MMError.serverError(description: "Following list request failed"))
                     return
                 }
                 
@@ -77,7 +77,7 @@ final class UserServiceImpl: UserService {
             }
 
             guard let followingList = followingList, let sSelf = self else {
-                completionHandler(nil, MixcloudError.serverError(description: "Following request failed"))
+                completionHandler(nil, MMError.serverError(description: "Following request failed"))
                 return
             }
 

@@ -14,7 +14,7 @@
 		422EE0AE22B7EF4200451EED /* UserServiceImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 422EE0AD22B7EF4200451EED /* UserServiceImpl.swift */; };
 		422EE0B022B803C300451EED /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 422EE0AF22B803C300451EED /* Constants.swift */; };
 		422EE0B522BA180D00451EED /* whatever.swift in Sources */ = {isa = PBXBuildFile; fileRef = 422EE0B422BA180D00451EED /* whatever.swift */; };
-		422EE0B722BA2A0A00451EED /* MixcloudError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 422EE0B622BA2A0A00451EED /* MixcloudError.swift */; };
+		422EE0B722BA2A0A00451EED /* MMError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 422EE0B622BA2A0A00451EED /* MMError.swift */; };
 		422EE0BD22C2180600451EED /* JsonUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 422EE0BC22C2180600451EED /* JsonUser.swift */; };
 		422EE0BF22C21C1700451EED /* JsonDataConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 422EE0BE22C21C1700451EED /* JsonDataConverter.swift */; };
 		422EE0C122C2234F00451EED /* JsonFollowing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 422EE0C022C2234F00451EED /* JsonFollowing.swift */; };
@@ -35,7 +35,7 @@
 		422EE0AD22B7EF4200451EED /* UserServiceImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserServiceImpl.swift; sourceTree = "<group>"; };
 		422EE0AF22B803C300451EED /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		422EE0B422BA180D00451EED /* whatever.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = whatever.swift; sourceTree = "<group>"; };
-		422EE0B622BA2A0A00451EED /* MixcloudError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MixcloudError.swift; sourceTree = "<group>"; };
+		422EE0B622BA2A0A00451EED /* MMError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MMError.swift; sourceTree = "<group>"; };
 		422EE0BC22C2180600451EED /* JsonUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JsonUser.swift; sourceTree = "<group>"; };
 		422EE0BE22C21C1700451EED /* JsonDataConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JsonDataConverter.swift; sourceTree = "<group>"; };
 		422EE0C022C2234F00451EED /* JsonFollowing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JsonFollowing.swift; sourceTree = "<group>"; };
@@ -85,7 +85,7 @@
 			children = (
 				422EE0AA22B436D600451EED /* MixcloudApi.swift */,
 				422EE0AF22B803C300451EED /* Constants.swift */,
-				422EE0B622BA2A0A00451EED /* MixcloudError.swift */,
+				422EE0B622BA2A0A00451EED /* MMError.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -282,7 +282,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				422EE0A722B3F1AB00451EED /* User.swift in Sources */,
-				422EE0B722BA2A0A00451EED /* MixcloudError.swift in Sources */,
+				422EE0B722BA2A0A00451EED /* MMError.swift in Sources */,
 				422EE0A922B3F47A00451EED /* UserService.swift in Sources */,
 				422EE0AB22B436D600451EED /* MixcloudApi.swift in Sources */,
 				422EE0BF22C21C1700451EED /* JsonDataConverter.swift in Sources */,

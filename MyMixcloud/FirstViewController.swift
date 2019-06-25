@@ -38,7 +38,7 @@ class FirstViewController: UIViewController {
                     print("FAIL")
                     print(error)
                     
-                    if let mcerr = error as? MixcloudError {
+                    if let mcerr = error as? MMError {
                         switch mcerr {
                         case .serverError(let description):
                             print(description)
