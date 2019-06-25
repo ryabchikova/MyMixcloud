@@ -18,9 +18,12 @@
 		422EE0BD22C2180600451EED /* JsonUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 422EE0BC22C2180600451EED /* JsonUser.swift */; };
 		422EE0BF22C21C1700451EED /* JsonDataConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 422EE0BE22C21C1700451EED /* JsonDataConverter.swift */; };
 		422EE0C122C2234F00451EED /* JsonFollowing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 422EE0C022C2234F00451EED /* JsonFollowing.swift */; };
+		422EE0C522C2562A00451EED /* TestTrackListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 422EE0C422C2562A00451EED /* TestTrackListViewController.swift */; };
+		422EE0C722C256CD00451EED /* TestUserListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 422EE0C622C256CD00451EED /* TestUserListViewController.swift */; };
+		422EE0C922C2591E00451EED /* TestUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 422EE0C822C2591E00451EED /* TestUserViewController.swift */; };
+		422EE0CB22C25CC100451EED /* MainTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 422EE0CA22C25CC100451EED /* MainTabBarViewController.swift */; };
 		42DD63CB22B3E9E600A57196 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42DD63CA22B3E9E600A57196 /* AppDelegate.swift */; };
 		42DD63CD22B3E9E600A57196 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42DD63CC22B3E9E600A57196 /* FirstViewController.swift */; };
-		42DD63CF22B3E9E600A57196 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42DD63CE22B3E9E600A57196 /* SecondViewController.swift */; };
 		42DD63D222B3E9E600A57196 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 42DD63D022B3E9E600A57196 /* Main.storyboard */; };
 		42DD63D422B3E9E800A57196 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 42DD63D322B3E9E800A57196 /* Assets.xcassets */; };
 		42DD63D722B3E9E800A57196 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 42DD63D522B3E9E800A57196 /* LaunchScreen.storyboard */; };
@@ -39,10 +42,13 @@
 		422EE0BC22C2180600451EED /* JsonUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JsonUser.swift; sourceTree = "<group>"; };
 		422EE0BE22C21C1700451EED /* JsonDataConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JsonDataConverter.swift; sourceTree = "<group>"; };
 		422EE0C022C2234F00451EED /* JsonFollowing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JsonFollowing.swift; sourceTree = "<group>"; };
+		422EE0C422C2562A00451EED /* TestTrackListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestTrackListViewController.swift; sourceTree = "<group>"; };
+		422EE0C622C256CD00451EED /* TestUserListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestUserListViewController.swift; sourceTree = "<group>"; };
+		422EE0C822C2591E00451EED /* TestUserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestUserViewController.swift; sourceTree = "<group>"; };
+		422EE0CA22C25CC100451EED /* MainTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarViewController.swift; sourceTree = "<group>"; };
 		42DD63C722B3E9E600A57196 /* MyMixcloud.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyMixcloud.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		42DD63CA22B3E9E600A57196 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		42DD63CC22B3E9E600A57196 /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
-		42DD63CE22B3E9E600A57196 /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
 		42DD63D122B3E9E600A57196 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		42DD63D322B3E9E800A57196 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		42DD63D622B3E9E800A57196 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -93,6 +99,7 @@
 		422EE0B322BA17A600451EED /* TestStuff */ = {
 			isa = PBXGroup;
 			children = (
+				42DD63CC22B3E9E600A57196 /* FirstViewController.swift */,
 				422EE0B422BA180D00451EED /* whatever.swift */,
 			);
 			path = TestStuff;
@@ -106,6 +113,24 @@
 				422EE0BE22C21C1700451EED /* JsonDataConverter.swift */,
 			);
 			path = JsonDecoding;
+			sourceTree = "<group>";
+		};
+		422EE0C222C2556E00451EED /* Modules */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Modules;
+			sourceTree = "<group>";
+		};
+		422EE0C322C255A800451EED /* TestViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				422EE0C422C2562A00451EED /* TestTrackListViewController.swift */,
+				422EE0C622C256CD00451EED /* TestUserListViewController.swift */,
+				422EE0C822C2591E00451EED /* TestUserViewController.swift */,
+				422EE0CA22C25CC100451EED /* MainTabBarViewController.swift */,
+			);
+			path = TestViewControllers;
 			sourceTree = "<group>";
 		};
 		42DD63BE22B3E9E600A57196 = {
@@ -129,17 +154,17 @@
 		42DD63C922B3E9E600A57196 /* MyMixcloud */ = {
 			isa = PBXGroup;
 			children = (
-				422EE0B322BA17A600451EED /* TestStuff */,
-				422EE0AC22B7EEB800451EED /* Helpers */,
+				422EE0C322C255A800451EED /* TestViewControllers */,
+				422EE0C222C2556E00451EED /* Modules */,
+				42DD63CA22B3E9E600A57196 /* AppDelegate.swift */,
+				42DD63D022B3E9E600A57196 /* Main.storyboard */,
+				42DD63D522B3E9E800A57196 /* LaunchScreen.storyboard */,
+				42DD63D322B3E9E800A57196 /* Assets.xcassets */,
+				42DD63D822B3E9E800A57196 /* Info.plist */,
 				422EE0A522B3F15200451EED /* Services */,
 				422EE0A422B3F14600451EED /* Models */,
-				42DD63CA22B3E9E600A57196 /* AppDelegate.swift */,
-				42DD63CC22B3E9E600A57196 /* FirstViewController.swift */,
-				42DD63CE22B3E9E600A57196 /* SecondViewController.swift */,
-				42DD63D022B3E9E600A57196 /* Main.storyboard */,
-				42DD63D322B3E9E800A57196 /* Assets.xcassets */,
-				42DD63D522B3E9E800A57196 /* LaunchScreen.storyboard */,
-				42DD63D822B3E9E800A57196 /* Info.plist */,
+				422EE0AC22B7EEB800451EED /* Helpers */,
+				422EE0B322BA17A600451EED /* TestStuff */,
 			);
 			path = MyMixcloud;
 			sourceTree = "<group>";
@@ -281,13 +306,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				422EE0C722C256CD00451EED /* TestUserListViewController.swift in Sources */,
 				422EE0A722B3F1AB00451EED /* User.swift in Sources */,
 				422EE0B722BA2A0A00451EED /* MMError.swift in Sources */,
 				422EE0A922B3F47A00451EED /* UserService.swift in Sources */,
+				422EE0C922C2591E00451EED /* TestUserViewController.swift in Sources */,
 				422EE0AB22B436D600451EED /* MixcloudApi.swift in Sources */,
 				422EE0BF22C21C1700451EED /* JsonDataConverter.swift in Sources */,
-				42DD63CF22B3E9E600A57196 /* SecondViewController.swift in Sources */,
 				422EE0BD22C2180600451EED /* JsonUser.swift in Sources */,
+				422EE0C522C2562A00451EED /* TestTrackListViewController.swift in Sources */,
+				422EE0CB22C25CC100451EED /* MainTabBarViewController.swift in Sources */,
 				422EE0AE22B7EF4200451EED /* UserServiceImpl.swift in Sources */,
 				42DD63CB22B3E9E600A57196 /* AppDelegate.swift in Sources */,
 				42DD63CD22B3E9E600A57196 /* FirstViewController.swift in Sources */,
