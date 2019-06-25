@@ -19,7 +19,9 @@ class FirstViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        dbgFollowing()
+        dbgUser()
+        //dbgFollowingList()
+        //dbgFollowing()
         print("in VC")
         
     }
@@ -35,6 +37,13 @@ class FirstViewController: UIViewController {
                 if let error = error {
                     print("FAIL")
                     print(error)
+                    
+                    if let mcerr = error as? MixcloudError {
+                        switch mcerr {
+                        case .serverError(let description):
+                            print(description)
+                        }
+                    }
                 }
             }
         }
@@ -42,14 +51,30 @@ class FirstViewController: UIViewController {
     
     private func dbgFollowing() {
         
-        service.following(userId: "elena-ryabchikova", page: 5) { users, error in
+        service.following(userId: "elena-ryabchikova", page: 3) { users, error in
+            if let error = error {
+                print("Error: ", error.localizedDescription)
+                return
+            }
+
+            if let users = users {
+                print("Get \(users.count) following")
+                users.forEach { print($0) }
+            }
+        }
+    }
+    
+    private func dbgFollowingList() {
+        
+        service.followingList(userId: "elena-ryabchikova", page: 3) { list, error in
             if let error = error {
                 print("Error: ", error.localizedDescription)
                 return
             }
             
-            if let users = users {
-                print("Get \(users.count) following")
+            if let list = list {
+                print("Get \(list.count) following")
+                print(list.joined(separator: ";"))
             }
         }
     }

@@ -12,8 +12,12 @@ protocol UserService {
     
     func user(userId: String, completionHandler: @escaping (User?, Error?) -> Void)
     
-    /// - parameter page: should be >= 1
+    func followingList(userId: String, page: Int, completionHandler: @escaping ([String]?, Error?) -> Void)
+    
+    /// - parameter page: starting from 1
     func following(userId: String, page: Int, completionHandler: @escaping ([User]?, Error?) -> Void)
+    
+    
 }
 
 

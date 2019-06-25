@@ -11,6 +11,7 @@ import Alamofire
 
 final class UserServiceImpl: UserService {
     
+    private let converter = JsonDataConverter()
     private let dispatchQueue = DispatchQueue.global(qos: .userInitiated)
     
     func user(userId: String, completionHandler: @escaping (User?, Error?) -> Void) {
@@ -18,15 +19,22 @@ final class UserServiceImpl: UserService {
         
         Alamofire.request(url)
             .validate()
-            .responseData(queue: dispatchQueue) { response in
+            .responseData(queue: dispatchQueue) { [weak self] response in
                 guard let data = response.result.value else {
                     completionHandler(nil, response.result.error)
                     return
                 }
                 
+                guard let sSelf = self else {
+                    completionHandler(nil, MixcloudError.serverError(description: "User request failed"))
+                    return
+                }
+                
                 do {
                     let decoder = JSONDecoder()
-                    let user = try decoder.decode(User.self, from: data)
+                    decoder.keyDecodingStrategy = .convertFromSnakeCase
+                    let jsonUser = try decoder.decode(JsonUser.self, from: data)
+                    let user = sSelf.converter.makeUser(from: jsonUser)
                     completionHandler(user, nil)
                 } catch {
                     completionHandler(nil, error)
@@ -34,28 +42,55 @@ final class UserServiceImpl: UserService {
         }
     }
     
+    func followingList(userId: String, page: Int, completionHandler: @escaping ([String]?, Error?) -> Void) {
+        let url = MixcloudApi.following.requestUrl(userId: userId, page: page)
+        
+        Alamofire.request(url)
+            .validate()
+            .responseData(queue: dispatchQueue) { [weak self] response in
+                guard let data = response.result.value else {
+                    completionHandler(nil, response.result.error)
+                    return
+                }
+                
+                guard let sSelf = self else {
+                    completionHandler(nil, MixcloudError.serverError(description: "Following list request failed"))
+                    return
+                }
+                
+                do {
+                    let decoder = JSONDecoder()
+                    let jsonFollowing = try decoder.decode(JsonFollowing.self, from: data)
+                    let followingList = sSelf.converter.makeFollowingList(from: jsonFollowing)
+                    completionHandler(followingList, nil)
+                } catch {
+                    completionHandler(nil, error)
+                }
+        }
+    }
+    
     func following(userId: String, page: Int, completionHandler: @escaping ([User]?, Error?) -> Void) {
-        followingList(userId: userId, page: page) { [weak self] following, error in
+        followingList(userId: userId, page: page) { [weak self] followingList, error in
             guard error == nil else {
                 completionHandler(nil, error)
                 return
             }
-            
-            guard let followingList = following?.userIds, let sSelf = self else {
-                completionHandler(nil, MixcloudError.serverError(description: "Get Following list failed"))
+
+            guard let followingList = followingList, let sSelf = self else {
+                completionHandler(nil, MixcloudError.serverError(description: "Following request failed"))
                 return
             }
-            
+
             guard !followingList.isEmpty else {
                 // it's not error, just has no more items
                 completionHandler([], nil)
                 return
             }
-            
+
             var users: [User?] = Array(repeating: nil, count: followingList.count)
             let arrayAccessQueue = DispatchQueue(label: "ArrayAccessQueue", attributes: .concurrent)
             let group = DispatchGroup()
-            
+
             for (index, userId) in followingList.enumerated() {
                 group.enter()
                 sSelf.user(userId: userId) { user, error in
@@ -63,7 +98,7 @@ final class UserServiceImpl: UserService {
                         completionHandler(nil, error)
                         return
                     }
-                    
+
                     arrayAccessQueue.async(flags:.barrier) {
                         // use index to store User objects in the same order as input following list
                         users[index] = user
@@ -71,31 +106,10 @@ final class UserServiceImpl: UserService {
                     }
                 }
             }
-            
+
             group.notify(queue: DispatchQueue.main) {
                 completionHandler(users.compactMap {$0}, nil)
             }
-        }
-    }
-    
-    private func followingList(userId: String, page: Int, completionHandler: @escaping (Following?, Error?) -> Void) {
-        let url = MixcloudApi.following.requestUrl(userId: userId, page: page)
-        
-        Alamofire.request(url)
-            .validate()
-            .responseData(queue: dispatchQueue) { response in
-                guard let data = response.result.value else {
-                    completionHandler(nil, response.result.error)
-                    return
-                }
-
-                do {
-                    let decoder = JSONDecoder()
-                    let following = try decoder.decode(Following.self, from: data)
-                    completionHandler(following, nil)
-                } catch {
-                    completionHandler(nil, error)
-                }
         }
     }
 }
