@@ -8,18 +8,19 @@
 
 import UIKit
 
-class MainTabBarViewController: UITabBarController {
+final class MainTabBarViewController: UITabBarController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        let firstViewController = UIViewController()
-        firstViewController.tabBarItem = UITabBarItem(tabBarSystemItem: .search, tag: 0)
         
-        let secondViewController = UIViewController()
-        secondViewController.tabBarItem = UITabBarItem(tabBarSystemItem: .downloads, tag: 1)
+        let historyVC = TestTrackListViewController(theme: .cold)
+        historyVC.tabBarItem = UITabBarItem(tabBarSystemItem: .history, tag: 0)
         
-        viewControllers = [firstViewController, secondViewController]
+        let favoritesVC = TestTrackListViewController(theme: .hot)
+        favoritesVC.tabBarItem = UITabBarItem(tabBarSystemItem: .favorites, tag: 1)
+        
+        viewControllers = [historyVC, favoritesVC]
     }
     
 
