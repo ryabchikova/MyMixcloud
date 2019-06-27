@@ -16,15 +16,24 @@ protocol UserProfileModuleOutput: class {
 }
 
 protocol UserProfileViewInput: class {
+    func showActivity()
+    func hideActivity()
+
+    func set(userProfileViewModel: UserProfileViewModel)
+    func showDummyView()
 }
 
 protocol UserProfileViewOutput: class {
+    func viewDidLoad()
 }
 
 protocol UserProfileInteractorInput: class {
+    func loadUser(userId: String)
 }
 
 protocol UserProfileInteractorOutput: class {
+    func gotError(_ error: Error?)
+    func didLoadUser(_ user: User)
 }
 
 protocol UserProfileRouterInput: class {

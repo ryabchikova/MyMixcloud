@@ -14,8 +14,10 @@ final class UserProfilePresenter {
     
 	private let router: UserProfileRouterInput
 	private let interactor: UserProfileInteractorInput
+    private let userId: String
     
-    init(router: UserProfileRouterInput, interactor: UserProfileInteractorInput) {
+    init(userId: String, router: UserProfileRouterInput, interactor: UserProfileInteractorInput) {
+        self.userId = userId
         self.router = router
         self.interactor = interactor
     }
@@ -25,7 +27,19 @@ extension UserProfilePresenter: UserProfileModuleInput {
 }
 
 extension UserProfilePresenter: UserProfileViewOutput {
+    func viewDidLoad() {
+        view?.showActivity()
+        interactor.loadUser(userId: userId)
+    }
 }
 
 extension UserProfilePresenter: UserProfileInteractorOutput {
+    func gotError(_ error: Error?) {
+        view?.showDummyView()
+    }
+    
+    func didLoadUser(_ user: User) {
+        view?.hideActivity()
+        view?.set(userProfileViewModel: UserProfileViewModel(user: user))
+    }
 }

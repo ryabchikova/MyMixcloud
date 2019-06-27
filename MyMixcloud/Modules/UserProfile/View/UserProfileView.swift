@@ -88,12 +88,13 @@ final class UserProfileView: UIView {
                 
                 flex.addItem(bioLabel)
                     .marginTop(Constants.bioTopMargin)
+                    .alignSelf(.start)
                     .shrink(1)
                 
                 flex.addItem(followersLabel)
                     .marginTop(Constants.followersTopMargin)
-                    .shrink(1)
                     .alignSelf(.start)
+                    .shrink(1)
             }
     }
     
@@ -103,8 +104,10 @@ final class UserProfileView: UIView {
         nameLabel.attributedText = model.nameString
         nameLabel.flex.markDirty()
         
+        let needShowLocation = model.locationString != nil
+        locationImageView.flex.display(needShowLocation ? .flex : .none)
         locationLabel.attributedText = model.locationString
-        locationLabel.flex.display(model.locationString != nil ? .flex : .none)
+        locationLabel.flex.display(needShowLocation ? .flex : .none)
         locationLabel.flex.markDirty()
         
         bioLabel.attributedText = model.bioString

@@ -10,7 +10,25 @@ import Foundation
 
 final class UserProfileInteractor {
 	weak var output: UserProfileInteractorOutput?
+    
+    private let userService: UserService
+    
+    init(userService: UserService) {
+        self.userService = userService
+    }
 }
 
 extension UserProfileInteractor: UserProfileInteractorInput {
+    func loadUser(userId: String) {
+        userService.user(userId: userId) { [weak self] user, error in
+            if let error = error {
+                self?.output?.gotError(error)
+                return
+            }
+
+            if let user = user {
+                self?.output?.didLoadUser(user)
+            }
+        }
+    }
 }

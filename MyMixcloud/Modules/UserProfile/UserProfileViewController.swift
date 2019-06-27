@@ -32,16 +32,7 @@ final class UserProfileViewController: UIViewController {
     
 	override func viewDidLoad() {
 		super.viewDidLoad()
-//        let user = User(identifier: "123",
-//                        name: "Elena Ryabchikova",
-//                        country: "Russia",
-//                        city: "Istra",
-//                        bio: "I'm skater, music lower & iOS-developer :)",
-//                        favoritesCount: 22,
-//                        followersCount: 13,
-//                        followingCount: 21,
-//                        profileImage: URL(string: "https://thumbnailer.mixcloud.com/unsafe/300x300/profile/7/9/a/3/ae6e-476e-4896-9120-3982e86ec02f"))
-//        profileView.update(with: UserProfileViewModel(user: user))
+        output.viewDidLoad()
 	}
     
     override func viewDidLayoutSubviews() {
@@ -52,4 +43,20 @@ final class UserProfileViewController: UIViewController {
 }
 
 extension UserProfileViewController: UserProfileViewInput {
+    func showActivity() {}
+    func hideActivity() {}
+    
+    func set(userProfileViewModel: UserProfileViewModel) {
+        DispatchQueue.main.async { [weak self] in
+            self?.profileView.update(with: userProfileViewModel)
+        }
+    }
+    
+    func showDummyView() {
+        DispatchQueue.main.async { [weak self] in
+            guard let self = self else { return }
+            let dummy = DummyView(frame: self.view.frame)
+            self.view.addSubview(dummy)
+        }
+    }
 }

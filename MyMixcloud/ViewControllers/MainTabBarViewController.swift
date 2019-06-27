@@ -17,8 +17,11 @@ final class MainTabBarViewController: UITabBarController {
     
     private func configure() {
         tabBar.isTranslucent = false
+        
+        // TODO change this way
+        let HARDCODED_USER_ID = "elena-ryabchikova"
                 
-        let profileContainer = UserProfileContainer.assemble(with: UserProfileContext(moduleOutput: nil))
+        let profileContainer = UserProfileContainer.assemble(with: UserProfileContext(moduleOutput: nil, userId: HARDCODED_USER_ID))
         profileContainer.viewController.tabBarItem.image = UIImage(named: "profileIcon")
         
         let historyVC = TestViewController(text: "Listening History", background: .yellow)

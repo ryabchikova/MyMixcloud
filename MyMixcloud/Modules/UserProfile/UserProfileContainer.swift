@@ -15,8 +15,9 @@ final class UserProfileContainer {
 
 	class func assemble(with context: UserProfileContext) -> UserProfileContainer {
         let router = UserProfileRouter()
-        let interactor = UserProfileInteractor()
-        let presenter = UserProfilePresenter(router: router, interactor: interactor)
+        // TODO there is work for DI container !!!
+        let interactor = UserProfileInteractor(userService: UserServiceImpl())
+        let presenter = UserProfilePresenter(userId: context.userId, router: router, interactor: interactor)
 		let viewController = UserProfileViewController(output: presenter)
 
 		presenter.view = viewController
@@ -36,4 +37,5 @@ final class UserProfileContainer {
 
 struct UserProfileContext {
 	weak var moduleOutput: UserProfileModuleOutput?
+    let userId: String
 }
