@@ -9,7 +9,7 @@
 import UIKit
 
 final class MainTabBarViewController: UITabBarController {
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         configure()
@@ -17,9 +17,9 @@ final class MainTabBarViewController: UITabBarController {
     
     private func configure() {
         tabBar.isTranslucent = false
-        
-        let profileVC = TestViewController(text: "My Profile", background: .magenta)
-        profileVC.tabBarItem.image = UIImage(named: "profileIcon")//?.withRenderingMode(.alwaysOriginal)
+                
+        let profileContainer = UserProfileContainer.assemble(with: UserProfileContext(moduleOutput: nil))
+        profileContainer.viewController.tabBarItem.image = UIImage(named: "profileIcon")
         
         let historyVC = TestViewController(text: "Listening History", background: .yellow)
         historyVC.tabBarItem.image = UIImage(named: "historyIcon")
@@ -27,7 +27,9 @@ final class MainTabBarViewController: UITabBarController {
         let favoritesVC = TestViewController(text: "Favorite Tracks", background: .orange)
         favoritesVC.tabBarItem.image = UIImage(named: "favoriteIcon")
         
-        viewControllers = [profileVC, historyVC, favoritesVC]
+        
+        
+        viewControllers = [profileContainer.viewController, historyVC, favoritesVC]
         
         viewControllers?.forEach {
             $0.tabBarItem.imageInsets.top = 6.0
