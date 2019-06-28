@@ -1,24 +1,19 @@
 //
-//  UserProfileView.swift
+//  FollowingUserView.swift
 //  MyMixcloud
 //
-//  Created by Ryabchikova Elena on 27/06/2019.
+//  Created by Ryabchikova Elena on 28/06/2019.
 //  Copyright © 2019 ryabchikova. All rights reserved.
 //
-
 import Foundation
 import FlexLayout
 import SDWebImage
 
-// TODO + cover picture
-
-final class UserProfileView: UIView {
+final class FollowingUserView: UIView {
     
     private let avatarImageView = UIImageView()
     private let nameLabel = UILabel()
-    private let locationImageView = UIImageView()
     private let locationLabel = UILabel()
-    private let bioLabel = UILabel()
     private let followersLabel = UILabel()
     
     init() {
@@ -48,72 +43,49 @@ final class UserProfileView: UIView {
         avatarImageView.layer.masksToBounds = true
         
         nameLabel.backgroundColor = Styles.backgroundColor
-        
-        locationImageView.image = UIImage(named: "locationIcon")
-        locationImageView.contentMode = .scaleAspectFit
         locationLabel.backgroundColor = Styles.backgroundColor
-        
-        bioLabel.backgroundColor = Styles.backgroundColor
-        bioLabel.numberOfLines = 0
-        
         followersLabel.backgroundColor = Styles.backgroundColor
     }
     
     private func createFlex() {
         flex.addItem()
-            .direction(.column)
+            .direction(.row)
             .width(100%)
             .height(100%)
             .alignItems(.center)
             .define { flex in
                 flex.addItem(avatarImageView)
-                    .size(Constants.avatarImageSize)
+                    .size(Constants.avatarSize)
+                    .margin(Constants.avatarMargin)
                 
-                flex.addItem(nameLabel)
-                    .marginTop(Constants.nameTopMargin)
-                    .shrink(1)
-                
-
                 flex.addItem()
-                    .direction(.row)
-                    .alignItems(.center)
-                    .marginTop(Constants.locationTopMargin)
-                    .shrink(1)
+                    .direction(.column)
+                    .alignItems(.start)
                     .define { flex in
-                        flex.addItem(locationImageView)
-                            .size(Constants.locationImageSize)
+                        flex.addItem(nameLabel)
+                            .marginTop(Constants.nameTopMargin)
+                            .shrink(1)
+                        
                         flex.addItem(locationLabel)
-                            .marginLeft(Constants.locationLeftMargin)
+                            .marginTop(Constants.locationTopMargin)
+                            .shrink(1)
+                        
+                        flex.addItem(followersLabel)
+                            .marginTop(Constants.followersTopMargin)
                             .shrink(1)
                     }
-                
-                flex.addItem(bioLabel)
-                    .marginTop(Constants.bioTopMargin)
-                    .alignSelf(.start)
-                    .shrink(1)
-                
-                flex.addItem(followersLabel)
-                    .marginTop(Constants.followersTopMargin)
-                    .alignSelf(.start)
-                    .shrink(1)
             }
     }
-    
-    func update(with model: UserProfileViewModel) {
+
+    func update(with model: FollowingUserViewModel) {
         avatarImageView.sd_setImage(with: model.avatarImageUrl)
         
         nameLabel.attributedText = model.nameString
         nameLabel.flex.markDirty()
         
-        let needShowLocation = model.locationString != nil
-        locationImageView.flex.display(needShowLocation ? .flex : .none)
         locationLabel.attributedText = model.locationString
-        locationLabel.flex.display(needShowLocation ? .flex : .none)
+        locationLabel.flex.display(model.locationString != nil ? .flex : .none)
         locationLabel.flex.markDirty()
-        
-        bioLabel.attributedText = model.bioString
-        bioLabel.flex.display(model.bioString != nil ? .flex : .none)
-        bioLabel.flex.markDirty()
         
         followersLabel.attributedText = model.followersString
         followersLabel.flex.display(model.followersString != nil ? .flex : .none)
@@ -123,18 +95,16 @@ final class UserProfileView: UIView {
     }
 }
 
-extension UserProfileView {
+extension FollowingUserView {
     
     private struct Constants {
-        static let avatarImageSize: CGFloat = 200.0
-        static let borderWidth: CGFloat = 1.0
-        static let cornerRadius: CGFloat = 20.0
-        static let locationImageSize: CGFloat = 22.0
-        static let locationLeftMargin: CGFloat = 10.0
-        static let nameTopMargin: CGFloat = 10.0
-        static let locationTopMargin: CGFloat = 10.0
-        static let bioTopMargin: CGFloat = 30.0
-        static let followersTopMargin: CGFloat = 10.0
+        static let avatarSize: CGFloat = 60.0
+        static let avatarMargin: CGFloat = 8.0
+        static let borderWidth: CGFloat = 0.5
+        static let cornerRadius: CGFloat = 4.0
+        static let nameTopMargin: CGFloat = 8.0
+        static let locationTopMargin: CGFloat = 4.0
+        static let followersTopMargin: CGFloat = 4.0
     }
     
     private struct Styles {

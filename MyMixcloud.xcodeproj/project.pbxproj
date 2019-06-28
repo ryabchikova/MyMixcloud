@@ -20,6 +20,14 @@
 		4220E29722C5139800FEB7F8 /* MMColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4220E29622C5139800FEB7F8 /* MMColors.swift */; };
 		4220E29922C585AC00FEB7F8 /* DummyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4220E29822C585AC00FEB7F8 /* DummyView.swift */; };
 		4220E29C22C604DC00FEB7F8 /* UIViewController+ActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4220E29B22C604DC00FEB7F8 /* UIViewController+ActivityIndicator.swift */; };
+		4220E2A322C62B1A00FEB7F8 /* FollowingPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4220E29D22C62B1A00FEB7F8 /* FollowingPresenter.swift */; };
+		4220E2A422C62B1A00FEB7F8 /* FollowingRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4220E29E22C62B1A00FEB7F8 /* FollowingRouter.swift */; };
+		4220E2A522C62B1A00FEB7F8 /* FollowingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4220E29F22C62B1A00FEB7F8 /* FollowingViewController.swift */; };
+		4220E2A622C62B1A00FEB7F8 /* FollowingProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4220E2A022C62B1A00FEB7F8 /* FollowingProtocols.swift */; };
+		4220E2A722C62B1A00FEB7F8 /* FollowingInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4220E2A122C62B1A00FEB7F8 /* FollowingInteractor.swift */; };
+		4220E2A822C62B1A00FEB7F8 /* FollowingContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4220E2A222C62B1A00FEB7F8 /* FollowingContainer.swift */; };
+		4220E2AC22C62B7600FEB7F8 /* FollowingUserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4220E2AB22C62B7600FEB7F8 /* FollowingUserViewModel.swift */; };
+		4220E2AE22C62B8800FEB7F8 /* FollowingUserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4220E2AD22C62B8800FEB7F8 /* FollowingUserView.swift */; };
 		422EE0A722B3F1AB00451EED /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 422EE0A622B3F1AB00451EED /* User.swift */; };
 		422EE0A922B3F47A00451EED /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 422EE0A822B3F47A00451EED /* UserService.swift */; };
 		422EE0AB22B436D600451EED /* MixcloudApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 422EE0AA22B436D600451EED /* MixcloudApi.swift */; };
@@ -53,6 +61,14 @@
 		4220E29622C5139800FEB7F8 /* MMColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MMColors.swift; sourceTree = "<group>"; };
 		4220E29822C585AC00FEB7F8 /* DummyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DummyView.swift; sourceTree = "<group>"; };
 		4220E29B22C604DC00FEB7F8 /* UIViewController+ActivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+ActivityIndicator.swift"; sourceTree = "<group>"; };
+		4220E29D22C62B1A00FEB7F8 /* FollowingPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowingPresenter.swift; sourceTree = "<group>"; };
+		4220E29E22C62B1A00FEB7F8 /* FollowingRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowingRouter.swift; sourceTree = "<group>"; };
+		4220E29F22C62B1A00FEB7F8 /* FollowingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowingViewController.swift; sourceTree = "<group>"; };
+		4220E2A022C62B1A00FEB7F8 /* FollowingProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowingProtocols.swift; sourceTree = "<group>"; };
+		4220E2A122C62B1A00FEB7F8 /* FollowingInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowingInteractor.swift; sourceTree = "<group>"; };
+		4220E2A222C62B1A00FEB7F8 /* FollowingContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowingContainer.swift; sourceTree = "<group>"; };
+		4220E2AB22C62B7600FEB7F8 /* FollowingUserViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowingUserViewModel.swift; sourceTree = "<group>"; };
+		4220E2AD22C62B8800FEB7F8 /* FollowingUserView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowingUserView.swift; sourceTree = "<group>"; };
 		422EE0A622B3F1AB00451EED /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		422EE0A822B3F47A00451EED /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
 		422EE0AA22B436D600451EED /* MixcloudApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MixcloudApi.swift; sourceTree = "<group>"; };
@@ -119,6 +135,29 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		4220E2A922C62B2800FEB7F8 /* Following */ = {
+			isa = PBXGroup;
+			children = (
+				4220E2AA22C62B4E00FEB7F8 /* View */,
+				4220E29D22C62B1A00FEB7F8 /* FollowingPresenter.swift */,
+				4220E29E22C62B1A00FEB7F8 /* FollowingRouter.swift */,
+				4220E29F22C62B1A00FEB7F8 /* FollowingViewController.swift */,
+				4220E2A022C62B1A00FEB7F8 /* FollowingProtocols.swift */,
+				4220E2A122C62B1A00FEB7F8 /* FollowingInteractor.swift */,
+				4220E2A222C62B1A00FEB7F8 /* FollowingContainer.swift */,
+			);
+			path = Following;
+			sourceTree = "<group>";
+		};
+		4220E2AA22C62B4E00FEB7F8 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				4220E2AB22C62B7600FEB7F8 /* FollowingUserViewModel.swift */,
+				4220E2AD22C62B8800FEB7F8 /* FollowingUserView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		422EE0A422B3F14600451EED /* Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -173,6 +212,7 @@
 			isa = PBXGroup;
 			children = (
 				4220E28E22C4E62400FEB7F8 /* UserProfile */,
+				4220E2A922C62B2800FEB7F8 /* Following */,
 			);
 			path = Modules;
 			sourceTree = "<group>";
@@ -363,14 +403,20 @@
 			buildActionMask = 2147483647;
 			files = (
 				422EE0A722B3F1AB00451EED /* User.swift in Sources */,
+				4220E2A622C62B1A00FEB7F8 /* FollowingProtocols.swift in Sources */,
 				4220E29722C5139800FEB7F8 /* MMColors.swift in Sources */,
+				4220E2AC22C62B7600FEB7F8 /* FollowingUserViewModel.swift in Sources */,
 				4220E28822C4E61900FEB7F8 /* UserProfilePresenter.swift in Sources */,
 				422EE0B722BA2A0A00451EED /* MMError.swift in Sources */,
 				4220E28922C4E61900FEB7F8 /* UserProfileRouter.swift in Sources */,
 				4220E28C22C4E61900FEB7F8 /* UserProfileInteractor.swift in Sources */,
+				4220E2A822C62B1A00FEB7F8 /* FollowingContainer.swift in Sources */,
 				422EE0A922B3F47A00451EED /* UserService.swift in Sources */,
+				4220E2A322C62B1A00FEB7F8 /* FollowingPresenter.swift in Sources */,
+				4220E2AE22C62B8800FEB7F8 /* FollowingUserView.swift in Sources */,
 				4220E28A22C4E61900FEB7F8 /* UserProfileViewController.swift in Sources */,
 				4220E29222C5093900FEB7F8 /* UserProfileView.swift in Sources */,
+				4220E2A522C62B1A00FEB7F8 /* FollowingViewController.swift in Sources */,
 				4220E29C22C604DC00FEB7F8 /* UIViewController+ActivityIndicator.swift in Sources */,
 				422EE0AB22B436D600451EED /* MixcloudApi.swift in Sources */,
 				4220E29922C585AC00FEB7F8 /* DummyView.swift in Sources */,
@@ -379,6 +425,7 @@
 				4220E28B22C4E61900FEB7F8 /* UserProfileProtocols.swift in Sources */,
 				422EE0BD22C2180600451EED /* JsonUser.swift in Sources */,
 				422EE0C522C2562A00451EED /* TestTrackListViewController.swift in Sources */,
+				4220E2A722C62B1A00FEB7F8 /* FollowingInteractor.swift in Sources */,
 				4220E29022C5092400FEB7F8 /* UserProfileViewModel.swift in Sources */,
 				422EE0CB22C25CC100451EED /* MainTabBarViewController.swift in Sources */,
 				422EE0AE22B7EF4200451EED /* UserServiceImpl.swift in Sources */,
@@ -387,6 +434,7 @@
 				4220E28D22C4E61900FEB7F8 /* UserProfileContainer.swift in Sources */,
 				422EE0C122C2234F00451EED /* JsonFollowing.swift in Sources */,
 				422EE0B022B803C300451EED /* Constants.swift in Sources */,
+				4220E2A422C62B1A00FEB7F8 /* FollowingRouter.swift in Sources */,
 				422EE0B522BA180D00451EED /* whatever.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

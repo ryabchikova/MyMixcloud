@@ -1,19 +1,18 @@
 //
-//  UserProfileViewModel.swift
+//  FollowingUserViewModel.swift
 //  MyMixcloud
 //
-//  Created by Ryabchikova Elena on 27/06/2019.
+//  Created by Ryabchikova Elena on 28/06/2019.
 //  Copyright © 2019 ryabchikova. All rights reserved.
 //
 
 import Foundation
 
-struct UserProfileViewModel {
+struct FollowingUserViewModel {
     
     let avatarImageUrl: URL?
     let nameString: NSAttributedString
     let locationString: NSAttributedString?
-    let bioString: NSAttributedString?
     let followersString: NSAttributedString?
     
     init(user: User) {
@@ -26,8 +25,6 @@ struct UserProfileViewModel {
         }
         locationString = location.isEmpty ? nil : NSAttributedString(string: location, attributes: Styles.location)
         
-        bioString = user.bio.map { NSAttributedString(string: $0, attributes: Styles.bio) }
-        
         if user.followersCount > 0 {
             let followers = user.followersCount.description + " Followers"
             followersString = NSAttributedString(string: followers, attributes: Styles.followers)
@@ -37,35 +34,29 @@ struct UserProfileViewModel {
     }
 }
 
-extension UserProfileViewModel {
+extension FollowingUserViewModel {
     
     private struct Styles {
         static let name: [NSAttributedString.Key: Any] = {
-            return [
-                .font: MMFonts.largeBold,
-                .foregroundColor: MMColors.darkGray
-            ]
-        }()
-        
-        static let location: [NSAttributedString.Key: Any] = {
             return [
                 .font: MMFonts.mediumBold,
                 .foregroundColor: MMColors.darkGray
             ]
         }()
         
-        static let bio: [NSAttributedString.Key: Any] = {
+        static let location: [NSAttributedString.Key: Any] = {
             return [
-                .font: MMFonts.mediumBoldItalic,
+                .font: MMFonts.medium,
                 .foregroundColor: MMColors.lightGray
             ]
         }()
         
         static let followers: [NSAttributedString.Key: Any] = {
             return [
-                .font: MMFonts.smallBold,
+                .font: MMFonts.medium,
                 .foregroundColor: MMColors.lightGray
             ]
         }()
     }
 }
+
