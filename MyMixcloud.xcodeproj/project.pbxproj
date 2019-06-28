@@ -19,6 +19,7 @@
 		4220E29522C5137300FEB7F8 /* MMFonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4220E29422C5137300FEB7F8 /* MMFonts.swift */; };
 		4220E29722C5139800FEB7F8 /* MMColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4220E29622C5139800FEB7F8 /* MMColors.swift */; };
 		4220E29922C585AC00FEB7F8 /* DummyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4220E29822C585AC00FEB7F8 /* DummyView.swift */; };
+		4220E29C22C604DC00FEB7F8 /* UIViewController+ActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4220E29B22C604DC00FEB7F8 /* UIViewController+ActivityIndicator.swift */; };
 		422EE0A722B3F1AB00451EED /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 422EE0A622B3F1AB00451EED /* User.swift */; };
 		422EE0A922B3F47A00451EED /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 422EE0A822B3F47A00451EED /* UserService.swift */; };
 		422EE0AB22B436D600451EED /* MixcloudApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 422EE0AA22B436D600451EED /* MixcloudApi.swift */; };
@@ -51,6 +52,7 @@
 		4220E29422C5137300FEB7F8 /* MMFonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MMFonts.swift; sourceTree = "<group>"; };
 		4220E29622C5139800FEB7F8 /* MMColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MMColors.swift; sourceTree = "<group>"; };
 		4220E29822C585AC00FEB7F8 /* DummyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DummyView.swift; sourceTree = "<group>"; };
+		4220E29B22C604DC00FEB7F8 /* UIViewController+ActivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+ActivityIndicator.swift"; sourceTree = "<group>"; };
 		422EE0A622B3F1AB00451EED /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		422EE0A822B3F47A00451EED /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
 		422EE0AA22B436D600451EED /* MixcloudApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MixcloudApi.swift; sourceTree = "<group>"; };
@@ -143,6 +145,7 @@
 				422EE0B622BA2A0A00451EED /* MMError.swift */,
 				4220E29422C5137300FEB7F8 /* MMFonts.swift */,
 				4220E29622C5139800FEB7F8 /* MMColors.swift */,
+				4220E29B22C604DC00FEB7F8 /* UIViewController+ActivityIndicator.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -368,6 +371,7 @@
 				422EE0A922B3F47A00451EED /* UserService.swift in Sources */,
 				4220E28A22C4E61900FEB7F8 /* UserProfileViewController.swift in Sources */,
 				4220E29222C5093900FEB7F8 /* UserProfileView.swift in Sources */,
+				4220E29C22C604DC00FEB7F8 /* UIViewController+ActivityIndicator.swift in Sources */,
 				422EE0AB22B436D600451EED /* MixcloudApi.swift in Sources */,
 				4220E29922C585AC00FEB7F8 /* DummyView.swift in Sources */,
 				422EE0BF22C21C1700451EED /* JsonDataConverter.swift in Sources */,

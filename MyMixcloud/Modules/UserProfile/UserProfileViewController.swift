@@ -43,9 +43,6 @@ final class UserProfileViewController: UIViewController {
 }
 
 extension UserProfileViewController: UserProfileViewInput {
-    func showActivity() {}
-    func hideActivity() {}
-    
     func set(userProfileViewModel: UserProfileViewModel) {
         DispatchQueue.main.async { [weak self] in
             self?.profileView.update(with: userProfileViewModel)
