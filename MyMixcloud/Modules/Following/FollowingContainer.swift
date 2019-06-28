@@ -15,7 +15,8 @@ final class FollowingContainer {
 
 	class func assemble(with context: FollowingContext) -> FollowingContainer {
         let router = FollowingRouter()
-        let interactor = FollowingInteractor()
+        // TODO there is work for DI container !!!
+        let interactor = FollowingInteractor(userService: UserServiceImpl())
         let presenter = FollowingPresenter(router: router, interactor: interactor)
 		let viewController = FollowingViewController(output: presenter)
 

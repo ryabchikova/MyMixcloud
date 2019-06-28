@@ -56,23 +56,22 @@ final class FollowingUserView: UIView {
             .define { flex in
                 flex.addItem(avatarImageView)
                     .size(Constants.avatarSize)
-                    .margin(Constants.avatarMargin)
+                    .margin(Constants.outerMargin)
                 
                 flex.addItem()
                     .direction(.column)
                     .alignItems(.start)
+                    .marginRight(Constants.outerMargin)
+                    .shrink(1)
                     .define { flex in
                         flex.addItem(nameLabel)
-                            .marginTop(Constants.nameTopMargin)
-                            .shrink(1)
+                            .marginTop(Constants.outerMargin)
                         
                         flex.addItem(locationLabel)
                             .marginTop(Constants.locationTopMargin)
-                            .shrink(1)
                         
                         flex.addItem(followersLabel)
                             .marginTop(Constants.followersTopMargin)
-                            .shrink(1)
                     }
             }
     }
@@ -99,10 +98,9 @@ extension FollowingUserView {
     
     private struct Constants {
         static let avatarSize: CGFloat = 60.0
-        static let avatarMargin: CGFloat = 8.0
+        static let outerMargin: CGFloat = 8.0
         static let borderWidth: CGFloat = 0.5
         static let cornerRadius: CGFloat = 4.0
-        static let nameTopMargin: CGFloat = 8.0
         static let locationTopMargin: CGFloat = 4.0
         static let followersTopMargin: CGFloat = 4.0
     }

@@ -15,6 +15,10 @@ final class FollowingPresenter {
 	private let router: FollowingRouterInput
 	private let interactor: FollowingInteractorInput
     
+    private let userId: String = "elena-ryabchikova"    // TODO HARDCODE !!!!!!!!!
+    private var nextPage: Int? = 1
+    private var isLoading = false
+    
     init(router: FollowingRouterInput, interactor: FollowingInteractorInput) {
         self.router = router
         self.interactor = interactor
@@ -26,13 +30,32 @@ extension FollowingPresenter: FollowingModuleInput {
 
 extension FollowingPresenter: FollowingViewOutput {
     func viewDidLoad() {
+        requestNextPage()
+    }
+    
+    func viewDidScrollPage() {
+        requestNextPage()
+    }
+    
+    private func requestNextPage() {
+        guard !isLoading, let nextPage = nextPage else {
+            return
+        }
         
-        // TODO
-        let user1 = User(identifier: "BooraID", name: "Boora", country: nil, city: nil, bio: nil, favoritesCount: 1, followersCount: 1, followingCount: 1, profileImage: nil)
-        let user2 = User(identifier: "SamsonowID", name: "Boora", country: nil, city: nil, bio: nil, favoritesCount: 1, followersCount: 1, followingCount: 1, profileImage: nil)
-        view?.set(viewModels: [FollowingUserViewModel(user: user1), FollowingUserViewModel(user: user2)])
+        isLoading = true
+        interactor.loadFollowing(userId: userId, page: nextPage)
     }
 }
 
 extension FollowingPresenter: FollowingInteractorOutput {
+    func gotError(_ error: Error?) {
+        isLoading = false
+        view?.showDummyView()
+    }
+    
+    func didLoadFollowing(_ users: [User]) {
+        isLoading = false
+        nextPage = users.isEmpty ? nil : nextPage?.advanced(by: 1)
+        view?.set(viewModels: users.map { FollowingUserViewModel(user: $0) })
+    }
 }

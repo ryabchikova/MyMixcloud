@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 struct FollowingUserViewModel {
     
@@ -38,21 +39,30 @@ extension FollowingUserViewModel {
     
     private struct Styles {
         static let name: [NSAttributedString.Key: Any] = {
+            let style = NSMutableParagraphStyle()
+            style.lineBreakMode = .byTruncatingTail
             return [
+                .paragraphStyle: style,
                 .font: MMFonts.mediumBold,
                 .foregroundColor: MMColors.darkGray
             ]
         }()
         
         static let location: [NSAttributedString.Key: Any] = {
+            let style = NSMutableParagraphStyle()
+            style.lineBreakMode = .byTruncatingTail
             return [
+                .paragraphStyle: style,
                 .font: MMFonts.medium,
                 .foregroundColor: MMColors.lightGray
             ]
         }()
         
         static let followers: [NSAttributedString.Key: Any] = {
+            let style = NSMutableParagraphStyle()
+            style.lineBreakMode = .byTruncatingTail
             return [
+                .paragraphStyle: style,
                 .font: MMFonts.medium,
                 .foregroundColor: MMColors.lightGray
             ]

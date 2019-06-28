@@ -42,6 +42,6 @@ final class MainTabBarViewController: UITabBarController {
             $0.tabBarItem.imageInsets.bottom = -6.0
         }
         
-        selectedIndex = 0
+        selectedIndex = 1
     }
 }

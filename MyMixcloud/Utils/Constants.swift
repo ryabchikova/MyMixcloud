@@ -7,7 +7,9 @@
 //
 
 import Foundation
+import UIKit
 
 enum Constants {
-    static let limit = 5
+    static let limit = 20
+    static let tableViewSeparatorInset: CGFloat = 15.0
 }

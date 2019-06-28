@@ -17,8 +17,7 @@ final class FollowingViewController: UIViewController {
     init(output: FollowingViewOutput) {
         self.output = output
         super.init(nibName: nil, bundle: nil)
-        
-        setup()
+        setupTableView()
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -41,12 +40,15 @@ final class FollowingViewController: UIViewController {
         tableView.pin.all(view.pin.safeArea)
     }
     
-    private func setup() {
+    private func setupTableView() {
         tableView.dataSource = self
         tableView.delegate = self
         tableView.tableFooterView = UIView()
-        tableView.register(FollowingTableViewCell.self, forCellReuseIdentifier: String(describing: FollowingTableViewCell.self))
+        tableView.register(FollowingTableViewCell.self,
+                           forCellReuseIdentifier: String(describing: FollowingTableViewCell.self))
         tableView.rowHeight = FollowingTableViewCell.height
+        tableView.separatorInset.left = Constants.tableViewSeparatorInset
+        tableView.separatorInset.right = Constants.tableViewSeparatorInset
     }
 }
 
@@ -65,13 +67,34 @@ extension FollowingViewController: UITableViewDataSource {
 }
 
 extension FollowingViewController: UITableViewDelegate {
+
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        let pageHeight = scrollView.frame.size.height
+        let distanceToBottom = scrollView.contentSize.height - scrollView.contentOffset.y - pageHeight
+        
+        if distanceToBottom < pageHeight * 0.2 {
+            output.viewDidScrollPage()
+        }
+    }
 }
 
 extension FollowingViewController: FollowingViewInput {
+    
     func set(viewModels: [FollowingUserViewModel]) {
-        models = viewModels
+        models.append(contentsOf: viewModels)
         DispatchQueue.main.async {
             self.tableView.reloadData()
+        }
+    }
+    
+    func showDummyView() {
+        guard models.isEmpty else {
+            return
+        }
+        
+        DispatchQueue.main.async {
+            let dummy = DummyView(frame: self.view.frame)
+            self.view.addSubview(dummy)
         }
     }
 }
