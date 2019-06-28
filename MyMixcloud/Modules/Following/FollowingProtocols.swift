@@ -16,9 +16,11 @@ protocol FollowingModuleOutput: class {
 }
 
 protocol FollowingViewInput: class {
+    func set(viewModels: [FollowingUserViewModel])
 }
 
 protocol FollowingViewOutput: class {
+    func viewDidLoad()
 }
 
 protocol FollowingInteractorInput: class {

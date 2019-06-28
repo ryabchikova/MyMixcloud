@@ -28,6 +28,7 @@
 		4220E2A822C62B1A00FEB7F8 /* FollowingContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4220E2A222C62B1A00FEB7F8 /* FollowingContainer.swift */; };
 		4220E2AC22C62B7600FEB7F8 /* FollowingUserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4220E2AB22C62B7600FEB7F8 /* FollowingUserViewModel.swift */; };
 		4220E2AE22C62B8800FEB7F8 /* FollowingUserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4220E2AD22C62B8800FEB7F8 /* FollowingUserView.swift */; };
+		4220E2B022C648CC00FEB7F8 /* FollowingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4220E2AF22C648CC00FEB7F8 /* FollowingTableViewCell.swift */; };
 		422EE0A722B3F1AB00451EED /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 422EE0A622B3F1AB00451EED /* User.swift */; };
 		422EE0A922B3F47A00451EED /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 422EE0A822B3F47A00451EED /* UserService.swift */; };
 		422EE0AB22B436D600451EED /* MixcloudApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 422EE0AA22B436D600451EED /* MixcloudApi.swift */; };
@@ -69,6 +70,7 @@
 		4220E2A222C62B1A00FEB7F8 /* FollowingContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowingContainer.swift; sourceTree = "<group>"; };
 		4220E2AB22C62B7600FEB7F8 /* FollowingUserViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowingUserViewModel.swift; sourceTree = "<group>"; };
 		4220E2AD22C62B8800FEB7F8 /* FollowingUserView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowingUserView.swift; sourceTree = "<group>"; };
+		4220E2AF22C648CC00FEB7F8 /* FollowingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowingTableViewCell.swift; sourceTree = "<group>"; };
 		422EE0A622B3F1AB00451EED /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		422EE0A822B3F47A00451EED /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
 		422EE0AA22B436D600451EED /* MixcloudApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MixcloudApi.swift; sourceTree = "<group>"; };
@@ -154,6 +156,7 @@
 			children = (
 				4220E2AB22C62B7600FEB7F8 /* FollowingUserViewModel.swift */,
 				4220E2AD22C62B8800FEB7F8 /* FollowingUserView.swift */,
+				4220E2AF22C648CC00FEB7F8 /* FollowingTableViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -408,6 +411,7 @@
 				4220E2AC22C62B7600FEB7F8 /* FollowingUserViewModel.swift in Sources */,
 				4220E28822C4E61900FEB7F8 /* UserProfilePresenter.swift in Sources */,
 				422EE0B722BA2A0A00451EED /* MMError.swift in Sources */,
+				4220E2B022C648CC00FEB7F8 /* FollowingTableViewCell.swift in Sources */,
 				4220E28922C4E61900FEB7F8 /* UserProfileRouter.swift in Sources */,
 				4220E28C22C4E61900FEB7F8 /* UserProfileInteractor.swift in Sources */,
 				4220E2A822C62B1A00FEB7F8 /* FollowingContainer.swift in Sources */,

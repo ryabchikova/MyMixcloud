@@ -25,6 +25,13 @@ extension FollowingPresenter: FollowingModuleInput {
 }
 
 extension FollowingPresenter: FollowingViewOutput {
+    func viewDidLoad() {
+        
+        // TODO
+        let user1 = User(identifier: "BooraID", name: "Boora", country: nil, city: nil, bio: nil, favoritesCount: 1, followersCount: 1, followingCount: 1, profileImage: nil)
+        let user2 = User(identifier: "SamsonowID", name: "Boora", country: nil, city: nil, bio: nil, favoritesCount: 1, followersCount: 1, followingCount: 1, profileImage: nil)
+        view?.set(viewModels: [FollowingUserViewModel(user: user1), FollowingUserViewModel(user: user2)])
+    }
 }
 
 extension FollowingPresenter: FollowingInteractorOutput {
