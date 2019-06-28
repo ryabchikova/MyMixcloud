@@ -48,7 +48,7 @@ extension DummyView {
         
         static let message: [NSAttributedString.Key: Any] = {
             return [
-                .font: MMFonts.mediumBoldFont,
+                .font: MMFonts.mediumBold,
                 .foregroundColor: MMColors.darkGray
             ]
         }()

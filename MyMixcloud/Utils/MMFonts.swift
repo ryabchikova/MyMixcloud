@@ -10,15 +10,26 @@ import Foundation
 import UIKit
 
 enum MMFonts {
-    static let largeBoldItalicFont: UIFont = UIFont.init(name: "CourierNewPS-BoldItalicMT", size: 20.0)!
-    static let mediumBoldItalicFont: UIFont = UIFont.init(name: "CourierNewPS-BoldItalicMT", size: 16.0)!
-    static let smallBoldItalicFont: UIFont = UIFont.init(name: "CourierNewPS-BoldItalicMT", size: 12.0)!
-    
-    static let largeItalicFont: UIFont = UIFont.init(name: "CourierNewPS-ItalicMT", size: 20.0)!
-    static let mediumItalicFont: UIFont = UIFont.init(name: "CourierNewPS-ItalicMT", size: 16.0)!
-    static let smallItalicFont: UIFont = UIFont.init(name: "CourierNewPS-ItalicMT", size: 12.0)!
-    
-    static let largeBoldFont: UIFont = UIFont.init(name: "CourierNewPS-BoldMT", size: 20.0)!
-    static let mediumBoldFont: UIFont = UIFont.init(name: "CourierNewPS-BoldMT", size: 16.0)!
-    static let smallBoldFont: UIFont = UIFont.init(name: "CourierNewPS-BoldMT", size: 12.0)!
+
+    private enum Size: CGFloat {
+        case small = 12.0
+        case medium = 16.0
+        case large = 20.0
+    }
+
+    static let small = UIFont.init(name: "CourierNewPSMT", size: Size.small.rawValue)!
+    static let medium = UIFont.init(name: "CourierNewPSMT", size: Size.medium.rawValue)!
+    static let large = UIFont.init(name: "CourierNewPSMT", size: Size.large.rawValue)!
+
+    static let smallItalic = UIFont.init(name: "CourierNewPS-ItalicMT", size: Size.small.rawValue)!
+    static let mediumItalic = UIFont.init(name: "CourierNewPS-ItalicMT", size: Size.medium.rawValue)!
+    static let largeItalic = UIFont.init(name: "CourierNewPS-ItalicMT", size: Size.large.rawValue)!
+
+    static let smallBold = UIFont.init(name: "CourierNewPS-BoldMT", size: Size.small.rawValue)!
+    static let mediumBold = UIFont.init(name: "CourierNewPS-BoldMT", size: Size.medium.rawValue)!
+    static let largeBold = UIFont.init(name: "CourierNewPS-BoldMT", size: Size.large.rawValue)!
+
+    static let smallBoldItalic = UIFont.init(name: "CourierNewPS-BoldItalicMT", size: Size.small.rawValue)!
+    static let mediumBoldItalic = UIFont.init(name: "CourierNewPS-BoldItalicMT", size: Size.medium.rawValue)!
+    static let largeBoldItalic = UIFont.init(name: "CourierNewPS-BoldItalicMT", size: Size.large.rawValue)!
 }

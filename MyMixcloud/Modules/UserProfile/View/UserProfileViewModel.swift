@@ -43,28 +43,28 @@ extension UserProfileViewModel {
     private struct Styles {
         static let name: [NSAttributedString.Key: Any] = {
             return [
-                .font: MMFonts.largeBoldFont,
+                .font: MMFonts.largeBold,
                 .foregroundColor: MMColors.darkGray
             ]
         }()
         
         static let location: [NSAttributedString.Key: Any] = {
             return [
-                .font: MMFonts.mediumBoldFont,
+                .font: MMFonts.mediumBold,
                 .foregroundColor: MMColors.darkGray
             ]
         }()
         
         static let bio: [NSAttributedString.Key: Any] = {
             return [
-                .font: MMFonts.mediumBoldItalicFont,
+                .font: MMFonts.mediumBoldItalic,
                 .foregroundColor: MMColors.lightGray
             ]
         }()
         
         static let followers: [NSAttributedString.Key: Any] = {
             return [
-                .font: MMFonts.smallBoldFont,
+                .font: MMFonts.smallBold,
                 .foregroundColor: MMColors.lightGray
             ]
         }()

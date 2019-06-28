@@ -22,10 +22,12 @@ fileprivate let rgbOpaque: (Int, Int, Int) -> UIColor = {
 }
 
 enum MMColors {
+    // colors
     static let white = whiteTint(255, 1.0)
     
     static let darkGray = rgb(61, 65, 80, 0.7)
     static let lightGray = whiteTint(160, 0.9)
     
+    // entities
     static let placeholder = whiteTint(235, 1.0)
 }
