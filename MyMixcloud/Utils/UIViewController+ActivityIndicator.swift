@@ -9,36 +9,40 @@
 import Foundation
 import UIKit
 
-protocol ActivityIndicatorSupport {
-
-    var activityIndicator: UIActivityIndicatorView { get }
-    func showActivity()
-    func hideActivity()
-}
+// ТУТ УТЕКАЕТ ПАМЯТЬ, ЭТО НЕ ПРАВИЛЬНЫЙ ПОДХОД
+// ПЕРЕДЕЛАТЬ
 
 
-extension UIViewController: ActivityIndicatorSupport {
-    
-    var activityIndicator: UIActivityIndicatorView {
-        let indicator = UIActivityIndicatorView(frame: CGRect(x: 0, y: 0, width: 40, height: 40))
-        indicator.color = MMColors.darkGray
-        indicator.hidesWhenStopped = true
-        return indicator
-    }
-    
-    func showActivity() {
-        DispatchQueue.main.async { [weak self] in
-            guard let self = self else { return }
-            
-            self.view.addSubview(self.activityIndicator)
-            self.activityIndicator.center = self.view.center
-            self.activityIndicator.startAnimating()
-        }
-    }
-    
-    func hideActivity() {
-        DispatchQueue.main.async { [weak self] in
-            self?.activityIndicator.stopAnimating()
-        }
-    }
-}
+//protocol ActivityIndicatorSupport {
+//    func showActivity()
+//    func hideActivity()
+//}
+//
+//extension UIViewController: ActivityIndicatorSupport {
+//
+//    private var activityIndicator: UIActivityIndicatorView {
+//        let indicator = UIActivityIndicatorView(frame: CGRect(x: 0, y: 0, width: 40, height: 40))
+//        indicator.color = MMColors.darkGray
+//        indicator.hidesWhenStopped = true
+//        return indicator
+//    }
+//
+//    func showActivity() {
+//        DispatchQueue.main.async {
+//            print("1:", self.view.subviews.count)
+//            self.view.addSubview(self.activityIndicator)
+//            print("3:", self.view.subviews.count)
+//            self.activityIndicator.center = self.view.center
+//            self.activityIndicator.startAnimating()
+//        }
+//    }
+//
+//    func hideActivity() {
+//        DispatchQueue.main.async {
+//            print("3:", self.view.subviews.count)
+//            self.activityIndicator.stopAnimating()
+//            self.activityIndicator.removeFromSuperview()
+//            print("4:", self.view.subviews.count)
+//        }
+//    }
+//}

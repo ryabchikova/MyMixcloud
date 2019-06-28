@@ -28,7 +28,6 @@ extension UserProfilePresenter: UserProfileModuleInput {
 
 extension UserProfilePresenter: UserProfileViewOutput {
     func viewDidLoad() {
-        view?.showActivity()
         interactor.loadUser(userId: userId)
     }
 }
@@ -39,7 +38,6 @@ extension UserProfilePresenter: UserProfileInteractorOutput {
     }
     
     func didLoadUser(_ user: User) {
-        view?.hideActivity()
         view?.set(userProfileViewModel: UserProfileViewModel(user: user))
     }
 }

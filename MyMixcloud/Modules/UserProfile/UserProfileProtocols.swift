@@ -16,9 +16,6 @@ protocol UserProfileModuleOutput: class {
 }
 
 protocol UserProfileViewInput: class {
-    func showActivity()
-    func hideActivity()
-
     func set(userProfileViewModel: UserProfileViewModel)
     func showDummyView()
 }

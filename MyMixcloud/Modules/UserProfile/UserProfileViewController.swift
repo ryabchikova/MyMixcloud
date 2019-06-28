@@ -44,14 +44,13 @@ final class UserProfileViewController: UIViewController {
 
 extension UserProfileViewController: UserProfileViewInput {
     func set(userProfileViewModel: UserProfileViewModel) {
-        DispatchQueue.main.async { [weak self] in
-            self?.profileView.update(with: userProfileViewModel)
+        DispatchQueue.main.async {
+            self.profileView.update(with: userProfileViewModel)
         }
     }
     
     func showDummyView() {
-        DispatchQueue.main.async { [weak self] in
-            guard let self = self else { return }
+        DispatchQueue.main.async {
             let dummy = DummyView(frame: self.view.frame)
             self.view.addSubview(dummy)
         }
