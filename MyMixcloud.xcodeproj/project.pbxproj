@@ -187,6 +187,7 @@
 		422EE0A522B3F15200451EED /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				422EE0AA22B436D600451EED /* MixcloudApi.swift */,
 				422EE0BB22C217CD00451EED /* JsonDecoding */,
 				422EE0A822B3F47A00451EED /* UserService.swift */,
 				422EE0AD22B7EF4200451EED /* UserServiceImpl.swift */,
@@ -199,7 +200,6 @@
 		422EE0AC22B7EEB800451EED /* Utils */ = {
 			isa = PBXGroup;
 			children = (
-				422EE0AA22B436D600451EED /* MixcloudApi.swift */,
 				422EE0AF22B803C300451EED /* Constants.swift */,
 				422EE0B622BA2A0A00451EED /* MMError.swift */,
 				4220E29422C5137300FEB7F8 /* MMFonts.swift */,

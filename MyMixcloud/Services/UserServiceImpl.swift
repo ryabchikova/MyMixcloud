@@ -26,7 +26,7 @@ final class UserServiceImpl: UserService {
                 }
                 
                 guard let sSelf = self else {
-                    completionHandler(nil, MMError.serverError(description: "User request failed"))
+                    completionHandler(nil, MMError.executionError(description: "User request failed"))
                     return
                 }
                 
@@ -54,7 +54,7 @@ final class UserServiceImpl: UserService {
                 }
                 
                 guard let sSelf = self else {
-                    completionHandler(nil, MMError.serverError(description: "Following list request failed"))
+                    completionHandler(nil, MMError.executionError(description: "Following list request failed"))
                     return
                 }
                 
@@ -76,7 +76,12 @@ final class UserServiceImpl: UserService {
                 return
             }
 
-            guard let followingList = followingList, let sSelf = self else {
+            guard let sSelf = self else {
+                completionHandler(nil, MMError.executionError(description: "Following request failed"))
+                return
+            }
+            
+            guard let followingList = followingList else {
                 completionHandler(nil, MMError.serverError(description: "Following request failed"))
                 return
             }

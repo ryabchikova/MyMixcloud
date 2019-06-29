@@ -42,6 +42,8 @@ class FirstViewController: UIViewController {
                         switch mcerr {
                         case .serverError(let description):
                             print(description)
+                        default:
+                            print()
                         }
                     }
                 }

@@ -21,24 +21,19 @@ enum MixcloudApi {
     func requestUrl(userId: String, page: Int? = nil) -> String {
         let userUrl = baseUrl + userId + "/"
         
+        let page = page ?? 0
+        let offset = page < 1 ? 0 : (page - 1) * Constants.limit
+        let parameters = "?limit=" + Constants.limit.description + "&offset=" + offset.description
+        
         switch self {
             case .user:
                 return userUrl
             case .history:
-                return userUrl + "listens/"
+                return userUrl + "listens/" + parameters
             case .favorites:
-                return userUrl + "favorites/"
-            case .following:                
-                let page = page ?? 0
-                let offset = page < 1 ? 0 : (page - 1) * Constants.limit
-                return userUrl + "following/?limit=" + Constants.limit.description + "&offset=" + offset.description
+                return userUrl + "favorites/" + parameters
+            case .following:
+                return userUrl + "following/" + parameters
         }
     }
 }
-
-//let url1 = MixcloudApi.user.requestUrl(userIdentifier: "asm")
-//let url2 = MixcloudApi.following.requestUrl(userIdentifier: "asm")
-
-
-
-

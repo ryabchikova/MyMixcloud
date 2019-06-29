@@ -10,4 +10,5 @@ import Foundation
 
 enum MMError: Error {
     case serverError(description: String)
+    case executionError(description: String)
 }
