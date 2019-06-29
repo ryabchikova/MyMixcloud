@@ -108,7 +108,6 @@
 			isa = PBXGroup;
 			children = (
 				422EE0CA22C25CC100451EED /* MainTabBarViewController.swift */,
-				422EE0C322C255A800451EED /* TestViewControllers */,
 				4220E29822C585AC00FEB7F8 /* DummyView.swift */,
 			);
 			path = ViewControllers;
@@ -196,6 +195,7 @@
 			isa = PBXGroup;
 			children = (
 				42DD63CC22B3E9E600A57196 /* FirstViewController.swift */,
+				422EE0C422C2562A00451EED /* TestTrackListViewController.swift */,
 				422EE0B422BA180D00451EED /* whatever.swift */,
 			);
 			path = TestStuff;
@@ -218,14 +218,6 @@
 				4220E2A922C62B2800FEB7F8 /* Following */,
 			);
 			path = Modules;
-			sourceTree = "<group>";
-		};
-		422EE0C322C255A800451EED /* TestViewControllers */ = {
-			isa = PBXGroup;
-			children = (
-				422EE0C422C2562A00451EED /* TestTrackListViewController.swift */,
-			);
-			path = TestViewControllers;
 			sourceTree = "<group>";
 		};
 		42DD63BE22B3E9E600A57196 = {

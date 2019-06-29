@@ -26,12 +26,13 @@ final class UserProfileViewController: UIViewController {
     
     override func loadView() {
         self.view = UIView()
-        view.backgroundColor = MMColors.white
         self.view.addSubview(profileView)
     }
     
 	override func viewDidLoad() {
 		super.viewDidLoad()
+        
+        view.backgroundColor = MMColors.white
         output.viewDidLoad()
 	}
     

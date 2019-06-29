@@ -26,12 +26,13 @@ final class FollowingViewController: UIViewController {
     
     override func loadView() {
         self.view = UIView()
-        view.backgroundColor = MMColors.white
         view.addSubview(tableView)
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        view.backgroundColor = MMColors.white
         output.viewDidLoad()
     }
     
@@ -69,10 +70,10 @@ extension FollowingViewController: UITableViewDataSource {
 extension FollowingViewController: UITableViewDelegate {
 
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        let pageHeight = scrollView.frame.size.height
+        let pageHeight = scrollView.frame.height
         let distanceToBottom = scrollView.contentSize.height - scrollView.contentOffset.y - pageHeight
         
-        if distanceToBottom < pageHeight * 0.2 {
+        if distanceToBottom < 0.2 * pageHeight {
             output.viewDidScrollPage()
         }
     }
@@ -88,6 +89,9 @@ extension FollowingViewController: FollowingViewInput {
     }
     
     func showDummyView() {
+        
+        // TODO его нужно как-то скывать вообще-то и remove from superview
+        
         guard models.isEmpty else {
             return
         }
