@@ -29,6 +29,13 @@
 		4220E2AC22C62B7600FEB7F8 /* FollowingUserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4220E2AB22C62B7600FEB7F8 /* FollowingUserViewModel.swift */; };
 		4220E2AE22C62B8800FEB7F8 /* FollowingUserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4220E2AD22C62B8800FEB7F8 /* FollowingUserView.swift */; };
 		4220E2B022C648CC00FEB7F8 /* FollowingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4220E2AF22C648CC00FEB7F8 /* FollowingTableViewCell.swift */; };
+		42273C0122C79BAF00EDB1E5 /* JsonTrackList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42273C0022C79BAF00EDB1E5 /* JsonTrackList.swift */; };
+		42273C0322C7A0C700EDB1E5 /* JsonTrack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42273C0222C7A0C700EDB1E5 /* JsonTrack.swift */; };
+		42273C0522C7A12600EDB1E5 /* JsonTag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42273C0422C7A12600EDB1E5 /* JsonTag.swift */; };
+		42273C0722C7A6BC00EDB1E5 /* TrackService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42273C0622C7A6BC00EDB1E5 /* TrackService.swift */; };
+		42273C0922C7A6F400EDB1E5 /* Track.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42273C0822C7A6F400EDB1E5 /* Track.swift */; };
+		42273C0B22C7A7EA00EDB1E5 /* Tag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42273C0A22C7A7EA00EDB1E5 /* Tag.swift */; };
+		42273C0D22C7ACB500EDB1E5 /* TrackServiceImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42273C0C22C7ACB500EDB1E5 /* TrackServiceImpl.swift */; };
 		422EE0A722B3F1AB00451EED /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 422EE0A622B3F1AB00451EED /* User.swift */; };
 		422EE0A922B3F47A00451EED /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 422EE0A822B3F47A00451EED /* UserService.swift */; };
 		422EE0AB22B436D600451EED /* MixcloudApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 422EE0AA22B436D600451EED /* MixcloudApi.swift */; };
@@ -71,6 +78,13 @@
 		4220E2AB22C62B7600FEB7F8 /* FollowingUserViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowingUserViewModel.swift; sourceTree = "<group>"; };
 		4220E2AD22C62B8800FEB7F8 /* FollowingUserView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowingUserView.swift; sourceTree = "<group>"; };
 		4220E2AF22C648CC00FEB7F8 /* FollowingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowingTableViewCell.swift; sourceTree = "<group>"; };
+		42273C0022C79BAF00EDB1E5 /* JsonTrackList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JsonTrackList.swift; sourceTree = "<group>"; };
+		42273C0222C7A0C700EDB1E5 /* JsonTrack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JsonTrack.swift; sourceTree = "<group>"; };
+		42273C0422C7A12600EDB1E5 /* JsonTag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JsonTag.swift; sourceTree = "<group>"; };
+		42273C0622C7A6BC00EDB1E5 /* TrackService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackService.swift; sourceTree = "<group>"; };
+		42273C0822C7A6F400EDB1E5 /* Track.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Track.swift; sourceTree = "<group>"; };
+		42273C0A22C7A7EA00EDB1E5 /* Tag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tag.swift; sourceTree = "<group>"; };
+		42273C0C22C7ACB500EDB1E5 /* TrackServiceImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackServiceImpl.swift; sourceTree = "<group>"; };
 		422EE0A622B3F1AB00451EED /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		422EE0A822B3F47A00451EED /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
 		422EE0AA22B436D600451EED /* MixcloudApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MixcloudApi.swift; sourceTree = "<group>"; };
@@ -164,6 +178,8 @@
 			isa = PBXGroup;
 			children = (
 				422EE0A622B3F1AB00451EED /* User.swift */,
+				42273C0822C7A6F400EDB1E5 /* Track.swift */,
+				42273C0A22C7A7EA00EDB1E5 /* Tag.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -174,6 +190,8 @@
 				422EE0BB22C217CD00451EED /* JsonDecoding */,
 				422EE0A822B3F47A00451EED /* UserService.swift */,
 				422EE0AD22B7EF4200451EED /* UserServiceImpl.swift */,
+				42273C0622C7A6BC00EDB1E5 /* TrackService.swift */,
+				42273C0C22C7ACB500EDB1E5 /* TrackServiceImpl.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -204,9 +222,12 @@
 		422EE0BB22C217CD00451EED /* JsonDecoding */ = {
 			isa = PBXGroup;
 			children = (
+				422EE0BE22C21C1700451EED /* JsonDataConverter.swift */,
 				422EE0BC22C2180600451EED /* JsonUser.swift */,
 				422EE0C022C2234F00451EED /* JsonFollowing.swift */,
-				422EE0BE22C21C1700451EED /* JsonDataConverter.swift */,
+				42273C0022C79BAF00EDB1E5 /* JsonTrackList.swift */,
+				42273C0222C7A0C700EDB1E5 /* JsonTrack.swift */,
+				42273C0422C7A12600EDB1E5 /* JsonTag.swift */,
 			);
 			path = JsonDecoding;
 			sourceTree = "<group>";
@@ -397,6 +418,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				42273C0722C7A6BC00EDB1E5 /* TrackService.swift in Sources */,
+				42273C0522C7A12600EDB1E5 /* JsonTag.swift in Sources */,
 				422EE0A722B3F1AB00451EED /* User.swift in Sources */,
 				4220E2A622C62B1A00FEB7F8 /* FollowingProtocols.swift in Sources */,
 				4220E29722C5139800FEB7F8 /* MMColors.swift in Sources */,
@@ -406,9 +429,12 @@
 				4220E2B022C648CC00FEB7F8 /* FollowingTableViewCell.swift in Sources */,
 				4220E28922C4E61900FEB7F8 /* UserProfileRouter.swift in Sources */,
 				4220E28C22C4E61900FEB7F8 /* UserProfileInteractor.swift in Sources */,
+				42273C0922C7A6F400EDB1E5 /* Track.swift in Sources */,
 				4220E2A822C62B1A00FEB7F8 /* FollowingContainer.swift in Sources */,
 				422EE0A922B3F47A00451EED /* UserService.swift in Sources */,
+				42273C0B22C7A7EA00EDB1E5 /* Tag.swift in Sources */,
 				4220E2A322C62B1A00FEB7F8 /* FollowingPresenter.swift in Sources */,
+				42273C0122C79BAF00EDB1E5 /* JsonTrackList.swift in Sources */,
 				4220E2AE22C62B8800FEB7F8 /* FollowingUserView.swift in Sources */,
 				4220E28A22C4E61900FEB7F8 /* UserProfileViewController.swift in Sources */,
 				4220E29222C5093900FEB7F8 /* UserProfileView.swift in Sources */,
@@ -429,9 +455,11 @@
 				42DD63CD22B3E9E600A57196 /* FirstViewController.swift in Sources */,
 				4220E28D22C4E61900FEB7F8 /* UserProfileContainer.swift in Sources */,
 				422EE0C122C2234F00451EED /* JsonFollowing.swift in Sources */,
+				42273C0D22C7ACB500EDB1E5 /* TrackServiceImpl.swift in Sources */,
 				422EE0B022B803C300451EED /* Constants.swift in Sources */,
 				4220E2A422C62B1A00FEB7F8 /* FollowingRouter.swift in Sources */,
 				422EE0B522BA180D00451EED /* whatever.swift in Sources */,
+				42273C0322C7A0C700EDB1E5 /* JsonTrack.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

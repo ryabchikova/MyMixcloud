@@ -20,7 +20,7 @@ struct JsonUser: Decodable {
     let followingCount: Int
     let pictures: Pictures
     
-    
+    // TODO возможно не нужны
     private enum CodingKeys: CodingKey {
         case username
         case name
