@@ -38,7 +38,7 @@ final class JsonDataConverter {
                      playCount: jsonTrack.playCount,
                      createdTime: jsonTrack.createdTime,       // TODO format
                      listenTime: jsonTrack.listenTime,         // TODO format
-                     audioLength: jsonTrack.audioLength,
+                     audioLength: jsonTrack.audioLength.description,       // TODO format in human readable time string
                      favoriteCount: jsonTrack.favoriteCount,
                      listenerCount: jsonTrack.listenerCount,
                      repostCount: jsonTrack.repostCount)

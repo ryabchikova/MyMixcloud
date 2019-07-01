@@ -20,7 +20,7 @@ struct JsonTrack: Decodable {
     let name: String
     let pictures: Pictures
     let repostCount: Int
-    let listenTime: String
+    let listenTime: String?
         
     struct User: Decodable {
         let username: String        // unic id

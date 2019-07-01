@@ -11,9 +11,9 @@ import Foundation
 final class UserProfilePresenter {
 	weak var view: UserProfileViewInput?
     weak var moduleOutput: UserProfileModuleOutput?
-    
 	private let router: UserProfileRouterInput
 	private let interactor: UserProfileInteractorInput
+    
     private let userId: String
     
     init(router: UserProfileRouterInput, interactor: UserProfileInteractorInput, userId: String) {

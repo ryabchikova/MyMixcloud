@@ -11,7 +11,6 @@ import Foundation
 final class FollowingPresenter {
 	weak var view: FollowingViewInput?
     weak var moduleOutput: FollowingModuleOutput?
-    
 	private let router: FollowingRouterInput
 	private let interactor: FollowingInteractorInput
     

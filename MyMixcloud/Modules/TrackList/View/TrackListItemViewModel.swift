@@ -1,0 +1,56 @@
+//
+//  TrackListItemViewModel.swift
+//  MyMixcloud
+//
+//  Created by Ryabchikova Elena on 01/07/2019.
+//  Copyright © 2019 ryabchikova. All rights reserved.
+//
+
+import Foundation
+import UIKit
+
+struct TrackListItemViewModel {
+    let trackId: String
+    let coverImageUrl: URL?
+    let userNameString: NSAttributedString
+    let trackTitleString: NSAttributedString
+    let audioLengthString: NSAttributedString
+    
+    init(track: Track) {
+        trackId = track.identifier
+        coverImageUrl = track.coverImage
+        userNameString = NSAttributedString(string: "by " + track.user.name, attributes: Styles.name)
+        trackTitleString = NSAttributedString(string: track.title, attributes: Styles.title)
+        audioLengthString = NSAttributedString(string: /*track.audioLength*/"1:45:05", attributes: Styles.length)
+    }
+}
+
+extension TrackListItemViewModel {
+    
+    private struct Styles {
+        
+        static let name: [NSAttributedString.Key: Any] = {
+            return [
+                .font: MMFonts.medium,
+                .foregroundColor: MMColors.darkGray
+            ]
+        }()
+        
+        static let title: [NSAttributedString.Key: Any] = {
+            let style = NSMutableParagraphStyle()
+            style.lineBreakMode = .byTruncatingTail
+            return [
+                .paragraphStyle: style,
+                .font: MMFonts.mediumBold,
+                .foregroundColor: MMColors.darkGray
+            ]
+        }()
+        
+        static let length: [NSAttributedString.Key: Any] = {
+            return [
+                .font: MMFonts.smallBold,
+                .foregroundColor: MMColors.blue
+            ]
+        }()
+    }
+}

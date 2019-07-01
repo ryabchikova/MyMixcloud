@@ -42,7 +42,7 @@ final class UserServiceImpl: UserService {
         }
     }
     
-    func followingList(userId: String, page: Int, completionHandler: @escaping ([String]?, Error?) -> Void) {
+    private func followingList(userId: String, page: Int, completionHandler: @escaping ([String]?, Error?) -> Void) {
         let url = MixcloudApi.following.requestUrl(userId: userId, page: page)
         
         Alamofire.request(url)

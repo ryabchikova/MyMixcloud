@@ -28,6 +28,9 @@ enum MMColors {
     static let darkGray = rgb(61, 65, 80, 0.7)
     static let lightGray = whiteTint(160, 0.9)
     
+    static let blue = rgbOpaque(101, 176, 217)
+    
     // entities
-    static let placeholder = whiteTint(235, 1.0)
+    static let imagePlaceholder = whiteTint(235, 1.0)
+    
 }

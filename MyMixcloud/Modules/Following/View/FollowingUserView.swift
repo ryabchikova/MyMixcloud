@@ -10,7 +10,6 @@ import FlexLayout
 import SDWebImage
 
 final class FollowingUserView: UIView {
-    
     private let avatarImageView = UIImageView()
     private let nameLabel = UILabel()
     private let locationLabel = UILabel()
@@ -36,8 +35,8 @@ final class FollowingUserView: UIView {
         backgroundColor = Styles.backgroundColor
         
         avatarImageView.contentMode = .scaleAspectFill
-        avatarImageView.backgroundColor = MMColors.placeholder
-        avatarImageView.layer.borderColor = MMColors.white.cgColor
+        avatarImageView.backgroundColor = MMColors.imagePlaceholder
+        avatarImageView.layer.borderColor = MMColors.lightGray.cgColor
         avatarImageView.layer.borderWidth = Constants.borderWidth
         avatarImageView.layer.cornerRadius = Constants.cornerRadius
         avatarImageView.layer.masksToBounds = true
@@ -62,16 +61,16 @@ final class FollowingUserView: UIView {
                     .direction(.column)
                     .alignItems(.start)
                     .marginRight(Constants.outerMargin)
+                    .marginVertical(Constants.outerMargin)
                     .shrink(1)
                     .define { flex in
                         flex.addItem(nameLabel)
-                            .marginTop(Constants.outerMargin)
                         
                         flex.addItem(locationLabel)
-                            .marginTop(Constants.locationTopMargin)
+                            .marginTop(Constants.innerTopMargin)
                         
                         flex.addItem(followersLabel)
-                            .marginTop(Constants.followersTopMargin)
+                            .marginTop(Constants.innerTopMargin)
                     }
             }
     }
@@ -101,8 +100,7 @@ extension FollowingUserView {
         static let outerMargin: CGFloat = 8.0
         static let borderWidth: CGFloat = 0.5
         static let cornerRadius: CGFloat = 4.0
-        static let locationTopMargin: CGFloat = 4.0
-        static let followersTopMargin: CGFloat = 4.0
+        static let innerTopMargin: CGFloat = 4.0
     }
     
     private struct Styles {

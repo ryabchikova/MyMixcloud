@@ -41,7 +41,7 @@ final class UserProfileView: UIView {
         backgroundColor = Styles.backgroundColor
         
         avatarImageView.contentMode = .scaleAspectFill
-        avatarImageView.backgroundColor = MMColors.placeholder
+        avatarImageView.backgroundColor = MMColors.imagePlaceholder
         avatarImageView.layer.borderColor = MMColors.white.cgColor
         avatarImageView.layer.borderWidth = Constants.borderWidth
         avatarImageView.layer.cornerRadius = Constants.cornerRadius

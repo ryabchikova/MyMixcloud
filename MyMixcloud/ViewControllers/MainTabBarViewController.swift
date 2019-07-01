@@ -27,21 +27,22 @@ final class MainTabBarViewController: UITabBarController {
         let followingContainer = FollowingContainer.assemble(with: FollowingContext(moduleOutput: nil, userId: HARDCODED_USER_ID))
         followingContainer.viewController.tabBarItem.image = UIImage(named: "followingIcon")
         
-        let historyVC = TestViewController(text: "Listening History", background: .yellow)
-        historyVC.tabBarItem.image = UIImage(named: "historyIcon")
+        let historyContainer = TrackListContainer.assemble(with: TrackListContext(moduleOutput: nil, userId: HARDCODED_USER_ID, trackListType: .history))
+        historyContainer.viewController.tabBarItem.image = UIImage(named: "historyIcon")
         
-        let favoritesVC = TestViewController(text: "Favorite Tracks", background: .orange)
-        favoritesVC.tabBarItem.image = UIImage(named: "favoriteIcon")
+        let favoriteContainer = TrackListContainer.assemble(with: TrackListContext(moduleOutput: nil, userId: HARDCODED_USER_ID, trackListType: .favorite))
+        favoriteContainer.viewController.tabBarItem.image = UIImage(named: "favoriteIcon")
         
-        
-        
-        viewControllers = [profileContainer.viewController, followingContainer.viewController, historyVC, favoritesVC]
+        viewControllers = [profileContainer.viewController,
+                           followingContainer.viewController,
+                           historyContainer.viewController,
+                           favoriteContainer.viewController]
         
         viewControllers?.forEach {
             $0.tabBarItem.imageInsets.top = 6.0
             $0.tabBarItem.imageInsets.bottom = -6.0
         }
         
-        selectedIndex = 1
+        selectedIndex = 2
     }
 }

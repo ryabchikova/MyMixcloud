@@ -1,19 +1,19 @@
 //
-//  FollowingViewController.swift
+//  TrackListViewController.swift
 //  MyMixcloud
 //
-//  Created by Ryabchikova Elena on 28/06/2019.
+//  Created by Ryabchikova Elena on 01/07/2019.
 //  Copyright © 2019 ryabchikova. All rights reserved.
 //
 
 import UIKit
 
-final class FollowingViewController: UIViewController {
-	private let output: FollowingViewOutput
+final class TrackListViewController: UIViewController {
+	private let output: TrackListViewOutput
     private let tableView = UITableView()
-    private var models: [FollowingUserViewModel] = []
+    private var models: [TrackListItemViewModel] = []
 
-    init(output: FollowingViewOutput) {
+    init(output: TrackListViewOutput) {
         self.output = output
         super.init(nibName: nil, bundle: nil)
         setupTableView()
@@ -43,30 +43,30 @@ final class FollowingViewController: UIViewController {
         tableView.dataSource = self
         tableView.delegate = self
         tableView.tableFooterView = UIView()
-        tableView.register(FollowingTableViewCell.self,
-                           forCellReuseIdentifier: String(describing: FollowingTableViewCell.self))
-        tableView.rowHeight = FollowingTableViewCell.height
+        tableView.register(TrackListTableViewCell.self,
+                           forCellReuseIdentifier: String(describing: TrackListTableViewCell.self))
+        tableView.rowHeight = TrackListTableViewCell.height
         tableView.separatorInset.left = Constants.tableViewSeparatorInset
         tableView.separatorInset.right = Constants.tableViewSeparatorInset
     }
 }
 
-extension FollowingViewController: UITableViewDataSource {
-
+extension TrackListViewController: UITableViewDataSource {
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return models.count
     }
-
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell =  tableView.dequeueReusableCell(withIdentifier: String(describing: FollowingTableViewCell.self),
-                                                  for: indexPath) as! FollowingTableViewCell
+        let cell =  tableView.dequeueReusableCell(withIdentifier: String(describing: TrackListTableViewCell.self),
+                                                  for: indexPath) as! TrackListTableViewCell
         cell.update(with: models[indexPath.row])
         return cell
     }
 }
 
-extension FollowingViewController: UITableViewDelegate {
-
+extension TrackListViewController: UITableViewDelegate {
+    
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let pageHeight = scrollView.frame.height
         let distanceToBottom = scrollView.contentSize.height - scrollView.contentOffset.y - pageHeight
@@ -77,9 +77,9 @@ extension FollowingViewController: UITableViewDelegate {
     }
 }
 
-extension FollowingViewController: FollowingViewInput {
+extension TrackListViewController: TrackListViewInput {
     
-    func set(viewModels: [FollowingUserViewModel]) {
+    func set(viewModels: [TrackListItemViewModel]) {
         models.append(contentsOf: viewModels)
         DispatchQueue.main.async {
             self.tableView.reloadData()

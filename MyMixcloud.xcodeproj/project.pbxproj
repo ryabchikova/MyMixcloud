@@ -29,6 +29,15 @@
 		4220E2AC22C62B7600FEB7F8 /* FollowingUserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4220E2AB22C62B7600FEB7F8 /* FollowingUserViewModel.swift */; };
 		4220E2AE22C62B8800FEB7F8 /* FollowingUserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4220E2AD22C62B8800FEB7F8 /* FollowingUserView.swift */; };
 		4220E2B022C648CC00FEB7F8 /* FollowingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4220E2AF22C648CC00FEB7F8 /* FollowingTableViewCell.swift */; };
+		4224F96322CA37EC00E847AB /* TrackListPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4224F95D22CA37EC00E847AB /* TrackListPresenter.swift */; };
+		4224F96422CA37EC00E847AB /* TrackListRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4224F95E22CA37EC00E847AB /* TrackListRouter.swift */; };
+		4224F96522CA37EC00E847AB /* TrackListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4224F95F22CA37EC00E847AB /* TrackListViewController.swift */; };
+		4224F96622CA37EC00E847AB /* TrackListProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4224F96022CA37EC00E847AB /* TrackListProtocols.swift */; };
+		4224F96722CA37EC00E847AB /* TrackListInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4224F96122CA37EC00E847AB /* TrackListInteractor.swift */; };
+		4224F96822CA37EC00E847AB /* TrackListContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4224F96222CA37EC00E847AB /* TrackListContainer.swift */; };
+		4224F96B22CA3D4D00E847AB /* TrackListItemViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4224F96A22CA3D4D00E847AB /* TrackListItemViewModel.swift */; };
+		4224F96D22CA3D7200E847AB /* TrackListItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4224F96C22CA3D7200E847AB /* TrackListItemView.swift */; };
+		4224F96F22CA3DEE00E847AB /* TrackListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4224F96E22CA3DEE00E847AB /* TrackListTableViewCell.swift */; };
 		42273C0122C79BAF00EDB1E5 /* JsonTrackList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42273C0022C79BAF00EDB1E5 /* JsonTrackList.swift */; };
 		42273C0322C7A0C700EDB1E5 /* JsonTrack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42273C0222C7A0C700EDB1E5 /* JsonTrack.swift */; };
 		42273C0522C7A12600EDB1E5 /* JsonTag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42273C0422C7A12600EDB1E5 /* JsonTag.swift */; };
@@ -49,7 +58,6 @@
 		422EE0C522C2562A00451EED /* TestTrackListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 422EE0C422C2562A00451EED /* TestTrackListViewController.swift */; };
 		422EE0CB22C25CC100451EED /* MainTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 422EE0CA22C25CC100451EED /* MainTabBarViewController.swift */; };
 		42DD63CB22B3E9E600A57196 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42DD63CA22B3E9E600A57196 /* AppDelegate.swift */; };
-		42DD63CD22B3E9E600A57196 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42DD63CC22B3E9E600A57196 /* FirstViewController.swift */; };
 		42DD63D422B3E9E800A57196 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 42DD63D322B3E9E800A57196 /* Assets.xcassets */; };
 		42DD63D722B3E9E800A57196 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 42DD63D522B3E9E800A57196 /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
@@ -78,6 +86,15 @@
 		4220E2AB22C62B7600FEB7F8 /* FollowingUserViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowingUserViewModel.swift; sourceTree = "<group>"; };
 		4220E2AD22C62B8800FEB7F8 /* FollowingUserView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowingUserView.swift; sourceTree = "<group>"; };
 		4220E2AF22C648CC00FEB7F8 /* FollowingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowingTableViewCell.swift; sourceTree = "<group>"; };
+		4224F95D22CA37EC00E847AB /* TrackListPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackListPresenter.swift; sourceTree = "<group>"; };
+		4224F95E22CA37EC00E847AB /* TrackListRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackListRouter.swift; sourceTree = "<group>"; };
+		4224F95F22CA37EC00E847AB /* TrackListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackListViewController.swift; sourceTree = "<group>"; };
+		4224F96022CA37EC00E847AB /* TrackListProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackListProtocols.swift; sourceTree = "<group>"; };
+		4224F96122CA37EC00E847AB /* TrackListInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackListInteractor.swift; sourceTree = "<group>"; };
+		4224F96222CA37EC00E847AB /* TrackListContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackListContainer.swift; sourceTree = "<group>"; };
+		4224F96A22CA3D4D00E847AB /* TrackListItemViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackListItemViewModel.swift; sourceTree = "<group>"; };
+		4224F96C22CA3D7200E847AB /* TrackListItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackListItemView.swift; sourceTree = "<group>"; };
+		4224F96E22CA3DEE00E847AB /* TrackListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackListTableViewCell.swift; sourceTree = "<group>"; };
 		42273C0022C79BAF00EDB1E5 /* JsonTrackList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JsonTrackList.swift; sourceTree = "<group>"; };
 		42273C0222C7A0C700EDB1E5 /* JsonTrack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JsonTrack.swift; sourceTree = "<group>"; };
 		42273C0422C7A12600EDB1E5 /* JsonTag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JsonTag.swift; sourceTree = "<group>"; };
@@ -99,7 +116,6 @@
 		422EE0CA22C25CC100451EED /* MainTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarViewController.swift; sourceTree = "<group>"; };
 		42DD63C722B3E9E600A57196 /* MyMixcloud.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyMixcloud.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		42DD63CA22B3E9E600A57196 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		42DD63CC22B3E9E600A57196 /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
 		42DD63D322B3E9E800A57196 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		42DD63D622B3E9E800A57196 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		42DD63D822B3E9E800A57196 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -174,6 +190,30 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		4224F95C22CA37C000E847AB /* TrackList */ = {
+			isa = PBXGroup;
+			children = (
+				4224F96922CA3D1600E847AB /* View */,
+				4224F95D22CA37EC00E847AB /* TrackListPresenter.swift */,
+				4224F95E22CA37EC00E847AB /* TrackListRouter.swift */,
+				4224F95F22CA37EC00E847AB /* TrackListViewController.swift */,
+				4224F96022CA37EC00E847AB /* TrackListProtocols.swift */,
+				4224F96122CA37EC00E847AB /* TrackListInteractor.swift */,
+				4224F96222CA37EC00E847AB /* TrackListContainer.swift */,
+			);
+			path = TrackList;
+			sourceTree = "<group>";
+		};
+		4224F96922CA3D1600E847AB /* View */ = {
+			isa = PBXGroup;
+			children = (
+				4224F96A22CA3D4D00E847AB /* TrackListItemViewModel.swift */,
+				4224F96C22CA3D7200E847AB /* TrackListItemView.swift */,
+				4224F96E22CA3DEE00E847AB /* TrackListTableViewCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		422EE0A422B3F14600451EED /* Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -212,7 +252,6 @@
 		422EE0B322BA17A600451EED /* TestStuff */ = {
 			isa = PBXGroup;
 			children = (
-				42DD63CC22B3E9E600A57196 /* FirstViewController.swift */,
 				422EE0C422C2562A00451EED /* TestTrackListViewController.swift */,
 				422EE0B422BA180D00451EED /* whatever.swift */,
 			);
@@ -235,6 +274,7 @@
 		422EE0C222C2556E00451EED /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				4224F95C22CA37C000E847AB /* TrackList */,
 				4220E28E22C4E62400FEB7F8 /* UserProfile */,
 				4220E2A922C62B2800FEB7F8 /* Following */,
 			);
@@ -420,20 +460,25 @@
 			files = (
 				42273C0722C7A6BC00EDB1E5 /* TrackService.swift in Sources */,
 				42273C0522C7A12600EDB1E5 /* JsonTag.swift in Sources */,
+				4224F96322CA37EC00E847AB /* TrackListPresenter.swift in Sources */,
 				422EE0A722B3F1AB00451EED /* User.swift in Sources */,
 				4220E2A622C62B1A00FEB7F8 /* FollowingProtocols.swift in Sources */,
 				4220E29722C5139800FEB7F8 /* MMColors.swift in Sources */,
 				4220E2AC22C62B7600FEB7F8 /* FollowingUserViewModel.swift in Sources */,
 				4220E28822C4E61900FEB7F8 /* UserProfilePresenter.swift in Sources */,
+				4224F96522CA37EC00E847AB /* TrackListViewController.swift in Sources */,
 				422EE0B722BA2A0A00451EED /* MMError.swift in Sources */,
 				4220E2B022C648CC00FEB7F8 /* FollowingTableViewCell.swift in Sources */,
+				4224F96422CA37EC00E847AB /* TrackListRouter.swift in Sources */,
 				4220E28922C4E61900FEB7F8 /* UserProfileRouter.swift in Sources */,
 				4220E28C22C4E61900FEB7F8 /* UserProfileInteractor.swift in Sources */,
 				42273C0922C7A6F400EDB1E5 /* Track.swift in Sources */,
 				4220E2A822C62B1A00FEB7F8 /* FollowingContainer.swift in Sources */,
 				422EE0A922B3F47A00451EED /* UserService.swift in Sources */,
+				4224F96F22CA3DEE00E847AB /* TrackListTableViewCell.swift in Sources */,
 				42273C0B22C7A7EA00EDB1E5 /* Tag.swift in Sources */,
 				4220E2A322C62B1A00FEB7F8 /* FollowingPresenter.swift in Sources */,
+				4224F96622CA37EC00E847AB /* TrackListProtocols.swift in Sources */,
 				42273C0122C79BAF00EDB1E5 /* JsonTrackList.swift in Sources */,
 				4220E2AE22C62B8800FEB7F8 /* FollowingUserView.swift in Sources */,
 				4220E28A22C4E61900FEB7F8 /* UserProfileViewController.swift in Sources */,
@@ -450,14 +495,17 @@
 				4220E2A722C62B1A00FEB7F8 /* FollowingInteractor.swift in Sources */,
 				4220E29022C5092400FEB7F8 /* UserProfileViewModel.swift in Sources */,
 				422EE0CB22C25CC100451EED /* MainTabBarViewController.swift in Sources */,
+				4224F96722CA37EC00E847AB /* TrackListInteractor.swift in Sources */,
 				422EE0AE22B7EF4200451EED /* UserServiceImpl.swift in Sources */,
 				42DD63CB22B3E9E600A57196 /* AppDelegate.swift in Sources */,
-				42DD63CD22B3E9E600A57196 /* FirstViewController.swift in Sources */,
+				4224F96822CA37EC00E847AB /* TrackListContainer.swift in Sources */,
 				4220E28D22C4E61900FEB7F8 /* UserProfileContainer.swift in Sources */,
 				422EE0C122C2234F00451EED /* JsonFollowing.swift in Sources */,
+				4224F96B22CA3D4D00E847AB /* TrackListItemViewModel.swift in Sources */,
 				42273C0D22C7ACB500EDB1E5 /* TrackServiceImpl.swift in Sources */,
 				422EE0B022B803C300451EED /* Constants.swift in Sources */,
 				4220E2A422C62B1A00FEB7F8 /* FollowingRouter.swift in Sources */,
+				4224F96D22CA3D7200E847AB /* TrackListItemView.swift in Sources */,
 				422EE0B522BA180D00451EED /* whatever.swift in Sources */,
 				42273C0322C7A0C700EDB1E5 /* JsonTrack.swift in Sources */,
 			);

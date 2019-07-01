@@ -10,7 +10,6 @@ import Foundation
 import UIKit
 
 struct FollowingUserViewModel {
-    
     let avatarImageUrl: URL?
     let nameString: NSAttributedString
     let locationString: NSAttributedString?
