@@ -17,7 +17,7 @@ final class UserProfileContainer {
         let router = UserProfileRouter()
         // TODO there is work for DI container !!!
         let interactor = UserProfileInteractor(userService: UserServiceImpl())
-        let presenter = UserProfilePresenter(userId: context.userId, router: router, interactor: interactor)
+        let presenter = UserProfilePresenter(router: router, interactor: interactor, userId: context.userId)
 		let viewController = UserProfileViewController(output: presenter)
 
 		presenter.view = viewController

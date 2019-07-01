@@ -16,10 +16,10 @@ final class UserProfilePresenter {
 	private let interactor: UserProfileInteractorInput
     private let userId: String
     
-    init(userId: String, router: UserProfileRouterInput, interactor: UserProfileInteractorInput) {
-        self.userId = userId
+    init(router: UserProfileRouterInput, interactor: UserProfileInteractorInput, userId: String) {
         self.router = router
         self.interactor = interactor
+        self.userId = userId
     }
 }
 

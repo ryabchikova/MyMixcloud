@@ -24,7 +24,7 @@ final class MainTabBarViewController: UITabBarController {
         let profileContainer = UserProfileContainer.assemble(with: UserProfileContext(moduleOutput: nil, userId: HARDCODED_USER_ID))
         profileContainer.viewController.tabBarItem.image = UIImage(named: "profileIcon")
         
-        let followingContainer = FollowingContainer.assemble(with: FollowingContext(moduleOutput: nil))
+        let followingContainer = FollowingContainer.assemble(with: FollowingContext(moduleOutput: nil, userId: HARDCODED_USER_ID))
         followingContainer.viewController.tabBarItem.image = UIImage(named: "followingIcon")
         
         let historyVC = TestViewController(text: "Listening History", background: .yellow)

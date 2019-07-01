@@ -15,13 +15,14 @@ final class FollowingPresenter {
 	private let router: FollowingRouterInput
 	private let interactor: FollowingInteractorInput
     
-    private let userId: String = "elena-ryabchikova"    // TODO HARDCODE !!!!!!!!!
+    private let userId: String
     private var nextPage: Int? = 1
     private var isLoading = false
     
-    init(router: FollowingRouterInput, interactor: FollowingInteractorInput) {
+    init(router: FollowingRouterInput, interactor: FollowingInteractorInput, userId: String) {
         self.router = router
         self.interactor = interactor
+        self.userId = userId
     }
 }
 

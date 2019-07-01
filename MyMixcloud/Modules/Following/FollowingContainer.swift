@@ -17,7 +17,7 @@ final class FollowingContainer {
         let router = FollowingRouter()
         // TODO there is work for DI container !!!
         let interactor = FollowingInteractor(userService: UserServiceImpl())
-        let presenter = FollowingPresenter(router: router, interactor: interactor)
+        let presenter = FollowingPresenter(router: router, interactor: interactor, userId: context.userId)
 		let viewController = FollowingViewController(output: presenter)
 
 		presenter.view = viewController
@@ -37,4 +37,5 @@ final class FollowingContainer {
 
 struct FollowingContext {
 	weak var moduleOutput: FollowingModuleOutput?
+    let userId: String
 }
