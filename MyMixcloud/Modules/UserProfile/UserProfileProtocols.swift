@@ -21,7 +21,7 @@ protocol UserProfileViewInput: class {
 }
 
 protocol UserProfileViewOutput: class {
-    func viewDidLoad()
+    func viewWillAppear()
 }
 
 protocol UserProfileInteractorInput: class {

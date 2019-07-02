@@ -90,13 +90,13 @@ extension TrackListViewController: TrackListViewInput {
         
         // TODO его нужно как-то скывать вообще-то и remove from superview
         
-        guard models.isEmpty else {
-            return
-        }
-        
-        DispatchQueue.main.async {
-            let dummy = DummyView(frame: self.view.frame)
-            self.view.addSubview(dummy)
-        }
+//        guard models.isEmpty else {
+//            return
+//        }
+//
+//        DispatchQueue.main.async {
+//            let dummy = DummyView()
+//            self.view.addSubview(dummy)
+//        }
     }
 }

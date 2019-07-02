@@ -27,7 +27,7 @@ extension UserProfilePresenter: UserProfileModuleInput {
 }
 
 extension UserProfilePresenter: UserProfileViewOutput {
-    func viewDidLoad() {
+    func viewWillAppear() {
         interactor.loadUser(userId: userId)
     }
 }

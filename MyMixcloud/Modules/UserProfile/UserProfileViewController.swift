@@ -10,10 +10,9 @@ import UIKit
 import PinLayout
 
 final class UserProfileViewController: UIViewController {
-	
     private let output: UserProfileViewOutput
-    
     private let profileView = UserProfileView()
+    //private var dummyView: DummyView?
 
     init(output: UserProfileViewOutput) {
         self.output = output
@@ -32,8 +31,11 @@ final class UserProfileViewController: UIViewController {
 	override func viewDidLoad() {
 		super.viewDidLoad()
         view.backgroundColor = MMColors.white
-        output.viewDidLoad()
 	}
+    
+    override func viewWillAppear(_ animated: Bool) {
+        output.viewWillAppear()
+    }
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
@@ -45,14 +47,22 @@ final class UserProfileViewController: UIViewController {
 extension UserProfileViewController: UserProfileViewInput {
     func set(userProfileViewModel: UserProfileViewModel) {
         DispatchQueue.main.async {
+//            if let dummyView = self.dummyView {
+//                dummyView.removeFromSuperview()
+//                self.dummyView = nil     // TODO не надо???
+//            }
             self.profileView.update(with: userProfileViewModel)
         }
     }
     
     func showDummyView() {
-        DispatchQueue.main.async {
-            let dummy = DummyView(frame: self.view.frame)
-            self.view.addSubview(dummy)
-        }
+//        DispatchQueue.main.async {
+//            guard self.dummyView == nil else {
+//                return
+//            }
+//            let dummy = DummyView(frame: self.view.frame)
+//            self.view.addSubview(dummy)
+//            self.dummyView = dummy
+//        }
     }
 }
