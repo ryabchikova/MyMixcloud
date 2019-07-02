@@ -17,34 +17,6 @@ final class TrackServiceImpl: TrackService {
         completionHandler(nil, nil)
     }
     
-//    func listeningHistory(userId: String, page: Int, completionHandler: @escaping ([Track]?, Error?) -> Void) {
-//        let url = MixcloudApi.history.requestUrl(userId: userId, page: page)
-//
-//        Alamofire.request(url)
-//            .validate()
-//            .responseData(queue: dispatchQueue) { [weak self] response in
-//                guard let data = response.result.value else {
-//                    completionHandler(nil, response.result.error)
-//                    return
-//                }
-//
-//                guard let sSelf = self else {
-//                    completionHandler(nil, MMError.executionError(description: "User request failed"))
-//                    return
-//                }
-//
-//                do {
-//                    let decoder = JSONDecoder()
-//                    decoder.keyDecodingStrategy = .convertFromSnakeCase
-//                    let jsonTrackList = try decoder.decode(JsonTrackList.self, from: data)
-//                    let trackList = sSelf.converter.makeTrackList(from: jsonTrackList)
-//                    completionHandler(trackList, nil)
-//                } catch {
-//                    completionHandler(nil, error)
-//                }
-//        }
-//    }
-    
     func listeningHistory(userId: String, page: Int, completionHandler: @escaping ([Track]?, Error?) -> Void) {
         let url = MixcloudApi.history.requestUrl(userId: userId, page: page)
         trackList(url: url, completionHandler: completionHandler)
@@ -60,12 +32,16 @@ final class TrackServiceImpl: TrackService {
             .validate()
             .responseData(queue: dispatchQueue) { [weak self] response in
                 guard let data = response.result.value else {
+                    let error = MMError(type: .webServiceError,
+                                        location: String(describing: self) + ".trackList",
+                                        what: (response.result.error as? AFError)?.errorDescription)
+                    error.log()
                     completionHandler(nil, response.result.error)
                     return
                 }
                 
                 guard let sSelf = self else {
-                    completionHandler(nil, MMError.executionError(description: "User request failed"))
+                    completionHandler(nil, MMError(type: .executionError))
                     return
                 }
                 
@@ -76,12 +52,11 @@ final class TrackServiceImpl: TrackService {
                     let trackList = sSelf.converter.makeTrackList(from: jsonTrackList)
                     completionHandler(trackList, nil)
                 } catch {
-                    if let error = error as? DecodingError {
-                        print(error.errorDescription)
-                        print(error.localizedDescription)
-                        print(error.failureReason)
-                        completionHandler(nil, error)
-                    }
+                    let error = MMError(type: .decodingError,
+                                        location: String(describing: self) + ".trackList",
+                                        what: (error as? DecodingError)?.localizedDescription)
+                    error.log()
+                    completionHandler(nil, error)
                 }
             }
     }

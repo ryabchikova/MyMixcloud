@@ -33,7 +33,7 @@ extension UserProfilePresenter: UserProfileViewOutput {
 }
 
 extension UserProfilePresenter: UserProfileInteractorOutput {
-    func gotError(_ error: Error?) {
+    func gotError() {
         view?.showDummyView()
     }
     

@@ -8,7 +8,25 @@
 
 import Foundation
 
-enum MMError: Error {
-    case serverError(description: String)
-    case executionError(description: String)
+struct MMError: Error {
+    enum ErrorType: String {
+        case noMatter
+        case webServiceError
+        case decodingError
+        case executionError
+    }
+    
+    let type: ErrorType
+    let location: String?
+    let what: String?
+    
+    init(type: ErrorType, location: String? = nil, what: String? = nil) {
+        self.type = type
+        self.location = location
+        self.what = what
+    }
+    
+    func log() {
+        NSLog("[%@] [%@] %@", location ?? "", type.rawValue, what ?? "" )
+    }
 }

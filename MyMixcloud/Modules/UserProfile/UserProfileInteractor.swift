@@ -21,8 +21,8 @@ final class UserProfileInteractor {
 extension UserProfileInteractor: UserProfileInteractorInput {
     func loadUser(userId: String) {
         userService.user(userId: userId) { [weak self] user, error in
-            if let error = error {
-                self?.output?.gotError(error)
+            if let _ = error {
+                self?.output?.gotError()
                 return
             }
 

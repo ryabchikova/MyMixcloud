@@ -29,7 +29,7 @@ protocol UserProfileInteractorInput: class {
 }
 
 protocol UserProfileInteractorOutput: class {
-    func gotError(_ error: Error?)
+    func gotError()
     func didLoadUser(_ user: User)
 }
 

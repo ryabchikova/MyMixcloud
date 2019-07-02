@@ -30,7 +30,7 @@ protocol TrackListInteractorInput: class {
 }
 
 protocol TrackListInteractorOutput: class {
-    func gotError(_ error: Error?)
+    func gotError()
     func didLoadTrackList(_ tracks: [Track])
 }
 

@@ -30,7 +30,7 @@ protocol FollowingInteractorInput: class {
 }
 
 protocol FollowingInteractorOutput: class {
-    func gotError(_ error: Error?)
+    func gotError()
     func didLoadFollowing(_ users: [User])
 }
 

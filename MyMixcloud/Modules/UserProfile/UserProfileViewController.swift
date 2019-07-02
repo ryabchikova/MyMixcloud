@@ -31,7 +31,6 @@ final class UserProfileViewController: UIViewController {
     
 	override func viewDidLoad() {
 		super.viewDidLoad()
-        
         view.backgroundColor = MMColors.white
         output.viewDidLoad()
 	}

@@ -50,9 +50,8 @@ extension TrackListPresenter: TrackListViewOutput {
 }
 
 extension TrackListPresenter: TrackListInteractorOutput {
-    func gotError(_ error: Error?) {
+    func gotError() {
         isLoading = false
-        view?.showDummyView()
     }
     
     func didLoadTrackList(_ tracks: [Track]) {

@@ -21,12 +21,16 @@ final class UserServiceImpl: UserService {
             .validate()
             .responseData(queue: dispatchQueue) { [weak self] response in
                 guard let data = response.result.value else {
-                    completionHandler(nil, response.result.error)
+                    let error = MMError(type: .webServiceError,
+                                        location: String(describing: self) + ".user",
+                                        what: (response.result.error as? AFError)?.errorDescription)
+                    error.log()
+                    completionHandler(nil, error)
                     return
                 }
                 
                 guard let sSelf = self else {
-                    completionHandler(nil, MMError.executionError(description: "User request failed"))
+                    completionHandler(nil, MMError(type: .executionError))
                     return
                 }
                 
@@ -37,6 +41,10 @@ final class UserServiceImpl: UserService {
                     let user = sSelf.converter.makeUser(from: jsonUser)
                     completionHandler(user, nil)
                 } catch {
+                    let error = MMError(type: .webServiceError,
+                                        location: String(describing: self) + ".user",
+                                        what: (error as? DecodingError)?.localizedDescription)
+                    error.log()
                     completionHandler(nil, error)
                 }
         }
@@ -50,11 +58,15 @@ final class UserServiceImpl: UserService {
             .responseData(queue: dispatchQueue) { [weak self] response in
                 guard let data = response.result.value else {
                     completionHandler(nil, response.result.error)
+                    let error = MMError(type: .webServiceError,
+                                        location: String(describing: self) + ".followingList",
+                                        what: (response.result.error as? AFError)?.errorDescription)
+                    error.log()
                     return
                 }
                 
                 guard let sSelf = self else {
-                    completionHandler(nil, MMError.executionError(description: "Following list request failed"))
+                    completionHandler(nil, MMError(type: .executionError))
                     return
                 }
                 
@@ -64,6 +76,10 @@ final class UserServiceImpl: UserService {
                     let followingList = sSelf.converter.makeFollowingList(from: jsonFollowing)
                     completionHandler(followingList, nil)
                 } catch {
+                    let error = MMError(type: .decodingError,
+                                        location: String(describing: self) + ".followingList",
+                                        what: (error as? DecodingError)?.localizedDescription)
+                    error.log()
                     completionHandler(nil, error)
                 }
         }
@@ -77,12 +93,12 @@ final class UserServiceImpl: UserService {
             }
 
             guard let sSelf = self else {
-                completionHandler(nil, MMError.executionError(description: "Following request failed"))
+                completionHandler(nil, MMError(type: .executionError))
                 return
             }
             
             guard let followingList = followingList else {
-                completionHandler(nil, MMError.serverError(description: "Following request failed"))
+                completionHandler(nil, error)
                 return
             }
 

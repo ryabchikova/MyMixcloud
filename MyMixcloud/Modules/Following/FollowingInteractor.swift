@@ -20,8 +20,8 @@ final class FollowingInteractor {
 extension FollowingInteractor: FollowingInteractorInput {
     func loadFollowing(userId: String, page: Int) {
         userService.following(userId: userId, page: page) { [weak self] users, error in
-            if let error = error {
-                self?.output?.gotError(error)
+            if let _ = error {
+                self?.output?.gotError()
                 return
             }
 

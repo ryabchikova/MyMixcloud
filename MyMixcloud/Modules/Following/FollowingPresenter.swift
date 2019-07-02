@@ -48,9 +48,8 @@ extension FollowingPresenter: FollowingViewOutput {
 }
 
 extension FollowingPresenter: FollowingInteractorOutput {
-    func gotError(_ error: Error?) {
+    func gotError() {
         isLoading = false
-        view?.showDummyView()
     }
     
     func didLoadFollowing(_ users: [User]) {
