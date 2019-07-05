@@ -18,9 +18,5 @@ struct JsonFollowing: Decodable {
     
     struct User: Decodable {
         let username: String
-        
-        private enum CodingKeys: CodingKey {
-            case username
-        }
     }
 }
