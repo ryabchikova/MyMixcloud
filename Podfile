@@ -6,7 +6,10 @@ target 'MyMixcloud' do
 
   pod 'Alamofire'
   pod 'SDWebImage'
+  
   pod 'FlexLayout'
   pod 'PinLayout'
+  
+  pod 'Swinject'
   
 end

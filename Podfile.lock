@@ -5,12 +5,14 @@ PODS:
   - SDWebImage (4.4.2):
     - SDWebImage/Core (= 4.4.2)
   - SDWebImage/Core (4.4.2)
+  - Swinject (2.5.0)
 
 DEPENDENCIES:
   - Alamofire
   - FlexLayout
   - PinLayout
   - SDWebImage
+  - Swinject
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
@@ -18,13 +20,15 @@ SPEC REPOS:
     - FlexLayout
     - PinLayout
     - SDWebImage
+    - Swinject
 
 SPEC CHECKSUMS:
   Alamofire: 3ec537f71edc9804815215393ae2b1a8ea33a844
   FlexLayout: b008184d23aae0c56e1c916e803445a13a6f4e5a
   PinLayout: fe2a2432d6982588e208572005c941aeeae417ab
   SDWebImage: 624d6e296c69b244bcede364c72ae0430ac14681
+  Swinject: 82cdb851f63f91bba974e3eca1d69780f2f7677e
 
-PODFILE CHECKSUM: 9f6dc92a86fe3083b2d04e4f4c806cf78e730d03
+PODFILE CHECKSUM: 42e8094889921b3d981a0d0a0d02684b429d4eb2
 
 COCOAPODS: 1.5.3

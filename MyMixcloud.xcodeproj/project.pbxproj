@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		09FCD24CFF31A42404F9E277 /* Pods_MyMixcloud.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2CEC79FC10CFC172F0BB32F3 /* Pods_MyMixcloud.framework */; };
+		4201812422CF367A007752B9 /* InjectionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4201812322CF367A007752B9 /* InjectionManager.swift */; };
 		4220E28822C4E61900FEB7F8 /* UserProfilePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4220E28222C4E61900FEB7F8 /* UserProfilePresenter.swift */; };
 		4220E28922C4E61900FEB7F8 /* UserProfileRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4220E28322C4E61900FEB7F8 /* UserProfileRouter.swift */; };
 		4220E28A22C4E61900FEB7F8 /* UserProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4220E28422C4E61900FEB7F8 /* UserProfileViewController.swift */; };
@@ -65,6 +66,7 @@
 /* Begin PBXFileReference section */
 		2CEC79FC10CFC172F0BB32F3 /* Pods_MyMixcloud.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MyMixcloud.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		414286C3B195E0AD9DF6DCC6 /* Pods-MyMixcloud.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyMixcloud.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MyMixcloud/Pods-MyMixcloud.debug.xcconfig"; sourceTree = "<group>"; };
+		4201812322CF367A007752B9 /* InjectionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InjectionManager.swift; sourceTree = "<group>"; };
 		4220E28222C4E61900FEB7F8 /* UserProfilePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfilePresenter.swift; sourceTree = "<group>"; };
 		4220E28322C4E61900FEB7F8 /* UserProfileRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileRouter.swift; sourceTree = "<group>"; };
 		4220E28422C4E61900FEB7F8 /* UserProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileViewController.swift; sourceTree = "<group>"; };
@@ -274,9 +276,9 @@
 		422EE0C222C2556E00451EED /* Modules */ = {
 			isa = PBXGroup;
 			children = (
-				4224F95C22CA37C000E847AB /* TrackList */,
 				4220E28E22C4E62400FEB7F8 /* UserProfile */,
 				4220E2A922C62B2800FEB7F8 /* Following */,
+				4224F95C22CA37C000E847AB /* TrackList */,
 			);
 			path = Modules;
 			sourceTree = "<group>";
@@ -303,6 +305,7 @@
 			isa = PBXGroup;
 			children = (
 				42DD63CA22B3E9E600A57196 /* AppDelegate.swift */,
+				4201812322CF367A007752B9 /* InjectionManager.swift */,
 				42DD63D522B3E9E800A57196 /* LaunchScreen.storyboard */,
 				42DD63D322B3E9E800A57196 /* Assets.xcassets */,
 				42DD63D822B3E9E800A57196 /* Info.plist */,
@@ -436,6 +439,7 @@
 				"${BUILT_PRODUCTS_DIR}/FlexLayout/FlexLayout.framework",
 				"${BUILT_PRODUCTS_DIR}/PinLayout/PinLayout.framework",
 				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
+				"${BUILT_PRODUCTS_DIR}/Swinject/Swinject.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
@@ -445,6 +449,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FlexLayout.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PinLayout.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Swinject.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -480,6 +485,7 @@
 				4220E2A322C62B1A00FEB7F8 /* FollowingPresenter.swift in Sources */,
 				4224F96622CA37EC00E847AB /* TrackListProtocols.swift in Sources */,
 				42273C0122C79BAF00EDB1E5 /* JsonTrackList.swift in Sources */,
+				4201812422CF367A007752B9 /* InjectionManager.swift in Sources */,
 				4220E2AE22C62B8800FEB7F8 /* FollowingUserView.swift in Sources */,
 				4220E28A22C4E61900FEB7F8 /* UserProfileViewController.swift in Sources */,
 				4220E29222C5093900FEB7F8 /* UserProfileView.swift in Sources */,

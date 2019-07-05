@@ -15,8 +15,7 @@ final class UserProfileContainer {
 
 	class func assemble(with context: UserProfileContext) -> UserProfileContainer {
         let router = UserProfileRouter()
-        // TODO there is work for DI container !!!
-        let interactor = UserProfileInteractor(userService: UserServiceImpl())
+        let interactor = UserProfileInteractor(userService: InjectionManager.shared.userService())
         let presenter = UserProfilePresenter(router: router, interactor: interactor, userId: context.userId)
 		let viewController = UserProfileViewController(output: presenter)
 

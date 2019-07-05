@@ -15,8 +15,7 @@ final class TrackListContainer {
 
 	class func assemble(with context: TrackListContext) -> TrackListContainer {
         let router = TrackListRouter()
-        // TODO there is work for DI container !!!
-        let interactor = TrackListInteractor(trackService: TrackServiceImpl())
+        let interactor = TrackListInteractor(trackService: InjectionManager.shared.trackService())
         let presenter = TrackListPresenter(router: router,
                                            interactor: interactor,
                                            userId: context.userId,
