@@ -26,6 +26,9 @@ final class InjectionManager {
         container.register(TrackService.self) { _ in
             TrackServiceImpl()
         }
+        container.register(SettingsService.self) { _ in
+            SettingsServiceImpl()
+        }
     }
     
     // TODO подумать, интересно, но не понятны намерения в месте вызова
@@ -39,5 +42,9 @@ final class InjectionManager {
     
     func trackService() -> TrackService {
         return resolver.resolve(TrackService.self)!
+    }
+    
+    func settingsService() -> SettingsService {
+        return resolver.resolve(SettingsService.self)!
     }
 }

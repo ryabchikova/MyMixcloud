@@ -7,3 +7,8 @@
 //
 
 import Foundation
+
+protocol SettingsService {
+    func curentUserId() -> String?
+    func setCurentUserId(_ userId: String)
+}
