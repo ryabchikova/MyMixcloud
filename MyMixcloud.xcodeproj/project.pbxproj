@@ -11,6 +11,14 @@
 		4201812422CF367A007752B9 /* InjectionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4201812322CF367A007752B9 /* InjectionManager.swift */; };
 		4201812622CFDEB0007752B9 /* SettingsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4201812522CFDEB0007752B9 /* SettingsService.swift */; };
 		4201812822CFDF18007752B9 /* SettingsServiceImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4201812722CFDF18007752B9 /* SettingsServiceImpl.swift */; };
+		4201813022D072DA007752B9 /* LoginPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4201812A22D072DA007752B9 /* LoginPresenter.swift */; };
+		4201813122D072DA007752B9 /* LoginRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4201812B22D072DA007752B9 /* LoginRouter.swift */; };
+		4201813222D072DA007752B9 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4201812C22D072DA007752B9 /* LoginViewController.swift */; };
+		4201813322D072DA007752B9 /* LoginProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4201812D22D072DA007752B9 /* LoginProtocols.swift */; };
+		4201813422D072DA007752B9 /* LoginInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4201812E22D072DA007752B9 /* LoginInteractor.swift */; };
+		4201813522D072DA007752B9 /* LoginContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4201812F22D072DA007752B9 /* LoginContainer.swift */; };
+		4201813822D0730C007752B9 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4201813722D0730C007752B9 /* LoginViewModel.swift */; };
+		4201813A22D0731D007752B9 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4201813922D0731D007752B9 /* LoginView.swift */; };
 		4220E28822C4E61900FEB7F8 /* UserProfilePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4220E28222C4E61900FEB7F8 /* UserProfilePresenter.swift */; };
 		4220E28922C4E61900FEB7F8 /* UserProfileRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4220E28322C4E61900FEB7F8 /* UserProfileRouter.swift */; };
 		4220E28A22C4E61900FEB7F8 /* UserProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4220E28422C4E61900FEB7F8 /* UserProfileViewController.swift */; };
@@ -71,6 +79,14 @@
 		4201812322CF367A007752B9 /* InjectionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InjectionManager.swift; sourceTree = "<group>"; };
 		4201812522CFDEB0007752B9 /* SettingsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsService.swift; sourceTree = "<group>"; };
 		4201812722CFDF18007752B9 /* SettingsServiceImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsServiceImpl.swift; sourceTree = "<group>"; };
+		4201812A22D072DA007752B9 /* LoginPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginPresenter.swift; sourceTree = "<group>"; };
+		4201812B22D072DA007752B9 /* LoginRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRouter.swift; sourceTree = "<group>"; };
+		4201812C22D072DA007752B9 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		4201812D22D072DA007752B9 /* LoginProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginProtocols.swift; sourceTree = "<group>"; };
+		4201812E22D072DA007752B9 /* LoginInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginInteractor.swift; sourceTree = "<group>"; };
+		4201812F22D072DA007752B9 /* LoginContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginContainer.swift; sourceTree = "<group>"; };
+		4201813722D0730C007752B9 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
+		4201813922D0731D007752B9 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		4220E28222C4E61900FEB7F8 /* UserProfilePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfilePresenter.swift; sourceTree = "<group>"; };
 		4220E28322C4E61900FEB7F8 /* UserProfileRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileRouter.swift; sourceTree = "<group>"; };
 		4220E28422C4E61900FEB7F8 /* UserProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileViewController.swift; sourceTree = "<group>"; };
@@ -140,6 +156,29 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4201812922D0726C007752B9 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				4201813622D072F5007752B9 /* View */,
+				4201812A22D072DA007752B9 /* LoginPresenter.swift */,
+				4201812B22D072DA007752B9 /* LoginRouter.swift */,
+				4201812C22D072DA007752B9 /* LoginViewController.swift */,
+				4201812D22D072DA007752B9 /* LoginProtocols.swift */,
+				4201812E22D072DA007752B9 /* LoginInteractor.swift */,
+				4201812F22D072DA007752B9 /* LoginContainer.swift */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		4201813622D072F5007752B9 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				4201813722D0730C007752B9 /* LoginViewModel.swift */,
+				4201813922D0731D007752B9 /* LoginView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		4220E27522C4A8E400FEB7F8 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
@@ -282,6 +321,7 @@
 		422EE0C222C2556E00451EED /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				4201812922D0726C007752B9 /* Login */,
 				4220E28E22C4E62400FEB7F8 /* UserProfile */,
 				4220E2A922C62B2800FEB7F8 /* Following */,
 				4224F95C22CA37C000E847AB /* TrackList */,
@@ -469,6 +509,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4201813522D072DA007752B9 /* LoginContainer.swift in Sources */,
 				42273C0722C7A6BC00EDB1E5 /* TrackService.swift in Sources */,
 				42273C0522C7A12600EDB1E5 /* JsonTag.swift in Sources */,
 				4224F96322CA37EC00E847AB /* TrackListPresenter.swift in Sources */,
@@ -476,11 +517,14 @@
 				4220E2A622C62B1A00FEB7F8 /* FollowingProtocols.swift in Sources */,
 				4220E29722C5139800FEB7F8 /* MMColors.swift in Sources */,
 				4220E2AC22C62B7600FEB7F8 /* FollowingUserViewModel.swift in Sources */,
+				4201813822D0730C007752B9 /* LoginViewModel.swift in Sources */,
 				4220E28822C4E61900FEB7F8 /* UserProfilePresenter.swift in Sources */,
+				4201813122D072DA007752B9 /* LoginRouter.swift in Sources */,
 				4224F96522CA37EC00E847AB /* TrackListViewController.swift in Sources */,
 				422EE0B722BA2A0A00451EED /* MMError.swift in Sources */,
 				4201812822CFDF18007752B9 /* SettingsServiceImpl.swift in Sources */,
 				4220E2B022C648CC00FEB7F8 /* FollowingTableViewCell.swift in Sources */,
+				4201813022D072DA007752B9 /* LoginPresenter.swift in Sources */,
 				4224F96422CA37EC00E847AB /* TrackListRouter.swift in Sources */,
 				4220E28922C4E61900FEB7F8 /* UserProfileRouter.swift in Sources */,
 				4220E28C22C4E61900FEB7F8 /* UserProfileInteractor.swift in Sources */,
@@ -491,12 +535,15 @@
 				42273C0B22C7A7EA00EDB1E5 /* Tag.swift in Sources */,
 				4220E2A322C62B1A00FEB7F8 /* FollowingPresenter.swift in Sources */,
 				4224F96622CA37EC00E847AB /* TrackListProtocols.swift in Sources */,
+				4201813322D072DA007752B9 /* LoginProtocols.swift in Sources */,
 				42273C0122C79BAF00EDB1E5 /* JsonTrackList.swift in Sources */,
 				4201812422CF367A007752B9 /* InjectionManager.swift in Sources */,
 				4220E2AE22C62B8800FEB7F8 /* FollowingUserView.swift in Sources */,
 				4220E28A22C4E61900FEB7F8 /* UserProfileViewController.swift in Sources */,
+				4201813222D072DA007752B9 /* LoginViewController.swift in Sources */,
 				4220E29222C5093900FEB7F8 /* UserProfileView.swift in Sources */,
 				4220E2A522C62B1A00FEB7F8 /* FollowingViewController.swift in Sources */,
+				4201813422D072DA007752B9 /* LoginInteractor.swift in Sources */,
 				4220E29C22C604DC00FEB7F8 /* UIViewController+ActivityIndicator.swift in Sources */,
 				422EE0AB22B436D600451EED /* MixcloudApi.swift in Sources */,
 				4220E29922C585AC00FEB7F8 /* DummyView.swift in Sources */,
@@ -504,6 +551,7 @@
 				4220E29522C5137300FEB7F8 /* MMFonts.swift in Sources */,
 				4220E28B22C4E61900FEB7F8 /* UserProfileProtocols.swift in Sources */,
 				422EE0BD22C2180600451EED /* JsonUser.swift in Sources */,
+				4201813A22D0731D007752B9 /* LoginView.swift in Sources */,
 				4201812622CFDEB0007752B9 /* SettingsService.swift in Sources */,
 				422EE0C522C2562A00451EED /* TestTrackListViewController.swift in Sources */,
 				4220E2A722C62B1A00FEB7F8 /* FollowingInteractor.swift in Sources */,

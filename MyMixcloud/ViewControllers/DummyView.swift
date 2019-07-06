@@ -31,7 +31,7 @@ final class DummyView: UIView {
     private func setup() {
         backgroundColor = Styles.backgroundColor
         errorMessageLabel.numberOfLines = 0
-        errorMessageLabel.attributedText = NSAttributedString(string: "An error has occurred. Retry agin later.", attributes: Styles.message)
+        errorMessageLabel.attributedText = NSAttributedString(string: "An error has occurred. Retry again later.", attributes: Styles.message)
         errorMessageLabel.textAlignment = .center
         addSubview(errorMessageLabel)
     }
