@@ -22,11 +22,13 @@ final class LoginInteractor {
 extension LoginInteractor: LoginInteractorInput {
     func login(with username: String) {
         userService.user(userId: username) { [weak self] user, error in
-            if user != nil && error == nil {
-                self?.settingsService.setCurrentUserId(username)
-                self?.output?.didLogin()
-            } else {
-                self?.output?.loginFailed()
+            DispatchQueue.main.async {
+                if user != nil && error == nil {
+                    self?.settingsService.setCurrentUserId(username)
+                    self?.output?.didLogin()
+                } else {
+                    self?.output?.loginFailed()
+                }
             }
         }
     }

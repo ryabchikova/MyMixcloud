@@ -19,6 +19,7 @@
 		4201813522D072DA007752B9 /* LoginContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4201812F22D072DA007752B9 /* LoginContainer.swift */; };
 		4201813822D0730C007752B9 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4201813722D0730C007752B9 /* LoginViewModel.swift */; };
 		4201813A22D0731D007752B9 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4201813922D0731D007752B9 /* LoginView.swift */; };
+		4201813C22D27F75007752B9 /* AppRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4201813B22D27F75007752B9 /* AppRouter.swift */; };
 		4220E28822C4E61900FEB7F8 /* UserProfilePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4220E28222C4E61900FEB7F8 /* UserProfilePresenter.swift */; };
 		4220E28922C4E61900FEB7F8 /* UserProfileRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4220E28322C4E61900FEB7F8 /* UserProfileRouter.swift */; };
 		4220E28A22C4E61900FEB7F8 /* UserProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4220E28422C4E61900FEB7F8 /* UserProfileViewController.swift */; };
@@ -87,6 +88,7 @@
 		4201812F22D072DA007752B9 /* LoginContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginContainer.swift; sourceTree = "<group>"; };
 		4201813722D0730C007752B9 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		4201813922D0731D007752B9 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		4201813B22D27F75007752B9 /* AppRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppRouter.swift; sourceTree = "<group>"; };
 		4220E28222C4E61900FEB7F8 /* UserProfilePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfilePresenter.swift; sourceTree = "<group>"; };
 		4220E28322C4E61900FEB7F8 /* UserProfileRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileRouter.swift; sourceTree = "<group>"; };
 		4220E28422C4E61900FEB7F8 /* UserProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileViewController.swift; sourceTree = "<group>"; };
@@ -351,6 +353,7 @@
 			isa = PBXGroup;
 			children = (
 				42DD63CA22B3E9E600A57196 /* AppDelegate.swift */,
+				4201813B22D27F75007752B9 /* AppRouter.swift */,
 				4201812322CF367A007752B9 /* InjectionManager.swift */,
 				42DD63D522B3E9E800A57196 /* LaunchScreen.storyboard */,
 				42DD63D322B3E9E800A57196 /* Assets.xcassets */,
@@ -541,6 +544,7 @@
 				4220E2AE22C62B8800FEB7F8 /* FollowingUserView.swift in Sources */,
 				4220E28A22C4E61900FEB7F8 /* UserProfileViewController.swift in Sources */,
 				4201813222D072DA007752B9 /* LoginViewController.swift in Sources */,
+				4201813C22D27F75007752B9 /* AppRouter.swift in Sources */,
 				4220E29222C5093900FEB7F8 /* UserProfileView.swift in Sources */,
 				4220E2A522C62B1A00FEB7F8 /* FollowingViewController.swift in Sources */,
 				4201813422D072DA007752B9 /* LoginInteractor.swift in Sources */,
