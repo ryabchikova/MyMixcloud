@@ -35,22 +35,13 @@ extension LoginPresenter: LoginViewOutput {
 extension LoginPresenter: LoginInteractorOutput {
     
     func didLogin() {
-        
+        moduleOutput?.didFinish()
     }
     
-    func loginFailed(reason: LoginErrorReason) {
+    func loginFailed() {
         guard let viewController = view as? UIViewController else {
             return
-            
         }
-        switch reason {
-        case .userNotFound:
-            router.showLoginErrorAlert(in: viewController)
-        case .webServiceError:
-            router.showServiceErrorAlert(in: viewController)
-        default:
-            return
-        }
+        router.showErrorAlert(in: viewController)
     }
-    
 }

@@ -14,6 +14,7 @@ protocol LoginModuleInput {
 }
 
 protocol LoginModuleOutput: class {
+    func didFinish()
 }
 
 protocol LoginViewInput: class {
@@ -29,10 +30,9 @@ protocol LoginInteractorInput: class {
 
 protocol LoginInteractorOutput: class {
     func didLogin()
-    func loginFailed(reason: LoginErrorReason)
+    func loginFailed()
 }
 
 protocol LoginRouterInput: class {
-    func showLoginErrorAlert(in viewController: UIViewController)
-    func showServiceErrorAlert(in viewController: UIViewController)
+    func showErrorAlert(in viewController: UIViewController)
 }

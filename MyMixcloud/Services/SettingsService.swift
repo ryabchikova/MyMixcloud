@@ -9,6 +9,7 @@
 import Foundation
 
 protocol SettingsService {
-    func curentUserId() -> String?
-    func setCurentUserId(_ userId: String)
+    func currentUserId() -> String?
+    func setCurrentUserId(_ userId: String)
+    func removeCurrentUserId()
 }

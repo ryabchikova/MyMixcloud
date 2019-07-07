@@ -10,7 +10,6 @@ import Foundation
 
 final class UserProfileInteractor {
 	weak var output: UserProfileInteractorOutput?
-    
     private let userService: UserService
     
     init(userService: UserService) {
