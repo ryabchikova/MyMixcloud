@@ -46,23 +46,19 @@ final class UserProfileViewController: UIViewController {
 
 extension UserProfileViewController: UserProfileViewInput {
     func set(userProfileViewModel: UserProfileViewModel) {
-        DispatchQueue.main.async {
 //            if let dummyView = self.dummyView {
 //                dummyView.removeFromSuperview()
 //                self.dummyView = nil     // TODO не надо???
 //            }
-            self.profileView.update(with: userProfileViewModel)
-        }
+        self.profileView.update(with: userProfileViewModel)
     }
     
     func showDummyView() {
-//        DispatchQueue.main.async {
 //            guard self.dummyView == nil else {
 //                return
 //            }
 //            let dummy = DummyView(frame: self.view.frame)
 //            self.view.addSubview(dummy)
 //            self.dummyView = dummy
-//        }
     }
 }

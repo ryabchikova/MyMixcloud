@@ -81,9 +81,7 @@ extension TrackListViewController: TrackListViewInput {
     
     func set(viewModels: [TrackListItemViewModel]) {
         models.append(contentsOf: viewModels)
-        DispatchQueue.main.async {
-            self.tableView.reloadData()
-        }
+        self.tableView.reloadData()
     }
     
     func showDummyView() {
@@ -94,9 +92,7 @@ extension TrackListViewController: TrackListViewInput {
 //            return
 //        }
 //
-//        DispatchQueue.main.async {
 //            let dummy = DummyView()
 //            self.view.addSubview(dummy)
-//        }
     }
 }

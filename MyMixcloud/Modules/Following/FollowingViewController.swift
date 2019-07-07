@@ -81,9 +81,7 @@ extension FollowingViewController: FollowingViewInput {
     
     func set(viewModels: [FollowingUserViewModel]) {
         models.append(contentsOf: viewModels)
-        DispatchQueue.main.async {
-            self.tableView.reloadData()
-        }
+        self.tableView.reloadData()
     }
     
     func showDummyView() {
@@ -94,9 +92,7 @@ extension FollowingViewController: FollowingViewInput {
 //            return
 //        }
 //
-//        DispatchQueue.main.async {
 //            let dummy = DummyView(frame: self.view.frame)
 //            self.view.addSubview(dummy)
-//        }
     }
 }

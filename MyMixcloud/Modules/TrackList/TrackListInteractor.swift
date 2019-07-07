@@ -21,13 +21,15 @@ extension TrackListInteractor: TrackListInteractorInput {
     func loadTrackList(of type: TrackListType, userId: String, page: Int) {
         
         let completion: ([Track]?, Error?) -> Void = { [weak self] tracks, error in
-            if let _ = error {
-                self?.output?.gotError()
-                return
-            }
-            
-            if let tracks = tracks {
-                self?.output?.didLoadTrackList(tracks)
+            DispatchQueue.main.async {
+                if let _ = error {
+                    self?.output?.gotError()
+                    return
+                }
+                
+                if let tracks = tracks {
+                    self?.output?.didLoadTrackList(tracks)
+                }
             }
         }
         

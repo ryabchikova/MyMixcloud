@@ -20,13 +20,15 @@ final class UserProfileInteractor {
 extension UserProfileInteractor: UserProfileInteractorInput {
     func loadUser(userId: String) {
         userService.user(userId: userId) { [weak self] user, error in
-            if let _ = error {
-                self?.output?.gotError()
-                return
-            }
+            DispatchQueue.main.async {
+                if let _ = error {
+                    self?.output?.gotError()
+                    return
+                }
 
-            if let user = user {
-                self?.output?.didLoadUser(user)
+                if let user = user {
+                    self?.output?.didLoadUser(user)
+                }
             }
         }
     }
