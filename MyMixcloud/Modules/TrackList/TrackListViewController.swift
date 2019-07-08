@@ -13,9 +13,10 @@ final class TrackListViewController: UIViewController {
     private let tableView = UITableView()
     private var models: [TrackListItemViewModel] = []
 
-    init(output: TrackListViewOutput) {
+    init(output: TrackListViewOutput, title: String) {
         self.output = output
         super.init(nibName: nil, bundle: nil)
+        navigationItem.title = title
         setupTableView()
     }
     

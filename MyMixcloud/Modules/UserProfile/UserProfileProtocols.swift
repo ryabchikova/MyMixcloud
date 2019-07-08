@@ -7,12 +7,14 @@
 //
 
 import Foundation
+import UIKit
 
 protocol UserProfileModuleInput {
 	var moduleOutput: UserProfileModuleOutput? { get }
 }
 
 protocol UserProfileModuleOutput: class {
+    func didLogout()
 }
 
 protocol UserProfileViewInput: class {
@@ -22,6 +24,7 @@ protocol UserProfileViewInput: class {
 
 protocol UserProfileViewOutput: class {
     func viewWillAppear()
+    func didTapSettingsButton()
 }
 
 protocol UserProfileInteractorInput: class {
@@ -34,4 +37,5 @@ protocol UserProfileInteractorOutput: class {
 }
 
 protocol UserProfileRouterInput: class {
+    func showSettingsScreen(in navigationController: UINavigationController, moduleOutput: SettingsModuleOutput?)
 }

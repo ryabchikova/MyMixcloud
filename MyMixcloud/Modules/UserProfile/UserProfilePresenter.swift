@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 final class UserProfilePresenter {
 	weak var view: UserProfileViewInput?
@@ -30,6 +31,12 @@ extension UserProfilePresenter: UserProfileViewOutput {
     func viewWillAppear() {
         interactor.loadUser(userId: userId)
     }
+    
+    func didTapSettingsButton() {
+        if let navigationController = (view as? UIViewController)?.navigationController {
+            router.showSettingsScreen(in: navigationController, moduleOutput: self)
+        }
+    }
 }
 
 extension UserProfilePresenter: UserProfileInteractorOutput {
@@ -39,5 +46,11 @@ extension UserProfilePresenter: UserProfileInteractorOutput {
     
     func didLoadUser(_ user: User) {
         view?.set(userProfileViewModel: UserProfileViewModel(user: user))
+    }
+}
+
+extension UserProfilePresenter: SettingsModuleOutput {
+    func didLogout() {
+        moduleOutput?.didLogout()
     }
 }

@@ -29,17 +29,16 @@ final class InjectionManager {
         container.register(SettingsService.self) { _ in
             SettingsServiceImpl()
         }
-        
+
         container.register(AppRouter.self) { resolver in
             AppRouter(settingsService: resolver.resolve(SettingsService.self)!)
-        }
+        }.inObjectScope(.container)
     }
     
     // TODO подумать, интересно, но не понятны намерения в месте вызова
     //    func entity<T>() -> T {
     //        return resolver.resolve(T.self)!
     //    }
-    
     
     
     func userService() -> UserService {

@@ -27,4 +27,8 @@ final class SettingsServiceImpl: SettingsService {
     func removeCurrentUserId() {
         userDefaults.removeObject(forKey: UserDefaultsKey.currentUserId.rawValue)
     }
+    
+    func isLoggedIn() -> Bool {
+        return currentUserId() != nil
+    }
 }

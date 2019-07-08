@@ -9,6 +9,7 @@
 import Foundation
 
 protocol SettingsService {
+    func isLoggedIn() -> Bool
     func currentUserId() -> String?
     func setCurrentUserId(_ userId: String)
     func removeCurrentUserId()

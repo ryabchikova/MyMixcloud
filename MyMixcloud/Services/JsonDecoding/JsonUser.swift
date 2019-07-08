@@ -19,7 +19,7 @@ struct JsonUser: Decodable {
     let followerCount: Int
     let followingCount: Int
     let pictures: Pictures
-    let coverPictures: CoverPictures
+    let coverPictures: CoverPictures?
         
     struct Pictures: Decodable {
         let large: URL?

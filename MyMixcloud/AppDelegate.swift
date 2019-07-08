@@ -15,6 +15,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var appRouter: AppRouter = InjectionManager.shared.appRouter()
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        UINavigationBar.appearance().titleTextAttributes = [ NSAttributedString.Key.foregroundColor: MMColors.darkGray,
+                                                             NSAttributedString.Key.font: MMFonts.largeBold]
         
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.rootViewController = appRouter.rootViewController

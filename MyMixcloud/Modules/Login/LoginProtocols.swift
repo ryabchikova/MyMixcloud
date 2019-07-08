@@ -14,7 +14,7 @@ protocol LoginModuleInput {
 }
 
 protocol LoginModuleOutput: class {
-    func didFinish()
+    func didLogin()
 }
 
 protocol LoginViewInput: class {

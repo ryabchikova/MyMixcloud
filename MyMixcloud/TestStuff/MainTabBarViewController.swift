@@ -27,8 +27,9 @@ final class MainTabBarViewController: UITabBarController {
     }
     
     private func configure() {
-        let profileContainer = UserProfileContainer.assemble(with: UserProfileContext(moduleOutput: nil,
-                                                                                      userId: self.currentUserId))
+        
+        let profileContext = UserProfileContext(moduleOutput: nil, userId: self.currentUserId)
+        let profileContainer = UserProfileContainer.assemble(with: profileContext)
         profileContainer.viewController.tabBarItem.image = UIImage(named: "profileIcon")
         
         let followingContainer = FollowingContainer.assemble(with: FollowingContext(moduleOutput: nil,
@@ -45,7 +46,7 @@ final class MainTabBarViewController: UITabBarController {
                                                                                    trackListType: .favorite))
         favoriteContainer.viewController.tabBarItem.image = UIImage(named: "favoriteIcon")
         
-        viewControllers = [profileContainer.viewController,
+        viewControllers = [UINavigationController(rootViewController: profileContainer.viewController),
                            followingContainer.viewController,
                            historyContainer.viewController,
                            favoriteContainer.viewController]

@@ -20,7 +20,9 @@ final class TrackListContainer {
                                            interactor: interactor,
                                            userId: context.userId,
                                            trackListType: context.trackListType)
-		let viewController = TrackListViewController(output: presenter)
+        
+        let title = context.trackListType == .history ? "History" : "Favorite"
+        let viewController = TrackListViewController(output: presenter, title: title)
 
 		presenter.view = viewController
 		presenter.moduleOutput = context.moduleOutput

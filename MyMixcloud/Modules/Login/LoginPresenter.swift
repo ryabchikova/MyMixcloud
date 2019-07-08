@@ -29,19 +29,17 @@ extension LoginPresenter: LoginViewOutput {
     func didTapStart(with username: String) {
         interactor.login(with: username)
     }
-    
 }
 
 extension LoginPresenter: LoginInteractorOutput {
     
     func didLogin() {
-        moduleOutput?.didFinish()
+        moduleOutput?.didLogin()
     }
     
     func loginFailed() {
-        guard let viewController = view as? UIViewController else {
-            return
+        if let viewController = view as? UIViewController {
+            router.showErrorAlert(in: viewController)
         }
-        router.showErrorAlert(in: viewController)
     }
 }

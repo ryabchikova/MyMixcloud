@@ -16,6 +16,7 @@ final class FollowingViewController: UIViewController {
     init(output: FollowingViewOutput) {
         self.output = output
         super.init(nibName: nil, bundle: nil)
+        navigationItem.title = "Following"
         setupTableView()
     }
     

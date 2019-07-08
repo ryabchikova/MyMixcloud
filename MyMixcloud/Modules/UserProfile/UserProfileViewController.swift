@@ -12,11 +12,13 @@ import PinLayout
 final class UserProfileViewController: UIViewController {
     private let output: UserProfileViewOutput
     private let profileView = UserProfileView()
-    //private var dummyView: DummyView?
-
+    
     init(output: UserProfileViewOutput) {
         self.output = output
         super.init(nibName: nil, bundle: nil)
+        
+        navigationItem.title = "User profile"
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "settingsIcon"), style: .plain, target: self, action: #selector(didTapSettings))
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -41,23 +43,17 @@ final class UserProfileViewController: UIViewController {
         super.viewDidLayoutSubviews()
         profileView.pin.all()
     }
+    
+    @objc private func didTapSettings() {
+        output.didTapSettingsButton()
+    }
 }
 
 extension UserProfileViewController: UserProfileViewInput {
     func set(userProfileViewModel: UserProfileViewModel) {
-//            if let dummyView = self.dummyView {
-//                dummyView.removeFromSuperview()
-//                self.dummyView = nil     // TODO не надо???
-//            }
         self.profileView.update(with: userProfileViewModel)
     }
     
     func showDummyView() {
-//            guard self.dummyView == nil else {
-//                return
-//            }
-//            let dummy = DummyView(frame: self.view.frame)
-//            self.view.addSubview(dummy)
-//            self.dummyView = dummy
     }
 }

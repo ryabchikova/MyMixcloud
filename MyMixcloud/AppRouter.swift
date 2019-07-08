@@ -20,23 +20,34 @@ final class AppRouter {
     init(settingsService: SettingsService) {
         self.settingsService = settingsService
         
-        if let currentUserId = settingsService.currentUserId() {
-            rootViewController = MainTabBarViewController(currentUserId: currentUserId)
+        if settingsService.isLoggedIn() {
+            showMainScreen()
         } else {
-            let loginContainer = LoginContainer.assemble(with: LoginContext(moduleOutput: self))
-            rootViewController = loginContainer.viewController
+            showLoginScreen()
         }
     }
     
+    private func showLoginScreen() {
+        rootViewController = LoginContainer.assemble(with: LoginContext(moduleOutput: self)).viewController
+    }
     
-}
-
-extension AppRouter: LoginModuleOutput {
-    func didFinish() {
+    private func showMainScreen() {
         guard let currentUserId = settingsService.currentUserId() else {
             fatalError("Application error: can't receive curent user id")
         }
-        // TODO тут нужна с анимация или еще что-то для корректной подмены рутового вью-контролеера ???
-        rootViewController = MainTabBarViewController(currentUserId: currentUserId)
+        let mainContext = MainContext(moduleOutput: self, currentUserId: currentUserId)
+        rootViewController = MainContainer.assemble(with: mainContext).viewController
+    }
+}
+
+extension AppRouter: LoginModuleOutput {
+    func didLogin() {
+        showMainScreen()
+    }
+}
+
+extension AppRouter: MainModuleOutput {
+    func didLogout() {
+        showLoginScreen()
     }
 }
