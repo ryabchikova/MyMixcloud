@@ -39,8 +39,7 @@ final class UserProfileViewController: UIViewController {
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        // TODO в константы/привязка к safe areas/ еще что-то
-        profileView.pin.horizontally(10.0).top(200.0).bottom(20.0)
+        profileView.pin.all()
     }
 }
 

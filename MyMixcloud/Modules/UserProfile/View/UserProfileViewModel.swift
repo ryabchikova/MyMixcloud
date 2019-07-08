@@ -11,6 +11,7 @@ import Foundation
 struct UserProfileViewModel {
     
     let avatarImageUrl: URL?
+    let coverImageUrl: URL?
     let nameString: NSAttributedString
     let locationString: NSAttributedString?
     let bioString: NSAttributedString?
@@ -18,6 +19,7 @@ struct UserProfileViewModel {
     
     init(user: User) {
         avatarImageUrl = user.profileImage
+        coverImageUrl = user.coverImage
         nameString = NSAttributedString(string: user.name, attributes: Styles.name)
         
         var location = user.city ?? ""

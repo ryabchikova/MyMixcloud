@@ -19,8 +19,17 @@ struct JsonUser: Decodable {
     let followerCount: Int
     let followingCount: Int
     let pictures: Pictures
+    let coverPictures: CoverPictures
         
     struct Pictures: Decodable {
         let large: URL?
+    }
+    
+    struct CoverPictures: Decodable {
+        let small: URL?
+        
+        private enum CodingKeys: String, CodingKey {
+            case small = "835wx120h"
+        }
     }
 }

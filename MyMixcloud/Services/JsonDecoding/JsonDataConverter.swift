@@ -18,7 +18,8 @@ final class JsonDataConverter {
                     favoritesCount: jsonUser.favoriteCount,
                     followersCount: jsonUser.followerCount,
                     followingCount: jsonUser.followingCount,
-                    profileImage: jsonUser.pictures.large)
+                    profileImage: jsonUser.pictures.large,
+                    coverImage: jsonUser.coverPictures.small)
     }
     
     func makeFollowingList(from jsonFollowing: JsonFollowing) -> [String] {

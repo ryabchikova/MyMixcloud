@@ -18,4 +18,5 @@ struct User {
     let followersCount: Int
     let followingCount: Int
     let profileImage: URL?
+    let coverImage: URL?
 }

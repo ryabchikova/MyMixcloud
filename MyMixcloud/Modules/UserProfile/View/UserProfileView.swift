@@ -15,6 +15,7 @@ import SDWebImage
 final class UserProfileView: UIView {
     
     private let avatarImageView = UIImageView()
+    private let coverImageView = UIImageView()
     private let nameLabel = UILabel()
     private let locationImageView = UIImageView()
     private let locationLabel = UILabel()
@@ -47,6 +48,8 @@ final class UserProfileView: UIView {
         avatarImageView.layer.cornerRadius = Constants.cornerRadius
         avatarImageView.layer.masksToBounds = true
         
+        coverImageView.contentMode = .scaleAspectFill
+       
         nameLabel.backgroundColor = Styles.backgroundColor
         
         locationImageView.image = UIImage(named: "locationIcon")
@@ -64,43 +67,58 @@ final class UserProfileView: UIView {
             .direction(.column)
             .width(100%)
             .height(100%)
-            .alignItems(.center)
+            .justifyContent(.center)
             .define { flex in
-                flex.addItem(avatarImageView)
-                    .size(Constants.avatarImageSize)
+                flex.addItem(coverImageView)
+                    .position(.absolute)
+                    .top(0.0)
+                    .left(0.0)
+                    .right(0.0)
+                    .height(40%)
                 
-                flex.addItem(nameLabel)
-                    .marginTop(Constants.nameTopMargin)
-                    .shrink(1)
-                
-
                 flex.addItem()
-                    .direction(.row)
+                    .direction(.column)
+                    .marginHorizontal(Constants.contentHorizontalMargin)
                     .alignItems(.center)
-                    .marginTop(Constants.locationTopMargin)
-                    .shrink(1)
                     .define { flex in
-                        flex.addItem(locationImageView)
-                            .size(Constants.locationImageSize)
-                        flex.addItem(locationLabel)
-                            .marginLeft(Constants.locationLeftMargin)
+                        flex.addItem(avatarImageView)
+                            .size(Constants.avatarImageSize)
+                        
+                        flex.addItem(nameLabel)
+                            .marginTop(Constants.nameTopMargin)
+                            .shrink(1)
+
+                        flex.addItem()
+                            .direction(.row)
+                            .alignItems(.center)
+                            .marginTop(Constants.locationTopMargin)
+                            .shrink(1)
+                            .define { flex in
+                                flex.addItem(locationImageView)
+                                    .size(Constants.locationImageSize)
+                                flex.addItem(locationLabel)
+                                    .marginLeft(Constants.locationLeftMargin)
+                                    .shrink(1)
+                            }
+                        
+                        flex.addItem(bioLabel)
+                            .marginTop(Constants.bioTopMargin)
+                            .alignSelf(.start)
+                            .shrink(1)
+                        
+                        flex.addItem(followersLabel)
+                            .marginTop(Constants.followersTopMargin)
+                            .alignSelf(.start)
                             .shrink(1)
                     }
-                
-                flex.addItem(bioLabel)
-                    .marginTop(Constants.bioTopMargin)
-                    .alignSelf(.start)
-                    .shrink(1)
-                
-                flex.addItem(followersLabel)
-                    .marginTop(Constants.followersTopMargin)
-                    .alignSelf(.start)
-                    .shrink(1)
             }
     }
     
     func update(with model: UserProfileViewModel) {
         avatarImageView.sd_setImage(with: model.avatarImageUrl)
+        
+        coverImageView.sd_setImage(with: model.coverImageUrl)
+        coverImageView.isHidden = (model.coverImageUrl == nil)
         
         nameLabel.attributedText = model.nameString
         nameLabel.flex.markDirty()
@@ -126,6 +144,7 @@ final class UserProfileView: UIView {
 extension UserProfileView {
     
     private struct Constants {
+        static let contentHorizontalMargin: CGFloat = 40.0
         static let avatarImageSize: CGFloat = 200.0
         static let borderWidth: CGFloat = 1.0
         static let cornerRadius: CGFloat = 20.0
