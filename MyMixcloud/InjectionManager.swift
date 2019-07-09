@@ -35,12 +35,6 @@ final class InjectionManager {
         }.inObjectScope(.container)
     }
     
-    // TODO подумать, интересно, но не понятны намерения в месте вызова
-    //    func entity<T>() -> T {
-    //        return resolver.resolve(T.self)!
-    //    }
-    
-    
     func userService() -> UserService {
         return resolver.resolve(UserService.self)!
     }

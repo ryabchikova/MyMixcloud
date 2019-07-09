@@ -35,6 +35,7 @@ final class SettingsViewController: UIViewController {
         self.items = [.logout, .theme]
         super.init(nibName: nil, bundle: nil)
         
+        navigationItem.title = "Settings"
         setupTableView()
     }
     
@@ -63,7 +64,6 @@ final class SettingsViewController: UIViewController {
         tableView.tableFooterView = UIView()
         tableView.register(UITableViewCell.self,
                            forCellReuseIdentifier: String(describing: UITableViewCell.self))
-        //tableView.rowHeight = FollowingTableViewCell.height
         tableView.separatorInset.left = Constants.tableViewSeparatorInset
         tableView.separatorInset.right = Constants.tableViewSeparatorInset
     }

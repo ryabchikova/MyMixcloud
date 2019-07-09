@@ -10,8 +10,6 @@ import Foundation
 import FlexLayout
 import SDWebImage
 
-// TODO + cover picture
-
 final class UserProfileView: UIView {
     
     private let avatarImageView = UIImageView()

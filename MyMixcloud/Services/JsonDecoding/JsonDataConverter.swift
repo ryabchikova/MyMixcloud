@@ -49,3 +49,17 @@ final class JsonDataConverter {
         return jsonTrackList.tracks.map { makeTrack(from: $0) }
     }
 }
+
+//extension JsonDataConverter {
+//    // 2019-03-13T19:03:02Z => 13 Mar 19:03
+//    private func convertDate(source: String) -> String? {
+//        let dateFormatter1 = DateFormatter()
+//        dateFormatter1.dateFormat = "YYYY-mm-ddTHH:MM:SSZ"
+//        let data = dateFormatter1.date(from: source)
+//
+//        let dateFormatter2 = DateFormatter()
+//        dateFormatter2.dateFormat = "dd MM HH:MM"
+//        let result = dateFormatter2.string(from: data)
+//        print("convert \(source) to \(result)")
+//    }
+//}

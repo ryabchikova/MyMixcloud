@@ -15,14 +15,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var appRouter: AppRouter = InjectionManager.shared.appRouter()
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        UINavigationBar.appearance().titleTextAttributes = [ NSAttributedString.Key.foregroundColor: MMColors.darkGray,
-                                                             NSAttributedString.Key.font: MMFonts.largeBold]
+        setupCustomAppearance()
         
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.rootViewController = appRouter.rootViewController
         window?.makeKeyAndVisible()
         
         return true
+    }
+    
+    private func setupCustomAppearance() {
+        UINavigationBar.appearance().titleTextAttributes = [ NSAttributedString.Key.foregroundColor: MMColors.darkGray,
+        NSAttributedString.Key.font: MMFonts.largeBold]
+        UINavigationBar.appearance().tintColor = MMColors.darkGray
+        UIBarButtonItem.appearance().setBackButtonTitlePositionAdjustment(UIOffset(horizontal: -1000.0, vertical: 0.0), for: .default)
     }
 
     func applicationWillResignActive(_ application: UIApplication) {
