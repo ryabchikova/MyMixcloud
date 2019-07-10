@@ -14,14 +14,14 @@ struct TrackListItemViewModel {
     let coverImageUrl: URL?
     let userNameString: NSAttributedString
     let trackTitleString: NSAttributedString
-    let audioLengthString: NSAttributedString
+    let audioLengthString: NSAttributedString?
     
     init(track: Track) {
         trackId = track.identifier
         coverImageUrl = track.coverImage
         userNameString = NSAttributedString(string: "by " + track.user.name, attributes: Styles.name)
         trackTitleString = NSAttributedString(string: track.title, attributes: Styles.title)
-        audioLengthString = NSAttributedString(string: /*track.audioLength*/"1:45:05", attributes: Styles.length)
+        audioLengthString = track.audioLength.map { NSAttributedString(string: $0, attributes: Styles.length) }
     }
 }
 

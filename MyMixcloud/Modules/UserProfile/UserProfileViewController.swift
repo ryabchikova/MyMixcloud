@@ -41,7 +41,7 @@ final class UserProfileViewController: UIViewController {
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        profileView.pin.all()
+        profileView.pin.all(view.pin.safeArea)
     }
     
     @objc private func didTapSettings() {

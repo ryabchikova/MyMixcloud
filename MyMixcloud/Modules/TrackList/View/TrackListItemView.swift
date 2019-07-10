@@ -88,6 +88,7 @@ final class TrackListItemView: UIView {
         trackTitleLabel.flex.markDirty()
         
         audioLengthLabel.attributedText = model.audioLengthString
+        audioLengthLabel.flex.display(model.audioLengthString != nil ? .flex : .none)
         audioLengthLabel.flex.markDirty()
         
         setNeedsLayout()

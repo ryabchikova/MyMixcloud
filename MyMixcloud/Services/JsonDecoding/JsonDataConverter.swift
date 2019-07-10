@@ -37,9 +37,9 @@ final class JsonDataConverter {
                      user: (identifier: jsonTrack.user.username, name: jsonTrack.user.name),
                      tags: jsonTrack.tags.map { makeTag(from: $0) },
                      playCount: jsonTrack.playCount,
-                     createdTime: jsonTrack.createdTime,       // TODO format
-                     listenTime: jsonTrack.listenTime,         // TODO format
-                     audioLength: jsonTrack.audioLength.description,       // TODO format in human readable time string
+                     createdTime: convertTimestamp(jsonTrack.createdTime),
+                     listenTime: jsonTrack.listenTime.map { convertTimestamp($0) } ?? nil,
+                     audioLength: convertSecondsToReadableTime(jsonTrack.audioLength),
                      favoriteCount: jsonTrack.favoriteCount,
                      listenerCount: jsonTrack.listenerCount,
                      repostCount: jsonTrack.repostCount)
@@ -50,16 +50,30 @@ final class JsonDataConverter {
     }
 }
 
-//extension JsonDataConverter {
-//    // 2019-03-13T19:03:02Z => 13 Mar 19:03
-//    private func convertDate(source: String) -> String? {
-//        let dateFormatter1 = DateFormatter()
-//        dateFormatter1.dateFormat = "YYYY-mm-ddTHH:MM:SSZ"
-//        let data = dateFormatter1.date(from: source)
-//
-//        let dateFormatter2 = DateFormatter()
-//        dateFormatter2.dateFormat = "dd MM HH:MM"
-//        let result = dateFormatter2.string(from: data)
-//        print("convert \(source) to \(result)")
-//    }
-//}
+extension JsonDataConverter {
+
+    private func convertTimestamp(_ input: String) -> String? {
+        let inputFormatter = DateFormatter()
+        inputFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss'Z'"
+        inputFormatter.locale = Locale(identifier: "en_US_POSIX")
+        inputFormatter.timeZone = TimeZone(secondsFromGMT: 0)
+        
+        let outputFormatter = DateFormatter()
+        outputFormatter.dateFormat = "dd MMM HH:mm"
+        outputFormatter.locale = Locale(identifier: "en_US")
+        outputFormatter.timeZone = TimeZone(secondsFromGMT: 0)
+        
+        return inputFormatter.date(from: input).map { outputFormatter.string(from: $0) }
+    }
+    
+    private func convertSecondsToReadableTime(_ input: Int) -> String? {
+        guard input > 0 && input < 24*60*60 else {
+            return nil
+        }
+        
+        let outputFormatter = DateFormatter()
+        outputFormatter.dateFormat = "HH:mm:ss"
+        outputFormatter.timeZone = TimeZone(secondsFromGMT: 0)
+        return outputFormatter.string(from: Date(timeIntervalSince1970: Double(input)))
+    }
+}
