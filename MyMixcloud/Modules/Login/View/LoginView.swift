@@ -47,7 +47,6 @@ final class LoginView: UIView {
         userNameTextField.layer.masksToBounds = true
         userNameTextField.clearButtonMode = .whileEditing
         userNameTextField.attributedPlaceholder = model.userNamePlaceholderString
-        userNameTextField.textAlignment = .center
         userNameTextField.font = model.userNameStringFont
         userNameTextField.textColor = model.userNameStringColor
         userNameTextField.adjustsFontSizeToFitWidth = true
@@ -55,6 +54,8 @@ final class LoginView: UIView {
         userNameTextField.autocorrectionType = .no
         userNameTextField.returnKeyType = .done
         userNameTextField.delegate = self
+        userNameTextField.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 20, height: userNameTextField.frame.height))
+        userNameTextField.leftViewMode = .always
         
         startButton.backgroundColor = Styles.buttonColor
         startButton.layer.cornerRadius = Constants.cornerRadius
@@ -77,7 +78,6 @@ final class LoginView: UIView {
                 flex.addItem()
                     .direction(.column)
                     .marginHorizontal(Constants.contentHorizontalMargin)
-                    .alignItems(.center)
                     .define { flex in
                         flex.addItem(welcomeLabel)
                             .width(100%)
