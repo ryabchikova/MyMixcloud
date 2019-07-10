@@ -33,8 +33,8 @@ extension UserProfilePresenter: UserProfileViewOutput {
     }
     
     func didTapSettingsButton() {
-        if let navigationController = (view as? UIViewController)?.navigationController {
-            router.showSettingsScreen(in: navigationController, moduleOutput: self)
+        if let viewController = view as? UIViewController {
+            router.showSettingsScreen(in: viewController, moduleOutput: self)
         }
     }
 }

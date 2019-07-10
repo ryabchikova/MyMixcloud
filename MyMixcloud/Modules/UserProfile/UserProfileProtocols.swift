@@ -37,5 +37,5 @@ protocol UserProfileInteractorOutput: class {
 }
 
 protocol UserProfileRouterInput: class {
-    func showSettingsScreen(in navigationController: UINavigationController, moduleOutput: SettingsModuleOutput?)
+    func showSettingsScreen(in viewController: UIViewController, moduleOutput: SettingsModuleOutput?)
 }
