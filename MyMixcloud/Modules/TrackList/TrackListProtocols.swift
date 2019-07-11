@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 protocol TrackListModuleInput {
 	var moduleOutput: TrackListModuleOutput? { get }
@@ -23,6 +24,7 @@ protocol TrackListViewInput: class {
 protocol TrackListViewOutput: class {
     func viewDidLoad()
     func viewDidScrollPage()
+    func viewDidTapOnTrack(with trackId: String)
 }
 
 protocol TrackListInteractorInput: class {
@@ -35,4 +37,5 @@ protocol TrackListInteractorOutput: class {
 }
 
 protocol TrackListRouterInput: class {
+    func showTrackScreen(in viewController: UIViewController, trackId: String)
 }

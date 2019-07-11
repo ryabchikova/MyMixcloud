@@ -15,8 +15,8 @@ final class TrackContainer {
 
 	class func assemble(with context: TrackContext) -> TrackContainer {
         let router = TrackRouter()
-        let interactor = TrackInteractor()
-        let presenter = TrackPresenter(router: router, interactor: interactor)
+        let interactor = TrackInteractor(trackService: InjectionManager.shared.trackService())
+        let presenter = TrackPresenter(router: router, interactor: interactor, trackId: context.trackId)
 		let viewController = TrackViewController(output: presenter)
 
 		presenter.view = viewController
@@ -36,4 +36,5 @@ final class TrackContainer {
 
 struct TrackContext {
 	weak var moduleOutput: TrackModuleOutput?
+    let trackId: String
 }

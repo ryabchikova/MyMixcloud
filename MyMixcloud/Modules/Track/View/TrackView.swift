@@ -18,8 +18,12 @@ final class TrackView: UIView {
     private let audioLengthLabel = UILabel()
     private let uploadedLabel = UILabel()
     private let favoritedLabel = UILabel()
+    private let favoriteImageView = UIImageView()
     private let listenedLabel = UILabel()
+    private let listenImageView = UIImageView()
     private let repostedLabel = UILabel()
+    private let repostImageView = UIImageView()
+    private let countersContainerView = UIView()
     private let tagsContainerView = UIView()
     
     init() {
@@ -40,20 +44,36 @@ final class TrackView: UIView {
     
     private func setup() {
         backgroundColor = Styles.backgroundColor
+        
         trackTitleLabel.backgroundColor = Styles.backgroundColor
+        trackTitleLabel.numberOfLines = 0
+        trackTitleLabel.textAlignment = .center
         
         coverImageView.contentMode = .scaleAspectFill
         coverImageView.backgroundColor = MMColors.imagePlaceholder
-        coverImageView.layer.borderColor = MMColors.white.cgColor
+        coverImageView.layer.borderColor = Styles.borderColor
         coverImageView.layer.borderWidth = Constants.coverBorderWidth
-        coverImageView.layer.cornerRadius = Constants.coverCornerRadius
-        coverImageView.layer.masksToBounds = true
         
         userNameLabel.backgroundColor = Styles.backgroundColor
+        userNameLabel.numberOfLines = 0
+        
         audioLengthLabel.backgroundColor = Styles.backgroundColor
+
         uploadedLabel.backgroundColor = Styles.backgroundColor
+        
+        favoriteImageView.image = UIImage(named: "favoriteIcon")
+        favoriteImageView.tintColor = Styles.counterColor           // TODO не работает
+        favoriteImageView.contentMode = .scaleAspectFit
         favoritedLabel.backgroundColor = Styles.backgroundColor
+        
+        listenImageView.image = UIImage(named: "listenIcon")
+        listenImageView.tintColor = Styles.counterColor           // TODO не работает
+        listenImageView.contentMode = .scaleAspectFit
         listenedLabel.backgroundColor = Styles.backgroundColor
+        
+        repostImageView.image = UIImage(named: "repostIcon")
+        repostImageView.tintColor = Styles.counterColor           // TODO не работает
+        repostImageView.contentMode = .scaleAspectFit
         repostedLabel.backgroundColor = Styles.backgroundColor
     }
     
@@ -72,33 +92,76 @@ final class TrackView: UIView {
                         flex.addItem(trackTitleLabel)
                         
                         flex.addItem(userNameLabel)
-                            .marginTop(Constants.tmpTopMargin)
+                            .marginTop(Constants.rowTopMargin)
                         
                         flex.addItem(coverImageView)
-                            .size(Constants.coverImageSize)
-                            .marginTop(Constants.tmpTopMargin)
+                            .width(100%)
+                            .aspectRatio(1.0)
+                            .marginTop(Constants.secionTopMargin)
                         
                         flex.addItem()
                             .direction(.row)
-                            .marginTop(Constants.tmpTopMargin)
+                            .width(100%)
+                            .marginTop(Constants.rowTopMargin)
+                            .justifyContent(.spaceBetween)
+                            .wrap(.wrap)
                             .define { flex in
                                 flex.addItem(audioLengthLabel)
+                                    .marginRight(Constants.innerHorizontalMargin)
                                 flex.addItem(uploadedLabel)
+                                    .shrink(1)
                             }
                         
-                        flex.addItem()
+                        flex.addItem(countersContainerView)
                             .direction(.row)
-                            .marginTop(Constants.tmpTopMargin)
+                            .marginTop(Constants.secionTopMargin)
+                            .alignSelf(.start)
                             .define { flex in
-                                flex.addItem(listenedLabel)
-                                flex.addItem(favoritedLabel)
-                                flex.addItem(repostedLabel)
+                                let counterViewContent = [(favoriteImageView, favoritedLabel),
+                                                          (listenImageView, listenedLabel),
+                                                          (repostImageView, repostedLabel)]
+                                
+                                counterViewContent.forEach { arg in
+                                    let (imageView, label) = arg
+                                    flex.addItem(makeCounterView())
+                                        .direction(.row)
+                                        .marginRight(Constants.innerHorizontalMargin)
+                                        .justifyContent(.spaceAround)
+                                        .padding(Constants.counterViewMargin)
+                                        .alignItems(.center)
+                                        .define { flex in
+                                            flex.addItem(imageView)
+                                                .size(Constants.counterViewImageSize)
+                                                .marginRight(Constants.counterViewMargin)
+                                            flex.addItem(label)
+                                    }
+                                }
                             }
                         
                         flex.addItem(tagsContainerView)
-                            .marginTop(Constants.tmpTopMargin)
+                            .direction(.row)
+                            .marginTop(Constants.rowTopMargin)
+                            .alignSelf(.start)
+                            .wrap(.wrap)
                     }
             }
+    }
+    
+    private func makeCounterView() -> UIView {
+        let view = UIView()
+        view.backgroundColor = Styles.backgroundColor
+        view.layer.borderColor = Styles.counterColor.cgColor
+        view.layer.borderWidth = Constants.counterBorderWidth
+        view.layer.cornerRadius = Constants.counterCornerRadius
+        view.layer.masksToBounds = true
+        return view
+    }
+    
+    private func makeTagLabel(with text: NSAttributedString) -> UILabel {
+        let label = UILabel()
+        label.backgroundColor = Styles.backgroundColor
+        label.attributedText = text
+        return label
     }
     
     func update(with model: TrackViewModel) {
@@ -119,19 +182,21 @@ final class TrackView: UIView {
         uploadedLabel.flex.markDirty()
         
         favoritedLabel.attributedText = model.favoritedString
-        favoritedLabel.flex.display(model.favoritedString != nil ? .flex : .none)
         favoritedLabel.flex.markDirty()
         
         listenedLabel.attributedText = model.listenedString
-        listenedLabel.flex.display(model.listenedString != nil ? .flex : .none)
         listenedLabel.flex.markDirty()
         
         repostedLabel.attributedText = model.repostedString
-        repostedLabel.flex.display(model.repostedString != nil ? .flex : .none)
         repostedLabel.flex.markDirty()
+
+        let shouldShowCounters = model.favoritedString != nil || model.listenedString != nil || model.repostedString != nil
+        countersContainerView.flex.display(shouldShowCounters ? .flex : .none)
+        countersContainerView.flex.markDirty()
         
-        // TODO
-        tagsContainerView.flex.display(.none)
+        tagsContainerView.subviews.forEach { $0.removeFromSuperview() }
+        model.tags.map { $0.forEach { tagsContainerView.flex.addItem(makeTagLabel(with: $0)).marginRight(Constants.innerHorizontalMargin) }}
+        tagsContainerView.flex.display(tagsContainerView.subviews.isEmpty ? .none : .flex)
         tagsContainerView.flex.markDirty()
         
         setNeedsLayout()
@@ -142,13 +207,19 @@ extension TrackView {
     
     private struct Constants {
         static let contentHorizontalMargin: CGFloat = 40.0
-        static let coverImageSize: CGFloat = 200.0
         static let coverBorderWidth: CGFloat = 1.0
-        static let coverCornerRadius: CGFloat = 20.0
-        static let tmpTopMargin: CGFloat = 10.0         // TODO
+        static let rowTopMargin: CGFloat = 10.0
+        static let secionTopMargin: CGFloat = 30.0
+        static let innerHorizontalMargin: CGFloat = 10.0
+        static let counterBorderWidth: CGFloat = 1.0
+        static let counterCornerRadius: CGFloat = 4.0
+        static let counterViewMargin: CGFloat = 5.0
+        static let counterViewImageSize: CGFloat = 15.0
     }
     
     private struct Styles {
         static let backgroundColor = MMColors.white
+        static let borderColor = MMColors.lightGray.cgColor
+        static let counterColor = MMColors.blue
     }
 }

@@ -14,10 +14,12 @@ final class TrackPresenter {
     
 	private let router: TrackRouterInput
 	private let interactor: TrackInteractorInput
+    private let trackId: String
     
-    init(router: TrackRouterInput, interactor: TrackInteractorInput) {
+    init(router: TrackRouterInput, interactor: TrackInteractorInput, trackId: String) {
         self.router = router
         self.interactor = interactor
+        self.trackId = trackId
     }
 }
 
@@ -25,7 +27,17 @@ extension TrackPresenter: TrackModuleInput {
 }
 
 extension TrackPresenter: TrackViewOutput {
+    func viewDidLoad() {
+        interactor.loadTrack(trackId: trackId)
+    }
 }
 
 extension TrackPresenter: TrackInteractorOutput {
+    func gotError() {
+        // TODO
+    }
+    
+    func didLoadTrack(_ track: Track) {
+        view?.set(trackViewModel: TrackViewModel(track: track))
+    }
 }

@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 final class TrackListPresenter {
 	weak var view: TrackListViewInput?
@@ -46,6 +47,12 @@ extension TrackListPresenter: TrackListViewOutput {
         
         isLoading = true
         interactor.loadTrackList(of: trackListType, userId: userId, page: nextPage)
+    }
+    
+    func viewDidTapOnTrack(with trackId: String) {
+        if let viewController = view as? UIViewController {
+            router.showTrackScreen(in: viewController, trackId: trackId)
+        }
     }
 }
 

@@ -76,6 +76,10 @@ extension TrackListViewController: UITableViewDelegate {
             output.viewDidScrollPage()
         }
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        output.viewDidTapOnTrack(with: models[indexPath.row].trackId)
+    }
 }
 
 extension TrackListViewController: TrackListViewInput {

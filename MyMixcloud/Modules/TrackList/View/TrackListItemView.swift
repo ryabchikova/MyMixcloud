@@ -38,7 +38,7 @@ final class TrackListItemView: UIView {
         
         coverImageView.contentMode = .scaleAspectFill
         coverImageView.backgroundColor = MMColors.imagePlaceholder
-        coverImageView.layer.borderColor = MMColors.lightGray.cgColor
+        coverImageView.layer.borderColor = Styles.borderColor
         coverImageView.layer.borderWidth = Constants.borderWidth
         coverImageView.layer.cornerRadius = Constants.cornerRadius
         coverImageView.layer.masksToBounds = true
@@ -107,5 +107,6 @@ extension TrackListItemView {
     
     private struct Styles {
         static let backgroundColor = MMColors.white
+        static let borderColor = MMColors.lightGray.cgColor
     }
 }

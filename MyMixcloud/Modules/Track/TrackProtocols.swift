@@ -16,15 +16,20 @@ protocol TrackModuleOutput: class {
 }
 
 protocol TrackViewInput: class {
+    func set(trackViewModel: TrackViewModel)
 }
 
 protocol TrackViewOutput: class {
+    func viewDidLoad()
 }
 
 protocol TrackInteractorInput: class {
+    func loadTrack(trackId: String)
 }
 
 protocol TrackInteractorOutput: class {
+    func gotError()
+    func didLoadTrack(_ track: Track)
 }
 
 protocol TrackRouterInput: class {

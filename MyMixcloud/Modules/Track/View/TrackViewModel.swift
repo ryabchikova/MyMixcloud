@@ -26,12 +26,12 @@ struct TrackViewModel {
         trackTitleString = NSAttributedString(string: track.title, attributes: Styles.title)
         coverImageUrl = track.coverImage
         userNameString = NSAttributedString(string: "by " + track.user.name, attributes: Styles.name)
-        audioLengthString = track.audioLength.map { NSAttributedString(string: $0, attributes: Styles.temp) }
-        uploadedTimeString = track.uploadedTime.map { NSAttributedString(string: "Uploaded " + $0, attributes: Styles.temp) }
-        favoritedString = track.favoriteCount > 0 ? NSAttributedString(string: "Favorited " + track.favoriteCount.description, attributes: Styles.temp) : nil
-        listenedString = track.listenerCount > 0 ? NSAttributedString(string: "Listened " + track.listenerCount.description, attributes: Styles.temp) : nil
-        repostedString = track.repostCount > 0 ? NSAttributedString(string: "Reposted " + track.repostCount.description, attributes: Styles.temp) : nil
-        tags = nil      // TODO
+        audioLengthString = track.audioLength.map { NSAttributedString(string: $0, attributes: Styles.time) }
+        uploadedTimeString = track.uploadedTime.map { NSAttributedString(string: "Uploaded " + $0, attributes: Styles.time) }
+        favoritedString = track.favoriteCount > 0 ? NSAttributedString(string: track.favoriteCount.description, attributes: Styles.counter) : nil
+        listenedString = track.listenerCount > 0 ? NSAttributedString(string: track.listenerCount.description, attributes: Styles.counter) : nil
+        repostedString = track.repostCount > 0 ? NSAttributedString(string: track.repostCount.description, attributes: Styles.counter) : nil
+        tags = track.tags.isEmpty ? nil : track.tags.map { NSAttributedString(string: "#" + $0.name, attributes: Styles.tag) }
     }
 }
 
@@ -40,11 +40,8 @@ extension TrackViewModel {
     private struct Styles {
         
         static let title: [NSAttributedString.Key: Any] = {
-            let style = NSMutableParagraphStyle()
-            style.lineBreakMode = .byTruncatingTail
             return [
-                .paragraphStyle: style,
-                .font: MMFonts.mediumBold,
+                .font: MMFonts.largeBold,
                 .foregroundColor: MMColors.darkGray
             ]
         }()
@@ -56,11 +53,24 @@ extension TrackViewModel {
             ]
         }()
         
-        // TODO
-        static let temp: [NSAttributedString.Key: Any] = {
+        static let time: [NSAttributedString.Key: Any] = {
             return [
-                .font: MMFonts.mediumBold,
+                .font: MMFonts.small,
+                .foregroundColor: MMColors.lightGray
+            ]
+        }()
+        
+        static let counter: [NSAttributedString.Key: Any] = {
+            return [
+                .font: MMFonts.smallBold,
                 .foregroundColor: MMColors.blue
+            ]
+        }()
+        
+        static let tag: [NSAttributedString.Key: Any] = {
+            return [
+                .font: MMFonts.smallBoldItalic,
+                .foregroundColor: MMColors.sunny
             ]
         }()
     }
