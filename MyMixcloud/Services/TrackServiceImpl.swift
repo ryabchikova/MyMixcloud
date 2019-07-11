@@ -14,16 +14,47 @@ final class TrackServiceImpl: TrackService {
     private let dispatchQueue = DispatchQueue.global(qos: .userInitiated)
     
     func track(trackId: String, completionHandler: @escaping (Track?, Error?) -> Void) {
-        completionHandler(nil, nil)
+        let url = MixcloudApi.track.requestUrl(identifier: trackId)
+        Alamofire.request(url)
+            .validate()
+            .responseData(queue: dispatchQueue) { [weak self] response in
+                guard let data = response.result.value else {
+                    let error = MMError(type: .webServiceError,
+                                        location: String(describing: self) + ".track",
+                                        what: (response.result.error as? AFError)?.errorDescription)
+                    error.log()
+                    completionHandler(nil, error)
+                    return
+                }
+                
+                guard let sSelf = self else {
+                    completionHandler(nil, MMError(type: .executionError))
+                    return
+                }
+                
+                do {
+                    let decoder = JSONDecoder()
+                    decoder.keyDecodingStrategy = .convertFromSnakeCase
+                    let jsonTrack = try decoder.decode(JsonTrack.self, from: data)
+                    let track = sSelf.converter.makeTrack(from: jsonTrack)
+                    completionHandler(track, nil)
+                } catch {
+                    let error = MMError(type: .webServiceError,
+                                        location: String(describing: self) + ".track",
+                                        what: (error as? DecodingError)?.localizedDescription)
+                    error.log()
+                    completionHandler(nil, error)
+                }
+        }
     }
     
     func listeningHistory(userId: String, page: Int, completionHandler: @escaping ([Track]?, Error?) -> Void) {
-        let url = MixcloudApi.history.requestUrl(userId: userId, page: page)
+        let url = MixcloudApi.history.requestUrl(identifier: userId, page: page)
         trackList(url: url, completionHandler: completionHandler)
     }
     
     func favoriteList(userId: String, page: Int, completionHandler: @escaping ([Track]?, Error?) -> Void) {
-        let url = MixcloudApi.favorites.requestUrl(userId: userId, page: page)
+        let url = MixcloudApi.favorites.requestUrl(identifier: userId, page: page)
         trackList(url: url, completionHandler: completionHandler)
     }
     

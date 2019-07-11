@@ -15,7 +15,7 @@ final class UserServiceImpl: UserService {
     private let dispatchQueue = DispatchQueue.global(qos: .userInitiated)
     
     func user(userId: String, completionHandler: @escaping (User?, Error?) -> Void) {
-        let url = MixcloudApi.user.requestUrl(userId: userId)
+        let url = MixcloudApi.user.requestUrl(identifier: userId)
         
         Alamofire.request(url)
             .validate()
@@ -51,7 +51,7 @@ final class UserServiceImpl: UserService {
     }
     
     private func followingList(userId: String, page: Int, completionHandler: @escaping ([String]?, Error?) -> Void) {
-        let url = MixcloudApi.following.requestUrl(userId: userId, page: page)
+        let url = MixcloudApi.following.requestUrl(identifier: userId, page: page)
         
         Alamofire.request(url)
             .validate()
