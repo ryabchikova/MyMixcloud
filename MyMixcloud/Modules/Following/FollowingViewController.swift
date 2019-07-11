@@ -76,6 +76,10 @@ extension FollowingViewController: UITableViewDelegate {
             output.viewDidScrollPage()
         }
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        output.viewDidTapOnUser(with: models[indexPath.row].userId)
+    }
 }
 
 extension FollowingViewController: FollowingViewInput {

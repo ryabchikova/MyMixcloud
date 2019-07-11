@@ -17,7 +17,7 @@ final class UserProfileContainer {
         let router = UserProfileRouter()
         let interactor = UserProfileInteractor(userService: InjectionManager.shared.userService())
         let presenter = UserProfilePresenter(router: router, interactor: interactor, userId: context.userId)
-		let viewController = UserProfileViewController(output: presenter)
+        let viewController = UserProfileViewController(output: presenter, isMyProfile: context.isMyProfile)
 
 		presenter.view = viewController
 		presenter.moduleOutput = context.moduleOutput
@@ -37,4 +37,5 @@ final class UserProfileContainer {
 struct UserProfileContext {
 	weak var moduleOutput: UserProfileModuleOutput?
     let userId: String
+    let isMyProfile: Bool
 }

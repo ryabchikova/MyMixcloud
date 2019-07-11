@@ -10,6 +10,8 @@ import Foundation
 import FlexLayout
 import SDWebImage
 
+// TODO fix cover image - toooo large
+
 final class UserProfileView: UIView {
     
     private let avatarImageView = UIImageView()
@@ -49,10 +51,12 @@ final class UserProfileView: UIView {
         coverImageView.contentMode = .scaleAspectFill
        
         nameLabel.backgroundColor = Styles.backgroundColor
+        nameLabel.numberOfLines = 0
         
         locationImageView.image = UIImage(named: "locationIcon")
         locationImageView.contentMode = .scaleAspectFit
         locationLabel.backgroundColor = Styles.backgroundColor
+        locationLabel.numberOfLines = 0
         
         bioLabel.backgroundColor = Styles.backgroundColor
         bioLabel.numberOfLines = 0
@@ -71,7 +75,7 @@ final class UserProfileView: UIView {
                     .position(.absolute)
                     .top(0.0)
                     .left(0.0)
-                    .right(0.0)
+                    .width(100%)
                     .height(40%)
                 
                 flex.addItem()
@@ -142,7 +146,7 @@ final class UserProfileView: UIView {
 extension UserProfileView {
     
     private struct Constants {
-        static let contentHorizontalMargin: CGFloat = 40.0
+        static let contentHorizontalMargin: CGFloat = 20.0
         static let avatarImageSize: CGFloat = 200.0
         static let borderWidth: CGFloat = 1.0
         static let cornerRadius: CGFloat = 20.0

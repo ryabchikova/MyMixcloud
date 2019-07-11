@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 final class FollowingPresenter {
 	weak var view: FollowingViewInput?
@@ -44,6 +45,12 @@ extension FollowingPresenter: FollowingViewOutput {
         
         isLoading = true
         interactor.loadFollowing(userId: userId, page: nextPage)
+    }
+    
+    func viewDidTapOnUser(with userId: String) {
+        if let viewController = view as? UIViewController {
+            router.showUserProfileScreen(in: viewController, userId: userId)
+        }
     }
 }
 

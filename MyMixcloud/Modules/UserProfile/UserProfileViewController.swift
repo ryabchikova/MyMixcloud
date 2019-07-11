@@ -13,12 +13,14 @@ final class UserProfileViewController: UIViewController {
     private let output: UserProfileViewOutput
     private let profileView = UserProfileView()
     
-    init(output: UserProfileViewOutput) {
+    init(output: UserProfileViewOutput, isMyProfile: Bool) {
         self.output = output
         super.init(nibName: nil, bundle: nil)
         
-        navigationItem.title = "User profile"
-        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "settingsIcon"), style: .plain, target: self, action: #selector(didTapSettings))
+        if isMyProfile {
+            navigationItem.title = "User profile"
+            navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "settingsIcon"), style: .plain, target: self, action: #selector(didTapSettings))
+        }
     }
     
     required init?(coder aDecoder: NSCoder) {

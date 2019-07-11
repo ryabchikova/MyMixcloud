@@ -58,7 +58,7 @@ extension UserProfileViewModel {
         
         static let bio: [NSAttributedString.Key: Any] = {
             return [
-                .font: MMFonts.mediumBoldItalic,
+                .font: MMFonts.smallBoldItalic,
                 .foregroundColor: MMColors.lightGray
             ]
         }()
@@ -66,7 +66,7 @@ extension UserProfileViewModel {
         static let followers: [NSAttributedString.Key: Any] = {
             return [
                 .font: MMFonts.smallBold,
-                .foregroundColor: MMColors.lightGray
+                .foregroundColor: MMColors.blue
             ]
         }()
     }

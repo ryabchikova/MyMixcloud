@@ -19,7 +19,7 @@ final class MainContainer {
 		presenter.moduleOutput = context.moduleOutput
 
         // configure tabs
-        let profileContext = UserProfileContext(moduleOutput: presenter, userId: context.currentUserId)
+        let profileContext = UserProfileContext(moduleOutput: presenter, userId: context.currentUserId, isMyProfile: true)
         let profileContainer = UserProfileContainer.assemble(with: profileContext)
         profileContainer.viewController.tabBarItem.image = UIImage(named: "profileIcon")
 

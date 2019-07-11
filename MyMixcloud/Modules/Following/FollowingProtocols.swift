@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 protocol FollowingModuleInput {
 	var moduleOutput: FollowingModuleOutput? { get }
@@ -23,6 +24,7 @@ protocol FollowingViewInput: class {
 protocol FollowingViewOutput: class {
     func viewDidLoad()
     func viewDidScrollPage()
+    func viewDidTapOnUser(with userId: String)
 }
 
 protocol FollowingInteractorInput: class {
@@ -35,4 +37,5 @@ protocol FollowingInteractorOutput: class {
 }
 
 protocol FollowingRouterInput: class {
+    func showUserProfileScreen(in viewController: UIViewController, userId: String)
 }
