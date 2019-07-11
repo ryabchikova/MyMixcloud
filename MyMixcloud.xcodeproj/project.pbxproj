@@ -78,6 +78,14 @@
 		422EE0BF22C21C1700451EED /* JsonDataConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 422EE0BE22C21C1700451EED /* JsonDataConverter.swift */; };
 		422EE0C122C2234F00451EED /* JsonFollowing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 422EE0C022C2234F00451EED /* JsonFollowing.swift */; };
 		422EE0CB22C25CC100451EED /* MainTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 422EE0CA22C25CC100451EED /* MainTabBarViewController.swift */; };
+		425255B422D7270100D2EDC9 /* TrackPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 425255AE22D7270100D2EDC9 /* TrackPresenter.swift */; };
+		425255B522D7270100D2EDC9 /* TrackRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 425255AF22D7270100D2EDC9 /* TrackRouter.swift */; };
+		425255B622D7270100D2EDC9 /* TrackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 425255B022D7270100D2EDC9 /* TrackViewController.swift */; };
+		425255B722D7270100D2EDC9 /* TrackProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 425255B122D7270100D2EDC9 /* TrackProtocols.swift */; };
+		425255B822D7270100D2EDC9 /* TrackInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 425255B222D7270100D2EDC9 /* TrackInteractor.swift */; };
+		425255B922D7270100D2EDC9 /* TrackContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 425255B322D7270100D2EDC9 /* TrackContainer.swift */; };
+		425255BD22D7275B00D2EDC9 /* TrackViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 425255BC22D7275B00D2EDC9 /* TrackViewModel.swift */; };
+		425255BF22D7276700D2EDC9 /* TrackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 425255BE22D7276700D2EDC9 /* TrackView.swift */; };
 		42DD63CB22B3E9E600A57196 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42DD63CA22B3E9E600A57196 /* AppDelegate.swift */; };
 		42DD63D422B3E9E800A57196 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 42DD63D322B3E9E800A57196 /* Assets.xcassets */; };
 		42DD63D722B3E9E800A57196 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 42DD63D522B3E9E800A57196 /* LaunchScreen.storyboard */; };
@@ -156,6 +164,14 @@
 		422EE0BE22C21C1700451EED /* JsonDataConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JsonDataConverter.swift; sourceTree = "<group>"; };
 		422EE0C022C2234F00451EED /* JsonFollowing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JsonFollowing.swift; sourceTree = "<group>"; };
 		422EE0CA22C25CC100451EED /* MainTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarViewController.swift; sourceTree = "<group>"; };
+		425255AE22D7270100D2EDC9 /* TrackPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackPresenter.swift; sourceTree = "<group>"; };
+		425255AF22D7270100D2EDC9 /* TrackRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackRouter.swift; sourceTree = "<group>"; };
+		425255B022D7270100D2EDC9 /* TrackViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackViewController.swift; sourceTree = "<group>"; };
+		425255B122D7270100D2EDC9 /* TrackProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackProtocols.swift; sourceTree = "<group>"; };
+		425255B222D7270100D2EDC9 /* TrackInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackInteractor.swift; sourceTree = "<group>"; };
+		425255B322D7270100D2EDC9 /* TrackContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackContainer.swift; sourceTree = "<group>"; };
+		425255BC22D7275B00D2EDC9 /* TrackViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackViewModel.swift; sourceTree = "<group>"; };
+		425255BE22D7276700D2EDC9 /* TrackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackView.swift; sourceTree = "<group>"; };
 		42DD63C722B3E9E600A57196 /* MyMixcloud.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyMixcloud.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		42DD63CA22B3E9E600A57196 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		42DD63D322B3E9E800A57196 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -367,11 +383,35 @@
 				4201812922D0726C007752B9 /* Login */,
 				422E6E9C22D3B91E00DBEB2E /* Main */,
 				4220E28E22C4E62400FEB7F8 /* UserProfile */,
+				425255BA22D7270C00D2EDC9 /* Track */,
 				4220E2A922C62B2800FEB7F8 /* Following */,
 				4224F95C22CA37C000E847AB /* TrackList */,
 				4201816522D32F36007752B9 /* Settings */,
 			);
 			path = Modules;
+			sourceTree = "<group>";
+		};
+		425255BA22D7270C00D2EDC9 /* Track */ = {
+			isa = PBXGroup;
+			children = (
+				425255BB22D7274900D2EDC9 /* View */,
+				425255AE22D7270100D2EDC9 /* TrackPresenter.swift */,
+				425255AF22D7270100D2EDC9 /* TrackRouter.swift */,
+				425255B022D7270100D2EDC9 /* TrackViewController.swift */,
+				425255B122D7270100D2EDC9 /* TrackProtocols.swift */,
+				425255B222D7270100D2EDC9 /* TrackInteractor.swift */,
+				425255B322D7270100D2EDC9 /* TrackContainer.swift */,
+			);
+			path = Track;
+			sourceTree = "<group>";
+		};
+		425255BB22D7274900D2EDC9 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				425255BC22D7275B00D2EDC9 /* TrackViewModel.swift */,
+				425255BE22D7276700D2EDC9 /* TrackView.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		42DD63BE22B3E9E600A57196 = {
@@ -559,6 +599,8 @@
 				4201815F22D32EC9007752B9 /* SettingsRouter.swift in Sources */,
 				42273C0722C7A6BC00EDB1E5 /* TrackService.swift in Sources */,
 				42273C0522C7A12600EDB1E5 /* JsonTag.swift in Sources */,
+				425255B622D7270100D2EDC9 /* TrackViewController.swift in Sources */,
+				425255B422D7270100D2EDC9 /* TrackPresenter.swift in Sources */,
 				4224F96322CA37EC00E847AB /* TrackListPresenter.swift in Sources */,
 				422EE0A722B3F1AB00451EED /* User.swift in Sources */,
 				4220E2A622C62B1A00FEB7F8 /* FollowingProtocols.swift in Sources */,
@@ -593,6 +635,8 @@
 				4220E28A22C4E61900FEB7F8 /* UserProfileViewController.swift in Sources */,
 				4201813222D072DA007752B9 /* LoginViewController.swift in Sources */,
 				4201813C22D27F75007752B9 /* AppRouter.swift in Sources */,
+				425255B822D7270100D2EDC9 /* TrackInteractor.swift in Sources */,
+				425255B922D7270100D2EDC9 /* TrackContainer.swift in Sources */,
 				4220E29222C5093900FEB7F8 /* UserProfileView.swift in Sources */,
 				4220E2A522C62B1A00FEB7F8 /* FollowingViewController.swift in Sources */,
 				4201816322D32EC9007752B9 /* SettingsContainer.swift in Sources */,
@@ -601,8 +645,11 @@
 				422EE0AB22B436D600451EED /* MixcloudApi.swift in Sources */,
 				4220E29922C585AC00FEB7F8 /* DummyView.swift in Sources */,
 				422EE0BF22C21C1700451EED /* JsonDataConverter.swift in Sources */,
+				425255B522D7270100D2EDC9 /* TrackRouter.swift in Sources */,
+				425255B722D7270100D2EDC9 /* TrackProtocols.swift in Sources */,
 				4220E29522C5137300FEB7F8 /* MMFonts.swift in Sources */,
 				4201815E22D32EC9007752B9 /* SettingsPresenter.swift in Sources */,
+				425255BD22D7275B00D2EDC9 /* TrackViewModel.swift in Sources */,
 				4220E28B22C4E61900FEB7F8 /* UserProfileProtocols.swift in Sources */,
 				422EE0BD22C2180600451EED /* JsonUser.swift in Sources */,
 				4201813A22D0731D007752B9 /* LoginView.swift in Sources */,
@@ -625,6 +672,7 @@
 				4220E2A422C62B1A00FEB7F8 /* FollowingRouter.swift in Sources */,
 				4224F96D22CA3D7200E847AB /* TrackListItemView.swift in Sources */,
 				422EE0B522BA180D00451EED /* whatever.swift in Sources */,
+				425255BF22D7276700D2EDC9 /* TrackView.swift in Sources */,
 				42273C0322C7A0C700EDB1E5 /* JsonTrack.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

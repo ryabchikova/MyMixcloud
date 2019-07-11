@@ -15,7 +15,7 @@ struct Track {
     let user: (identifier: String, name: String)
     let tags: [Tag]
     let playCount: Int
-    let createdTime: String?
+    let uploadedTime: String?
     let listenTime: String?
     let audioLength: String?
     let favoriteCount: Int

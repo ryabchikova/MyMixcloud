@@ -37,7 +37,7 @@ final class JsonDataConverter {
                      user: (identifier: jsonTrack.user.username, name: jsonTrack.user.name),
                      tags: jsonTrack.tags.map { makeTag(from: $0) },
                      playCount: jsonTrack.playCount,
-                     createdTime: convertTimestamp(jsonTrack.createdTime),
+                     uploadedTime: convertTimestamp(jsonTrack.createdTime),
                      listenTime: jsonTrack.listenTime.map { convertTimestamp($0) } ?? nil,
                      audioLength: convertSecondsToReadableTime(jsonTrack.audioLength),
                      favoriteCount: jsonTrack.favoriteCount,
