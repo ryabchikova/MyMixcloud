@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 final class SettingsPresenter {
 	weak var view: SettingsViewInput?
@@ -37,8 +38,6 @@ extension SettingsPresenter: SettingsViewOutput {
 
 extension SettingsPresenter: SettingsInteractorOutput {
     func didLogout() {
-        moduleOutput?.didLogout()
+        router.showLoginScreen()
     }
-    
-    
 }

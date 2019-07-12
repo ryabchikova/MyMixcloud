@@ -18,9 +18,3 @@ extension MainPresenter: MainModuleInput {
 
 extension MainPresenter: MainViewOutput {
 }
-
-extension MainPresenter: UserProfileModuleOutput {
-    func didLogout() {
-        moduleOutput?.didLogout()
-    }
-}

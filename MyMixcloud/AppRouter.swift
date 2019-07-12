@@ -27,7 +27,7 @@ final class AppRouter {
         }
     }
     
-    private func showLoginScreen() {
+    func showLoginScreen() {
         rootViewController = LoginContainer.assemble(with: LoginContext(moduleOutput: self)).viewController
     }
     
@@ -35,7 +35,7 @@ final class AppRouter {
         guard let currentUserId = settingsService.currentUserId() else {
             fatalError("Application error: can't receive curent user id")
         }
-        let mainContext = MainContext(moduleOutput: self, currentUserId: currentUserId)
+        let mainContext = MainContext(moduleOutput: nil, currentUserId: currentUserId)
         rootViewController = MainContainer.assemble(with: mainContext).viewController
     }
 }
@@ -43,11 +43,5 @@ final class AppRouter {
 extension AppRouter: LoginModuleOutput {
     func didLogin() {
         showMainScreen()
-    }
-}
-
-extension AppRouter: MainModuleOutput {
-    func didLogout() {
-        showLoginScreen()
     }
 }

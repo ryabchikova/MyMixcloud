@@ -9,11 +9,10 @@
 import Foundation
 
 protocol SettingsModuleInput {
-	var moduleOutput: SettingsModuleOutput? { get }
+    var moduleOutput: SettingsModuleOutput? { get }
 }
 
 protocol SettingsModuleOutput: class {
-    func didLogout()
 }
 
 protocol SettingsViewInput: class {
@@ -32,4 +31,5 @@ protocol SettingsInteractorOutput: class {
 }
 
 protocol SettingsRouterInput: class {
+    func showLoginScreen()
 }

@@ -34,7 +34,7 @@ extension UserProfilePresenter: UserProfileViewOutput {
     
     func didTapSettingsButton() {
         if let viewController = view as? UIViewController {
-            router.showSettingsScreen(in: viewController, moduleOutput: self)
+            router.showSettingsScreen(in: viewController)
         }
     }
 }
@@ -46,11 +46,5 @@ extension UserProfilePresenter: UserProfileInteractorOutput {
     
     func didLoadUser(_ user: User) {
         view?.set(userProfileViewModel: UserProfileViewModel(user: user))
-    }
-}
-
-extension UserProfilePresenter: SettingsModuleOutput {
-    func didLogout() {
-        moduleOutput?.didLogout()
     }
 }

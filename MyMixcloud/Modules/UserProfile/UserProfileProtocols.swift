@@ -14,7 +14,6 @@ protocol UserProfileModuleInput {
 }
 
 protocol UserProfileModuleOutput: class {
-    func didLogout()
 }
 
 protocol UserProfileViewInput: class {
@@ -37,5 +36,5 @@ protocol UserProfileInteractorOutput: class {
 }
 
 protocol UserProfileRouterInput: class {
-    func showSettingsScreen(in viewController: UIViewController, moduleOutput: SettingsModuleOutput?)
+    func showSettingsScreen(in viewController: UIViewController)
 }

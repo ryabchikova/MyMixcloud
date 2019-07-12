@@ -9,7 +9,11 @@
 import UIKit
 
 final class SettingsRouter {
+    weak var applicationRouter: AppRouter?
 }
 
 extension SettingsRouter: SettingsRouterInput {
+    func showLoginScreen() {
+        applicationRouter?.showLoginScreen()
+    }
 }

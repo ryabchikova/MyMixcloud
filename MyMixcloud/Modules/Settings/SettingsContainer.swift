@@ -23,6 +23,8 @@ final class SettingsContainer {
 		presenter.moduleOutput = context.moduleOutput
 
 		interactor.output = presenter
+        
+        router.applicationRouter = InjectionManager.shared.appRouter()
 
         return SettingsContainer(view: viewController, input: presenter, router: router)
 	}

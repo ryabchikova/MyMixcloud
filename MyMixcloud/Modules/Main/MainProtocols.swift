@@ -13,7 +13,6 @@ protocol MainModuleInput {
 }
 
 protocol MainModuleOutput: class {
-    func didLogout()
 }
 
 protocol MainViewInput: class {
