@@ -51,7 +51,7 @@ final class TrackView: UIView {
         
         coverImageView.contentMode = .scaleAspectFill
         coverImageView.backgroundColor = MMColors.imagePlaceholder
-        coverImageView.layer.borderColor = Styles.borderColor
+        coverImageView.layer.borderColor = Styles.borderColor.cgColor
         coverImageView.layer.borderWidth = Constants.coverBorderWidth
         
         userNameLabel.backgroundColor = Styles.backgroundColor
@@ -219,7 +219,7 @@ extension TrackView {
     
     private struct Styles {
         static let backgroundColor = MMColors.white
-        static let borderColor = MMColors.lightGray.cgColor
+        static let borderColor = MMColors.lightGray
         static let counterColor = MMColors.blue
     }
 }

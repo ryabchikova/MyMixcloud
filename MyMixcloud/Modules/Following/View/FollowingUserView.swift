@@ -36,7 +36,7 @@ final class FollowingUserView: UIView {
         
         avatarImageView.contentMode = .scaleAspectFill
         avatarImageView.backgroundColor = MMColors.imagePlaceholder
-        avatarImageView.layer.borderColor = MMColors.lightGray.cgColor
+        avatarImageView.layer.borderColor = Styles.borderColor.cgColor
         avatarImageView.layer.borderWidth = Constants.borderWidth
         avatarImageView.layer.cornerRadius = Constants.cornerRadius
         avatarImageView.layer.masksToBounds = true
@@ -105,5 +105,6 @@ extension FollowingUserView {
     
     private struct Styles {
         static let backgroundColor = MMColors.white
+        static let borderColor = MMColors.lightGray
     }
 }
