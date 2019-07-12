@@ -54,8 +54,6 @@ final class LoginView: UIView {
         userNameTextField.autocorrectionType = .no
         userNameTextField.returnKeyType = .done
         userNameTextField.delegate = self
-        userNameTextField.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 20, height: userNameTextField.frame.height))
-        userNameTextField.leftViewMode = .always
         
         startButton.backgroundColor = Styles.buttonColor
         startButton.layer.cornerRadius = Constants.cornerRadius

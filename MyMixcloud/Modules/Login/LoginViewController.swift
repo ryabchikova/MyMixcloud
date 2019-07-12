@@ -28,9 +28,14 @@ final class LoginViewController: UIViewController {
         self.view.addSubview(loginView)
     }
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        view.backgroundColor = MMColors.white
+    }
+    
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        loginView.pin.all()
+        loginView.pin.all(view.pin.safeArea)
     }
 }
 
