@@ -16,6 +16,8 @@ struct UserProfileViewModel {
     let locationString: NSAttributedString?
     let bioString: NSAttributedString?
     let followersString: NSAttributedString?
+    let followingString: NSAttributedString?
+    let cloudcastsString: NSAttributedString?
     
     init(user: User) {
         avatarImageUrl = user.profileImage
@@ -30,12 +32,9 @@ struct UserProfileViewModel {
         
         bioString = user.bio.map { NSAttributedString(string: $0, attributes: Styles.bio) }
         
-        if user.followersCount > 0 {
-            let followers = user.followersCount.description + " Followers"
-            followersString = NSAttributedString(string: followers, attributes: Styles.followers)
-        } else {
-            followersString = nil
-        }
+        followersString = user.followersCount > 0 ? NSAttributedString(string: "Followers " + user.followersCount.description, attributes: Styles.counters) : nil
+        followingString = user.followingCount > 0 ? NSAttributedString(string: "Follow " + user.followingCount.description, attributes: Styles.counters) : nil
+        cloudcastsString = user.cloudcastsCount > 0 ? NSAttributedString(string: "Shows " + user.cloudcastsCount.description, attributes: Styles.counters) : nil
     }
 }
 
@@ -63,7 +62,7 @@ extension UserProfileViewModel {
             ]
         }()
         
-        static let followers: [NSAttributedString.Key: Any] = {
+        static let counters: [NSAttributedString.Key: Any] = {
             return [
                 .font: MMFonts.smallBold,
                 .foregroundColor: MMColors.blue

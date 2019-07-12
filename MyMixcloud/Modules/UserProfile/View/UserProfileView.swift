@@ -19,6 +19,8 @@ final class UserProfileView: UIView {
     private let locationLabel = UILabel()
     private let bioLabel = UILabel()
     private let followersLabel = UILabel()
+    private let followingLabel = UILabel()
+    private let cloudcastsLabel = UILabel()
     
     init() {
         super.init(frame: .zero)
@@ -61,6 +63,8 @@ final class UserProfileView: UIView {
         bioLabel.numberOfLines = 0
         
         followersLabel.backgroundColor = Styles.backgroundColor
+        followingLabel.backgroundColor = Styles.backgroundColor
+        cloudcastsLabel.backgroundColor = Styles.backgroundColor
     }
     
     private func createFlex() {
@@ -94,9 +98,17 @@ final class UserProfileView: UIView {
                             .marginLeft(Constants.locationLeftMargin)
                     }
                 
-                flex.addItem(followersLabel)
-                    .marginTop(Constants.followersTopMargin)
+                flex.addItem()
+                    .direction(.row)
+                    .marginTop(Constants.countersTopMargin)
                     .alignSelf(.start)
+                    .define { flex in
+                        flex.addItem(followersLabel)
+                            .marginRight(Constants.counterRightMargin)
+                        flex.addItem(followingLabel)
+                            .marginRight(Constants.counterRightMargin)
+                        flex.addItem(cloudcastsLabel)
+                }
                 
                 flex.addItem(bioLabel)
                     .marginTop(Constants.topMargin)
@@ -127,6 +139,14 @@ final class UserProfileView: UIView {
         followersLabel.flex.display(model.followersString != nil ? .flex : .none)
         followersLabel.flex.markDirty()
         
+        followingLabel.attributedText = model.followingString
+        followingLabel.flex.display(model.followingString != nil ? .flex : .none)
+        followingLabel.flex.markDirty()
+        
+        cloudcastsLabel.attributedText = model.cloudcastsString
+        cloudcastsLabel.flex.display(model.cloudcastsString != nil ? .flex : .none)
+        cloudcastsLabel.flex.markDirty()
+        
         setNeedsLayout()
     }
 }
@@ -143,7 +163,8 @@ extension UserProfileView {
         static let locationImageSize: CGFloat = 22.0
         static let locationLeftMargin: CGFloat = 10.0
         static let topMargin: CGFloat = 10.0
-        static let followersTopMargin: CGFloat = 30.0
+        static let countersTopMargin: CGFloat = 30.0
+        static let counterRightMargin: CGFloat = 20.0
     }
     
     private struct Styles {

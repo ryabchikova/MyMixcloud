@@ -18,6 +18,7 @@ final class JsonDataConverter {
                     favoritesCount: jsonUser.favoriteCount,
                     followersCount: jsonUser.followerCount,
                     followingCount: jsonUser.followingCount,
+                    cloudcastsCount: jsonUser.cloudcastCount,
                     profileImage: jsonUser.pictures.large,
                     coverImage: jsonUser.coverPictures?.small)
     }

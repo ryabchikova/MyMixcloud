@@ -17,6 +17,7 @@ struct User {
     let favoritesCount: Int
     let followersCount: Int
     let followingCount: Int
+    let cloudcastsCount: Int
     let profileImage: URL?
     let coverImage: URL?
 }

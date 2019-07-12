@@ -18,6 +18,7 @@ struct JsonUser: Decodable {
     let favoriteCount: Int
     let followerCount: Int
     let followingCount: Int
+    let cloudcastCount: Int
     let pictures: Pictures
     let coverPictures: CoverPictures?
         
