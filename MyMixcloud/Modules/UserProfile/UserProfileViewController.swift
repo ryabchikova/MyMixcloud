@@ -11,6 +11,7 @@ import PinLayout
 
 final class UserProfileViewController: UIViewController {
     private let output: UserProfileViewOutput
+    private let scrollView = UIScrollView()
     private let profileView = UserProfileView()
     
     init(output: UserProfileViewOutput, isMyProfile: Bool) {
@@ -19,7 +20,10 @@ final class UserProfileViewController: UIViewController {
         
         if isMyProfile {
             navigationItem.title = "User profile"
-            navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "settingsIcon"), style: .plain, target: self, action: #selector(didTapSettings))
+            navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "settingsIcon"),
+                                                                style: .plain,
+                                                                target: self,
+                                                                action: #selector(didTapSettings))
         }
     }
     
@@ -28,13 +32,16 @@ final class UserProfileViewController: UIViewController {
     }
     
     override func loadView() {
-        self.view = UIView()
-        self.view.addSubview(profileView)
+        view = UIView()
+        scrollView.addSubview(profileView)
+        view.addSubview(scrollView)
     }
     
 	override func viewDidLoad() {
 		super.viewDidLoad()
         view.backgroundColor = MMColors.white
+        scrollView.backgroundColor = MMColors.white
+        scrollView.bounces = false
 	}
     
     override func viewWillAppear(_ animated: Bool) {
@@ -43,7 +50,10 @@ final class UserProfileViewController: UIViewController {
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        profileView.pin.all(view.pin.safeArea)
+        scrollView.pin.all(view.pin.safeArea)
+        profileView.pin.top().left().right()
+        profileView.flex.layout(mode: .adjustHeight)
+        scrollView.contentSize = profileView.frame.size
     }
     
     @objc private func didTapSettings() {
@@ -54,6 +64,7 @@ final class UserProfileViewController: UIViewController {
 extension UserProfileViewController: UserProfileViewInput {
     func set(userProfileViewModel: UserProfileViewModel) {
         self.profileView.update(with: userProfileViewModel)
+        view.setNeedsLayout()
     }
     
     func showDummyView() {

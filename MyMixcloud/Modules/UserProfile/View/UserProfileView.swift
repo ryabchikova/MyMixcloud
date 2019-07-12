@@ -43,15 +43,16 @@ final class UserProfileView: UIView {
         
         avatarImageView.contentMode = .scaleAspectFill
         avatarImageView.backgroundColor = MMColors.imagePlaceholder
-        avatarImageView.layer.borderColor = MMColors.white.cgColor
+        avatarImageView.layer.borderColor = Styles.imageBorderColor.cgColor
         avatarImageView.layer.borderWidth = Constants.borderWidth
         avatarImageView.layer.cornerRadius = Constants.cornerRadius
         avatarImageView.layer.masksToBounds = true
         
-        coverImageView.contentMode = .scaleAspectFill
+        //coverImageView.contentMode = .scaleAspectFill
        
         nameLabel.backgroundColor = Styles.backgroundColor
         nameLabel.numberOfLines = 0
+        nameLabel.textAlignment = .center
         
         locationImageView.image = UIImage(named: "locationIcon")
         locationImageView.contentMode = .scaleAspectFit
@@ -65,55 +66,50 @@ final class UserProfileView: UIView {
     }
     
     private func createFlex() {
-        flex.addItem()
-            .direction(.column)
-            .width(100%)
-            .height(100%)
-            .justifyContent(.center)
-            .define { flex in
-                flex.addItem(coverImageView)
-                    .position(.absolute)
-                    .top(0.0)
-                    .left(0.0)
-                    .width(100%)
-                    .height(40%)
+//        flex.addItem()
+//            .direction(.column)
+//            .define { flex in
+        
+                // TODO
+//                flex.addItem(coverImageView)
+//                    .position(.absolute)
+//                    .top(0.0)
+//                    .left(0.0)
+//                    .width(100%)
+//                    .height(40%)
                 
                 flex.addItem()
                     .direction(.column)
                     .marginHorizontal(Constants.contentHorizontalMargin)
+                    .marginVertical(Constants.contentVerticalMargin)
                     .alignItems(.center)
                     .define { flex in
                         flex.addItem(avatarImageView)
                             .size(Constants.avatarImageSize)
                         
                         flex.addItem(nameLabel)
-                            .marginTop(Constants.nameTopMargin)
-                            .shrink(1)
+                            .marginTop(Constants.topMargin)
 
                         flex.addItem()
                             .direction(.row)
                             .alignItems(.center)
-                            .marginTop(Constants.locationTopMargin)
-                            .shrink(1)
+                            .marginTop(Constants.topMargin)
                             .define { flex in
                                 flex.addItem(locationImageView)
                                     .size(Constants.locationImageSize)
                                 flex.addItem(locationLabel)
                                     .marginLeft(Constants.locationLeftMargin)
-                                    .shrink(1)
                             }
-                        
-                        flex.addItem(bioLabel)
-                            .marginTop(Constants.bioTopMargin)
-                            .alignSelf(.start)
-                            .shrink(1)
                         
                         flex.addItem(followersLabel)
                             .marginTop(Constants.followersTopMargin)
                             .alignSelf(.start)
-                            .shrink(1)
+                        
+                        flex.addItem(bioLabel)
+                            .marginTop(Constants.topMargin)
+                            .alignSelf(.start)
                     }
-            }
+            //}
     }
     
     func update(with model: UserProfileViewModel) {
@@ -147,18 +143,18 @@ extension UserProfileView {
     
     private struct Constants {
         static let contentHorizontalMargin: CGFloat = 20.0
+        static let contentVerticalMargin: CGFloat = 30.0
         static let avatarImageSize: CGFloat = 200.0
         static let borderWidth: CGFloat = 1.0
         static let cornerRadius: CGFloat = 20.0
         static let locationImageSize: CGFloat = 22.0
         static let locationLeftMargin: CGFloat = 10.0
-        static let nameTopMargin: CGFloat = 10.0
-        static let locationTopMargin: CGFloat = 10.0
-        static let bioTopMargin: CGFloat = 30.0
-        static let followersTopMargin: CGFloat = 10.0
+        static let topMargin: CGFloat = 10.0
+        static let followersTopMargin: CGFloat = 30.0
     }
     
     private struct Styles {
         static let backgroundColor = MMColors.white
+        static let imageBorderColor = MMColors.white
     }
 }
