@@ -11,6 +11,7 @@ import UIKit
 final class FollowingViewController: UIViewController {
 	private let output: FollowingViewOutput
     private let tableView = UITableView()
+    private let refreshControl = UIRefreshControl()
     private var models: [FollowingUserViewModel] = []
 
     init(output: FollowingViewOutput) {
@@ -27,11 +28,17 @@ final class FollowingViewController: UIViewController {
     override func loadView() {
         self.view = UIView()
         view.addSubview(tableView)
+        if #available(iOS 10.0, *) {
+            tableView.refreshControl = refreshControl
+        } else {
+            tableView.addSubview(refreshControl)
+        }
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = MMColors.white
+        refreshControl.addTarget(self, action: #selector(refreshData(_:)), for: .valueChanged)
         output.viewDidLoad()
     }
     
@@ -49,6 +56,12 @@ final class FollowingViewController: UIViewController {
         tableView.rowHeight = FollowingTableViewCell.height
         tableView.separatorInset.left = Constants.tableViewSeparatorInset
         tableView.separatorInset.right = Constants.tableViewSeparatorInset
+    }
+    
+    @objc private func refreshData(_ sender: Any) {
+        // Fetch Weather Data
+        print("pullTorefresh")
+        refreshControl.endRefreshing()
     }
 }
 

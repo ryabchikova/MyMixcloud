@@ -46,9 +46,9 @@ final class LoginView: UIView {
         userNameTextField.layer.cornerRadius = Constants.cornerRadius
         userNameTextField.layer.masksToBounds = true
         userNameTextField.clearButtonMode = .whileEditing
-        userNameTextField.attributedPlaceholder = model.userNamePlaceholderString
-        userNameTextField.font = model.userNameStringFont
-        userNameTextField.textColor = model.userNameStringColor
+        userNameTextField.font = Styles.userNameFont
+        userNameTextField.textColor = Styles.userNameColor
+        userNameTextField.textAlignment = .center
         userNameTextField.adjustsFontSizeToFitWidth = true
         userNameTextField.autocapitalizationType = .none
         userNameTextField.autocorrectionType = .no
@@ -126,6 +126,8 @@ extension LoginView {
         static let backgroundColor = MMColors.white
         static let textFieldColor = MMColors.superLightGray
         static let buttonColor = MMColors.sunny
+        static let userNameColor = MMColors.darkGray
+        static let userNameFont = MMFonts.mediumBold
     }
 }
 
