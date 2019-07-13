@@ -18,7 +18,6 @@ final class FollowingViewController: UIViewController {
         self.output = output
         super.init(nibName: nil, bundle: nil)
         navigationItem.title = "Following"
-        setupTableView()
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -38,7 +37,8 @@ final class FollowingViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = MMColors.white
-        refreshControl.addTarget(self, action: #selector(refreshData(_:)), for: .valueChanged)
+        setupTableView()
+        refreshControl.addTarget(self, action: #selector(handlePullToRefresh), for: .valueChanged)
         output.viewDidLoad()
     }
     
@@ -58,9 +58,8 @@ final class FollowingViewController: UIViewController {
         tableView.separatorInset.right = Constants.tableViewSeparatorInset
     }
     
-    @objc private func refreshData(_ sender: Any) {
-        // Fetch Weather Data
-        print("pullTorefresh")
+    @objc private func handlePullToRefresh() {
+        output.didPullToRefresh()
         refreshControl.endRefreshing()
     }
 }
@@ -91,7 +90,7 @@ extension FollowingViewController: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        output.viewDidTapOnUser(with: models[indexPath.row].userId)
+        output.didTapOnUser(with: models[indexPath.row].userId)
     }
 }
 
@@ -99,6 +98,14 @@ extension FollowingViewController: FollowingViewInput {
     
     func set(viewModels: [FollowingUserViewModel]) {
         models.append(contentsOf: viewModels)
+        print("DBG common set \(models.count) models")
+        self.tableView.reloadData()
+    }
+    
+    func reset(viewModels: [FollowingUserViewModel]) {
+        models = viewModels
+        print("DBG after reset \(models.count) models")
+        
         self.tableView.reloadData()
     }
     

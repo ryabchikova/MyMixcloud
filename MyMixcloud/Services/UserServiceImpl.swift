@@ -17,6 +17,22 @@ final class UserServiceImpl: UserService {
     func user(userId: String, completionHandler: @escaping (User?, Error?) -> Void) {
         let url = MixcloudApi.user.requestUrl(identifier: userId)
         
+//        if let cachedResponse = URLCache.shared.cachedResponse(for: Alamofire.request(url).request!) {
+//            //print("cachedResponse: \(cachedResponse.data)")
+//            do {
+//                let decoder = JSONDecoder()
+//                decoder.keyDecodingStrategy = .convertFromSnakeCase
+//                let jsonUser = try decoder.decode(JsonUser.self, from: cachedResponse.data)
+//                let user = converter.makeUser(from: jsonUser)
+//                completionHandler(user, nil)
+//                print("**** Return User from cache: ")
+//                return
+//            } catch {
+//                print("*** error when decode user from cache ", error)
+//            }
+//        }
+       
+        
         Alamofire.request(url)
             .validate()
             .responseData(queue: dispatchQueue) { [weak self] response in
@@ -72,6 +88,7 @@ final class UserServiceImpl: UserService {
                 
                 do {
                     let decoder = JSONDecoder()
+                    decoder.keyDecodingStrategy = .convertFromSnakeCase
                     let jsonFollowing = try decoder.decode(JsonFollowing.self, from: data)
                     let followingList = sSelf.converter.makeFollowingList(from: jsonFollowing)
                     completionHandler(followingList, nil)

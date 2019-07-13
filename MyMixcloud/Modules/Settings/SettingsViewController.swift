@@ -36,7 +36,6 @@ final class SettingsViewController: UIViewController {
         super.init(nibName: nil, bundle: nil)
         
         navigationItem.title = "Settings"
-        setupTableView()
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -51,6 +50,7 @@ final class SettingsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = MMColors.white
+        setupTableView()
     }
     
     override func viewDidLayoutSubviews() {

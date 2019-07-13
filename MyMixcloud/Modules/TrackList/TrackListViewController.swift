@@ -17,7 +17,6 @@ final class TrackListViewController: UIViewController {
         self.output = output
         super.init(nibName: nil, bundle: nil)
         navigationItem.title = title
-        setupTableView()
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -32,6 +31,7 @@ final class TrackListViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = MMColors.white
+        setupTableView()
         output.viewDidLoad()
     }
     
@@ -78,7 +78,7 @@ extension TrackListViewController: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        output.viewDidTapOnTrack(with: models[indexPath.row].trackId)
+        output.didTapOnTrack(with: models[indexPath.row].trackId)
     }
 }
 

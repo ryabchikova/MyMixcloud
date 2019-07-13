@@ -38,3 +38,8 @@ struct FollowingContext {
 	weak var moduleOutput: FollowingModuleOutput?
     let userId: String
 }
+
+enum LoadingReason {
+    case regular
+    case pullToRefresh
+}

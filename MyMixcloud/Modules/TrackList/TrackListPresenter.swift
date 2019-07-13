@@ -49,7 +49,7 @@ extension TrackListPresenter: TrackListViewOutput {
         interactor.loadTrackList(of: trackListType, userId: userId, page: nextPage)
     }
     
-    func viewDidTapOnTrack(with trackId: String) {
+    func didTapOnTrack(with trackId: String) {
         if let viewController = view as? UIViewController {
             router.showTrackScreen(in: viewController, trackId: trackId)
         }

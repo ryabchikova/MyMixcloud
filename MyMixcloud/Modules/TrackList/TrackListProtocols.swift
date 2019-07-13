@@ -24,7 +24,7 @@ protocol TrackListViewInput: class {
 protocol TrackListViewOutput: class {
     func viewDidLoad()
     func viewDidScrollPage()
-    func viewDidTapOnTrack(with trackId: String)
+    func didTapOnTrack(with trackId: String)
 }
 
 protocol TrackListInteractorInput: class {
