@@ -20,8 +20,8 @@ final class InjectionManager {
     private let container = Container()
     
     private init() {
-        container.register(UserService.self) { _ in
-            UserServiceImpl()
+        container.register(UserService.self) { resolver in
+            UserServiceImpl(reachabilityService: resolver.resolve(NetworkReachabilityService.self)!)
         }
         container.register(TrackService.self) { _ in
             TrackServiceImpl()
@@ -30,6 +30,10 @@ final class InjectionManager {
             SettingsServiceImpl()
         }
 
+        container.register(NetworkReachabilityService.self) { _ in
+            NetworkReachabilityServiceImpl()
+        }
+        
         container.register(AppRouter.self) { resolver in
             AppRouter(settingsService: resolver.resolve(SettingsService.self)!)
         }.inObjectScope(.container)
@@ -45,6 +49,10 @@ final class InjectionManager {
     
     func settingsService() -> SettingsService {
         return resolver.resolve(SettingsService.self)!
+    }
+    
+    func networkReachabilityService() -> NetworkReachabilityService {
+        return resolver.resolve(NetworkReachabilityService.self)!
     }
     
     func appRouter() -> AppRouter {

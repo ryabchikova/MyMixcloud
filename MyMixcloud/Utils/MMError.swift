@@ -11,6 +11,7 @@ import Foundation
 struct MMError: Error {
     enum ErrorType: String {
         case noMatter
+        case networkUnreachable
         case webServiceError
         case decodingError
         case executionError

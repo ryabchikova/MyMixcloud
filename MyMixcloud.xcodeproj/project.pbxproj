@@ -86,6 +86,9 @@
 		425255B922D7270100D2EDC9 /* TrackContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 425255B322D7270100D2EDC9 /* TrackContainer.swift */; };
 		425255BD22D7275B00D2EDC9 /* TrackViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 425255BC22D7275B00D2EDC9 /* TrackViewModel.swift */; };
 		425255BF22D7276700D2EDC9 /* TrackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 425255BE22D7276700D2EDC9 /* TrackView.swift */; };
+		42B7D66722DA686D00ECDAB0 /* NetworkReachabilityService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42B7D66622DA686D00ECDAB0 /* NetworkReachabilityService.swift */; };
+		42B7D66922DA68BD00ECDAB0 /* NetworkReachabilityServiceImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42B7D66822DA68BD00ECDAB0 /* NetworkReachabilityServiceImpl.swift */; };
+		42B7D66B22DA892700ECDAB0 /* DummyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42B7D66A22DA892700ECDAB0 /* DummyViewModel.swift */; };
 		42DD63CB22B3E9E600A57196 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42DD63CA22B3E9E600A57196 /* AppDelegate.swift */; };
 		42DD63D422B3E9E800A57196 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 42DD63D322B3E9E800A57196 /* Assets.xcassets */; };
 		42DD63D722B3E9E800A57196 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 42DD63D522B3E9E800A57196 /* LaunchScreen.storyboard */; };
@@ -172,6 +175,9 @@
 		425255B322D7270100D2EDC9 /* TrackContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackContainer.swift; sourceTree = "<group>"; };
 		425255BC22D7275B00D2EDC9 /* TrackViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackViewModel.swift; sourceTree = "<group>"; };
 		425255BE22D7276700D2EDC9 /* TrackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackView.swift; sourceTree = "<group>"; };
+		42B7D66622DA686D00ECDAB0 /* NetworkReachabilityService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkReachabilityService.swift; sourceTree = "<group>"; };
+		42B7D66822DA68BD00ECDAB0 /* NetworkReachabilityServiceImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkReachabilityServiceImpl.swift; sourceTree = "<group>"; };
+		42B7D66A22DA892700ECDAB0 /* DummyViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DummyViewModel.swift; sourceTree = "<group>"; };
 		42DD63C722B3E9E600A57196 /* MyMixcloud.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyMixcloud.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		42DD63CA22B3E9E600A57196 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		42DD63D322B3E9E800A57196 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -232,6 +238,7 @@
 			isa = PBXGroup;
 			children = (
 				4220E29822C585AC00FEB7F8 /* DummyView.swift */,
+				42B7D66A22DA892700ECDAB0 /* DummyViewModel.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -339,6 +346,8 @@
 				42273C0C22C7ACB500EDB1E5 /* TrackServiceImpl.swift */,
 				4201812522CFDEB0007752B9 /* SettingsService.swift */,
 				4201812722CFDF18007752B9 /* SettingsServiceImpl.swift */,
+				42B7D66622DA686D00ECDAB0 /* NetworkReachabilityService.swift */,
+				42B7D66822DA68BD00ECDAB0 /* NetworkReachabilityServiceImpl.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -598,6 +607,7 @@
 				4201813522D072DA007752B9 /* LoginContainer.swift in Sources */,
 				4201815F22D32EC9007752B9 /* SettingsRouter.swift in Sources */,
 				42273C0722C7A6BC00EDB1E5 /* TrackService.swift in Sources */,
+				42B7D66922DA68BD00ECDAB0 /* NetworkReachabilityServiceImpl.swift in Sources */,
 				42273C0522C7A12600EDB1E5 /* JsonTag.swift in Sources */,
 				425255B622D7270100D2EDC9 /* TrackViewController.swift in Sources */,
 				425255B422D7270100D2EDC9 /* TrackPresenter.swift in Sources */,
@@ -609,6 +619,7 @@
 				4201813822D0730C007752B9 /* LoginViewModel.swift in Sources */,
 				4220E28822C4E61900FEB7F8 /* UserProfilePresenter.swift in Sources */,
 				4201813122D072DA007752B9 /* LoginRouter.swift in Sources */,
+				42B7D66722DA686D00ECDAB0 /* NetworkReachabilityService.swift in Sources */,
 				4224F96522CA37EC00E847AB /* TrackListViewController.swift in Sources */,
 				422E6EA522D3B93500DBEB2E /* MainViewController.swift in Sources */,
 				422EE0B722BA2A0A00451EED /* MMError.swift in Sources */,
@@ -616,6 +627,7 @@
 				4220E2B022C648CC00FEB7F8 /* FollowingTableViewCell.swift in Sources */,
 				4201816122D32EC9007752B9 /* SettingsProtocols.swift in Sources */,
 				4201813022D072DA007752B9 /* LoginPresenter.swift in Sources */,
+				42B7D66B22DA892700ECDAB0 /* DummyViewModel.swift in Sources */,
 				4224F96422CA37EC00E847AB /* TrackListRouter.swift in Sources */,
 				4220E28922C4E61900FEB7F8 /* UserProfileRouter.swift in Sources */,
 				4220E28C22C4E61900FEB7F8 /* UserProfileInteractor.swift in Sources */,

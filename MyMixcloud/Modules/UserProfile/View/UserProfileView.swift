@@ -22,6 +22,8 @@ final class UserProfileView: UIView {
     private let followingLabel = UILabel()
     private let cloudcastsLabel = UILabel()
     
+    private(set) var isEmpty = true
+    
     init() {
         super.init(frame: .zero)
         setup()
@@ -146,6 +148,8 @@ final class UserProfileView: UIView {
         cloudcastsLabel.attributedText = model.cloudcastsString
         cloudcastsLabel.flex.display(model.cloudcastsString != nil ? .flex : .none)
         cloudcastsLabel.flex.markDirty()
+        
+        isEmpty = false
         
         setNeedsLayout()
     }

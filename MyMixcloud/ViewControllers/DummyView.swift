@@ -6,34 +6,75 @@
 //  Copyright © 2019 ryabchikova. All rights reserved.
 //
 
+
 import Foundation
-import PinLayout
+import FlexLayout
+
+
+protocol DummyViewOutput: class {
+    func didTapRetry()
+}
 
 final class DummyView: UIView {
-    
+    weak var output: DummyViewOutput?
     private let errorMessageLabel = UILabel()
-
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        setup()
+    private let retryButton = UIButton(type: .custom)
+    
+    init(model: DummyViewModel) {
+        super.init(frame: .zero)
+        createFlex()
+        setup(with: model)
     }
     
     @available(*, unavailable)
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-
+    
     override func layoutSubviews() {
         super.layoutSubviews()
-        errorMessageLabel.pin.all(20.0)
+        flex.layout(mode: .fitContainer)
     }
     
-    private func setup() {
+    private func setup(with model: DummyViewModel) {
         backgroundColor = Styles.backgroundColor
+        
+        errorMessageLabel.backgroundColor = Styles.backgroundColor
         errorMessageLabel.numberOfLines = 0
-        errorMessageLabel.attributedText = NSAttributedString(string: "An error has occurred. Retry again later.", attributes: Styles.message)
         errorMessageLabel.textAlignment = .center
-        addSubview(errorMessageLabel)
+        errorMessageLabel.attributedText = model.errorMessageString
+        errorMessageLabel.flex.markDirty()
+        
+        retryButton.backgroundColor = Styles.buttonColor
+        retryButton.layer.cornerRadius = Constants.cornerRadius
+        retryButton.layer.masksToBounds = true
+        retryButton.isEnabled = true
+        retryButton.setAttributedTitle(model.retryButtonTitleString, for: .normal)
+        retryButton.addTarget(self, action: #selector(didTapRetry), for: .touchUpInside)
+    
+        setNeedsLayout()
+    }
+    
+    private func createFlex() {
+        flex.addItem()
+            .direction(.column)
+            .width(100%)
+            .height(100%)
+            .justifyContent(.center)
+            .alignItems(.center)
+            .define { flex in
+                flex.addItem(errorMessageLabel)
+                    .marginHorizontal(Constants.messageMargin)
+        
+                flex.addItem(retryButton)
+                    .width(Constants.buttonWidth)
+                    .height(Constants.buttonHeight)
+                    .marginTop(Constants.buttonTopMargin)
+        }
+    }
+    
+    @objc private func didTapRetry() {
+        output?.didTapRetry()
     }
 }
 
@@ -41,16 +82,15 @@ extension DummyView {
     
     private struct Constants {
         static let messageMargin: CGFloat = 20.0
+        static let cornerRadius: CGFloat = 4.0
+        static let buttonWidth: CGFloat = 100.0
+        static let buttonHeight: CGFloat = 40.0
+        static let buttonTopMargin: CGFloat = 30.0
     }
     
     private struct Styles {
         static let backgroundColor = MMColors.white
-        
-        static let message: [NSAttributedString.Key: Any] = {
-            return [
-                .font: MMFonts.mediumBold,
-                .foregroundColor: MMColors.darkGray
-            ]
-        }()
+        static let buttonColor = MMColors.blue
     }
 }
+

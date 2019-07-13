@@ -13,6 +13,7 @@ final class UserProfileViewController: UIViewController {
     private let output: UserProfileViewOutput
     private let scrollView = UIScrollView()
     private let profileView = UserProfileView()
+    private var dummyView: DummyView?
     
     init(output: UserProfileViewOutput, isMyProfile: Bool) {
         self.output = output
@@ -54,6 +55,7 @@ final class UserProfileViewController: UIViewController {
         profileView.pin.top().left().right()
         profileView.flex.layout(mode: .adjustHeight)
         scrollView.contentSize = profileView.frame.size
+        dummyView?.pin.all(view.pin.safeArea)
     }
     
     @objc private func didTapSettings() {
@@ -63,10 +65,35 @@ final class UserProfileViewController: UIViewController {
 
 extension UserProfileViewController: UserProfileViewInput {
     func set(userProfileViewModel: UserProfileViewModel) {
-        self.profileView.update(with: userProfileViewModel)
+        hideDummyViewIfNeed()
+        profileView.update(with: userProfileViewModel)
         view.setNeedsLayout()
     }
     
-    func showDummyView() {
+    var isEmpty: Bool {
+        return profileView.isEmpty
     }
+    
+    func showDummyView(error: MMError) {
+        hideDummyViewIfNeed() 
+        dummyView = DummyView(model: DummyViewModel(error: error))
+        dummyView?.output = self
+        view.addSubview(dummyView!)
+    }
+    
+    private func hideDummyViewIfNeed() {
+        guard let dummy = dummyView else {
+            return
+        }
+        dummy.removeFromSuperview()
+        dummyView = nil
+    }
+}
+
+extension UserProfileViewController: DummyViewOutput {
+    func didTapRetry() {
+        output.viewNeedReload()
+    }
+    
+    
 }

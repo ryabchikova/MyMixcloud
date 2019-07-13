@@ -17,13 +17,15 @@ protocol UserProfileModuleOutput: class {
 }
 
 protocol UserProfileViewInput: class {
+    var isEmpty: Bool { get }
     func set(userProfileViewModel: UserProfileViewModel)
-    func showDummyView()
+    func showDummyView(error: MMError)
 }
 
 protocol UserProfileViewOutput: class {
     func viewWillAppear()
     func didTapSettingsButton()
+    func viewNeedReload()
 }
 
 protocol UserProfileInteractorInput: class {
@@ -31,7 +33,7 @@ protocol UserProfileInteractorInput: class {
 }
 
 protocol UserProfileInteractorOutput: class {
-    func gotError()
+    func gotError(_ error: MMError)
     func didLoadUser(_ user: User)
 }
 

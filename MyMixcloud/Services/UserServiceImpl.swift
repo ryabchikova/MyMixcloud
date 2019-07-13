@@ -11,10 +11,15 @@ import Alamofire
 
 final class UserServiceImpl: UserService {
     
+    private let networkReachabilityService: NetworkReachabilityService
     private let converter = JsonDataConverter()
     private let dispatchQueue = DispatchQueue.global(qos: .userInitiated)
     
-    func user(userId: String, completionHandler: @escaping (User?, Error?) -> Void) {
+    init(reachabilityService: NetworkReachabilityService) {
+        self.networkReachabilityService = reachabilityService
+    }
+    
+    func user(userId: String, completionHandler: @escaping (User?, MMError?) -> Void) {
         let url = MixcloudApi.user.requestUrl(identifier: userId)
         
 //        if let cachedResponse = URLCache.shared.cachedResponse(for: Alamofire.request(url).request!) {
@@ -31,22 +36,29 @@ final class UserServiceImpl: UserService {
 //                print("*** error when decode user from cache ", error)
 //            }
 //        }
-       
         
         Alamofire.request(url)
             .validate()
             .responseData(queue: dispatchQueue) { [weak self] response in
-                guard let data = response.result.value else {
-                    let error = MMError(type: .webServiceError,
-                                        location: String(describing: self) + ".user",
-                                        what: (response.result.error as? AFError)?.errorDescription)
-                    error.log()
-                    completionHandler(nil, error)
+                guard let sSelf = self else {
+                    completionHandler(nil, MMError(type: .executionError))
                     return
                 }
                 
-                guard let sSelf = self else {
-                    completionHandler(nil, MMError(type: .executionError))
+                guard let data = response.result.value else {
+                    let error: MMError
+                    if sSelf.networkReachabilityService.isReachable() {
+                        error = MMError(type: .webServiceError,
+                                        location: String(describing: self) + ".user",
+                                        what: (response.result.error as? AFError)?.errorDescription)
+                    } else {
+                        error = MMError(type: .networkUnreachable,
+                                        location: String(describing: self) + ".user",
+                                        what: nil)
+                    }
+                    
+                    error.log()
+                    completionHandler(nil, error)
                     return
                 }
                 
