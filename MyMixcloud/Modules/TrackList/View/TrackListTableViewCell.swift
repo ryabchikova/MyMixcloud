@@ -9,7 +9,7 @@
 import Foundation
 import PinLayout
 
-final class TrackListTableViewCell: UITableViewCell {
+final class TrackListTableViewCell: UITableViewCell, MMTableViewCell {
     private let itemView = TrackListItemView()
     static let height: CGFloat = 92.0
     

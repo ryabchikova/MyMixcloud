@@ -19,7 +19,6 @@ protocol FollowingModuleOutput: class {
 protocol FollowingViewInput: class {
     func set(viewModels: [FollowingUserViewModel])
     func reset(viewModels: [FollowingUserViewModel])
-    func showDummyView()
 }
 
 protocol FollowingViewOutput: class {

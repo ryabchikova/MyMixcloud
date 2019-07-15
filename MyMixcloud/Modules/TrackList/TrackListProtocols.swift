@@ -18,7 +18,6 @@ protocol TrackListModuleOutput: class {
 
 protocol TrackListViewInput: class {
     func set(viewModels: [TrackListItemViewModel])
-    func showDummyView()
 }
 
 protocol TrackListViewOutput: class {

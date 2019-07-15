@@ -90,6 +90,7 @@
 		42B7D66922DA68BD00ECDAB0 /* NetworkReachabilityServiceImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42B7D66822DA68BD00ECDAB0 /* NetworkReachabilityServiceImpl.swift */; };
 		42B7D66B22DA892700ECDAB0 /* DummyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42B7D66A22DA892700ECDAB0 /* DummyViewModel.swift */; };
 		42B7D66D22DCDF1100ECDAB0 /* MMViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42B7D66C22DCDF1100ECDAB0 /* MMViewController.swift */; };
+		42B7D67022DD05C000ECDAB0 /* TableViewManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42B7D66F22DD05C000ECDAB0 /* TableViewManager.swift */; };
 		42DD63CB22B3E9E600A57196 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42DD63CA22B3E9E600A57196 /* AppDelegate.swift */; };
 		42DD63D422B3E9E800A57196 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 42DD63D322B3E9E800A57196 /* Assets.xcassets */; };
 		42DD63D722B3E9E800A57196 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 42DD63D522B3E9E800A57196 /* LaunchScreen.storyboard */; };
@@ -180,6 +181,7 @@
 		42B7D66822DA68BD00ECDAB0 /* NetworkReachabilityServiceImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkReachabilityServiceImpl.swift; sourceTree = "<group>"; };
 		42B7D66A22DA892700ECDAB0 /* DummyViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DummyViewModel.swift; sourceTree = "<group>"; };
 		42B7D66C22DCDF1100ECDAB0 /* MMViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MMViewController.swift; sourceTree = "<group>"; };
+		42B7D66F22DD05C000ECDAB0 /* TableViewManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewManager.swift; sourceTree = "<group>"; };
 		42DD63C722B3E9E600A57196 /* MyMixcloud.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyMixcloud.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		42DD63CA22B3E9E600A57196 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		42DD63D322B3E9E800A57196 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -298,7 +300,6 @@
 				4224F96922CA3D1600E847AB /* View */,
 				4224F95D22CA37EC00E847AB /* TrackListPresenter.swift */,
 				4224F95E22CA37EC00E847AB /* TrackListRouter.swift */,
-				4224F95F22CA37EC00E847AB /* TrackListViewController.swift */,
 				4224F96022CA37EC00E847AB /* TrackListProtocols.swift */,
 				4224F96122CA37EC00E847AB /* TrackListInteractor.swift */,
 				4224F96222CA37EC00E847AB /* TrackListContainer.swift */,
@@ -312,6 +313,8 @@
 				4224F96A22CA3D4D00E847AB /* TrackListItemViewModel.swift */,
 				4224F96C22CA3D7200E847AB /* TrackListItemView.swift */,
 				4224F96E22CA3DEE00E847AB /* TrackListTableViewCell.swift */,
+				4224F95F22CA37EC00E847AB /* TrackListViewController.swift */,
+				42B7D66F22DD05C000ECDAB0 /* TableViewManager.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -646,6 +649,7 @@
 				42273C0922C7A6F400EDB1E5 /* Track.swift in Sources */,
 				4220E2A822C62B1A00FEB7F8 /* FollowingContainer.swift in Sources */,
 				422EE0A922B3F47A00451EED /* UserService.swift in Sources */,
+				42B7D67022DD05C000ECDAB0 /* TableViewManager.swift in Sources */,
 				4201816022D32EC9007752B9 /* SettingsViewController.swift in Sources */,
 				4224F96F22CA3DEE00E847AB /* TrackListTableViewCell.swift in Sources */,
 				42273C0B22C7A7EA00EDB1E5 /* Tag.swift in Sources */,

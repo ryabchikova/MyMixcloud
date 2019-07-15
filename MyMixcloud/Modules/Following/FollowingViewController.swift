@@ -108,16 +108,4 @@ extension FollowingViewController: FollowingViewInput {
         
         self.tableView.reloadData()
     }
-    
-    func showDummyView() {
-        
-        // TODO его нужно как-то скывать вообще-то и remove from superview
-        
-//        guard models.isEmpty else {
-//            return
-//        }
-//
-//            let dummy = DummyView(frame: self.view.frame)
-//            self.view.addSubview(dummy)
-    }
 }
