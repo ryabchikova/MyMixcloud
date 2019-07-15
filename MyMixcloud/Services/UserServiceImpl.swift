@@ -36,7 +36,7 @@ final class UserServiceImpl: UserService {
 //                print("*** error when decode user from cache ", error)
 //            }
 //        }
-        
+
         Alamofire.request(url)
             .validate()
             .responseData(queue: dispatchQueue) { [weak self] response in

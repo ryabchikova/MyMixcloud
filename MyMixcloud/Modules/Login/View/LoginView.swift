@@ -61,7 +61,7 @@ final class LoginView: UIView {
         startButton.isEnabled = false
         startButton.setAttributedTitle(model.startButtonEnabledString, for: .normal)
         startButton.setAttributedTitle(model.startButtonDisabledString, for: .disabled)
-        startButton.addTarget(self, action: #selector(didTapStart), for: .touchUpInside)
+        startButton.addTarget(self, action: #selector(startButtonPressed), for: .touchUpInside)
         
         setNeedsLayout()
     }
@@ -93,7 +93,7 @@ final class LoginView: UIView {
             }
     }
     
-    @objc private func didTapStart() {
+    @objc private func startButtonPressed() {
         output?.didTapStart(with: userNameTextField.text ?? "")
     }
 }

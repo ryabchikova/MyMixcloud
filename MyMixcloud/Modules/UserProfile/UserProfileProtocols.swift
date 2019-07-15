@@ -19,13 +19,13 @@ protocol UserProfileModuleOutput: class {
 protocol UserProfileViewInput: class {
     var isEmpty: Bool { get }
     func set(userProfileViewModel: UserProfileViewModel)
-    func showDummyView(error: MMError)
+    func showDummyView(for error: MMError, retryHandler: @escaping () -> Void)
+    func hideDummyViewIfNeed()
 }
 
 protocol UserProfileViewOutput: class {
     func viewWillAppear()
     func didTapSettingsButton()
-    func viewNeedReload()
 }
 
 protocol UserProfileInteractorInput: class {

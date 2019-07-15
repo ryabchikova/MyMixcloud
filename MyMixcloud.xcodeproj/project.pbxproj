@@ -89,6 +89,7 @@
 		42B7D66722DA686D00ECDAB0 /* NetworkReachabilityService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42B7D66622DA686D00ECDAB0 /* NetworkReachabilityService.swift */; };
 		42B7D66922DA68BD00ECDAB0 /* NetworkReachabilityServiceImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42B7D66822DA68BD00ECDAB0 /* NetworkReachabilityServiceImpl.swift */; };
 		42B7D66B22DA892700ECDAB0 /* DummyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42B7D66A22DA892700ECDAB0 /* DummyViewModel.swift */; };
+		42B7D66D22DCDF1100ECDAB0 /* MMViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42B7D66C22DCDF1100ECDAB0 /* MMViewController.swift */; };
 		42DD63CB22B3E9E600A57196 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42DD63CA22B3E9E600A57196 /* AppDelegate.swift */; };
 		42DD63D422B3E9E800A57196 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 42DD63D322B3E9E800A57196 /* Assets.xcassets */; };
 		42DD63D722B3E9E800A57196 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 42DD63D522B3E9E800A57196 /* LaunchScreen.storyboard */; };
@@ -178,6 +179,7 @@
 		42B7D66622DA686D00ECDAB0 /* NetworkReachabilityService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkReachabilityService.swift; sourceTree = "<group>"; };
 		42B7D66822DA68BD00ECDAB0 /* NetworkReachabilityServiceImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkReachabilityServiceImpl.swift; sourceTree = "<group>"; };
 		42B7D66A22DA892700ECDAB0 /* DummyViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DummyViewModel.swift; sourceTree = "<group>"; };
+		42B7D66C22DCDF1100ECDAB0 /* MMViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MMViewController.swift; sourceTree = "<group>"; };
 		42DD63C722B3E9E600A57196 /* MyMixcloud.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyMixcloud.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		42DD63CA22B3E9E600A57196 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		42DD63D322B3E9E800A57196 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -237,8 +239,8 @@
 		4220E27522C4A8E400FEB7F8 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				4220E29822C585AC00FEB7F8 /* DummyView.swift */,
-				42B7D66A22DA892700ECDAB0 /* DummyViewModel.swift */,
+				42B7D66E22DCED3800ECDAB0 /* Dummy */,
+				42B7D66C22DCDF1100ECDAB0 /* MMViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -421,6 +423,15 @@
 				425255BE22D7276700D2EDC9 /* TrackView.swift */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		42B7D66E22DCED3800ECDAB0 /* Dummy */ = {
+			isa = PBXGroup;
+			children = (
+				4220E29822C585AC00FEB7F8 /* DummyView.swift */,
+				42B7D66A22DA892700ECDAB0 /* DummyViewModel.swift */,
+			);
+			path = Dummy;
 			sourceTree = "<group>";
 		};
 		42DD63BE22B3E9E600A57196 = {
@@ -621,6 +632,7 @@
 				4201813122D072DA007752B9 /* LoginRouter.swift in Sources */,
 				42B7D66722DA686D00ECDAB0 /* NetworkReachabilityService.swift in Sources */,
 				4224F96522CA37EC00E847AB /* TrackListViewController.swift in Sources */,
+				42B7D66D22DCDF1100ECDAB0 /* MMViewController.swift in Sources */,
 				422E6EA522D3B93500DBEB2E /* MainViewController.swift in Sources */,
 				422EE0B722BA2A0A00451EED /* MMError.swift in Sources */,
 				4201812822CFDF18007752B9 /* SettingsServiceImpl.swift in Sources */,

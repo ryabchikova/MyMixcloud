@@ -10,17 +10,13 @@
 import Foundation
 import FlexLayout
 
-
-protocol DummyViewOutput: class {
-    func didTapRetry()
-}
-
 final class DummyView: UIView {
-    weak var output: DummyViewOutput?
     private let errorMessageLabel = UILabel()
     private let retryButton = UIButton(type: .custom)
+    private let retryHandler: () -> Void
     
-    init(model: DummyViewModel) {
+    init(model: DummyViewModel, retryHandler: @escaping () -> Void) {
+        self.retryHandler = retryHandler
         super.init(frame: .zero)
         createFlex()
         setup(with: model)
@@ -50,7 +46,7 @@ final class DummyView: UIView {
         retryButton.layer.masksToBounds = true
         retryButton.isEnabled = true
         retryButton.setAttributedTitle(model.retryButtonTitleString, for: .normal)
-        retryButton.addTarget(self, action: #selector(didTapRetry), for: .touchUpInside)
+        retryButton.addTarget(self, action: #selector(retryButtonPressed), for: .touchUpInside)
     
         setNeedsLayout()
     }
@@ -73,8 +69,8 @@ final class DummyView: UIView {
         }
     }
     
-    @objc private func didTapRetry() {
-        output?.didTapRetry()
+    @objc private func retryButtonPressed() {
+        retryHandler()
     }
 }
 

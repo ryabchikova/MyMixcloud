@@ -37,10 +37,6 @@ extension UserProfilePresenter: UserProfileViewOutput {
             router.showSettingsScreen(in: viewController)
         }
     }
-    
-    func viewNeedReload() {
-        interactor.loadUser(userId: userId)
-    }
 }
 
 extension UserProfilePresenter: UserProfileInteractorOutput {
@@ -51,12 +47,18 @@ extension UserProfilePresenter: UserProfileInteractorOutput {
             // TODO запрос данных из кэша
             
             if viewController.isEmpty {
-                viewController.showDummyView(error: error)
+                viewController.showDummyView(for: error) { [weak self] in
+                    guard let self = self else {
+                        return
+                    }
+                    self.interactor.loadUser(userId: self.userId)
+                }
             }
         }
     }
     
     func didLoadUser(_ user: User) {
+        view?.hideDummyViewIfNeed()
         view?.set(userProfileViewModel: UserProfileViewModel(user: user))
     }
 }
