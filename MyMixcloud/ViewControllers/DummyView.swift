@@ -83,14 +83,14 @@ extension DummyView {
     private struct Constants {
         static let messageMargin: CGFloat = 20.0
         static let cornerRadius: CGFloat = 4.0
-        static let buttonWidth: CGFloat = 100.0
+        static let buttonWidth: CGFloat = 140.0
         static let buttonHeight: CGFloat = 40.0
         static let buttonTopMargin: CGFloat = 30.0
     }
     
     private struct Styles {
         static let backgroundColor = MMColors.white
-        static let buttonColor = MMColors.blue
+        static let buttonColor = MMColors.sunny
     }
 }
 

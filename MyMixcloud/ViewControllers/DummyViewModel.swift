@@ -37,7 +37,7 @@ extension DummyViewModel {
         static let button: [NSAttributedString.Key: Any] = {
             return [
                 .font: MMFonts.mediumBold,
-                .foregroundColor: MMColors.white
+                .foregroundColor: MMColors.darkGray
             ]
         }()
     }
