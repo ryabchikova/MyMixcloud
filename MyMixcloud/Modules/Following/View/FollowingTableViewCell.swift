@@ -9,7 +9,7 @@
 import Foundation
 import PinLayout
 
-final class FollowingTableViewCell: UITableViewCell {
+final class FollowingTableViewCell: UITableViewCell, MMTableViewCell {
     private let userView = FollowingUserView()
     static let height: CGFloat = 76.0
     

@@ -9,15 +9,15 @@
 import Foundation
 import UIKit
 
-struct FollowingUserViewModel {
-    let userId: String
+struct FollowingUserViewModel: Identifiable {
+    let identifier: String
     let avatarImageUrl: URL?
     let nameString: NSAttributedString
     let locationString: NSAttributedString?
     let followersString: NSAttributedString?
     
     init(user: User) {
-        userId = user.identifier
+        identifier = user.identifier
         avatarImageUrl = user.profileImage
         nameString = NSAttributedString(string: user.name, attributes: Styles.name)
         

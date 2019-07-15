@@ -208,7 +208,6 @@
 				4201813622D072F5007752B9 /* View */,
 				4201812A22D072DA007752B9 /* LoginPresenter.swift */,
 				4201812B22D072DA007752B9 /* LoginRouter.swift */,
-				4201812C22D072DA007752B9 /* LoginViewController.swift */,
 				4201812D22D072DA007752B9 /* LoginProtocols.swift */,
 				4201812E22D072DA007752B9 /* LoginInteractor.swift */,
 				4201812F22D072DA007752B9 /* LoginContainer.swift */,
@@ -221,6 +220,7 @@
 			children = (
 				4201813722D0730C007752B9 /* LoginViewModel.swift */,
 				4201813922D0731D007752B9 /* LoginView.swift */,
+				4201812C22D072DA007752B9 /* LoginViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -243,6 +243,7 @@
 			children = (
 				42B7D66E22DCED3800ECDAB0 /* Dummy */,
 				42B7D66C22DCDF1100ECDAB0 /* MMViewController.swift */,
+				42B7D66F22DD05C000ECDAB0 /* TableViewManager.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -253,7 +254,6 @@
 				4220E29322C5094000FEB7F8 /* View */,
 				4220E28222C4E61900FEB7F8 /* UserProfilePresenter.swift */,
 				4220E28322C4E61900FEB7F8 /* UserProfileRouter.swift */,
-				4220E28422C4E61900FEB7F8 /* UserProfileViewController.swift */,
 				4220E28522C4E61900FEB7F8 /* UserProfileProtocols.swift */,
 				4220E28622C4E61900FEB7F8 /* UserProfileInteractor.swift */,
 				4220E28722C4E61900FEB7F8 /* UserProfileContainer.swift */,
@@ -266,6 +266,7 @@
 			children = (
 				4220E28F22C5092400FEB7F8 /* UserProfileViewModel.swift */,
 				4220E29122C5093900FEB7F8 /* UserProfileView.swift */,
+				4220E28422C4E61900FEB7F8 /* UserProfileViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -276,7 +277,6 @@
 				4220E2AA22C62B4E00FEB7F8 /* View */,
 				4220E29D22C62B1A00FEB7F8 /* FollowingPresenter.swift */,
 				4220E29E22C62B1A00FEB7F8 /* FollowingRouter.swift */,
-				4220E29F22C62B1A00FEB7F8 /* FollowingViewController.swift */,
 				4220E2A022C62B1A00FEB7F8 /* FollowingProtocols.swift */,
 				4220E2A122C62B1A00FEB7F8 /* FollowingInteractor.swift */,
 				4220E2A222C62B1A00FEB7F8 /* FollowingContainer.swift */,
@@ -290,6 +290,7 @@
 				4220E2AB22C62B7600FEB7F8 /* FollowingUserViewModel.swift */,
 				4220E2AD22C62B8800FEB7F8 /* FollowingUserView.swift */,
 				4220E2AF22C648CC00FEB7F8 /* FollowingTableViewCell.swift */,
+				4220E29F22C62B1A00FEB7F8 /* FollowingViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -314,7 +315,6 @@
 				4224F96C22CA3D7200E847AB /* TrackListItemView.swift */,
 				4224F96E22CA3DEE00E847AB /* TrackListTableViewCell.swift */,
 				4224F95F22CA37EC00E847AB /* TrackListViewController.swift */,
-				42B7D66F22DD05C000ECDAB0 /* TableViewManager.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -411,7 +411,6 @@
 				425255BB22D7274900D2EDC9 /* View */,
 				425255AE22D7270100D2EDC9 /* TrackPresenter.swift */,
 				425255AF22D7270100D2EDC9 /* TrackRouter.swift */,
-				425255B022D7270100D2EDC9 /* TrackViewController.swift */,
 				425255B122D7270100D2EDC9 /* TrackProtocols.swift */,
 				425255B222D7270100D2EDC9 /* TrackInteractor.swift */,
 				425255B322D7270100D2EDC9 /* TrackContainer.swift */,
@@ -424,6 +423,7 @@
 			children = (
 				425255BC22D7275B00D2EDC9 /* TrackViewModel.swift */,
 				425255BE22D7276700D2EDC9 /* TrackView.swift */,
+				425255B022D7270100D2EDC9 /* TrackViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
