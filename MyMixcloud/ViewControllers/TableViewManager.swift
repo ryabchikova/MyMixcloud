@@ -51,11 +51,11 @@ final class TableViewManager<Model: Identifiable, Cell: UITableViewCell & MMTabl
     
     func reset(viewModels: [Model]) {
         models = viewModels
-        print("DBG after reset \(models.count) models")
         tableView?.reloadData()
     }
 
     // MARK: - UITableViewDataSource
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return models.count
     }

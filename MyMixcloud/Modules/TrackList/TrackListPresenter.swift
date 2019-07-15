@@ -31,7 +31,7 @@ final class TrackListPresenter {
 extension TrackListPresenter: TrackListModuleInput {
 }
 
-extension TrackListPresenter: TrackListViewOutput {
+extension TrackListPresenter: TrackListViewOutput {    
     func viewDidLoad() {
         requestNextPage()
     }
@@ -40,13 +40,22 @@ extension TrackListPresenter: TrackListViewOutput {
         requestNextPage()
     }
     
+    func didPullToRefresh() {
+        guard !isLoading else {
+            return
+        }
+        
+        isLoading = true
+        interactor.loadTrackList(of: trackListType, userId: userId, page: 1, reason: .pullToRefresh)
+    }
+    
     private func requestNextPage() {
         guard !isLoading, let nextPage = nextPage else {
             return
         }
         
         isLoading = true
-        interactor.loadTrackList(of: trackListType, userId: userId, page: nextPage)
+        interactor.loadTrackList(of: trackListType, userId: userId, page: nextPage, reason: .regular)
     }
     
     func didTapOnTrack(with trackId: String) {
@@ -61,9 +70,17 @@ extension TrackListPresenter: TrackListInteractorOutput {
         isLoading = false
     }
     
-    func didLoadTrackList(_ tracks: [Track]) {
+    func didLoadTrackList(_ tracks: [Track], reason: LoadingReason) {
+        let viewModels = tracks.map { TrackListItemViewModel(track: $0) }
+        switch reason {
+        case .regular:
+            nextPage = tracks.isEmpty ? nil : nextPage?.advanced(by: 1)
+            view?.set(viewModels: viewModels)
+        case .pullToRefresh:
+            nextPage = 2
+            view?.reset(viewModels: viewModels)
+        }
+        
         isLoading = false
-        nextPage = tracks.isEmpty ? nil : nextPage?.advanced(by: 1)
-        view?.set(viewModels: tracks.map { TrackListItemViewModel(track: $0) })
     }
 }

@@ -12,6 +12,9 @@ import PinLayout
 
 class MMViewController: UIViewController {
     private var dummyView: DummyView?
+    private weak var scrollView: UIScrollView?
+    private var refreshControl: UIRefreshControl?
+    private var didPullToRefresh: (() -> Void)?
     
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
@@ -26,6 +29,8 @@ class MMViewController: UIViewController {
         dummyView?.pin.all(view.pin.safeArea)
     }
     
+    // MARK: - Dummy View
+    
     func showDummyView(for error: MMError, retryHandler: @escaping () -> Void) {
         hideDummyViewIfNeed()
         dummyView = DummyView(model: DummyViewModel(error: error), retryHandler: retryHandler)
@@ -38,5 +43,26 @@ class MMViewController: UIViewController {
         }
         dummy.removeFromSuperview()
         dummyView = nil
+    }
+    
+    // MARK: - Pull To Refresh
+    
+    func setupPullToRefresh(in scrollView: UIScrollView, pullToRefreshCompletion: @escaping (() -> Void)) {
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: #selector(handlePullToRefresh), for: .valueChanged)
+        if #available(iOS 10.0, *) {
+            scrollView.refreshControl = refreshControl
+        } else {
+            scrollView.addSubview(refreshControl)
+        }
+        
+        self.scrollView = scrollView
+        self.refreshControl = refreshControl
+        self.didPullToRefresh = pullToRefreshCompletion
+    }
+    
+    @objc private func handlePullToRefresh() {
+        didPullToRefresh?()
+        refreshControl?.endRefreshing()
     }
 }

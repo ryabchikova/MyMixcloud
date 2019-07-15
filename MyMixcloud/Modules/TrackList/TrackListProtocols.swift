@@ -18,21 +18,23 @@ protocol TrackListModuleOutput: class {
 
 protocol TrackListViewInput: class {
     func set(viewModels: [TrackListItemViewModel])
+    func reset(viewModels: [TrackListItemViewModel])
 }
 
 protocol TrackListViewOutput: class {
     func viewDidLoad()
     func viewDidScrollPage()
+    func didPullToRefresh()
     func didTapOnTrack(with trackId: String)
 }
 
 protocol TrackListInteractorInput: class {
-    func loadTrackList(of type: TrackListType, userId: String, page: Int)
+    func loadTrackList(of type: TrackListType, userId: String, page: Int, reason: LoadingReason)
 }
 
 protocol TrackListInteractorOutput: class {
     func gotError()
-    func didLoadTrackList(_ tracks: [Track])
+    func didLoadTrackList(_ tracks: [Track], reason: LoadingReason)
 }
 
 protocol TrackListRouterInput: class {

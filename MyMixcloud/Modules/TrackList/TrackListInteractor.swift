@@ -18,7 +18,7 @@ final class TrackListInteractor {
 }
 
 extension TrackListInteractor: TrackListInteractorInput {
-    func loadTrackList(of type: TrackListType, userId: String, page: Int) {
+    func loadTrackList(of type: TrackListType, userId: String, page: Int, reason: LoadingReason) {
         
         let completion: ([Track]?, Error?) -> Void = { [weak self] tracks, error in
             DispatchQueue.main.async {
@@ -28,7 +28,7 @@ extension TrackListInteractor: TrackListInteractorInput {
                 }
                 
                 if let tracks = tracks {
-                    self?.output?.didLoadTrackList(tracks)
+                    self?.output?.didLoadTrackList(tracks, reason: reason)
                 }
             }
         }

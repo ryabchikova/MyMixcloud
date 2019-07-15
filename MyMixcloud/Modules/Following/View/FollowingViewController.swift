@@ -8,16 +8,12 @@
 
 import UIKit
 
-final class FollowingViewController: UIViewController {
+final class FollowingViewController: MMViewController {
 	private let output: FollowingViewOutput
     private let tableView = UITableView()
     private let tableViewManager = {
         TableViewManager<FollowingUserViewModel, FollowingTableViewCell>(cellReuseIdentifier: String(describing: FollowingTableViewCell.self))
     }()
-    // #####
-    private let refreshControl = UIRefreshControl()
-    // #####
-    
 
     init(output: FollowingViewOutput) {
         self.output = output
@@ -39,22 +35,15 @@ final class FollowingViewController: UIViewController {
     override func loadView() {
         self.view = UIView()
         view.addSubview(tableView)
-        // #####
-        if #available(iOS 10.0, *) {
-            tableView.refreshControl = refreshControl
-        } else {
-            tableView.addSubview(refreshControl)
-        }
-        // #####
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = MMColors.white
         tableViewManager.configure(tableView: tableView)
-        // #####
-        refreshControl.addTarget(self, action: #selector(handlePullToRefresh), for: .valueChanged)
-        // #####
+        setupPullToRefresh(in: tableView) { [weak self] in
+            self?.output.didPullToRefresh()
+        }
         output.viewDidLoad()
     }
     
@@ -62,13 +51,6 @@ final class FollowingViewController: UIViewController {
         super.viewDidLayoutSubviews()
         tableView.pin.all(view.pin.safeArea)
     }
-    
-    // #####
-    @objc private func handlePullToRefresh() {
-        output.didPullToRefresh()
-        refreshControl.endRefreshing()
-    }
-    // #####
 }
 
 extension FollowingViewController: FollowingViewInput {

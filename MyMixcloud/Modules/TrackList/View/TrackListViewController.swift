@@ -8,7 +8,7 @@
 
 import UIKit
 
-final class TrackListViewController: UIViewController {
+final class TrackListViewController: MMViewController {
 	private let output: TrackListViewOutput
     private let tableView = UITableView()
     private let tableViewManager = {
@@ -41,6 +41,9 @@ final class TrackListViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = MMColors.white
         tableViewManager.configure(tableView: tableView)
+        setupPullToRefresh(in: tableView) { [weak self] in
+            self?.output.didPullToRefresh()
+        }
         output.viewDidLoad()
     }
     
@@ -53,5 +56,9 @@ final class TrackListViewController: UIViewController {
 extension TrackListViewController: TrackListViewInput {
     func set(viewModels: [TrackListItemViewModel]) {
         tableViewManager.set(viewModels: viewModels)
+    }
+    
+    func reset(viewModels: [TrackListItemViewModel]) {
+        tableViewManager.reset(viewModels: viewModels)
     }
 }
