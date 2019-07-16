@@ -78,26 +78,78 @@ final class UserServiceImpl: UserService {
         }
     }
     
-    private func followingList(userId: String, page: Int, completionHandler: @escaping ([String]?, Error?) -> Void) {
+    func following(userId: String, page: Int, completionHandler: @escaping ([User]?, MMError?) -> Void) {
+        followingList(userId: userId, page: page) { [weak self] followingList, error in
+            guard error == nil else {
+                completionHandler(nil, error)
+                return
+            }
+            
+            guard let sSelf = self, let followingList = followingList else {
+                completionHandler(nil, MMError(type: .executionError))
+                return
+            }
+            
+            guard !followingList.isEmpty else {
+                // it's not error, just has no more items
+                completionHandler([], nil)
+                return
+            }
+            
+            var users: [User?] = Array(repeating: nil, count: followingList.count)
+            let arrayAccessQueue = DispatchQueue(label: "ArrayAccessQueue", attributes: .concurrent)
+            let group = DispatchGroup()
+            
+            for (index, userId) in followingList.enumerated() {
+                group.enter()
+                sSelf.user(userId: userId) { user, error in
+                    if let error = error {
+                        completionHandler(nil, error)
+                        return
+                    }
+                    
+                    arrayAccessQueue.async(flags:.barrier) {
+                        // use index to store User objects in the same order as input following list
+                        users[index] = user
+                        group.leave()
+                    }
+                }
+            }
+            
+            group.notify(queue: DispatchQueue.main) {
+                completionHandler(users.compactMap {$0}, nil)
+            }
+        }
+    }
+    
+    private func followingList(userId: String, page: Int, completionHandler: @escaping ([String]?, MMError?) -> Void) {
         let url = MixcloudApi.following.requestUrl(identifier: userId, page: page)
         
         Alamofire.request(url)
             .validate()
             .responseData(queue: dispatchQueue) { [weak self] response in
-                guard let data = response.result.value else {
-                    completionHandler(nil, response.result.error)
-                    let error = MMError(type: .webServiceError,
-                                        location: String(describing: self) + ".followingList",
-                                        what: (response.result.error as? AFError)?.errorDescription)
-                    error.log()
-                    return
-                }
-                
                 guard let sSelf = self else {
                     completionHandler(nil, MMError(type: .executionError))
                     return
                 }
                 
+                guard let data = response.result.value else {
+                    let error: MMError
+                    if sSelf.networkReachabilityService.isReachable() {
+                        error = MMError(type: .webServiceError,
+                                        location: String(describing: self) + ".followingList",
+                                        what: (response.result.error as? AFError)?.errorDescription)
+                    } else {
+                        error = MMError(type: .networkUnreachable,
+                                        location: String(describing: self) + ".followingList",
+                                        what: nil)
+                    }
+                    
+                    error.log()
+                    completionHandler(nil, error)
+                    return
+                }
+            
                 do {
                     let decoder = JSONDecoder()
                     decoder.keyDecodingStrategy = .convertFromSnakeCase
@@ -111,55 +163,6 @@ final class UserServiceImpl: UserService {
                     error.log()
                     completionHandler(nil, error)
                 }
-        }
-    }
-    
-    func following(userId: String, page: Int, completionHandler: @escaping ([User]?, Error?) -> Void) {
-        followingList(userId: userId, page: page) { [weak self] followingList, error in
-            guard error == nil else {
-                completionHandler(nil, error)
-                return
-            }
-
-            guard let sSelf = self else {
-                completionHandler(nil, MMError(type: .executionError))
-                return
-            }
-            
-            guard let followingList = followingList else {
-                completionHandler(nil, error)
-                return
-            }
-
-            guard !followingList.isEmpty else {
-                // it's not error, just has no more items
-                completionHandler([], nil)
-                return
-            }
-
-            var users: [User?] = Array(repeating: nil, count: followingList.count)
-            let arrayAccessQueue = DispatchQueue(label: "ArrayAccessQueue", attributes: .concurrent)
-            let group = DispatchGroup()
-
-            for (index, userId) in followingList.enumerated() {
-                group.enter()
-                sSelf.user(userId: userId) { user, error in
-                    if let error = error {
-                        completionHandler(nil, error)
-                        return
-                    }
-
-                    arrayAccessQueue.async(flags:.barrier) {
-                        // use index to store User objects in the same order as input following list
-                        users[index] = user
-                        group.leave()
-                    }
-                }
-            }
-
-            group.notify(queue: DispatchQueue.main) {
-                completionHandler(users.compactMap {$0}, nil)
-            }
         }
     }
 }
