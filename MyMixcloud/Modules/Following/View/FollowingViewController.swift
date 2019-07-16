@@ -47,9 +47,7 @@ final class FollowingViewController: MMViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        if isEmpty {
-            output.viewWillAppear()
-        }
+        output.viewWillAppear()
     }
     
     override func viewDidLayoutSubviews() {

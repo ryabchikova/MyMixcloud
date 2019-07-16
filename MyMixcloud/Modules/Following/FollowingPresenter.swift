@@ -31,7 +31,9 @@ extension FollowingPresenter: FollowingModuleInput {
 
 extension FollowingPresenter: FollowingViewOutput {
     func viewWillAppear() {
-        requestNextPage()
+        if view?.isEmpty ?? false {
+            requestNextPage()
+        }
     }
     
     func viewDidScrollPage() {

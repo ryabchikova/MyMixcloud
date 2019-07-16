@@ -17,12 +17,15 @@ protocol TrackListModuleOutput: class {
 }
 
 protocol TrackListViewInput: class {
+    var isEmpty: Bool { get }
     func set(viewModels: [TrackListItemViewModel])
     func reset(viewModels: [TrackListItemViewModel])
+    func showDummyView(for error: MMError, retryHandler: @escaping () -> Void)
+    func hideDummyViewIfNeed()
 }
 
 protocol TrackListViewOutput: class {
-    func viewDidLoad()
+    func viewWillAppear()
     func viewDidScrollPage()
     func didPullToRefresh()
     func didTapOnTrack(with trackId: String)
@@ -33,7 +36,7 @@ protocol TrackListInteractorInput: class {
 }
 
 protocol TrackListInteractorOutput: class {
-    func gotError()
+    func gotError(_ error: MMError)
     func didLoadTrackList(_ tracks: [Track], reason: LoadingReason)
 }
 

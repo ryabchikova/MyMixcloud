@@ -32,8 +32,10 @@ extension TrackListPresenter: TrackListModuleInput {
 }
 
 extension TrackListPresenter: TrackListViewOutput {    
-    func viewDidLoad() {
-        requestNextPage()
+    func viewWillAppear() {
+        if view?.isEmpty ?? false {
+            requestNextPage()
+        }
     }
     
     func viewDidScrollPage() {
@@ -66,11 +68,19 @@ extension TrackListPresenter: TrackListViewOutput {
 }
 
 extension TrackListPresenter: TrackListInteractorOutput {
-    func gotError() {
+    func gotError(_ error: MMError) {
         isLoading = false
+        
+        if let viewController = view, viewController.isEmpty {
+            viewController.showDummyView(for: error) { [weak self] in
+                self?.requestNextPage()
+            }
+        }
     }
     
     func didLoadTrackList(_ tracks: [Track], reason: LoadingReason) {
+        view?.hideDummyViewIfNeed()
+        
         let viewModels = tracks.map { TrackListItemViewModel(track: $0) }
         switch reason {
         case .regular:
