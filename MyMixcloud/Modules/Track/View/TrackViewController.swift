@@ -8,8 +8,9 @@
 
 import UIKit
 
-final class TrackViewController: UIViewController {
+final class TrackViewController: MMViewController {
 	private let output: TrackViewOutput
+    private let scrollView = UIScrollView()
     private let trackView = TrackView()
 
     init(output: TrackViewOutput) {
@@ -22,26 +23,40 @@ final class TrackViewController: UIViewController {
     }
     
     override func loadView() {
-        self.view = UIView()
-        self.view.addSubview(trackView)
+        view = UIView()
+        scrollView.addSubview(trackView)
+        view.addSubview(scrollView)
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = MMColors.white
-        output.viewDidLoad()
+        scrollView.backgroundColor = MMColors.white
+        scrollView.bounces = false
     }
     
-    // TODO контент может не влезть !!!
+    override func viewWillAppear(_ animated: Bool) {
+        output.viewWillAppear()
+    }
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        trackView.pin.all(view.pin.safeArea)
+        scrollView.pin.all(view.pin.safeArea)
+        trackView.pin.top().left().right()
+        trackView.flex.layout(mode: .adjustHeight)
+        scrollView.contentSize = trackView.frame.size
+    }
+}
+
+extension TrackViewController: EmptyCheck {
+    var isEmpty: Bool {
+        return trackView.isEmpty
     }
 }
 
 extension TrackViewController: TrackViewInput {
     func set(trackViewModel: TrackViewModel) {
-        self.trackView.update(with: trackViewModel)
+        trackView.update(with: trackViewModel)
+        view.setNeedsLayout()
     }
 }

@@ -27,17 +27,25 @@ extension TrackPresenter: TrackModuleInput {
 }
 
 extension TrackPresenter: TrackViewOutput {
-    func viewDidLoad() {
+    func viewWillAppear() {
         interactor.loadTrack(trackId: trackId)
     }
 }
 
 extension TrackPresenter: TrackInteractorOutput {
-    func gotError() {
-        // TODO
+    func gotError(_ error: MMError) {
+        if let viewController = view, viewController.isEmpty {
+            viewController.showDummyView(for: error) { [weak self] in
+                guard let sSelf = self else {
+                    return
+                }
+                sSelf.interactor.loadTrack(trackId: sSelf.trackId)
+            }
+        }
     }
     
     func didLoadTrack(_ track: Track) {
+        view?.hideDummyViewIfNeed()
         view?.set(trackViewModel: TrackViewModel(track: track))
     }
 }

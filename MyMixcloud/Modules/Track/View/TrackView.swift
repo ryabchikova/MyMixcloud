@@ -26,6 +26,8 @@ final class TrackView: UIView {
     private let countersContainerView = UIView()
     private let tagsContainerView = UIView()
     
+    private(set) var isEmpty = true
+    
     init() {
         super.init(frame: .zero)
         setup()
@@ -80,70 +82,64 @@ final class TrackView: UIView {
     private func createFlex() {
         flex.addItem()
             .direction(.column)
-            .width(100%)
-            .height(100%)
-            .justifyContent(.center)
+            .marginHorizontal(Constants.contentHorizontalMargin)
+            .marginVertical(Constants.contentVerticalMargin)
+            .alignItems(.center)
             .define { flex in
-                flex.addItem()
-                    .direction(.column)
-                    .marginHorizontal(Constants.contentHorizontalMargin)
-                    .alignItems(.center)
-                    .define { flex in
-                        flex.addItem(trackTitleLabel)
-                        
-                        flex.addItem(userNameLabel)
-                            .marginTop(Constants.rowTopMargin)
-                        
-                        flex.addItem(coverImageView)
-                            .width(100%)
-                            .aspectRatio(1.0)
-                            .marginTop(Constants.secionTopMargin)
-                        
-                        flex.addItem()
-                            .direction(.row)
-                            .width(100%)
-                            .marginTop(Constants.rowTopMargin)
-                            .justifyContent(.spaceBetween)
-                            .wrap(.wrap)
-                            .define { flex in
-                                flex.addItem(audioLengthLabel)
+                    flex.addItem(trackTitleLabel)
+                
+                    flex.addItem(userNameLabel)
+                        .marginTop(Constants.rowTopMargin)
+                
+                    flex.addItem(coverImageView)
+                        .width(100%)
+                        .aspectRatio(1.0)
+                        .marginTop(Constants.secionTopMargin)
+                
+                    flex.addItem()
+                        .direction(.row)
+                        .width(100%)
+                        .marginTop(Constants.rowTopMargin)
+                        .justifyContent(.spaceBetween)
+                        .wrap(.wrap)
+                        .define { flex in
+                            flex.addItem(audioLengthLabel)
+                                .marginRight(Constants.innerHorizontalMargin)
+                            flex.addItem(uploadedLabel)
+                                .shrink(1)
+                        }
+                
+                    flex.addItem(countersContainerView)
+                        .direction(.row)
+                        .marginTop(Constants.secionTopMargin)
+                        .alignSelf(.start)
+                        .define { flex in
+                            let counterViewContent = [(favoriteImageView, favoritedLabel),
+                                                      (listenImageView, listenedLabel),
+                                                      (repostImageView, repostedLabel)]
+                            
+                            counterViewContent.forEach { arg in
+                                let (imageView, label) = arg
+                                flex.addItem(makeCounterView())
+                                    .direction(.row)
                                     .marginRight(Constants.innerHorizontalMargin)
-                                flex.addItem(uploadedLabel)
-                                    .shrink(1)
-                            }
-                        
-                        flex.addItem(countersContainerView)
-                            .direction(.row)
-                            .marginTop(Constants.secionTopMargin)
-                            .alignSelf(.start)
-                            .define { flex in
-                                let counterViewContent = [(favoriteImageView, favoritedLabel),
-                                                          (listenImageView, listenedLabel),
-                                                          (repostImageView, repostedLabel)]
-                                
-                                counterViewContent.forEach { arg in
-                                    let (imageView, label) = arg
-                                    flex.addItem(makeCounterView())
-                                        .direction(.row)
-                                        .marginRight(Constants.innerHorizontalMargin)
-                                        .justifyContent(.spaceAround)
-                                        .padding(Constants.counterViewMargin)
-                                        .alignItems(.center)
-                                        .define { flex in
-                                            flex.addItem(imageView)
-                                                .size(Constants.counterViewImageSize)
-                                                .marginRight(Constants.counterViewMargin)
-                                            flex.addItem(label)
-                                    }
+                                    .justifyContent(.spaceAround)
+                                    .padding(Constants.counterViewMargin)
+                                    .alignItems(.center)
+                                    .define { flex in
+                                        flex.addItem(imageView)
+                                            .size(Constants.counterViewImageSize)
+                                            .marginRight(Constants.counterViewMargin)
+                                        flex.addItem(label)
                                 }
                             }
-                        
-                        flex.addItem(tagsContainerView)
-                            .direction(.row)
-                            .marginTop(Constants.rowTopMargin)
-                            .alignSelf(.start)
-                            .wrap(.wrap)
-                    }
+                        }
+                
+                    flex.addItem(tagsContainerView)
+                        .direction(.row)
+                        .marginTop(Constants.rowTopMargin)
+                        .alignSelf(.start)
+                        .wrap(.wrap)
             }
     }
     
@@ -199,6 +195,8 @@ final class TrackView: UIView {
         tagsContainerView.flex.display(tagsContainerView.subviews.isEmpty ? .none : .flex)
         tagsContainerView.flex.markDirty()
         
+        isEmpty = false
+        
         setNeedsLayout()
     }
 }
@@ -207,6 +205,7 @@ extension TrackView {
     
     private struct Constants {
         static let contentHorizontalMargin: CGFloat = 40.0
+        static let contentVerticalMargin: CGFloat = 30.0
         static let coverBorderWidth: CGFloat = 1.0
         static let rowTopMargin: CGFloat = 10.0
         static let secionTopMargin: CGFloat = 30.0

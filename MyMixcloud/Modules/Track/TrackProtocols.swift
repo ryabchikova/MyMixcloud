@@ -16,11 +16,14 @@ protocol TrackModuleOutput: class {
 }
 
 protocol TrackViewInput: class {
+    var isEmpty: Bool { get }
     func set(trackViewModel: TrackViewModel)
+    func showDummyView(for error: MMError, retryHandler: @escaping () -> Void)
+    func hideDummyViewIfNeed()
 }
 
 protocol TrackViewOutput: class {
-    func viewDidLoad()
+    func viewWillAppear()
 }
 
 protocol TrackInteractorInput: class {
@@ -28,7 +31,7 @@ protocol TrackInteractorInput: class {
 }
 
 protocol TrackInteractorOutput: class {
-    func gotError()
+    func gotError(_ error: MMError)
     func didLoadTrack(_ track: Track)
 }
 
