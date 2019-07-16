@@ -20,22 +20,6 @@ final class UserServiceImpl: UserService {
     
     func user(userId: String, completionHandler: @escaping (User?, MMError?) -> Void) {
         let url = MixcloudApi.user.requestUrl(identifier: userId)
-        
-//        if let cachedResponse = URLCache.shared.cachedResponse(for: Alamofire.request(url).request!) {
-//            //print("cachedResponse: \(cachedResponse.data)")
-//            do {
-//                let decoder = JSONDecoder()
-//                decoder.keyDecodingStrategy = .convertFromSnakeCase
-//                let jsonUser = try decoder.decode(JsonUser.self, from: cachedResponse.data)
-//                let user = converter.makeUser(from: jsonUser)
-//                completionHandler(user, nil)
-//                print("**** Return User from cache: ")
-//                return
-//            } catch {
-//                print("*** error when decode user from cache ", error)
-//            }
-//        }
-
         Alamofire.request(url)
             .validate()
             .responseData(queue: dispatchQueue) { [weak self] response in
@@ -68,12 +52,40 @@ final class UserServiceImpl: UserService {
                     let user = sSelf.converter.makeUser(from: jsonUser)
                     completionHandler(user, nil)
                 } catch {
-                    let error = MMError(type: .webServiceError,
+                    let error = MMError(type: .decodingError,
                                         location: String(describing: self) + ".user",
                                         what: (error as? DecodingError)?.localizedDescription)
                     error.log()
                     completionHandler(nil, error)
                 }
+        }
+    }
+    
+    func userFromCache(userId: String, completionHandler: @escaping (User?, MMError?) -> Void) {
+        let url = MixcloudApi.user.requestUrl(identifier: userId)
+        
+        dispatchQueue.async { [weak self] in
+            if let request = Alamofire.request(url).request, let cachedResponse = URLCache.shared.cachedResponse(for: request) {
+                guard let sSelf = self else {
+                    completionHandler(nil, MMError(type: .noCacheError))
+                    return
+                }
+                do {
+                    let decoder = JSONDecoder()
+                    decoder.keyDecodingStrategy = .convertFromSnakeCase
+                    let jsonUser = try decoder.decode(JsonUser.self, from: cachedResponse.data)
+                    let user = sSelf.converter.makeUser(from: jsonUser)
+                    completionHandler(user, nil)
+                    print("DBG Return User from cache")
+                    return
+                } catch {}
+            }
+            
+            let error = MMError(type: .noCacheError,
+                                location: String(describing: self) + ".user(cached)",
+                                what: "No cache")
+            error.log()
+            completionHandler(nil, error)
         }
     }
     
@@ -123,7 +135,6 @@ final class UserServiceImpl: UserService {
     
     private func followingList(userId: String, page: Int, completionHandler: @escaping ([String]?, MMError?) -> Void) {
         let url = MixcloudApi.following.requestUrl(identifier: userId, page: page)
-        
         Alamofire.request(url)
             .validate()
             .responseData(queue: dispatchQueue) { [weak self] response in

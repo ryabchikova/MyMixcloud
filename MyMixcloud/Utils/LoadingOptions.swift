@@ -1,5 +1,5 @@
 //
-//  LoadingReason.swift
+//  LoadingOptions.swift
 //  MyMixcloud
 //
 //  Created by Ryabchikova Elena on 16/07/2019.
@@ -11,4 +11,9 @@ import Foundation
 enum LoadingReason {
     case regular
     case pullToRefresh
+}
+
+enum LoadingSource {
+    case web
+    case cache
 }

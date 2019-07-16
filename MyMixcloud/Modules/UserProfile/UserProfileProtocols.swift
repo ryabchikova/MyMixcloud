@@ -29,7 +29,7 @@ protocol UserProfileViewOutput: class {
 }
 
 protocol UserProfileInteractorInput: class {
-    func loadUser(userId: String)
+    func loadUser(userId: String, source: LoadingSource)
 }
 
 protocol UserProfileInteractorOutput: class {

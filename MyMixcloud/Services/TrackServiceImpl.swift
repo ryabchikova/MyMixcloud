@@ -52,7 +52,7 @@ final class TrackServiceImpl: TrackService {
                     let track = sSelf.converter.makeTrack(from: jsonTrack)
                     completionHandler(track, nil)
                 } catch {
-                    let error = MMError(type: .webServiceError,
+                    let error = MMError(type: .decodingError,
                                         location: String(describing: self) + ".track",
                                         what: (error as? DecodingError)?.localizedDescription)
                     error.log()
