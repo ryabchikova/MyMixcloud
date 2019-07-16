@@ -23,9 +23,11 @@ final class InjectionManager {
         container.register(UserService.self) { resolver in
             UserServiceImpl(reachabilityService: resolver.resolve(NetworkReachabilityService.self)!)
         }
-        container.register(TrackService.self) { _ in
-            TrackServiceImpl()
+        
+        container.register(TrackService.self) { resolver in
+            TrackServiceImpl(reachabilityService: resolver.resolve(NetworkReachabilityService.self)!)
         }
+        
         container.register(SettingsService.self) { _ in
             SettingsServiceImpl()
         }

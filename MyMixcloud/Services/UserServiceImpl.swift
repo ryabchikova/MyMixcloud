@@ -10,7 +10,6 @@ import Foundation
 import Alamofire
 
 final class UserServiceImpl: UserService {
-    
     private let networkReachabilityService: NetworkReachabilityService
     private let converter = JsonDataConverter()
     private let dispatchQueue = DispatchQueue.global(qos: .userInitiated)
