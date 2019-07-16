@@ -29,7 +29,7 @@ final class MainViewController: UITabBarController {
         }
         
         tabBar.isTranslucent = false
-        selectedIndex = 1
+        selectedIndex = 0
     }
 }
 

@@ -42,17 +42,15 @@ extension UserProfilePresenter: UserProfileViewOutput {
 extension UserProfilePresenter: UserProfileInteractorOutput {
     func gotError(_ error: MMError) {
         
-        if let viewController = view {
+        if let viewController = view, viewController.isEmpty {
             
             // TODO запрос данных из кэша
             
-            if viewController.isEmpty {
-                viewController.showDummyView(for: error) { [weak self] in
-                    guard let self = self else {
-                        return
-                    }
-                    self.interactor.loadUser(userId: self.userId)
+            viewController.showDummyView(for: error) { [weak self] in
+                guard let sSelf = self else {
+                    return
                 }
+                sSelf.interactor.loadUser(userId: sSelf.userId)
             }
         }
     }

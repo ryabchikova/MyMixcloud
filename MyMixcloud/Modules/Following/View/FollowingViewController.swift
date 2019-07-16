@@ -44,7 +44,12 @@ final class FollowingViewController: MMViewController {
         setupPullToRefresh(in: tableView) { [weak self] in
             self?.output.didPullToRefresh()
         }
-        output.viewDidLoad()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        if isEmpty {
+            output.viewWillAppear()
+        }
     }
     
     override func viewDidLayoutSubviews() {
@@ -53,8 +58,13 @@ final class FollowingViewController: MMViewController {
     }
 }
 
+extension FollowingViewController: EmptyCheck {
+    var isEmpty: Bool {
+        return tableViewManager.tableIsEmpty
+    }
+}
+
 extension FollowingViewController: FollowingViewInput {
-    
     func set(viewModels: [FollowingUserViewModel]) {
         tableViewManager.set(viewModels: viewModels)
     }

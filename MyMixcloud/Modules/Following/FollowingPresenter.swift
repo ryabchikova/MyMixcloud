@@ -30,7 +30,7 @@ extension FollowingPresenter: FollowingModuleInput {
 }
 
 extension FollowingPresenter: FollowingViewOutput {
-    func viewDidLoad() {
+    func viewWillAppear() {
         requestNextPage()
     }
     
@@ -64,11 +64,19 @@ extension FollowingPresenter: FollowingViewOutput {
 }
 
 extension FollowingPresenter: FollowingInteractorOutput {
-    func gotError() {
+    func gotError(_ error: MMError) {
         isLoading = false
+        
+        if let viewController = view, viewController.isEmpty {
+            viewController.showDummyView(for: error) { [weak self] in
+                self?.requestNextPage()
+            }
+        }
     }
     
     func didLoadFollowing(_ users: [User], reason: LoadingReason) {
+        view?.hideDummyViewIfNeed()
+        
         let viewModels = users.map { FollowingUserViewModel(user: $0) }
         switch reason {
         case .regular:

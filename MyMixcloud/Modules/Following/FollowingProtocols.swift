@@ -17,12 +17,15 @@ protocol FollowingModuleOutput: class {
 }
 
 protocol FollowingViewInput: class {
+    var isEmpty: Bool { get }
     func set(viewModels: [FollowingUserViewModel])
     func reset(viewModels: [FollowingUserViewModel])
+    func showDummyView(for error: MMError, retryHandler: @escaping () -> Void)
+    func hideDummyViewIfNeed()
 }
 
 protocol FollowingViewOutput: class {
-    func viewDidLoad()
+    func viewWillAppear()
     func viewDidScrollPage()
     func didPullToRefresh()
     func didTapOnUser(with userId: String)
@@ -33,7 +36,7 @@ protocol FollowingInteractorInput: class {
 }
 
 protocol FollowingInteractorOutput: class {
-    func gotError()
+    func gotError(_ error: MMError)
     func didLoadFollowing(_ users: [User], reason: LoadingReason)
 }
 

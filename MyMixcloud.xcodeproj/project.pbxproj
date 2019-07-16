@@ -92,6 +92,7 @@
 		42B7D66D22DCDF1100ECDAB0 /* MMViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42B7D66C22DCDF1100ECDAB0 /* MMViewController.swift */; };
 		42B7D67022DD05C000ECDAB0 /* TableViewManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42B7D66F22DD05C000ECDAB0 /* TableViewManager.swift */; };
 		42B7D67222DD45DE00ECDAB0 /* LoadingReason.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42B7D67122DD45DE00ECDAB0 /* LoadingReason.swift */; };
+		42B7D67422DDCC9800ECDAB0 /* EmptyCheck.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42B7D67322DDCC9800ECDAB0 /* EmptyCheck.swift */; };
 		42DD63CB22B3E9E600A57196 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42DD63CA22B3E9E600A57196 /* AppDelegate.swift */; };
 		42DD63D422B3E9E800A57196 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 42DD63D322B3E9E800A57196 /* Assets.xcassets */; };
 		42DD63D722B3E9E800A57196 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 42DD63D522B3E9E800A57196 /* LaunchScreen.storyboard */; };
@@ -184,6 +185,7 @@
 		42B7D66C22DCDF1100ECDAB0 /* MMViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MMViewController.swift; sourceTree = "<group>"; };
 		42B7D66F22DD05C000ECDAB0 /* TableViewManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewManager.swift; sourceTree = "<group>"; };
 		42B7D67122DD45DE00ECDAB0 /* LoadingReason.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingReason.swift; sourceTree = "<group>"; };
+		42B7D67322DDCC9800ECDAB0 /* EmptyCheck.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyCheck.swift; sourceTree = "<group>"; };
 		42DD63C722B3E9E600A57196 /* MyMixcloud.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyMixcloud.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		42DD63CA22B3E9E600A57196 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		42DD63D322B3E9E800A57196 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -246,6 +248,7 @@
 				42B7D66E22DCED3800ECDAB0 /* Dummy */,
 				42B7D66C22DCDF1100ECDAB0 /* MMViewController.swift */,
 				42B7D66F22DD05C000ECDAB0 /* TableViewManager.swift */,
+				42B7D67322DDCC9800ECDAB0 /* EmptyCheck.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -643,6 +646,7 @@
 				422EE0B722BA2A0A00451EED /* MMError.swift in Sources */,
 				4201812822CFDF18007752B9 /* SettingsServiceImpl.swift in Sources */,
 				4220E2B022C648CC00FEB7F8 /* FollowingTableViewCell.swift in Sources */,
+				42B7D67422DDCC9800ECDAB0 /* EmptyCheck.swift in Sources */,
 				4201816122D32EC9007752B9 /* SettingsProtocols.swift in Sources */,
 				4201813022D072DA007752B9 /* LoginPresenter.swift in Sources */,
 				42B7D66B22DA892700ECDAB0 /* DummyViewModel.swift in Sources */,
