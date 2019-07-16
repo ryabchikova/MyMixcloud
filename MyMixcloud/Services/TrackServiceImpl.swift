@@ -18,7 +18,7 @@ final class TrackServiceImpl: TrackService {
         self.networkReachabilityService = reachabilityService
     }
     
-    func track(trackId: String, completionHandler: @escaping (Track?, MMError?) -> Void) {
+    func track(trackId: String, useCacheIfNeed: Bool, completionHandler: @escaping (Track?, MMError?) -> Void) {
         let url = MixcloudApi.track.requestUrl(identifier: trackId)
         Alamofire.request(url)
             .validate()
@@ -28,7 +28,14 @@ final class TrackServiceImpl: TrackService {
                     return
                 }
                 
-                guard let data = response.result.value else {
+                let data: Data
+                if let responseData = response.result.value {
+                    data = responseData
+                } else if useCacheIfNeed, let request = Alamofire.request(url).request,
+                    let cachedResponse = URLCache.shared.cachedResponse(for: request) {
+                    data = cachedResponse.data
+                    print("DBG Return Track from cache")
+                } else {
                     let error: MMError
                     if sSelf.networkReachabilityService.isReachable() {
                         error = MMError(type: .webServiceError,
@@ -39,7 +46,6 @@ final class TrackServiceImpl: TrackService {
                                         location: String(describing: self) + ".track",
                                         what: nil)
                     }
-                    
                     error.log()
                     completionHandler(nil, error)
                     return

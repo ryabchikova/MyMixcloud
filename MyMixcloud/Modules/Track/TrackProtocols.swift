@@ -27,7 +27,7 @@ protocol TrackViewOutput: class {
 }
 
 protocol TrackInteractorInput: class {
-    func loadTrack(trackId: String)
+    func loadTrack(trackId: String, useCacheIfNeed permission: Bool)
 }
 
 protocol TrackInteractorOutput: class {
