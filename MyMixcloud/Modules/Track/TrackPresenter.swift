@@ -28,7 +28,7 @@ extension TrackPresenter: TrackModuleInput {
 
 extension TrackPresenter: TrackViewOutput {
     func viewWillAppear() {
-        interactor.loadTrack(trackId: trackId, useCacheIfNeed: view?.isEmpty ?? false)
+        interactor.loadTrack(trackId: trackId)
     }
 }
 
@@ -42,7 +42,7 @@ extension TrackPresenter: TrackInteractorOutput {
             guard let sSelf = self else {
                 return
             }
-            sSelf.interactor.loadTrack(trackId: sSelf.trackId, useCacheIfNeed: true)
+            sSelf.interactor.loadTrack(trackId: sSelf.trackId)
         }
     }
     

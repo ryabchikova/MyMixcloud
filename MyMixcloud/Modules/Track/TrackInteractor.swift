@@ -18,8 +18,8 @@ final class TrackInteractor {
 }
 
 extension TrackInteractor: TrackInteractorInput {
-    func loadTrack(trackId: String, useCacheIfNeed permission: Bool) {
-        trackService.track(trackId: trackId, useCacheIfNeed: permission) { [weak self] track, error in
+    func loadTrack(trackId: String) {
+        trackService.track(trackId: trackId) { [weak self] track, error in
             DispatchQueue.main.async {
                 if let error = error {
                     self?.output?.gotError(error)

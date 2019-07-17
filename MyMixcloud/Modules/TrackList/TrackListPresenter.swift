@@ -20,6 +20,10 @@ final class TrackListPresenter {
     private var nextPage: Int? = 1
     private var isLoading = false
     
+    var viewIsEmpty: Bool {
+        return view?.isEmpty ?? false
+    }
+    
     init(router: TrackListRouterInput, interactor: TrackListInteractorInput, userId: String, trackListType: TrackListType) {
         self.router = router
         self.interactor = interactor
@@ -33,7 +37,7 @@ extension TrackListPresenter: TrackListModuleInput {
 
 extension TrackListPresenter: TrackListViewOutput {    
     func viewWillAppear() {
-        if view?.isEmpty ?? false {
+        if viewIsEmpty {
             requestNextPage()
         }
     }
@@ -46,18 +50,24 @@ extension TrackListPresenter: TrackListViewOutput {
         guard !isLoading else {
             return
         }
-        
         isLoading = true
-        interactor.loadTrackList(of: trackListType, userId: userId, page: 1, reason: .pullToRefresh)
+        interactor.loadTrackList(of: trackListType,
+                                 userId: userId,
+                                 page: 1,
+                                 reason: .pullToRefresh,
+                                 useCache: viewIsEmpty)
     }
     
     private func requestNextPage() {
         guard !isLoading, let nextPage = nextPage else {
             return
         }
-        
         isLoading = true
-        interactor.loadTrackList(of: trackListType, userId: userId, page: nextPage, reason: .regular)
+        interactor.loadTrackList(of: trackListType,
+                                 userId: userId,
+                                 page: nextPage,
+                                 reason: .regular,
+                                 useCache: viewIsEmpty)
     }
     
     func didTapOnTrack(with trackId: String) {

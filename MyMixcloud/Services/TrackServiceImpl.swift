@@ -18,7 +18,7 @@ final class TrackServiceImpl: TrackService {
         self.networkReachabilityService = reachabilityService
     }
     
-    func track(trackId: String, useCacheIfNeed: Bool, completionHandler: @escaping (Track?, MMError?) -> Void) {
+    func track(trackId: String, completionHandler: @escaping (Track?, MMError?) -> Void) {
         let url = MixcloudApi.track.requestUrl(identifier: trackId)
         Alamofire.request(url)
             .validate()
@@ -27,14 +27,14 @@ final class TrackServiceImpl: TrackService {
                     completionHandler(nil, MMError(type: .executionError))
                     return
                 }
-                
+        
                 let data: Data
                 if let responseData = response.result.value {
                     data = responseData
-                } else if useCacheIfNeed, let request = Alamofire.request(url).request,
+                } else if let request = Alamofire.request(url).request,
                     let cachedResponse = URLCache.shared.cachedResponse(for: request) {
                     data = cachedResponse.data
-                    print("DBG Return Track from cache")
+                    print("DBG Return Track from CACHE")
                 } else {
                     let error: MMError
                     if sSelf.networkReachabilityService.isReachable() {
@@ -67,17 +67,28 @@ final class TrackServiceImpl: TrackService {
         }
     }
     
-    func listeningHistory(userId: String, page: Int, completionHandler: @escaping ([Track]?, MMError?) -> Void) {
+    func listeningHistory(userId: String,
+                          page: Int,
+                          useCache permit: Bool,
+                          completionHandler: @escaping ([Track]?, MMError?) -> Void) {
         let url = MixcloudApi.history.requestUrl(identifier: userId, page: page)
-        trackList(url: url, completionHandler: completionHandler)
+        trackList(url: url, useCache: permit, completionHandler: completionHandler)
     }
     
-    func favoriteList(userId: String, page: Int, completionHandler: @escaping ([Track]?, MMError?) -> Void) {
+    func favoriteList(userId: String,
+                      page: Int,
+                      useCache permit: Bool,
+                      completionHandler: @escaping ([Track]?, MMError?) -> Void) {
         let url = MixcloudApi.favorites.requestUrl(identifier: userId, page: page)
-        trackList(url: url, completionHandler: completionHandler)
+        trackList(url: url, useCache: permit, completionHandler: completionHandler)
     }
     
-    private func trackList(url: String, completionHandler: @escaping ([Track]?, MMError?) -> Void) {
+    private func trackList(url: String,
+                           useCache: Bool,
+                           completionHandler: @escaping ([Track]?, MMError?) -> Void) {
+        
+        print("CACHE ", URLCache.shared.currentMemoryUsage, URLCache.shared.memoryCapacity)
+        
         Alamofire.request(url)
             .validate()
             .responseData(queue: dispatchQueue) { [weak self] response in
@@ -86,7 +97,21 @@ final class TrackServiceImpl: TrackService {
                     return
                 }
                 
-                guard let data = response.result.value else {
+                // --- DBG ---
+                if let request = Alamofire.request(url).request,
+                    let cachedResponse = URLCache.shared.cachedResponse(for: request) {
+                    print("DBG TrackListService HAVE CACHE for request \(url)")
+                }
+                // --- DBG ---
+                
+                let data: Data
+                if let responseData = response.result.value {
+                    data = responseData
+                } else if useCache, let request = Alamofire.request(url).request,
+                    let cachedResponse = URLCache.shared.cachedResponse(for: request) {
+                    data = cachedResponse.data
+                    print("DBG Return TrackList from CACHE")
+                } else {
                     let error: MMError
                     if sSelf.networkReachabilityService.isReachable() {
                         error = MMError(type: .webServiceError,
@@ -97,7 +122,6 @@ final class TrackServiceImpl: TrackService {
                                         location: String(describing: self) + ".trackList",
                                         what: nil)
                     }
-                    
                     error.log()
                     completionHandler(nil, error)
                     return

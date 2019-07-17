@@ -18,8 +18,11 @@ final class TrackListInteractor {
 }
 
 extension TrackListInteractor: TrackListInteractorInput {
-    func loadTrackList(of type: TrackListType, userId: String, page: Int, reason: LoadingReason) {
-        
+    func loadTrackList(of type: TrackListType,
+                       userId: String,
+                       page: Int,
+                       reason: LoadingReason,
+                       useCache permit: Bool) {
         let completion: ([Track]?, MMError?) -> Void = { [weak self] tracks, error in
             DispatchQueue.main.async {
                 if let error = error {
@@ -35,9 +38,15 @@ extension TrackListInteractor: TrackListInteractorInput {
         
         switch type {
         case .history:
-            trackService.listeningHistory(userId: userId, page: page, completionHandler: completion)
+            trackService.listeningHistory(userId: userId,
+                                          page: page,
+                                          useCache: permit,
+                                          completionHandler: completion)
         case .favorite:
-            trackService.favoriteList(userId: userId, page: page, completionHandler: completion)
+            trackService.favoriteList(userId: userId,
+                                      page: page,
+                                      useCache: permit,
+                                      completionHandler: completion)
         }
     }
 }

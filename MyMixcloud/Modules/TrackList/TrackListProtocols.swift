@@ -32,7 +32,11 @@ protocol TrackListViewOutput: class {
 }
 
 protocol TrackListInteractorInput: class {
-    func loadTrackList(of type: TrackListType, userId: String, page: Int, reason: LoadingReason)
+    func loadTrackList(of type: TrackListType,
+                       userId: String,
+                       page: Int,
+                       reason: LoadingReason,
+                       useCache permit: Bool)
 }
 
 protocol TrackListInteractorOutput: class {
