@@ -66,8 +66,11 @@ final class UserServiceImpl: UserService {
         }
     }
     
-    func following(userId: String, page: Int, completionHandler: @escaping ([User]?, MMError?) -> Void) {
-        followingList(userId: userId, page: page) { [weak self] followingList, error in
+    func following(userId: String,
+                   page: Int,
+                   useCache permit: Bool,
+                   completionHandler: @escaping ([User]?, MMError?) -> Void) {
+        followingList(userId: userId, page: page, useCache: permit) { [weak self] followingList, error in
             guard error == nil else {
                 completionHandler(nil, error)
                 return
@@ -110,7 +113,10 @@ final class UserServiceImpl: UserService {
         }
     }
     
-    private func followingList(userId: String, page: Int, completionHandler: @escaping ([String]?, MMError?) -> Void) {
+    private func followingList(userId: String,
+                               page: Int,
+                               useCache: Bool,
+                               completionHandler: @escaping ([String]?, MMError?) -> Void) {
         let url = MixcloudApi.following.requestUrl(identifier: userId, page: page)
         Alamofire.request(url)
             .validate()
@@ -120,7 +126,13 @@ final class UserServiceImpl: UserService {
                     return
                 }
                 
-                guard let data = response.result.value else {
+                let data: Data
+                if let responseData = response.result.value {
+                    data = responseData
+                } else if useCache, let request = Alamofire.request(url).request,
+                    let cachedResponse = URLCache.shared.cachedResponse(for: request) {
+                    data = cachedResponse.data
+                } else {
                     let error: MMError
                     if sSelf.networkReachabilityService.isReachable() {
                         error = MMError(type: .webServiceError,
@@ -131,7 +143,6 @@ final class UserServiceImpl: UserService {
                                         location: String(describing: self) + ".followingList",
                                         what: nil)
                     }
-                    
                     error.log()
                     completionHandler(nil, error)
                     return

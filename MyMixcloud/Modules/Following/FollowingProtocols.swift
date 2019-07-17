@@ -32,7 +32,7 @@ protocol FollowingViewOutput: class {
 }
 
 protocol FollowingInteractorInput: class {
-    func loadFollowing(userId: String, page: Int, reason: LoadingReason)
+    func loadFollowing(userId: String, page: Int, reason: LoadingReason, useCache permit: Bool)
 }
 
 protocol FollowingInteractorOutput: class {

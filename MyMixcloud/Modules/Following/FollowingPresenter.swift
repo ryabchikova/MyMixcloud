@@ -19,6 +19,10 @@ final class FollowingPresenter {
     private var nextPage: Int? = 1
     private var isLoading = false
     
+    var viewIsEmpty: Bool {
+        return view?.isEmpty ?? false
+    }
+    
     init(router: FollowingRouterInput, interactor: FollowingInteractorInput, userId: String) {
         self.router = router
         self.interactor = interactor
@@ -31,7 +35,7 @@ extension FollowingPresenter: FollowingModuleInput {
 
 extension FollowingPresenter: FollowingViewOutput {
     func viewWillAppear() {
-        if view?.isEmpty ?? false {
+        if viewIsEmpty {
             requestNextPage()
         }
     }
@@ -46,7 +50,7 @@ extension FollowingPresenter: FollowingViewOutput {
         }
         
         isLoading = true
-        interactor.loadFollowing(userId: userId, page: 1, reason: .pullToRefresh)
+        interactor.loadFollowing(userId: userId, page: 1, reason: .pullToRefresh, useCache: viewIsEmpty)
     }
     
     private func requestNextPage() {
@@ -55,7 +59,7 @@ extension FollowingPresenter: FollowingViewOutput {
         }
         
         isLoading = true
-        interactor.loadFollowing(userId: userId, page: nextPage, reason: .regular)
+        interactor.loadFollowing(userId: userId, page: nextPage, reason: .regular, useCache: viewIsEmpty)
     }
     
     func didTapOnUser(with userId: String) {

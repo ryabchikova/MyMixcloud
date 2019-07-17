@@ -11,7 +11,7 @@ import Foundation
 protocol UserService {
     func user(userId: String, completionHandler: @escaping (User?, MMError?) -> Void)
     /// - parameter page: starting from 1
-    func following(userId: String, page: Int, completionHandler: @escaping ([User]?, MMError?) -> Void)
+    func following(userId: String, page: Int, useCache permit: Bool, completionHandler: @escaping ([User]?, MMError?) -> Void)
 }
 
 

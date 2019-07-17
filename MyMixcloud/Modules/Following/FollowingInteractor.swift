@@ -18,8 +18,8 @@ final class FollowingInteractor {
 }
 
 extension FollowingInteractor: FollowingInteractorInput {
-    func loadFollowing(userId: String, page: Int, reason: LoadingReason) {
-        userService.following(userId: userId, page: page) { [weak self] users, error in
+    func loadFollowing(userId: String, page: Int, reason: LoadingReason, useCache permit: Bool) {
+        userService.following(userId: userId, page: page, useCache: permit) { [weak self] users, error in
             DispatchQueue.main.async {
                 if let error = error {
                     self?.output?.gotError(error)
