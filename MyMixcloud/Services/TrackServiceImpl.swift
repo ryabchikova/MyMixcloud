@@ -34,7 +34,6 @@ final class TrackServiceImpl: TrackService {
                 } else if let request = Alamofire.request(url).request,
                     let cachedResponse = URLCache.shared.cachedResponse(for: request) {
                     data = cachedResponse.data
-                    print("DBG Return Track from CACHE")
                 } else {
                     let error: MMError
                     if sSelf.networkReachabilityService.isReachable() {

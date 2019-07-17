@@ -15,7 +15,6 @@ struct MMError: Error {
         case webServiceError
         case decodingError
         case executionError
-        case noCacheError
     }
     
     let type: ErrorType

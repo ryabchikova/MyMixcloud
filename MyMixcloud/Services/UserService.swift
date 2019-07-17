@@ -12,7 +12,6 @@ protocol UserService {
     func user(userId: String, completionHandler: @escaping (User?, MMError?) -> Void)
     /// - parameter page: starting from 1
     func following(userId: String, page: Int, completionHandler: @escaping ([User]?, MMError?) -> Void)
-    func userFromCache(userId: String, completionHandler: @escaping (User?, MMError?) -> Void)
 }
 
 

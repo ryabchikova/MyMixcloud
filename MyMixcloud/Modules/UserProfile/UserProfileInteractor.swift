@@ -18,9 +18,8 @@ final class UserProfileInteractor {
 }
 
 extension UserProfileInteractor: UserProfileInteractorInput {
-    
-    func loadUser(userId: String, source: LoadingSource) {
-        let completion: (User?, MMError?) -> Void = { [weak self] user, error in
+    func loadUser(userId: String) {
+        userService.user(userId: userId) { [weak self] user, error in
             DispatchQueue.main.async {
                 if let error = error {
                     self?.output?.gotError(error)
@@ -31,13 +30,6 @@ extension UserProfileInteractor: UserProfileInteractorInput {
                     self?.output?.didLoadUser(user)
                 }
             }
-        }
-        
-        switch source {
-        case .web:
-            userService.user(userId: userId, completionHandler: completion)
-        case .cache:
-            userService.userFromCache(userId: userId, completionHandler: completion)
         }
     }
 }

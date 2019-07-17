@@ -29,7 +29,7 @@ extension UserProfilePresenter: UserProfileModuleInput {
 
 extension UserProfilePresenter: UserProfileViewOutput {
     func viewWillAppear() {
-        interactor.loadUser(userId: userId, source: .web)
+        interactor.loadUser(userId: userId)
     }
     
     func didTapSettingsButton() {
@@ -45,15 +45,11 @@ extension UserProfilePresenter: UserProfileInteractorOutput {
             return
         }
     
-        if case .noCacheError = error.type {
-            viewController.showDummyView(for: error) { [weak self] in
-                guard let sSelf = self else {
-                    return
-                }
-                sSelf.interactor.loadUser(userId: sSelf.userId, source: .web)
+        viewController.showDummyView(for: error) { [weak self] in
+            guard let sSelf = self else {
+                return
             }
-        } else {
-            interactor.loadUser(userId: userId, source: .cache)
+            sSelf.interactor.loadUser(userId: sSelf.userId)
         }
     }
     

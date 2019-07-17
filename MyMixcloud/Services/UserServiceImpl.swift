@@ -28,7 +28,13 @@ final class UserServiceImpl: UserService {
                     return
                 }
                 
-                guard let data = response.result.value else {
+                let data: Data
+                if let responseData = response.result.value {
+                    data = responseData
+                } else if let request = Alamofire.request(url).request,
+                    let cachedResponse = URLCache.shared.cachedResponse(for: request) {
+                    data = cachedResponse.data
+                } else {
                     let error: MMError
                     if sSelf.networkReachabilityService.isReachable() {
                         error = MMError(type: .webServiceError,
@@ -39,7 +45,6 @@ final class UserServiceImpl: UserService {
                                         location: String(describing: self) + ".user",
                                         what: nil)
                     }
-                    
                     error.log()
                     completionHandler(nil, error)
                     return
@@ -58,34 +63,6 @@ final class UserServiceImpl: UserService {
                     error.log()
                     completionHandler(nil, error)
                 }
-        }
-    }
-    
-    func userFromCache(userId: String, completionHandler: @escaping (User?, MMError?) -> Void) {
-        let url = MixcloudApi.user.requestUrl(identifier: userId)
-        
-        dispatchQueue.async { [weak self] in
-            if let request = Alamofire.request(url).request, let cachedResponse = URLCache.shared.cachedResponse(for: request) {
-                guard let sSelf = self else {
-                    completionHandler(nil, MMError(type: .noCacheError))
-                    return
-                }
-                do {
-                    let decoder = JSONDecoder()
-                    decoder.keyDecodingStrategy = .convertFromSnakeCase
-                    let jsonUser = try decoder.decode(JsonUser.self, from: cachedResponse.data)
-                    let user = sSelf.converter.makeUser(from: jsonUser)
-                    completionHandler(user, nil)
-                    print("DBG Return User from cache")
-                    return
-                } catch {}
-            }
-            
-            let error = MMError(type: .noCacheError,
-                                location: String(describing: self) + ".user(cached)",
-                                what: "No cache")
-            error.log()
-            completionHandler(nil, error)
         }
     }
     
