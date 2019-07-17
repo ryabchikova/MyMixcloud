@@ -91,7 +91,7 @@ final class UserProfileView: UIView {
 
                 flex.addItem()
                     .direction(.row)
-                    .alignItems(.center)
+                    .alignItems(.end)
                     .marginTop(Constants.topMargin)
                     .define { flex in
                         flex.addItem(locationImageView)

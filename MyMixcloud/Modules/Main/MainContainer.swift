@@ -22,7 +22,7 @@ final class MainContainer {
         let profileContext = UserProfileContext(moduleOutput: nil, userId: context.currentUserId, isMyProfile: true)
         let profileContainer = UserProfileContainer.assemble(with: profileContext)
         profileContainer.viewController.tabBarItem.image = UIImage(named: "profileIcon")
-
+        
         let followingContext = FollowingContext(moduleOutput: nil, userId: context.currentUserId)
         let followingContainer = FollowingContainer.assemble(with: followingContext)
         followingContainer.viewController.tabBarItem.image = UIImage(named: "followingIcon")

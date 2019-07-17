@@ -25,6 +25,8 @@ enum SettingsItem {
                                                                           .foregroundColor: MMColors.darkGray]
 }
 
+// TODO can use TableViewManager
+
 final class SettingsViewController: UIViewController {
 	private let output: SettingsViewOutput
     private let tableView = UITableView()

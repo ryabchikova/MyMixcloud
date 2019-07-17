@@ -29,6 +29,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         NSAttributedString.Key.font: MMFonts.largeBold]
         UINavigationBar.appearance().tintColor = MMColors.darkGray
         UIBarButtonItem.appearance().setBackButtonTitlePositionAdjustment(UIOffset(horizontal: -1000.0, vertical: 0.0), for: .default)
+        UITabBar.appearance().tintColor = MMColors.blue
     }
 
     func applicationWillResignActive(_ application: UIApplication) {
