@@ -32,6 +32,10 @@ extension UserProfilePresenter: UserProfileViewOutput {
         interactor.loadUser(userId: userId)
     }
     
+    func didPullToRefresh() {
+        interactor.loadUser(userId: userId)
+    }
+    
     func didTapSettingsButton() {
         if let viewController = view as? UIViewController {
             router.showSettingsScreen(in: viewController)

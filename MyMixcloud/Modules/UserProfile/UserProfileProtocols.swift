@@ -25,6 +25,7 @@ protocol UserProfileViewInput: class {
 
 protocol UserProfileViewOutput: class {
     func viewWillAppear()
+    func didPullToRefresh()
     func didTapSettingsButton()
 }
 

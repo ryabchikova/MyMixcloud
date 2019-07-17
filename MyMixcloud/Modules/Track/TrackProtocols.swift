@@ -24,6 +24,7 @@ protocol TrackViewInput: class {
 
 protocol TrackViewOutput: class {
     func viewWillAppear()
+    func didPullToRefresh()
 }
 
 protocol TrackInteractorInput: class {

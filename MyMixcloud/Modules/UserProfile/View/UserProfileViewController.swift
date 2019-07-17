@@ -41,7 +41,9 @@ final class UserProfileViewController: MMViewController {
 		super.viewDidLoad()
         view.backgroundColor = MMColors.white
         scrollView.backgroundColor = MMColors.white
-        scrollView.bounces = false
+        setupPullToRefresh(in: scrollView) { [weak self] in
+            self?.output.didPullToRefresh()
+        }
 	}
     
     override func viewWillAppear(_ animated: Bool) {

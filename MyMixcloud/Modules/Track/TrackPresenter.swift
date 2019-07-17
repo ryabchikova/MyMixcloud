@@ -30,6 +30,10 @@ extension TrackPresenter: TrackViewOutput {
     func viewWillAppear() {
         interactor.loadTrack(trackId: trackId)
     }
+    
+    func didPullToRefresh() {
+        interactor.loadTrack(trackId: trackId)
+    }
 }
 
 extension TrackPresenter: TrackInteractorOutput {
