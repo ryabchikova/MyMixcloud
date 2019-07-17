@@ -64,17 +64,17 @@ final class TrackView: UIView {
         uploadedLabel.backgroundColor = Styles.backgroundColor
         
         favoriteImageView.image = UIImage(named: "favoriteIcon")
-        favoriteImageView.tintColor = Styles.counterColor           // TODO не работает
+        favoriteImageView.tintColor = Styles.counterColor
         favoriteImageView.contentMode = .scaleAspectFit
         favoritedLabel.backgroundColor = Styles.backgroundColor
         
         listenImageView.image = UIImage(named: "listenIcon")
-        listenImageView.tintColor = Styles.counterColor           // TODO не работает
+        listenImageView.tintColor = Styles.counterColor
         listenImageView.contentMode = .scaleAspectFit
         listenedLabel.backgroundColor = Styles.backgroundColor
         
-        repostImageView.image = UIImage(named: "repostIcon")
-        repostImageView.tintColor = Styles.counterColor           // TODO не работает
+        repostImageView.image = UIImage(named: "repostIcon")?.withRenderingMode(.alwaysTemplate)
+        repostImageView.tintColor = Styles.counterColor
         repostImageView.contentMode = .scaleAspectFit
         repostedLabel.backgroundColor = Styles.backgroundColor
     }
