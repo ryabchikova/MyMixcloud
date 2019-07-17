@@ -59,8 +59,9 @@ final class LoginView: UIView {
         startButton.layer.cornerRadius = Constants.cornerRadius
         startButton.layer.masksToBounds = true
         startButton.isEnabled = false
-        startButton.setAttributedTitle(model.startButtonEnabledString, for: .normal)
-        startButton.setAttributedTitle(model.startButtonDisabledString, for: .disabled)
+        startButton.setAttributedTitle(model.startButtonString(for: .normal), for: .normal)
+        startButton.setAttributedTitle(model.startButtonString(for: .disabled), for: .disabled)
+        startButton.setAttributedTitle(model.startButtonString(for: .highlited), for: .highlighted)
         startButton.addTarget(self, action: #selector(startButtonPressed), for: .touchUpInside)
         
         setNeedsLayout()

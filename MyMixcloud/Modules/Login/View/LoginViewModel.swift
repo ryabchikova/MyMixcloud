@@ -11,14 +11,14 @@ import UIKit
 
 struct LoginViewModel {
     
-    let welcomeString: NSAttributedString
-    let startButtonEnabledString: NSAttributedString
-    let startButtonDisabledString: NSAttributedString
+    enum ButtonState {
+        case normal, disabled, highlited
+    }
     
-    init() {
-        welcomeString = NSAttributedString(string: "Hi! To start\nenter your username", attributes: Styles.welcome)
-        startButtonEnabledString = NSAttributedString(string: "Let's go!", attributes: Styles.startButtonEnabled)
-        startButtonDisabledString = NSAttributedString(string: "Let's go!", attributes: Styles.startButtonDisabled)
+    let welcomeString = NSAttributedString(string: "Hi! To start\nenter your username", attributes: Styles.welcome)
+    
+    func startButtonString(for state: ButtonState) -> NSAttributedString {
+        return NSAttributedString(string: "Let's go!", attributes: Styles.startButton(for: state))
     }
 }
 
@@ -32,18 +32,11 @@ extension LoginViewModel {
             ]
         }()
         
-        static let startButtonEnabled: [NSAttributedString.Key: Any] = {
+        static func startButton(for state: ButtonState) -> [NSAttributedString.Key: Any] {
             return [
                 .font: MMFonts.mediumBold,
-                .foregroundColor: MMColors.darkGray
+                .foregroundColor: state == .normal ? MMColors.darkGray : MMColors.lightGray
             ]
-        }()
-        
-        static let startButtonDisabled: [NSAttributedString.Key: Any] = {
-            return [
-                .font: MMFonts.mediumBold,
-                .foregroundColor: MMColors.lightGray
-            ]
-        }()
+        }
     }
 }

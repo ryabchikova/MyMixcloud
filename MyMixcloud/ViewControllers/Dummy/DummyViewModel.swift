@@ -11,8 +11,11 @@ import UIKit
 
 struct DummyViewModel {
     
+    enum ButtonState {
+        case normal, highlited
+    }
+    
     let errorMessageString: NSAttributedString
-    let retryButtonTitleString: NSAttributedString
     
     init(error: MMError) {
         if case .networkUnreachable = error.type {
@@ -20,7 +23,10 @@ struct DummyViewModel {
         } else {
             errorMessageString = NSAttributedString(string: "An error has occurred.", attributes: Styles.message)
         }
-        retryButtonTitleString = NSAttributedString(string: "Try again", attributes: Styles.button)
+    }
+    
+    func retryButtonString(for state: ButtonState) -> NSAttributedString {
+        return NSAttributedString(string: "Try again", attributes: Styles.retryButton(for: state))
     }
 }
 
@@ -34,11 +40,11 @@ extension DummyViewModel {
             ]
         }()
         
-        static let button: [NSAttributedString.Key: Any] = {
+        static func retryButton(for state: ButtonState) -> [NSAttributedString.Key: Any] {
             return [
                 .font: MMFonts.mediumBold,
-                .foregroundColor: MMColors.darkGray
+                .foregroundColor: state == .normal ? MMColors.darkGray : MMColors.lightGray
             ]
-        }()
+        }
     }
 }

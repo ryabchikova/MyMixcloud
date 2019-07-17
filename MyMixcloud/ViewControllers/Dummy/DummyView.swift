@@ -45,7 +45,8 @@ final class DummyView: UIView {
         retryButton.layer.cornerRadius = Constants.cornerRadius
         retryButton.layer.masksToBounds = true
         retryButton.isEnabled = true
-        retryButton.setAttributedTitle(model.retryButtonTitleString, for: .normal)
+        retryButton.setAttributedTitle(model.retryButtonString(for: .normal), for: .normal)
+        retryButton.setAttributedTitle(model.retryButtonString(for: .highlited), for: .highlighted)
         retryButton.addTarget(self, action: #selector(retryButtonPressed), for: .touchUpInside)
     
         setNeedsLayout()
