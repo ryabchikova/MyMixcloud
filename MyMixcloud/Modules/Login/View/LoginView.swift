@@ -64,6 +64,8 @@ final class LoginView: UIView {
         startButton.setAttributedTitle(model.startButtonString(for: .highlited), for: .highlighted)
         startButton.addTarget(self, action: #selector(startButtonPressed), for: .touchUpInside)
         
+        addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(didTapOutsideKeyboard)))
+        
         setNeedsLayout()
     }
     
@@ -96,6 +98,10 @@ final class LoginView: UIView {
     
     @objc private func startButtonPressed() {
         output?.didTapStart(with: userNameTextField.text ?? "")
+    }
+    
+    @objc private func didTapOutsideKeyboard() {
+        userNameTextField.resignFirstResponder()
     }
 }
 
