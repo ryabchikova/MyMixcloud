@@ -22,6 +22,8 @@ protocol FollowingViewInput: class {
     func reset(viewModels: [FollowingUserViewModel])
     func showDummyView(for error: MMError, retryHandler: @escaping () -> Void)
     func hideDummyViewIfNeed()
+    func showActivity()
+    func hideActivity()
 }
 
 protocol FollowingViewOutput: class {

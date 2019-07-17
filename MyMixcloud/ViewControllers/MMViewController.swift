@@ -8,13 +8,13 @@
 
 import Foundation
 import UIKit
-import PinLayout
 
 class MMViewController: UIViewController {
     private var dummyView: DummyView?
     private weak var scrollView: UIScrollView?
     private var refreshControl: UIRefreshControl?
     private var didPullToRefresh: (() -> Void)?
+    private var activityIndicator: UIActivityIndicatorView?
     
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
@@ -27,6 +27,7 @@ class MMViewController: UIViewController {
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         dummyView?.pin.all(view.pin.safeArea)
+        activityIndicator?.pin.center(to: view.anchor.center)
     }
     
     // MARK: - Dummy View
@@ -48,7 +49,12 @@ class MMViewController: UIViewController {
     // MARK: - Pull To Refresh
     
     func setupPullToRefresh(in scrollView: UIScrollView, pullToRefreshCompletion: @escaping (() -> Void)) {
+        guard refreshControl == nil else {
+            return
+        }
+        
         let refreshControl = UIRefreshControl()
+        refreshControl.tintColor = Styles.loadingIndicatorColor
         refreshControl.addTarget(self, action: #selector(handlePullToRefresh), for: .valueChanged)
         if #available(iOS 10.0, *) {
             scrollView.refreshControl = refreshControl
@@ -65,4 +71,37 @@ class MMViewController: UIViewController {
         didPullToRefresh?()
         refreshControl?.endRefreshing()
     }
+    
+    // MARK: - Activity Indicator
+    
+    func setupActivityIndicator() {
+        guard activityIndicator == nil else {
+            return
+        }
+        
+        let activityIndicator = UIActivityIndicatorView(style: .whiteLarge)
+        activityIndicator.color = Styles.loadingIndicatorColor
+        activityIndicator.hidesWhenStopped = true
+        view.addSubview(activityIndicator)
+        self.activityIndicator = activityIndicator
+    }
+    
+    func showActivity() {
+        DispatchQueue.main.async {
+            self.activityIndicator?.startAnimating()
+        }
+    }
+
+    func hideActivity() {
+        DispatchQueue.main.async {
+            self.activityIndicator?.stopAnimating()
+        }
+    }
 }
+
+extension MMViewController {
+    private struct Styles {
+        static let loadingIndicatorColor = MMColors.darkGray
+    }
+}
+

@@ -5,7 +5,6 @@ target 'MyMixcloud' do
   use_frameworks!
 
   pod 'Alamofire'
-  pod 'AlamofireNetworkActivityIndicator'
   pod 'SDWebImage'
   
   pod 'FlexLayout'

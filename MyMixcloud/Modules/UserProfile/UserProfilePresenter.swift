@@ -29,6 +29,7 @@ extension UserProfilePresenter: UserProfileModuleInput {
 
 extension UserProfilePresenter: UserProfileViewOutput {
     func viewWillAppear() {
+        view?.showActivity()
         interactor.loadUser(userId: userId)
     }
     
@@ -45,6 +46,8 @@ extension UserProfilePresenter: UserProfileViewOutput {
 
 extension UserProfilePresenter: UserProfileInteractorOutput {
     func gotError(_ error: MMError) {
+        view?.hideActivity()
+        
         guard let viewController = view, viewController.isEmpty else {
             return
         }
@@ -58,6 +61,7 @@ extension UserProfilePresenter: UserProfileInteractorOutput {
     }
     
     func didLoadUser(_ user: User) {
+        view?.hideActivity()
         view?.hideDummyViewIfNeed()
         view?.set(userProfileViewModel: UserProfileViewModel(user: user))
     }

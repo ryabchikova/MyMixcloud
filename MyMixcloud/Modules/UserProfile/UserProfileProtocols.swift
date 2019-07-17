@@ -21,6 +21,8 @@ protocol UserProfileViewInput: class {
     func set(userProfileViewModel: UserProfileViewModel)
     func showDummyView(for error: MMError, retryHandler: @escaping () -> Void)
     func hideDummyViewIfNeed()
+    func showActivity()
+    func hideActivity()
 }
 
 protocol UserProfileViewOutput: class {

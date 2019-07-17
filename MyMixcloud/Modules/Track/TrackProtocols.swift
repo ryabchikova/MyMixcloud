@@ -20,6 +20,8 @@ protocol TrackViewInput: class {
     func set(trackViewModel: TrackViewModel)
     func showDummyView(for error: MMError, retryHandler: @escaping () -> Void)
     func hideDummyViewIfNeed()
+    func showActivity()
+    func hideActivity()
 }
 
 protocol TrackViewOutput: class {

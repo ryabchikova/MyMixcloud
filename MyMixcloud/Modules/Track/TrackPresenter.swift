@@ -28,6 +28,7 @@ extension TrackPresenter: TrackModuleInput {
 
 extension TrackPresenter: TrackViewOutput {
     func viewWillAppear() {
+        view?.showActivity()
         interactor.loadTrack(trackId: trackId)
     }
     
@@ -38,6 +39,8 @@ extension TrackPresenter: TrackViewOutput {
 
 extension TrackPresenter: TrackInteractorOutput {
     func gotError(_ error: MMError) {
+        view?.hideActivity()
+        
         guard let viewController = view, viewController.isEmpty else {
             return
         }
@@ -51,6 +54,7 @@ extension TrackPresenter: TrackInteractorOutput {
     }
     
     func didLoadTrack(_ track: Track) {
+        view?.hideActivity()
         view?.hideDummyViewIfNeed()
         view?.set(trackViewModel: TrackViewModel(track: track))
     }

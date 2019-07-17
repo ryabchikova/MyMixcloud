@@ -63,6 +63,7 @@ extension TrackListPresenter: TrackListViewOutput {
             return
         }
         isLoading = true
+        view?.showActivity()
         interactor.loadTrackList(of: trackListType,
                                  userId: userId,
                                  page: nextPage,
@@ -80,7 +81,7 @@ extension TrackListPresenter: TrackListViewOutput {
 extension TrackListPresenter: TrackListInteractorOutput {
     func gotError(_ error: MMError) {
         isLoading = false
-        
+        view?.hideActivity()
         if let viewController = view, viewController.isEmpty {
             viewController.showDummyView(for: error) { [weak self] in
                 self?.requestNextPage()
@@ -89,8 +90,9 @@ extension TrackListPresenter: TrackListInteractorOutput {
     }
     
     func didLoadTrackList(_ tracks: [Track], reason: LoadingReason) {
+        view?.hideActivity()
         view?.hideDummyViewIfNeed()
-        
+
         let viewModels = tracks.map { TrackListItemViewModel(track: $0) }
         switch reason {
         case .regular:
