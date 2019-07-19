@@ -85,9 +85,6 @@ final class TrackServiceImpl: TrackService {
     private func trackList(url: String,
                            useCache: Bool,
                            completionHandler: @escaping ([Track]?, MMError?) -> Void) {
-        
-        print("CACHE ", URLCache.shared.currentMemoryUsage, URLCache.shared.memoryCapacity)
-        
         Alamofire.request(url)
             .validate()
             .responseData(queue: dispatchQueue) { [weak self] response in
@@ -96,20 +93,12 @@ final class TrackServiceImpl: TrackService {
                     return
                 }
                 
-                // --- DBG ---
-                if let request = Alamofire.request(url).request,
-                    let cachedResponse = URLCache.shared.cachedResponse(for: request) {
-                    print("DBG TrackListService HAVE CACHE for request \(url)")
-                }
-                // --- DBG ---
-                
                 let data: Data
                 if let responseData = response.result.value {
                     data = responseData
                 } else if useCache, let request = Alamofire.request(url).request,
                     let cachedResponse = URLCache.shared.cachedResponse(for: request) {
                     data = cachedResponse.data
-                    print("DBG Return TrackList from CACHE")
                 } else {
                     let error: MMError
                     if sSelf.networkReachabilityService.isReachable() {

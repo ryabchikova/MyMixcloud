@@ -35,10 +35,10 @@ final class MainContainer {
         let favoriteContainer = TrackListContainer.assemble(with: favoriteContext)
         favoriteContainer.viewController.tabBarItem.image = UIImage(named: "favoriteIcon")
         
-        viewController.configureTabs(сontrollers: [profileContainer.viewController,
+        viewController.configureTabs(сontrollers: [historyContainer.viewController,
                                                    followingContainer.viewController,
-                                                   historyContainer.viewController,
-                                                   favoriteContainer.viewController])
+                                                   favoriteContainer.viewController,
+                                                   profileContainer.viewController])
 
         return MainContainer(view: viewController, input: presenter)
 	}

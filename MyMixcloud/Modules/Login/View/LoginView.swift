@@ -9,8 +9,6 @@
 import Foundation
 import FlexLayout
 
-// TODO fix placeholder text choppy when tap on textfield
-
 final class LoginView: UIView {
     weak var output: LoginViewOutput?
     private let welcomeLabel = UILabel()
