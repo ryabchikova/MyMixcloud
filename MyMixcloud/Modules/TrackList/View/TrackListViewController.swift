@@ -44,12 +44,12 @@ final class TrackListViewController: MMViewController {
         setupPullToRefresh(in: tableView) { [weak self] in
             self?.output.didPullToRefresh()
         }
-        setupActivityIndicator()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         output.viewWillAppear()
     }
+    
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         tableView.pin.all(view.pin.safeArea)

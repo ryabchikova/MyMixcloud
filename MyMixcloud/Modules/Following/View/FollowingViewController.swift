@@ -44,7 +44,6 @@ final class FollowingViewController: MMViewController {
         setupPullToRefresh(in: tableView) { [weak self] in
             self?.output.didPullToRefresh()
         }
-        setupActivityIndicator()
     }
     
     override func viewWillAppear(_ animated: Bool) {

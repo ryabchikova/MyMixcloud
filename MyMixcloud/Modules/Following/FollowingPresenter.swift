@@ -58,7 +58,6 @@ extension FollowingPresenter: FollowingViewOutput {
             return
         }
         isLoading = true
-        view?.showActivity()
         interactor.loadFollowing(userId: userId, page: nextPage, reason: .regular, useCache: viewIsEmpty)
     }
     
@@ -72,7 +71,6 @@ extension FollowingPresenter: FollowingViewOutput {
 extension FollowingPresenter: FollowingInteractorOutput {
     func gotError(_ error: MMError) {
         isLoading = false
-        view?.hideActivity()
         if let viewController = view, viewController.isEmpty {
             viewController.showDummyView(for: error) { [weak self] in
                 self?.requestNextPage()
@@ -81,7 +79,6 @@ extension FollowingPresenter: FollowingInteractorOutput {
     }
     
     func didLoadFollowing(_ users: [User], reason: LoadingReason) {
-        view?.hideActivity()
         view?.hideDummyViewIfNeed()
         
         let viewModels = users.map { FollowingUserViewModel(user: $0) }

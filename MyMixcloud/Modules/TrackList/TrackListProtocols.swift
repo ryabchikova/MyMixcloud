@@ -22,8 +22,6 @@ protocol TrackListViewInput: class {
     func reset(viewModels: [TrackListItemViewModel])
     func showDummyView(for error: MMError, retryHandler: @escaping () -> Void)
     func hideDummyViewIfNeed()
-    func showActivity()
-    func hideActivity()
 }
 
 protocol TrackListViewOutput: class {
