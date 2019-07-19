@@ -11,4 +11,5 @@ My mixcloud page https://www.mixcloud.com/elena-ryabchikova/
 - following, faworiting, reposting actions
 - search across uploads, users and tags
 - deep links for listening audio in oficial Mixcloud application, because the audio streams are not available through the Mixcloud API
+- several color themes
 - may be some interesting graphics presentation of user's statistics data
