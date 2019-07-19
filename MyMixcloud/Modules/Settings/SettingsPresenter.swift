@@ -27,9 +27,15 @@ extension SettingsPresenter: SettingsModuleInput {
 
 extension SettingsPresenter: SettingsViewOutput {
     func didSelectItem(_ item: SettingsItem) {
+        guard let viewController = view as? UIViewController else {
+            return
+        }
+        
         switch item {
         case .logout:
-            interactor.logout()
+            router.showLogoutAlert(in: viewController) { [weak self] _ in
+                self?.interactor.logout()
+            }
         case .theme:
             return
         }

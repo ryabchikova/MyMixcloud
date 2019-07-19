@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 protocol SettingsModuleInput {
     var moduleOutput: SettingsModuleOutput? { get }
@@ -32,4 +33,5 @@ protocol SettingsInteractorOutput: class {
 
 protocol SettingsRouterInput: class {
     func showLoginScreen()
+    func showLogoutAlert(in viewController: UIViewController, logoutCompletion: @escaping (UIAlertAction) -> Void)
 }

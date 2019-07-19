@@ -96,6 +96,7 @@ final class UserProfileView: UIView {
                     .define { flex in
                         flex.addItem(locationImageView)
                             .size(Constants.locationImageSize)
+                            .display(.none)
                         flex.addItem(locationLabel)
                             .marginLeft(Constants.locationLeftMargin)
                     }
@@ -103,7 +104,6 @@ final class UserProfileView: UIView {
                 flex.addItem()
                     .direction(.row)
                     .marginTop(Constants.countersTopMargin)
-                    .alignSelf(.start)
                     .define { flex in
                         flex.addItem(followersLabel)
                             .marginRight(Constants.counterRightMargin)

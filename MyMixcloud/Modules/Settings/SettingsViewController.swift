@@ -17,15 +17,18 @@ enum SettingsItem {
         case .logout:
             return NSAttributedString(string: "Log out", attributes: SettingsItem.titleAttributes)
         case .theme:
-            return NSAttributedString(string: "Theme", attributes: SettingsItem.titleAttributes)
+            return NSAttributedString(string: "Theme", attributes: SettingsItem.titleDisabledAttributes)
         }
     }
     
-    private static let titleAttributes: [NSAttributedString.Key : Any] = [.font: MMFonts.medium,
+    private static let titleAttributes: [NSAttributedString.Key : Any] = [.font: MMFonts.mediumBold,
                                                                           .foregroundColor: MMColors.darkGray]
+    private static let titleDisabledAttributes: [NSAttributedString.Key : Any] = [.font: MMFonts.medium,
+                                                                          .foregroundColor: MMColors.lightGray]
 }
 
 // TODO can use TableViewManager
+// TODO custom table view cell
 
 final class SettingsViewController: UIViewController {
 	private let output: SettingsViewOutput
@@ -80,6 +83,10 @@ extension SettingsViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell =  tableView.dequeueReusableCell(withIdentifier: String(describing: UITableViewCell.self), for: indexPath)
         cell.textLabel?.attributedText = items[indexPath.row].title
+        cell.selectionStyle = .none
+        if items[indexPath.row] == .theme {
+            cell.isUserInteractionEnabled = false
+        }
         return cell
     }
 }
