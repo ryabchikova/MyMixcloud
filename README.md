@@ -1,5 +1,5 @@
 ## Intro
-Application for browse and interact with your data from www.mixcloud.com  
+Application for browsing and interacting with your data from www.mixcloud.com  
 Based on [Mixcloud API](https://www.mixcloud.com/developers/)
 
 ## Why did I desid to create it?
@@ -7,8 +7,8 @@ I'm music lover and a big fan of Mixcloud service. So, it became interesting to 
 My mixcloud page https://www.mixcloud.com/elena-ryabchikova/
 
 ## Features are planned:
-- Authorization
-- Following, faworiting, reposting actions
-- Search across uploads, users and tags
-- Deep links for listening audio in oficial Mixcloud application, because the audio streams are not available through the Mixcloud API.
-- May be some interesting graphics presentation of user's statistics data
+- authorization
+- following, faworiting, reposting actions
+- search across uploads, users and tags
+- deep links for listening audio in oficial Mixcloud application, because the audio streams are not available through the Mixcloud API
+- may be some interesting graphics presentation of user's statistics data
