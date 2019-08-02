@@ -16,5 +16,5 @@ My mixcloud page https://www.mixcloud.com/elena-ryabchikova/
 
 ## How to try app
 - If you have mixcloud account, use your username when login.
-- If you haven't  mixcloud account, you can login with any existing username. So you can see user's open data. This is safe because read-only mode is currently supported. In future this option will be disabled, you will need username and password to login.
-   For example to show to watch my account  (https://www.mixcloud.com/elena-ryabchikova/), you should use 'elena-ryabchikova' as username.
+- If you haven't  mixcloud account, you can login with any existing username. So you can see user's open data. This is safe because read-only mode is currently supported. In future this option will be disabled, you will need username and password to login.  
+   For example, to watch my account  (https://www.mixcloud.com/elena-ryabchikova/), you should use 'elena-ryabchikova' as username.
