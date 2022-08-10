@@ -6,25 +6,23 @@
 //  Copyright © 2019 ryabchikova. All rights reserved.
 //
 
-import Foundation
 
 final class TrackPresenter {
 	weak var view: TrackViewInput?
-    weak var moduleOutput: TrackModuleOutput?
     
-	private let router: TrackRouterInput
 	private let interactor: TrackInteractorInput
+    private weak var moduleOutput: TrackModuleOutput?
+
     private let trackId: String
     
-    init(router: TrackRouterInput, interactor: TrackInteractorInput, trackId: String) {
-        self.router = router
+    init(interactor: TrackInteractorInput, context: TrackContext) {
         self.interactor = interactor
-        self.trackId = trackId
+        moduleOutput = context.moduleOutput
+        trackId = context.trackId
     }
 }
 
-extension TrackPresenter: TrackModuleInput {
-}
+extension TrackPresenter: TrackModuleInput {}
 
 extension TrackPresenter: TrackViewOutput {
     func viewWillAppear() {

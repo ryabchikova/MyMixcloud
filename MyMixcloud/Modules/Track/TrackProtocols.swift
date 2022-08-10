@@ -6,16 +6,14 @@
 //  Copyright © 2019 ryabchikova. All rights reserved.
 //
 
-import Foundation
 
-protocol TrackModuleInput {
-	var moduleOutput: TrackModuleOutput? { get }
-}
+// MARK: - Module
+protocol TrackModuleInput: AnyObject {}
 
-protocol TrackModuleOutput: class {
-}
+protocol TrackModuleOutput: AnyObject {}
 
-protocol TrackViewInput: class {
+// MARK: - View
+protocol TrackViewInput: AnyObject {
     var isEmpty: Bool { get }
     func set(trackViewModel: TrackViewModel)
     func showDummyView(for error: MMError, retryHandler: @escaping () -> Void)
@@ -24,19 +22,17 @@ protocol TrackViewInput: class {
     func hideActivity()
 }
 
-protocol TrackViewOutput: class {
+protocol TrackViewOutput: AnyObject {
     func viewWillAppear()
     func didPullToRefresh()
 }
 
-protocol TrackInteractorInput: class {
+// MARK: - Interactor
+protocol TrackInteractorInput {
     func loadTrack(trackId: String)
 }
 
-protocol TrackInteractorOutput: class {
+protocol TrackInteractorOutput: AnyObject {
     func gotError(_ error: MMError)
     func didLoadTrack(_ track: Track)
-}
-
-protocol TrackRouterInput: class {
 }
