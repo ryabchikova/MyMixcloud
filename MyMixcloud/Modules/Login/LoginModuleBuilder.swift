@@ -10,13 +10,13 @@ struct LoginModuleBuilder {
 
     private init() {}
 
-    static func build(with context: LoginContext) -> Module<LoginModuleInput> {
+    static func build(moduleOutput: LoginModuleOutput?) -> Module<LoginModuleInput> {
         let router = LoginRouter()
         let interactor = LoginInteractor(userService: InjectionManager.shared.userService(),
                                          settingsService: InjectionManager.shared.settingsService())
         let presenter = LoginPresenter(router: router,
                                        interactor: interactor,
-                                       moduleOutput: context.moduleOutput)
+                                       moduleOutput: moduleOutput)
         let viewController = LoginViewController(output: presenter)
 
         presenter.view = viewController
@@ -25,12 +25,4 @@ struct LoginModuleBuilder {
         return Module(viewController, presenter)
     }
 
-}
-
-struct LoginContext {
-    let moduleOutput: LoginModuleOutput?
-    
-    init(moduleOutput: LoginModuleOutput? = nil) {
-        self.moduleOutput = moduleOutput
-    }
 }

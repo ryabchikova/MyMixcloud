@@ -12,9 +12,8 @@ final class FollowingRouter {}
 
 extension FollowingRouter: FollowingRouterInput {
     func showUserProfileScreen(in viewController: UIViewController, userId: String) {
-        let userContainer = UserProfileModuleBuilder.build(
-            with: UserProfileContext(userId: userId, isMyProfile: false)
-        )
-        viewController.show(userContainer.viewController, sender: self)
+        let context = UserProfileContext(userId: userId, isMyProfile: false)
+        let module = UserProfileModuleBuilder.build(context)
+        viewController.show(module.viewController, sender: self)
     }
 }

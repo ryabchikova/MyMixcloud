@@ -20,11 +20,11 @@ final class MainContainer {
 
         // configure tabs
         let profileContext = UserProfileContext(userId: context.currentUserId, isMyProfile: true)
-        let profileViewController = UserProfileModuleBuilder.build(with: profileContext).viewController
+        let profileViewController = UserProfileModuleBuilder.build(profileContext).viewController
         profileViewController.tabBarItem.image = UIImage(named: "profileIcon")
         
         let followingContext = FollowingContext(userId: context.currentUserId)
-        let followingViewController = FollowingModuleBuilder.build(with: followingContext).viewController
+        let followingViewController = FollowingModuleBuilder.build(followingContext).viewController
         followingViewController.tabBarItem.image = UIImage(named: "followingIcon")
         
         let historyContext = TrackListContext(moduleOutput: nil, userId: context.currentUserId, trackListType: .history)

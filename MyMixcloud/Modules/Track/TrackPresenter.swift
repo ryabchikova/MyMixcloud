@@ -15,9 +15,11 @@ final class TrackPresenter {
 
     private let trackId: String
     
-    init(interactor: TrackInteractorInput, context: TrackContext) {
+    init(interactor: TrackInteractorInput,
+         moduleOutput: TrackModuleOutput?,
+         context: TrackContext) {
         self.interactor = interactor
-        moduleOutput = context.moduleOutput
+        self.moduleOutput = moduleOutput
         trackId = context.trackId
     }
 }

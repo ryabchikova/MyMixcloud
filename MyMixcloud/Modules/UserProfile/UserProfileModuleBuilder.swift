@@ -10,10 +10,14 @@ struct UserProfileModuleBuilder {
 
     private init() {}
 
-	static func build(with context: UserProfileContext) -> Module<UserProfileModuleInput> {
+	static func build(_ context: UserProfileContext,
+                      moduleOutput: UserProfileModuleOutput? = nil) -> Module<UserProfileModuleInput> {
         let router = UserProfileRouter()
         let interactor = UserProfileInteractor(userService: InjectionManager.shared.userService())
-        let presenter = UserProfilePresenter(router: router, interactor: interactor, context: context)
+        let presenter = UserProfilePresenter(router: router,
+                                             interactor: interactor,
+                                             moduleOutput: moduleOutput,
+                                             context: context)
         let viewController = UserProfileViewController(output: presenter, isMyProfile: context.isMyProfile)
 
 		presenter.view = viewController
@@ -25,13 +29,6 @@ struct UserProfileModuleBuilder {
 }
 
 struct UserProfileContext {
-	let moduleOutput: UserProfileModuleOutput?
     let userId: String
     let isMyProfile: Bool
-    
-    init(userId: String, isMyProfile: Bool, moduleOutput: UserProfileModuleOutput? = nil) {
-        self.userId = userId
-        self.isMyProfile = isMyProfile
-        self.moduleOutput = moduleOutput
-    }
 }

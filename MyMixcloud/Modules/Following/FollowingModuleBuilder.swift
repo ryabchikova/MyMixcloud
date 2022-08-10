@@ -11,9 +11,8 @@ struct FollowingModuleBuilder {
     
     private init() {}
 
-	static func build(
-        with context: FollowingContext,
-        moduleOutput: FollowingModuleOutput? = nil) -> Module<FollowingModuleInput> {
+	static func build(_ context: FollowingContext,
+                      moduleOutput: FollowingModuleOutput? = nil) -> Module<FollowingModuleInput> {
         let router = FollowingRouter()
         let interactor = FollowingInteractor(userService: InjectionManager.shared.userService())
         let presenter = FollowingPresenter(router: router,

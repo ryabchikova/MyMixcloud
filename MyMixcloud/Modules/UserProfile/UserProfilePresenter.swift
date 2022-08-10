@@ -19,10 +19,11 @@ final class UserProfilePresenter {
     
     init(router: UserProfileRouterInput,
          interactor: UserProfileInteractorInput,
+         moduleOutput: UserProfileModuleOutput?,
          context: UserProfileContext) {
         self.router = router
         self.interactor = interactor
-        moduleOutput = context.moduleOutput
+        self.moduleOutput = moduleOutput
         userId = context.userId
     }
 }

@@ -10,9 +10,12 @@ struct TrackModuleBuilder {
     
     private init() {}
 
-	static func build(with context: TrackContext) -> Module<TrackModuleInput> {
+	static func build(_ context: TrackContext,
+                      moduleOutput: TrackModuleOutput? = nil) -> Module<TrackModuleInput> {
         let interactor = TrackInteractor(trackService: InjectionManager.shared.trackService())
-        let presenter = TrackPresenter(interactor: interactor, context: context)
+        let presenter = TrackPresenter(interactor: interactor,
+                                       moduleOutput: moduleOutput,
+                                       context: context)
 		let viewController = TrackViewController(output: presenter)
 
 		presenter.view = viewController
@@ -24,11 +27,5 @@ struct TrackModuleBuilder {
 }
 
 struct TrackContext {
-	let moduleOutput: TrackModuleOutput?
     let trackId: String
-    
-    init(trackId: String, moduleOutput: TrackModuleOutput? = nil) {
-        self.trackId = trackId
-        self.moduleOutput = moduleOutput
-    }
 }

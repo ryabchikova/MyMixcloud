@@ -14,7 +14,8 @@ final class TrackListRouter {
 extension TrackListRouter: TrackListRouterInput {
     
     func showTrackScreen(in viewController: UIViewController, trackId: String) {
-        let trackViewController = TrackModuleBuilder.build(with: TrackContext(trackId: trackId)).viewController
-        viewController.show(trackViewController, sender: self)
+        let context = TrackContext(trackId: trackId)
+        let module = TrackModuleBuilder.build(context)
+        viewController.show(module.viewController, sender: self)
     }
 }
