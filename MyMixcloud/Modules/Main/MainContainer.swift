@@ -23,9 +23,9 @@ final class MainContainer {
         let profileViewController = UserProfileModuleBuilder.build(with: profileContext).viewController
         profileViewController.tabBarItem.image = UIImage(named: "profileIcon")
         
-        let followingContext = FollowingContext(moduleOutput: nil, userId: context.currentUserId)
-        let followingContainer = FollowingContainer.assemble(with: followingContext)
-        followingContainer.viewController.tabBarItem.image = UIImage(named: "followingIcon")
+        let followingContext = FollowingContext(userId: context.currentUserId)
+        let followingViewController = FollowingModuleBuilder.build(with: followingContext).viewController
+        followingViewController.tabBarItem.image = UIImage(named: "followingIcon")
         
         let historyContext = TrackListContext(moduleOutput: nil, userId: context.currentUserId, trackListType: .history)
         let historyContainer = TrackListContainer.assemble(with: historyContext)
@@ -36,7 +36,7 @@ final class MainContainer {
         favoriteContainer.viewController.tabBarItem.image = UIImage(named: "favoriteIcon")
         
         viewController.configureTabs(сontrollers: [historyContainer.viewController,
-                                                   followingContainer.viewController,
+                                                   followingViewController,
                                                    favoriteContainer.viewController,
                                                    profileViewController])
 

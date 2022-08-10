@@ -6,14 +6,14 @@
 //  Copyright © 2019 ryabchikova. All rights reserved.
 //
 
-import Foundation
 import UIKit
 
 final class FollowingPresenter {    
 	weak var view: FollowingViewInput?
-    weak var moduleOutput: FollowingModuleOutput?
+
 	private let router: FollowingRouterInput
 	private let interactor: FollowingInteractorInput
+    private weak var moduleOutput: FollowingModuleOutput?
     
     private let userId: String
     private var nextPage: Int? = 1
@@ -23,15 +23,19 @@ final class FollowingPresenter {
         return view?.isEmpty ?? false
     }
     
-    init(router: FollowingRouterInput, interactor: FollowingInteractorInput, userId: String) {
+    init(router: FollowingRouterInput,
+         interactor: FollowingInteractorInput,
+         moduleOutput: FollowingModuleOutput?,
+         userId: String
+    ) {
         self.router = router
         self.interactor = interactor
+        self.moduleOutput = moduleOutput
         self.userId = userId
     }
 }
 
-extension FollowingPresenter: FollowingModuleInput {
-}
+extension FollowingPresenter: FollowingModuleInput {}
 
 extension FollowingPresenter: FollowingViewOutput {
     func viewWillAppear() {

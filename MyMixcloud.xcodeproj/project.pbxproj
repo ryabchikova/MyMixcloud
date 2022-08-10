@@ -41,7 +41,7 @@
 		4220E2A522C62B1A00FEB7F8 /* FollowingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4220E29F22C62B1A00FEB7F8 /* FollowingViewController.swift */; };
 		4220E2A622C62B1A00FEB7F8 /* FollowingProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4220E2A022C62B1A00FEB7F8 /* FollowingProtocols.swift */; };
 		4220E2A722C62B1A00FEB7F8 /* FollowingInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4220E2A122C62B1A00FEB7F8 /* FollowingInteractor.swift */; };
-		4220E2A822C62B1A00FEB7F8 /* FollowingContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4220E2A222C62B1A00FEB7F8 /* FollowingContainer.swift */; };
+		4220E2A822C62B1A00FEB7F8 /* FollowingModuleBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4220E2A222C62B1A00FEB7F8 /* FollowingModuleBuilder.swift */; };
 		4220E2AC22C62B7600FEB7F8 /* FollowingUserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4220E2AB22C62B7600FEB7F8 /* FollowingUserViewModel.swift */; };
 		4220E2AE22C62B8800FEB7F8 /* FollowingUserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4220E2AD22C62B8800FEB7F8 /* FollowingUserView.swift */; };
 		4220E2B022C648CC00FEB7F8 /* FollowingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4220E2AF22C648CC00FEB7F8 /* FollowingTableViewCell.swift */; };
@@ -134,7 +134,7 @@
 		4220E29F22C62B1A00FEB7F8 /* FollowingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowingViewController.swift; sourceTree = "<group>"; };
 		4220E2A022C62B1A00FEB7F8 /* FollowingProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowingProtocols.swift; sourceTree = "<group>"; };
 		4220E2A122C62B1A00FEB7F8 /* FollowingInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowingInteractor.swift; sourceTree = "<group>"; };
-		4220E2A222C62B1A00FEB7F8 /* FollowingContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowingContainer.swift; sourceTree = "<group>"; };
+		4220E2A222C62B1A00FEB7F8 /* FollowingModuleBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowingModuleBuilder.swift; sourceTree = "<group>"; };
 		4220E2AB22C62B7600FEB7F8 /* FollowingUserViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowingUserViewModel.swift; sourceTree = "<group>"; };
 		4220E2AD22C62B8800FEB7F8 /* FollowingUserView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowingUserView.swift; sourceTree = "<group>"; };
 		4220E2AF22C648CC00FEB7F8 /* FollowingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowingTableViewCell.swift; sourceTree = "<group>"; };
@@ -284,7 +284,7 @@
 				4220E29E22C62B1A00FEB7F8 /* FollowingRouter.swift */,
 				4220E2A022C62B1A00FEB7F8 /* FollowingProtocols.swift */,
 				4220E2A122C62B1A00FEB7F8 /* FollowingInteractor.swift */,
-				4220E2A222C62B1A00FEB7F8 /* FollowingContainer.swift */,
+				4220E2A222C62B1A00FEB7F8 /* FollowingModuleBuilder.swift */,
 			);
 			path = Following;
 			sourceTree = "<group>";
@@ -666,7 +666,7 @@
 				42B7D67222DD45DE00ECDAB0 /* LoadingReason.swift in Sources */,
 				4220E28C22C4E61900FEB7F8 /* UserProfileInteractor.swift in Sources */,
 				42273C0922C7A6F400EDB1E5 /* Track.swift in Sources */,
-				4220E2A822C62B1A00FEB7F8 /* FollowingContainer.swift in Sources */,
+				4220E2A822C62B1A00FEB7F8 /* FollowingModuleBuilder.swift in Sources */,
 				422EE0A922B3F47A00451EED /* UserService.swift in Sources */,
 				42B7D67022DD05C000ECDAB0 /* TableViewManager.swift in Sources */,
 				4201816022D32EC9007752B9 /* SettingsViewController.swift in Sources */,
