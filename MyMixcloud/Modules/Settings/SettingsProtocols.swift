@@ -6,32 +6,33 @@
 //  Copyright © 2019 ryabchikova. All rights reserved.
 //
 
-import Foundation
+
 import UIKit
 
-protocol SettingsModuleInput {
-    var moduleOutput: SettingsModuleOutput? { get }
-}
+// MARK: - Module
+protocol SettingsModuleInput: AnyObject {}
 
-protocol SettingsModuleOutput: class {
-}
+protocol SettingsModuleOutput: AnyObject {}
 
-protocol SettingsViewInput: class {
-}
+// MARK: - View
+protocol SettingsViewInput: AnyObject {}
 
-protocol SettingsViewOutput: class {
+protocol SettingsViewOutput: AnyObject {
     func didSelectItem(_ item: SettingsItem)
 }
 
-protocol SettingsInteractorInput: class {
+// MARK: - Interactor
+protocol SettingsInteractorInput {
     func logout()
 }
 
-protocol SettingsInteractorOutput: class {
+protocol SettingsInteractorOutput: AnyObject {
     func didLogout()
 }
 
-protocol SettingsRouterInput: class {
+// MARK: - Router
+protocol SettingsRouterInput {
     func showLoginScreen()
-    func showLogoutAlert(in viewController: UIViewController, logoutCompletion: @escaping (UIAlertAction) -> Void)
+    func showLogoutAlert(in viewController: UIViewController,
+                         logoutCompletion: @escaping (UIAlertAction) -> Void)
 }

@@ -33,5 +33,4 @@ final class MainViewController: UITabBarController {
     }
 }
 
-extension MainViewController: MainViewInput {
-}
+extension MainViewController: MainViewInput {}

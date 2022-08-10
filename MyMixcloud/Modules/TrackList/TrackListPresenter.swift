@@ -6,14 +6,14 @@
 //  Copyright © 2019 ryabchikova. All rights reserved.
 //
 
-import Foundation
 import UIKit
 
 final class TrackListPresenter {
 	weak var view: TrackListViewInput?
-    weak var moduleOutput: TrackListModuleOutput?
-	private let router: TrackListRouterInput
+	
+    private let router: TrackListRouterInput
 	private let interactor: TrackListInteractorInput
+    private weak var moduleOutput: TrackListModuleOutput?
     
     private let userId: String
     private let trackListType: TrackListType
@@ -24,16 +24,19 @@ final class TrackListPresenter {
         return view?.isEmpty ?? false
     }
     
-    init(router: TrackListRouterInput, interactor: TrackListInteractorInput, userId: String, trackListType: TrackListType) {
+    init(router: TrackListRouterInput,
+         interactor: TrackListInteractorInput,
+         moduleOutput: TrackListModuleOutput?,
+         context: TrackListContext) {
         self.router = router
         self.interactor = interactor
-        self.userId = userId
-        self.trackListType = trackListType
+        self.moduleOutput = moduleOutput
+        userId = context.userId
+        trackListType = context.trackListType
     }
 }
 
-extension TrackListPresenter: TrackListModuleInput {
-}
+extension TrackListPresenter: TrackListModuleInput {}
 
 extension TrackListPresenter: TrackListViewOutput {    
     func viewWillAppear() {

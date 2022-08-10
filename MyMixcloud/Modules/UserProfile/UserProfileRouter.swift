@@ -12,7 +12,7 @@ final class UserProfileRouter {}
 
 extension UserProfileRouter: UserProfileRouterInput {
     func showSettingsScreen(in viewController: UIViewController) {
-        let settingsContainer = SettingsContainer.assemble(with: SettingsContext(moduleOutput: nil))
-        viewController.show(settingsContainer.viewController, sender: self)
+        let module = SettingsModuleBuilder.build()
+        viewController.show(module.viewController, sender: self)
     }
 }

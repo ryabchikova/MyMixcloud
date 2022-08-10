@@ -35,8 +35,8 @@ final class AppRouter {
         guard let currentUserId = settingsService.currentUserId() else {
             fatalError("Application error: can't receive curent user id")
         }
-        let mainContext = MainContext(moduleOutput: nil, currentUserId: currentUserId)
-        rootViewController = MainContainer.assemble(with: mainContext).viewController
+        let context = MainContext(currentUserId: currentUserId)
+        rootViewController = MainModuleBuilder.build(context).viewController
     }
 }
 

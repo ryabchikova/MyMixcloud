@@ -8,11 +8,9 @@
 
 import UIKit
 
-final class TrackListRouter {
-}
+final class TrackListRouter {}
 
 extension TrackListRouter: TrackListRouterInput {
-    
     func showTrackScreen(in viewController: UIViewController, trackId: String) {
         let context = TrackContext(trackId: trackId)
         let module = TrackModuleBuilder.build(context)

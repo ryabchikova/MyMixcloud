@@ -6,7 +6,6 @@
 //  Copyright © 2019 ryabchikova. All rights reserved.
 //
 
-import Foundation
 
 final class SettingsInteractor {
 	weak var output: SettingsInteractorOutput?

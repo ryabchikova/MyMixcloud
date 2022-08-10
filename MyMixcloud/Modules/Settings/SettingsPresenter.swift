@@ -6,24 +6,25 @@
 //  Copyright © 2019 ryabchikova. All rights reserved.
 //
 
-import Foundation
 import UIKit
 
 final class SettingsPresenter {
 	weak var view: SettingsViewInput?
-    weak var moduleOutput: SettingsModuleOutput?
     
 	private let router: SettingsRouterInput
 	private let interactor: SettingsInteractorInput
+    private weak var moduleOutput: SettingsModuleOutput?
     
-    init(router: SettingsRouterInput, interactor: SettingsInteractorInput) {
+    init(router: SettingsRouterInput,
+         interactor: SettingsInteractorInput,
+         moduleOutput: SettingsModuleOutput?) {
         self.router = router
         self.interactor = interactor
+        self.moduleOutput = moduleOutput
     }
 }
 
-extension SettingsPresenter: SettingsModuleInput {
-}
+extension SettingsPresenter: SettingsModuleInput {}
 
 extension SettingsPresenter: SettingsViewOutput {
     func didSelectItem(_ item: SettingsItem) {

@@ -6,15 +6,17 @@
 //  Copyright © 2019 ryabchikova. All rights reserved.
 //
 
-import Foundation
 
 final class MainPresenter {
 	weak var view: MainViewInput?
-    weak var moduleOutput: MainModuleOutput?
+    private weak var moduleOutput: MainModuleOutput?
+    
+    init(moduleOutput: MainModuleOutput?) {
+        self.moduleOutput = moduleOutput
+    }
+    
 }
 
-extension MainPresenter: MainModuleInput {
-}
+extension MainPresenter: MainModuleInput {}
 
-extension MainPresenter: MainViewOutput {
-}
+extension MainPresenter: MainViewOutput {}

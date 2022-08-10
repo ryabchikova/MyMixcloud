@@ -24,7 +24,7 @@
 		4201816022D32EC9007752B9 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4201815A22D32EC9007752B9 /* SettingsViewController.swift */; };
 		4201816122D32EC9007752B9 /* SettingsProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4201815B22D32EC9007752B9 /* SettingsProtocols.swift */; };
 		4201816222D32EC9007752B9 /* SettingsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4201815C22D32EC9007752B9 /* SettingsInteractor.swift */; };
-		4201816322D32EC9007752B9 /* SettingsContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4201815D22D32EC9007752B9 /* SettingsContainer.swift */; };
+		4201816322D32EC9007752B9 /* SettingsModuleBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4201815D22D32EC9007752B9 /* SettingsModuleBuilder.swift */; };
 		4220E28822C4E61900FEB7F8 /* UserProfilePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4220E28222C4E61900FEB7F8 /* UserProfilePresenter.swift */; };
 		4220E28922C4E61900FEB7F8 /* UserProfileRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4220E28322C4E61900FEB7F8 /* UserProfileRouter.swift */; };
 		4220E28A22C4E61900FEB7F8 /* UserProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4220E28422C4E61900FEB7F8 /* UserProfileViewController.swift */; };
@@ -50,7 +50,7 @@
 		4224F96522CA37EC00E847AB /* TrackListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4224F95F22CA37EC00E847AB /* TrackListViewController.swift */; };
 		4224F96622CA37EC00E847AB /* TrackListProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4224F96022CA37EC00E847AB /* TrackListProtocols.swift */; };
 		4224F96722CA37EC00E847AB /* TrackListInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4224F96122CA37EC00E847AB /* TrackListInteractor.swift */; };
-		4224F96822CA37EC00E847AB /* TrackListContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4224F96222CA37EC00E847AB /* TrackListContainer.swift */; };
+		4224F96822CA37EC00E847AB /* TrackListModuleBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4224F96222CA37EC00E847AB /* TrackListModuleBuilder.swift */; };
 		4224F96B22CA3D4D00E847AB /* TrackListItemViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4224F96A22CA3D4D00E847AB /* TrackListItemViewModel.swift */; };
 		4224F96D22CA3D7200E847AB /* TrackListItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4224F96C22CA3D7200E847AB /* TrackListItemView.swift */; };
 		4224F96F22CA3DEE00E847AB /* TrackListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4224F96E22CA3DEE00E847AB /* TrackListTableViewCell.swift */; };
@@ -64,7 +64,7 @@
 		422E6EA322D3B93500DBEB2E /* MainPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 422E6E9D22D3B93500DBEB2E /* MainPresenter.swift */; };
 		422E6EA522D3B93500DBEB2E /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 422E6E9F22D3B93500DBEB2E /* MainViewController.swift */; };
 		422E6EA622D3B93500DBEB2E /* MainProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 422E6EA022D3B93500DBEB2E /* MainProtocols.swift */; };
-		422E6EA822D3B93500DBEB2E /* MainContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 422E6EA222D3B93500DBEB2E /* MainContainer.swift */; };
+		422E6EA822D3B93500DBEB2E /* MainModuleBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 422E6EA222D3B93500DBEB2E /* MainModuleBuilder.swift */; };
 		422EE0A722B3F1AB00451EED /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 422EE0A622B3F1AB00451EED /* User.swift */; };
 		422EE0A922B3F47A00451EED /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 422EE0A822B3F47A00451EED /* UserService.swift */; };
 		422EE0AB22B436D600451EED /* MixcloudApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 422EE0AA22B436D600451EED /* MixcloudApi.swift */; };
@@ -117,7 +117,7 @@
 		4201815A22D32EC9007752B9 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		4201815B22D32EC9007752B9 /* SettingsProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsProtocols.swift; sourceTree = "<group>"; };
 		4201815C22D32EC9007752B9 /* SettingsInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsInteractor.swift; sourceTree = "<group>"; };
-		4201815D22D32EC9007752B9 /* SettingsContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsContainer.swift; sourceTree = "<group>"; };
+		4201815D22D32EC9007752B9 /* SettingsModuleBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsModuleBuilder.swift; sourceTree = "<group>"; };
 		4220E28222C4E61900FEB7F8 /* UserProfilePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfilePresenter.swift; sourceTree = "<group>"; };
 		4220E28322C4E61900FEB7F8 /* UserProfileRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileRouter.swift; sourceTree = "<group>"; };
 		4220E28422C4E61900FEB7F8 /* UserProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileViewController.swift; sourceTree = "<group>"; };
@@ -143,7 +143,7 @@
 		4224F95F22CA37EC00E847AB /* TrackListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackListViewController.swift; sourceTree = "<group>"; };
 		4224F96022CA37EC00E847AB /* TrackListProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackListProtocols.swift; sourceTree = "<group>"; };
 		4224F96122CA37EC00E847AB /* TrackListInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackListInteractor.swift; sourceTree = "<group>"; };
-		4224F96222CA37EC00E847AB /* TrackListContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackListContainer.swift; sourceTree = "<group>"; };
+		4224F96222CA37EC00E847AB /* TrackListModuleBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackListModuleBuilder.swift; sourceTree = "<group>"; };
 		4224F96A22CA3D4D00E847AB /* TrackListItemViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackListItemViewModel.swift; sourceTree = "<group>"; };
 		4224F96C22CA3D7200E847AB /* TrackListItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackListItemView.swift; sourceTree = "<group>"; };
 		4224F96E22CA3DEE00E847AB /* TrackListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackListTableViewCell.swift; sourceTree = "<group>"; };
@@ -157,7 +157,7 @@
 		422E6E9D22D3B93500DBEB2E /* MainPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPresenter.swift; sourceTree = "<group>"; };
 		422E6E9F22D3B93500DBEB2E /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		422E6EA022D3B93500DBEB2E /* MainProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainProtocols.swift; sourceTree = "<group>"; };
-		422E6EA222D3B93500DBEB2E /* MainContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainContainer.swift; sourceTree = "<group>"; };
+		422E6EA222D3B93500DBEB2E /* MainModuleBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainModuleBuilder.swift; sourceTree = "<group>"; };
 		422EE0A622B3F1AB00451EED /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		422EE0A822B3F47A00451EED /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
 		422EE0AA22B436D600451EED /* MixcloudApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MixcloudApi.swift; sourceTree = "<group>"; };
@@ -237,7 +237,7 @@
 				4201815A22D32EC9007752B9 /* SettingsViewController.swift */,
 				4201815B22D32EC9007752B9 /* SettingsProtocols.swift */,
 				4201815C22D32EC9007752B9 /* SettingsInteractor.swift */,
-				4201815D22D32EC9007752B9 /* SettingsContainer.swift */,
+				4201815D22D32EC9007752B9 /* SettingsModuleBuilder.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -303,12 +303,12 @@
 		4224F95C22CA37C000E847AB /* TrackList */ = {
 			isa = PBXGroup;
 			children = (
-				4224F96922CA3D1600E847AB /* View */,
-				4224F95D22CA37EC00E847AB /* TrackListPresenter.swift */,
-				4224F95E22CA37EC00E847AB /* TrackListRouter.swift */,
-				4224F96022CA37EC00E847AB /* TrackListProtocols.swift */,
 				4224F96122CA37EC00E847AB /* TrackListInteractor.swift */,
-				4224F96222CA37EC00E847AB /* TrackListContainer.swift */,
+				4224F96222CA37EC00E847AB /* TrackListModuleBuilder.swift */,
+				4224F95D22CA37EC00E847AB /* TrackListPresenter.swift */,
+				4224F96022CA37EC00E847AB /* TrackListProtocols.swift */,
+				4224F95E22CA37EC00E847AB /* TrackListRouter.swift */,
+				4224F96922CA3D1600E847AB /* View */,
 			);
 			path = TrackList;
 			sourceTree = "<group>";
@@ -327,10 +327,10 @@
 		422E6E9C22D3B91E00DBEB2E /* Main */ = {
 			isa = PBXGroup;
 			children = (
+				422E6EA222D3B93500DBEB2E /* MainModuleBuilder.swift */,
 				422E6E9D22D3B93500DBEB2E /* MainPresenter.swift */,
-				422E6E9F22D3B93500DBEB2E /* MainViewController.swift */,
 				422E6EA022D3B93500DBEB2E /* MainProtocols.swift */,
-				422E6EA222D3B93500DBEB2E /* MainContainer.swift */,
+				422E6E9F22D3B93500DBEB2E /* MainViewController.swift */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -675,7 +675,7 @@
 				4220E2A322C62B1A00FEB7F8 /* FollowingPresenter.swift in Sources */,
 				4224F96622CA37EC00E847AB /* TrackListProtocols.swift in Sources */,
 				4201813322D072DA007752B9 /* LoginProtocols.swift in Sources */,
-				422E6EA822D3B93500DBEB2E /* MainContainer.swift in Sources */,
+				422E6EA822D3B93500DBEB2E /* MainModuleBuilder.swift in Sources */,
 				42273C0122C79BAF00EDB1E5 /* JsonTrackList.swift in Sources */,
 				4201812422CF367A007752B9 /* InjectionManager.swift in Sources */,
 				4220E2AE22C62B8800FEB7F8 /* FollowingUserView.swift in Sources */,
@@ -686,7 +686,7 @@
 				425255B922D7270100D2EDC9 /* TrackModuleBuilder.swift in Sources */,
 				4220E29222C5093900FEB7F8 /* UserProfileView.swift in Sources */,
 				4220E2A522C62B1A00FEB7F8 /* FollowingViewController.swift in Sources */,
-				4201816322D32EC9007752B9 /* SettingsContainer.swift in Sources */,
+				4201816322D32EC9007752B9 /* SettingsModuleBuilder.swift in Sources */,
 				4201813422D072DA007752B9 /* LoginInteractor.swift in Sources */,
 				422EE0AB22B436D600451EED /* MixcloudApi.swift in Sources */,
 				4220E29922C585AC00FEB7F8 /* DummyView.swift in Sources */,
@@ -708,7 +708,7 @@
 				4224F96722CA37EC00E847AB /* TrackListInteractor.swift in Sources */,
 				422EE0AE22B7EF4200451EED /* UserServiceImpl.swift in Sources */,
 				42DD63CB22B3E9E600A57196 /* AppDelegate.swift in Sources */,
-				4224F96822CA37EC00E847AB /* TrackListContainer.swift in Sources */,
+				4224F96822CA37EC00E847AB /* TrackListModuleBuilder.swift in Sources */,
 				4220E28D22C4E61900FEB7F8 /* UserProfileModuleBuilder.swift in Sources */,
 				422EE0C122C2234F00451EED /* JsonFollowing.swift in Sources */,
 				4224F96B22CA3D4D00E847AB /* TrackListItemViewModel.swift in Sources */,
