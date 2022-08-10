@@ -16,7 +16,6 @@
 		4201813222D072DA007752B9 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4201812C22D072DA007752B9 /* LoginViewController.swift */; };
 		4201813322D072DA007752B9 /* LoginProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4201812D22D072DA007752B9 /* LoginProtocols.swift */; };
 		4201813422D072DA007752B9 /* LoginInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4201812E22D072DA007752B9 /* LoginInteractor.swift */; };
-		4201813522D072DA007752B9 /* LoginContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4201812F22D072DA007752B9 /* LoginContainer.swift */; };
 		4201813822D0730C007752B9 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4201813722D0730C007752B9 /* LoginViewModel.swift */; };
 		4201813A22D0731D007752B9 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4201813922D0731D007752B9 /* LoginView.swift */; };
 		4201813C22D27F75007752B9 /* AppRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4201813B22D27F75007752B9 /* AppRouter.swift */; };
@@ -95,6 +94,8 @@
 		42DD63CB22B3E9E600A57196 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42DD63CA22B3E9E600A57196 /* AppDelegate.swift */; };
 		42DD63D422B3E9E800A57196 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 42DD63D322B3E9E800A57196 /* Assets.xcassets */; };
 		42DD63D722B3E9E800A57196 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 42DD63D522B3E9E800A57196 /* LaunchScreen.storyboard */; };
+		42DFD44D28A3092F00495440 /* LoginModuleBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42DFD44C28A3092F00495440 /* LoginModuleBuilder.swift */; };
+		42DFD45028A30B9000495440 /* Module.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42DFD44F28A30B9000495440 /* Module.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -108,7 +109,6 @@
 		4201812C22D072DA007752B9 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		4201812D22D072DA007752B9 /* LoginProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginProtocols.swift; sourceTree = "<group>"; };
 		4201812E22D072DA007752B9 /* LoginInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginInteractor.swift; sourceTree = "<group>"; };
-		4201812F22D072DA007752B9 /* LoginContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginContainer.swift; sourceTree = "<group>"; };
 		4201813722D0730C007752B9 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		4201813922D0731D007752B9 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		4201813B22D27F75007752B9 /* AppRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppRouter.swift; sourceTree = "<group>"; };
@@ -189,6 +189,8 @@
 		42DD63D322B3E9E800A57196 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		42DD63D622B3E9E800A57196 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		42DD63D822B3E9E800A57196 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		42DFD44C28A3092F00495440 /* LoginModuleBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginModuleBuilder.swift; sourceTree = "<group>"; };
+		42DFD44F28A30B9000495440 /* Module.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Module.swift; sourceTree = "<group>"; };
 		8FC0D2BAC2FD7FF3D288AFF4 /* Pods-MyMixcloud.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyMixcloud.release.xcconfig"; path = "Pods/Target Support Files/Pods-MyMixcloud/Pods-MyMixcloud.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -207,12 +209,12 @@
 		4201812922D0726C007752B9 /* Login */ = {
 			isa = PBXGroup;
 			children = (
-				4201813622D072F5007752B9 /* View */,
-				4201812A22D072DA007752B9 /* LoginPresenter.swift */,
-				4201812B22D072DA007752B9 /* LoginRouter.swift */,
-				4201812D22D072DA007752B9 /* LoginProtocols.swift */,
 				4201812E22D072DA007752B9 /* LoginInteractor.swift */,
-				4201812F22D072DA007752B9 /* LoginContainer.swift */,
+				42DFD44C28A3092F00495440 /* LoginModuleBuilder.swift */,
+				4201812A22D072DA007752B9 /* LoginPresenter.swift */,
+				4201812D22D072DA007752B9 /* LoginProtocols.swift */,
+				4201812B22D072DA007752B9 /* LoginRouter.swift */,
+				4201813622D072F5007752B9 /* View */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -467,6 +469,7 @@
 				42DD63D522B3E9E800A57196 /* LaunchScreen.storyboard */,
 				42DD63D322B3E9E800A57196 /* Assets.xcassets */,
 				42DD63D822B3E9E800A57196 /* Info.plist */,
+				42DFD44E28A30B7400495440 /* Common */,
 				4220E27522C4A8E400FEB7F8 /* ViewControllers */,
 				422EE0C222C2556E00451EED /* Modules */,
 				422EE0A522B3F15200451EED /* Services */,
@@ -475,6 +478,14 @@
 				422EE0B322BA17A600451EED /* TestStuff */,
 			);
 			path = MyMixcloud;
+			sourceTree = "<group>";
+		};
+		42DFD44E28A30B7400495440 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				42DFD44F28A30B9000495440 /* Module.swift */,
+			);
+			path = Common;
 			sourceTree = "<group>";
 		};
 		D241E16A069FBD01953A15AD /* Frameworks */ = {
@@ -623,7 +634,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4201813522D072DA007752B9 /* LoginContainer.swift in Sources */,
 				4201815F22D32EC9007752B9 /* SettingsRouter.swift in Sources */,
 				42273C0722C7A6BC00EDB1E5 /* TrackService.swift in Sources */,
 				42B7D66922DA68BD00ECDAB0 /* NetworkReachabilityServiceImpl.swift in Sources */,
@@ -646,6 +656,7 @@
 				4201812822CFDF18007752B9 /* SettingsServiceImpl.swift in Sources */,
 				4220E2B022C648CC00FEB7F8 /* FollowingTableViewCell.swift in Sources */,
 				42B7D67422DDCC9800ECDAB0 /* EmptyCheck.swift in Sources */,
+				42DFD45028A30B9000495440 /* Module.swift in Sources */,
 				4201816122D32EC9007752B9 /* SettingsProtocols.swift in Sources */,
 				4201813022D072DA007752B9 /* LoginPresenter.swift in Sources */,
 				42B7D66B22DA892700ECDAB0 /* DummyViewModel.swift in Sources */,
@@ -690,6 +701,7 @@
 				4201812622CFDEB0007752B9 /* SettingsService.swift in Sources */,
 				4220E2A722C62B1A00FEB7F8 /* FollowingInteractor.swift in Sources */,
 				4220E29022C5092400FEB7F8 /* UserProfileViewModel.swift in Sources */,
+				42DFD44D28A3092F00495440 /* LoginModuleBuilder.swift in Sources */,
 				422EE0CB22C25CC100451EED /* MainTabBarViewController.swift in Sources */,
 				422E6EA622D3B93500DBEB2E /* MainProtocols.swift in Sources */,
 				4201816222D32EC9007752B9 /* SettingsInteractor.swift in Sources */,

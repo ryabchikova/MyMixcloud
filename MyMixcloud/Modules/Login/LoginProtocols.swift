@@ -6,33 +6,33 @@
 //  Copyright © 2019 ryabchikova. All rights reserved.
 //
 
-import Foundation
 import UIKit
 
-protocol LoginModuleInput {
-	var moduleOutput: LoginModuleOutput? { get }
-}
+// MARK: - Module
+protocol LoginModuleInput: AnyObject {}
 
-protocol LoginModuleOutput: class {
+protocol LoginModuleOutput: AnyObject {
     func didLogin()
 }
 
-protocol LoginViewInput: class {
-}
+// MARK: - View
+protocol LoginViewInput: AnyObject {}
 
-protocol LoginViewOutput: class {
+protocol LoginViewOutput: AnyObject {
     func didTapStart(with username: String)
 }
 
-protocol LoginInteractorInput: class {
+// MARK: - Interactor
+protocol LoginInteractorInput {
     func login(with username: String)
 }
 
-protocol LoginInteractorOutput: class {
+protocol LoginInteractorOutput: AnyObject {
     func didLogin()
     func loginFailed()
 }
 
-protocol LoginRouterInput: class {
+// MARK: - Router
+protocol LoginRouterInput {
     func showErrorAlert(in viewController: UIViewController)
 }

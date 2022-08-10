@@ -25,6 +25,8 @@ xcuserdata/
 *.moved-aside
 *.xccheckout
 *.xcscmblueprint
+MyMixcloud/TestStuff/
+icons/
 
 ## Obj-C/Swift specific
 *.hmap

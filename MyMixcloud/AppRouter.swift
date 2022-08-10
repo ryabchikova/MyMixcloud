@@ -28,7 +28,7 @@ final class AppRouter {
     }
     
     func showLoginScreen() {
-        rootViewController = LoginContainer.assemble(with: LoginContext(moduleOutput: self)).viewController
+        rootViewController = LoginModuleBuilder.build(with: LoginContext(moduleOutput: self)).viewController
     }
     
     private func showMainScreen() {

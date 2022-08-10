@@ -10,7 +10,7 @@ import Foundation
 import FlexLayout
 
 final class LoginView: UIView {
-    weak var output: LoginViewOutput?
+    weak var output: LoginViewOutput?       // TODO: подумать, хорошо ли использовать протокол контроллера
     private let welcomeLabel = UILabel()
     private let userNameTextField = UITextField()
     private let startButton = UIButton(type: .custom)
