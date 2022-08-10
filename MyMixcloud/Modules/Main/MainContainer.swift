@@ -19,9 +19,9 @@ final class MainContainer {
 		presenter.moduleOutput = context.moduleOutput
 
         // configure tabs
-        let profileContext = UserProfileContext(moduleOutput: nil, userId: context.currentUserId, isMyProfile: true)
-        let profileContainer = UserProfileContainer.assemble(with: profileContext)
-        profileContainer.viewController.tabBarItem.image = UIImage(named: "profileIcon")
+        let profileContext = UserProfileContext(userId: context.currentUserId, isMyProfile: true)
+        let profileViewController = UserProfileModuleBuilder.build(with: profileContext).viewController
+        profileViewController.tabBarItem.image = UIImage(named: "profileIcon")
         
         let followingContext = FollowingContext(moduleOutput: nil, userId: context.currentUserId)
         let followingContainer = FollowingContainer.assemble(with: followingContext)
@@ -38,7 +38,7 @@ final class MainContainer {
         viewController.configureTabs(сontrollers: [historyContainer.viewController,
                                                    followingContainer.viewController,
                                                    favoriteContainer.viewController,
-                                                   profileContainer.viewController])
+                                                   profileViewController])
 
         return MainContainer(view: viewController, input: presenter)
 	}

@@ -9,6 +9,7 @@
 import Foundation
 import UIKit
 
+// TODO: Включить в модель обработчик нажатия кнопки
 struct LoginViewModel {
     
     enum ButtonState {

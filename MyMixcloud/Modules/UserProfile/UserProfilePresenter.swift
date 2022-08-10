@@ -6,26 +6,28 @@
 //  Copyright © 2019 ryabchikova. All rights reserved.
 //
 
-import Foundation
 import UIKit
 
 final class UserProfilePresenter {
 	weak var view: UserProfileViewInput?
-    weak var moduleOutput: UserProfileModuleOutput?
+
 	private let router: UserProfileRouterInput
 	private let interactor: UserProfileInteractorInput
+    private weak var moduleOutput: UserProfileModuleOutput?
     
     private let userId: String
     
-    init(router: UserProfileRouterInput, interactor: UserProfileInteractorInput, userId: String) {
+    init(router: UserProfileRouterInput,
+         interactor: UserProfileInteractorInput,
+         context: UserProfileContext) {
         self.router = router
         self.interactor = interactor
-        self.userId = userId
+        moduleOutput = context.moduleOutput
+        userId = context.userId
     }
 }
 
-extension UserProfilePresenter: UserProfileModuleInput {
-}
+extension UserProfilePresenter: UserProfileModuleInput {}
 
 extension UserProfilePresenter: UserProfileViewOutput {
     func viewWillAppear() {

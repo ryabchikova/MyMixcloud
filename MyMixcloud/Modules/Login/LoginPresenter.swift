@@ -39,7 +39,7 @@ extension LoginPresenter: LoginInteractorOutput {
     }
     
     func loginFailed() {
-        if let viewController = view as? UIViewController {
+        if let viewController = view as? UIViewController {             // TODO: можно ли без кастования?
             router.showErrorAlert(in: viewController)
         }
     }

@@ -16,7 +16,7 @@ struct LoginModuleBuilder {
                                          settingsService: InjectionManager.shared.settingsService())
         let presenter = LoginPresenter(router: router,
                                        interactor: interactor,
-                                    moduleOutput: context.moduleOutput)
+                                       moduleOutput: context.moduleOutput)
         let viewController = LoginViewController(output: presenter)
 
         presenter.view = viewController
@@ -29,4 +29,8 @@ struct LoginModuleBuilder {
 
 struct LoginContext {
     let moduleOutput: LoginModuleOutput?
+    
+    init(moduleOutput: LoginModuleOutput? = nil) {
+        self.moduleOutput = moduleOutput
+    }
 }

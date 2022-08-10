@@ -30,7 +30,7 @@
 		4220E28A22C4E61900FEB7F8 /* UserProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4220E28422C4E61900FEB7F8 /* UserProfileViewController.swift */; };
 		4220E28B22C4E61900FEB7F8 /* UserProfileProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4220E28522C4E61900FEB7F8 /* UserProfileProtocols.swift */; };
 		4220E28C22C4E61900FEB7F8 /* UserProfileInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4220E28622C4E61900FEB7F8 /* UserProfileInteractor.swift */; };
-		4220E28D22C4E61900FEB7F8 /* UserProfileContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4220E28722C4E61900FEB7F8 /* UserProfileContainer.swift */; };
+		4220E28D22C4E61900FEB7F8 /* UserProfileModuleBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4220E28722C4E61900FEB7F8 /* UserProfileModuleBuilder.swift */; };
 		4220E29022C5092400FEB7F8 /* UserProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4220E28F22C5092400FEB7F8 /* UserProfileViewModel.swift */; };
 		4220E29222C5093900FEB7F8 /* UserProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4220E29122C5093900FEB7F8 /* UserProfileView.swift */; };
 		4220E29522C5137300FEB7F8 /* MMFonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4220E29422C5137300FEB7F8 /* MMFonts.swift */; };
@@ -123,7 +123,7 @@
 		4220E28422C4E61900FEB7F8 /* UserProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileViewController.swift; sourceTree = "<group>"; };
 		4220E28522C4E61900FEB7F8 /* UserProfileProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileProtocols.swift; sourceTree = "<group>"; };
 		4220E28622C4E61900FEB7F8 /* UserProfileInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileInteractor.swift; sourceTree = "<group>"; };
-		4220E28722C4E61900FEB7F8 /* UserProfileContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileContainer.swift; sourceTree = "<group>"; };
+		4220E28722C4E61900FEB7F8 /* UserProfileModuleBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileModuleBuilder.swift; sourceTree = "<group>"; };
 		4220E28F22C5092400FEB7F8 /* UserProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileViewModel.swift; sourceTree = "<group>"; };
 		4220E29122C5093900FEB7F8 /* UserProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileView.swift; sourceTree = "<group>"; };
 		4220E29422C5137300FEB7F8 /* MMFonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MMFonts.swift; sourceTree = "<group>"; };
@@ -256,12 +256,12 @@
 		4220E28E22C4E62400FEB7F8 /* UserProfile */ = {
 			isa = PBXGroup;
 			children = (
-				4220E29322C5094000FEB7F8 /* View */,
-				4220E28222C4E61900FEB7F8 /* UserProfilePresenter.swift */,
-				4220E28322C4E61900FEB7F8 /* UserProfileRouter.swift */,
-				4220E28522C4E61900FEB7F8 /* UserProfileProtocols.swift */,
 				4220E28622C4E61900FEB7F8 /* UserProfileInteractor.swift */,
-				4220E28722C4E61900FEB7F8 /* UserProfileContainer.swift */,
+				4220E28722C4E61900FEB7F8 /* UserProfileModuleBuilder.swift */,
+				4220E28222C4E61900FEB7F8 /* UserProfilePresenter.swift */,
+				4220E28522C4E61900FEB7F8 /* UserProfileProtocols.swift */,
+				4220E28322C4E61900FEB7F8 /* UserProfileRouter.swift */,
+				4220E29322C5094000FEB7F8 /* View */,
 			);
 			path = UserProfile;
 			sourceTree = "<group>";
@@ -709,7 +709,7 @@
 				422EE0AE22B7EF4200451EED /* UserServiceImpl.swift in Sources */,
 				42DD63CB22B3E9E600A57196 /* AppDelegate.swift in Sources */,
 				4224F96822CA37EC00E847AB /* TrackListContainer.swift in Sources */,
-				4220E28D22C4E61900FEB7F8 /* UserProfileContainer.swift in Sources */,
+				4220E28D22C4E61900FEB7F8 /* UserProfileModuleBuilder.swift in Sources */,
 				422EE0C122C2234F00451EED /* JsonFollowing.swift in Sources */,
 				4224F96B22CA3D4D00E847AB /* TrackListItemViewModel.swift in Sources */,
 				42273C0D22C7ACB500EDB1E5 /* TrackServiceImpl.swift in Sources */,

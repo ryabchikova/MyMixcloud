@@ -8,8 +8,7 @@
 
 import UIKit
 
-final class LoginRouter {
-}
+final class LoginRouter {}
 
 extension LoginRouter: LoginRouterInput {
     func showErrorAlert(in viewController: UIViewController) {

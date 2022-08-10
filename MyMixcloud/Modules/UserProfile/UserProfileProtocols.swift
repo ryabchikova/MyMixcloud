@@ -6,17 +6,15 @@
 //  Copyright © 2019 ryabchikova. All rights reserved.
 //
 
-import Foundation
 import UIKit
 
-protocol UserProfileModuleInput {
-	var moduleOutput: UserProfileModuleOutput? { get }
-}
+// MARK: - Module
+protocol UserProfileModuleInput: AnyObject {}
 
-protocol UserProfileModuleOutput: class {
-}
+protocol UserProfileModuleOutput: AnyObject {}
 
-protocol UserProfileViewInput: class {
+// MARK: - View
+protocol UserProfileViewInput: AnyObject {
     var isEmpty: Bool { get }
     func set(userProfileViewModel: UserProfileViewModel)
     func showDummyView(for error: MMError, retryHandler: @escaping () -> Void)
@@ -25,21 +23,23 @@ protocol UserProfileViewInput: class {
     func hideActivity()
 }
 
-protocol UserProfileViewOutput: class {
+protocol UserProfileViewOutput {
     func viewWillAppear()
     func didPullToRefresh()
     func didTapSettingsButton()
 }
 
-protocol UserProfileInteractorInput: class {
+// MARK: - Interactor
+protocol UserProfileInteractorInput {
     func loadUser(userId: String)
 }
 
-protocol UserProfileInteractorOutput: class {
+protocol UserProfileInteractorOutput: AnyObject {
     func gotError(_ error: MMError)
     func didLoadUser(_ user: User)
 }
 
-protocol UserProfileRouterInput: class {
+// MARK: - Router
+protocol UserProfileRouterInput {
     func showSettingsScreen(in viewController: UIViewController)
 }

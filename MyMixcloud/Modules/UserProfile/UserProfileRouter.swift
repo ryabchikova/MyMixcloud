@@ -8,8 +8,7 @@
 
 import UIKit
 
-final class UserProfileRouter {
-}
+final class UserProfileRouter {}
 
 extension UserProfileRouter: UserProfileRouterInput {
     func showSettingsScreen(in viewController: UIViewController) {
