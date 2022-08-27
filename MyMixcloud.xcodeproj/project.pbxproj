@@ -84,6 +84,7 @@
 		425255BD22D7275B00D2EDC9 /* TrackViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 425255BC22D7275B00D2EDC9 /* TrackViewModel.swift */; };
 		425255BF22D7276700D2EDC9 /* TrackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 425255BE22D7276700D2EDC9 /* TrackView.swift */; };
 		425B2EA328B90B3000B2EEA1 /* Result+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 425B2EA228B90B3000B2EEA1 /* Result+Extensions.swift */; };
+		425B2EA828BA57DC00B2EEA1 /* JsonHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 425B2EA728BA57DC00B2EEA1 /* JsonHelper.swift */; };
 		42B7D66722DA686D00ECDAB0 /* NetworkReachabilityService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42B7D66622DA686D00ECDAB0 /* NetworkReachabilityService.swift */; };
 		42B7D66922DA68BD00ECDAB0 /* NetworkReachabilityServiceImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42B7D66822DA68BD00ECDAB0 /* NetworkReachabilityServiceImpl.swift */; };
 		42B7D66B22DA892700ECDAB0 /* DummyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42B7D66A22DA892700ECDAB0 /* DummyViewModel.swift */; };
@@ -178,6 +179,7 @@
 		425255BC22D7275B00D2EDC9 /* TrackViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackViewModel.swift; sourceTree = "<group>"; };
 		425255BE22D7276700D2EDC9 /* TrackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackView.swift; sourceTree = "<group>"; };
 		425B2EA228B90B3000B2EEA1 /* Result+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Result+Extensions.swift"; sourceTree = "<group>"; };
+		425B2EA728BA57DC00B2EEA1 /* JsonHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JsonHelper.swift; sourceTree = "<group>"; };
 		42B7D66622DA686D00ECDAB0 /* NetworkReachabilityService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkReachabilityService.swift; sourceTree = "<group>"; };
 		42B7D66822DA68BD00ECDAB0 /* NetworkReachabilityServiceImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkReachabilityServiceImpl.swift; sourceTree = "<group>"; };
 		42B7D66A22DA892700ECDAB0 /* DummyViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DummyViewModel.swift; sourceTree = "<group>"; };
@@ -350,16 +352,12 @@
 		422EE0A522B3F15200451EED /* Services */ = {
 			isa = PBXGroup;
 			children = (
-				422EE0AA22B436D600451EED /* MixcloudApi.swift */,
 				422EE0BB22C217CD00451EED /* JsonDecoding */,
-				422EE0A822B3F47A00451EED /* UserService.swift */,
-				422EE0AD22B7EF4200451EED /* UserServiceImpl.swift */,
-				42273C0622C7A6BC00EDB1E5 /* TrackService.swift */,
-				42273C0C22C7ACB500EDB1E5 /* TrackServiceImpl.swift */,
-				4201812522CFDEB0007752B9 /* SettingsService.swift */,
-				4201812722CFDF18007752B9 /* SettingsServiceImpl.swift */,
-				42B7D66622DA686D00ECDAB0 /* NetworkReachabilityService.swift */,
-				42B7D66822DA68BD00ECDAB0 /* NetworkReachabilityServiceImpl.swift */,
+				422EE0AA22B436D600451EED /* MixcloudApi.swift */,
+				425B2EAC28BA8F5A00B2EEA1 /* NetworkReachability */,
+				425B2EAB28BA8F2800B2EEA1 /* Settings */,
+				425B2EA928BA8EFB00B2EEA1 /* Track */,
+				425B2EAA28BA8F1B00B2EEA1 /* User */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -443,6 +441,50 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
+		425B2EA628BA57C900B2EEA1 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				425B2EA728BA57DC00B2EEA1 /* JsonHelper.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		425B2EA928BA8EFB00B2EEA1 /* Track */ = {
+			isa = PBXGroup;
+			children = (
+				42273C0622C7A6BC00EDB1E5 /* TrackService.swift */,
+				42273C0C22C7ACB500EDB1E5 /* TrackServiceImpl.swift */,
+			);
+			path = Track;
+			sourceTree = "<group>";
+		};
+		425B2EAA28BA8F1B00B2EEA1 /* User */ = {
+			isa = PBXGroup;
+			children = (
+				422EE0A822B3F47A00451EED /* UserService.swift */,
+				422EE0AD22B7EF4200451EED /* UserServiceImpl.swift */,
+			);
+			path = User;
+			sourceTree = "<group>";
+		};
+		425B2EAB28BA8F2800B2EEA1 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				4201812522CFDEB0007752B9 /* SettingsService.swift */,
+				4201812722CFDF18007752B9 /* SettingsServiceImpl.swift */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
+		425B2EAC28BA8F5A00B2EEA1 /* NetworkReachability */ = {
+			isa = PBXGroup;
+			children = (
+				42B7D66622DA686D00ECDAB0 /* NetworkReachabilityService.swift */,
+				42B7D66822DA68BD00ECDAB0 /* NetworkReachabilityServiceImpl.swift */,
+			);
+			path = NetworkReachability;
+			sourceTree = "<group>";
+		};
 		42B7D66E22DCED3800ECDAB0 /* Dummy */ = {
 			isa = PBXGroup;
 			children = (
@@ -480,6 +522,7 @@
 				42DD63D322B3E9E800A57196 /* Assets.xcassets */,
 				42DD63D822B3E9E800A57196 /* Info.plist */,
 				42DFD44E28A30B7400495440 /* Common */,
+				425B2EA628BA57C900B2EEA1 /* Helpers */,
 				4220E27522C4A8E400FEB7F8 /* ViewControllers */,
 				422EE0C222C2556E00451EED /* Modules */,
 				422EE0A522B3F15200451EED /* Services */,
@@ -690,6 +733,7 @@
 				425B2EA328B90B3000B2EEA1 /* Result+Extensions.swift in Sources */,
 				42273C0122C79BAF00EDB1E5 /* JsonTrackList.swift in Sources */,
 				4201812422CF367A007752B9 /* InjectionManager.swift in Sources */,
+				425B2EA828BA57DC00B2EEA1 /* JsonHelper.swift in Sources */,
 				4220E2AE22C62B8800FEB7F8 /* FollowingUserView.swift in Sources */,
 				4220E28A22C4E61900FEB7F8 /* UserProfileViewController.swift in Sources */,
 				4201813222D072DA007752B9 /* LoginViewController.swift in Sources */,

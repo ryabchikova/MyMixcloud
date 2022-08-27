@@ -85,10 +85,29 @@ extension TrackServiceImpl: TrackService {
     }
     
     // MARK: - async
-    
+
     func track(trackId: String) async -> Swift.Result<Track, MMError> {
-        return .failure(MMError(type: .noMatter))
+        guard let url = try? MixcloudApi.track.requestUrl(identifier: trackId).asURL() else {
+            return .failure(.executionError)
+        }
+        
+        let session = URLSession.shared
+        guard let (data, _) = try? await session.data(from: url) else {
+            return .failure(.webServiceError)
+        }
+        
+        do {
+            let jsonTrack: JsonTrack = try JsonHelper.decodedSnakeCaseData(data)
+            return .success(converter.makeTrack(from: jsonTrack))
+        } catch {
+            let error = MMError(type: .decodingError,
+                                location: String(describing: self) + ".\(#function)",
+                                what: (error as? DecodingError)?.localizedDescription)
+            error.log()
+            return .failure(error)
+        }
     }
+
 }
     
 private extension TrackServiceImpl {

@@ -24,14 +24,20 @@ extension Result {
 //        return self
 //    }
     
-    func onSuccess(_ handler: (Success) -> Void) {
-        guard case let .success(value) = self else { return }
-        handler(value)
+    @discardableResult
+    func onSuccess(_ handler: (Success) -> Void) -> Self {
+        if case let .success(value) = self {
+            handler(value)
+        }
+        return self
     }
 
-    func onFailure(_ handler: (Failure) -> Void) {
-        guard case let .failure(error) = self else { return }
-        handler(error)
+    @discardableResult
+    func onFailure(_ handler: (Failure) -> Void) -> Self {
+        if case let .failure(error) = self {
+            handler(error)
+        }
+        return self
     }
 
 }

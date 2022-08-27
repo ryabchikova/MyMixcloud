@@ -31,3 +31,13 @@ struct MMError: Error {
         NSLog("[%@] [%@] %@", location ?? "", type.rawValue, what ?? "" )
     }
 }
+
+extension MMError {
+
+    static let noMatter = MMError(type: .noMatter)
+    static let networkUnreachable = MMError(type: .networkUnreachable)
+    static let webServiceError = MMError(type: .webServiceError)
+    static let decodingError = MMError(type: .decodingError)
+    static let executionError = MMError(type: .executionError)
+
+}
