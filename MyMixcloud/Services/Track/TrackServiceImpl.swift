@@ -20,8 +20,12 @@ final class TrackServiceImpl {
 }
 
 extension TrackServiceImpl: TrackService {
+    @available(*, deprecated, renamed: "track(trackId:)")
     func track(trackId: String, completionHandler: @escaping (Track?, MMError?) -> Void) {
-        let url = MixcloudApi.track.requestUrl(identifier: trackId)
+        guard let url = MixcloudApi.track.requestUrl(identifier: trackId) else {
+            return completionHandler(nil, MMError(type: .executionError))
+        }
+    
         Alamofire.request(url)
             .validate()
             .responseData(queue: dispatchQueue) { [weak self] response in
@@ -68,52 +72,79 @@ extension TrackServiceImpl: TrackService {
         }
     }
     
+    @available(*, deprecated, renamed: "listeningHistory(userId:page:useCache:)")
     func listeningHistory(userId: String,
                           page: Int,
                           useCache permit: Bool,
                           completionHandler: @escaping ([Track]?, MMError?) -> Void) {
-        let url = MixcloudApi.history.requestUrl(identifier: userId, page: page)
+        guard let url = MixcloudApi.history.requestUrl(identifier: userId, page: page) else {
+            return completionHandler(nil, .executionError)
+        }
+        
         trackList(url: url, useCache: permit, completionHandler: completionHandler)
     }
     
+    @available(*, deprecated, renamed: "favoriteList(userId:page:useCache:)")
     func favoriteList(userId: String,
                       page: Int,
                       useCache permit: Bool,
                       completionHandler: @escaping ([Track]?, MMError?) -> Void) {
-        let url = MixcloudApi.favorites.requestUrl(identifier: userId, page: page)
+        guard let url = MixcloudApi.favorites.requestUrl(identifier: userId, page: page) else {
+            return completionHandler(nil, .executionError)
+        }
+
         trackList(url: url, useCache: permit, completionHandler: completionHandler)
     }
     
     // MARK: - async
 
-    func track(trackId: String) async -> Swift.Result<Track, MMError> {
-        guard let url = try? MixcloudApi.track.requestUrl(identifier: trackId).asURL() else {
-            return .failure(.executionError)
+    func track(trackId: String) async throws -> Track {
+        guard let url = MixcloudApi.track.requestUrl(identifier: trackId) else {
+            throw MMError.executionError
         }
-        
-        let session = URLSession.shared
-        guard let (data, _) = try? await session.data(from: url) else {
-            return .failure(.webServiceError)
+
+        guard let (data, _) = try? await URLSession.shared.data(from: url) else {
+            throw MMError.webServiceError
         }
         
         do {
             let jsonTrack: JsonTrack = try JsonHelper.decodedSnakeCaseData(data)
-            return .success(converter.makeTrack(from: jsonTrack))
+            return converter.makeTrack(from: jsonTrack)
         } catch {
             let error = MMError(type: .decodingError,
                                 location: String(describing: self) + ".\(#function)",
                                 what: (error as? DecodingError)?.localizedDescription)
             error.log()
-            return .failure(error)
+            throw error
         }
     }
-
+    
+    func listeningHistory(userId: String,
+                          page: Int,
+                          useCache permit: Bool) async throws -> [Track] {
+        guard let url = MixcloudApi.history.requestUrl(identifier: userId, page: page) else {
+            throw MMError.executionError
+        }
+        
+        return try await trackList(url: url, useCache: permit)
+    }
+    
+    func favoriteList(userId: String,
+                      page: Int,
+                      useCache permit: Bool) async throws -> [Track] {
+        guard let url = MixcloudApi.favorites.requestUrl(identifier: userId, page: page) else {
+            throw MMError.executionError
+        }
+        
+        return try await trackList(url: url, useCache: permit)
+    }
 }
     
 private extension TrackServiceImpl {
-     func trackList(url: String,
-                    useCache: Bool,
-                    completionHandler: @escaping ([Track]?, MMError?) -> Void) {
+    @available(*, deprecated, renamed: "trackList(url:useCache:)")
+    func trackList(url: URL,
+                   useCache: Bool,
+                   completionHandler: @escaping ([Track]?, MMError?) -> Void) {
         Alamofire.request(url)
             .validate()
             .responseData(queue: dispatchQueue) { [weak self] response in
@@ -159,4 +190,32 @@ private extension TrackServiceImpl {
                 }
             }
     }
+    
+    func trackList(url: URL, useCache: Bool) async throws -> [Track] {
+        let data: Data
+        do {
+            (data, _) = try await URLSession.shared.data(from: url)
+        } catch {
+            guard
+                useCache,
+                let cachedResponse = URLCache.shared.cachedResponse(for: URLRequest(url: url))
+            else {
+                throw MMError.webServiceError
+            }
+            
+            data = cachedResponse.data
+        }
+        
+        do {
+            let jsonTrackList: JsonTrackList = try JsonHelper.decodedSnakeCaseData(data)
+            return converter.makeTrackList(from: jsonTrackList)
+        } catch {
+            let error = MMError(type: .decodingError,
+                                location: String(describing: self) + ".\(#function)",
+                                what: (error as? DecodingError)?.localizedDescription)
+            error.log()
+            throw error
+        }
+    }
+    
 }

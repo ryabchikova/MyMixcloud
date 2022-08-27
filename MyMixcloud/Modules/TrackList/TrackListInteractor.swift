@@ -18,35 +18,34 @@ final class TrackListInteractor {
 }
 
 extension TrackListInteractor: TrackListInteractorInput {
+    
     func loadTrackList(of type: TrackListType,
                        userId: String,
                        page: Int,
                        reason: LoadingReason,
                        useCache permit: Bool) {
-        let completion: ([Track]?, MMError?) -> Void = { [weak self] tracks, error in
-            DispatchQueue.main.async {
-                if let error = error {
-                    self?.output?.gotError(error)
-                    return
+        Task {
+            do {
+                let tracks: [Track]
+                switch type {
+                case .history:
+                    tracks = try await trackService.listeningHistory(userId: userId,
+                                                                     page: page,
+                                                                     useCache: permit)
+                case .favorite:
+                    tracks = try await trackService.favoriteList(userId: userId,
+                                                                 page: page,
+                                                                 useCache: permit)
                 }
-                
-                if let tracks = tracks {
+                DispatchQueue.main.async { [weak self] in
                     self?.output?.didLoadTrackList(tracks, reason: reason)
                 }
+                
+            } catch {
+                DispatchQueue.main.async { [weak self] in
+                    self?.output?.gotError(error as? MMError ?? .executionError)
+                }
             }
-        }
-        
-        switch type {
-        case .history:
-            trackService.listeningHistory(userId: userId,
-                                          page: page,
-                                          useCache: permit,
-                                          completionHandler: completion)
-        case .favorite:
-            trackService.favoriteList(userId: userId,
-                                      page: page,
-                                      useCache: permit,
-                                      completionHandler: completion)
         }
     }
 }

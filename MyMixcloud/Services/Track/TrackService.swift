@@ -21,5 +21,11 @@ protocol TrackService {
                       completionHandler: @escaping ([Track]?, MMError?) -> Void)
     
     // MARK: - async
-    func track(trackId: String) async -> Result<Track, MMError>
+    func track(trackId: String) async throws -> Track
+    func listeningHistory(userId: String,
+                          page: Int,
+                          useCache permit: Bool) async throws -> [Track]
+    func favoriteList(userId: String,
+                      page: Int,
+                      useCache permit: Bool) async throws -> [Track]
 }

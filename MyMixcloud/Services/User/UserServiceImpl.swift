@@ -19,7 +19,10 @@ final class UserServiceImpl: UserService {
     }
     
     func user(userId: String, completionHandler: @escaping (User?, MMError?) -> Void) {
-        let url = MixcloudApi.user.requestUrl(identifier: userId)
+        guard let url = MixcloudApi.user.requestUrl(identifier: userId) else {
+            return completionHandler(nil, .executionError)
+        }
+
         Alamofire.request(url)
             .validate()
             .responseData(queue: dispatchQueue) { [weak self] response in
@@ -117,7 +120,10 @@ final class UserServiceImpl: UserService {
                                page: Int,
                                useCache: Bool,
                                completionHandler: @escaping ([String]?, MMError?) -> Void) {
-        let url = MixcloudApi.following.requestUrl(identifier: userId, page: page)
+        guard let url = MixcloudApi.following.requestUrl(identifier: userId, page: page) else {
+            return completionHandler(nil, .executionError)
+        }
+        
         Alamofire.request(url)
             .validate()
             .responseData(queue: dispatchQueue) { [weak self] response in
