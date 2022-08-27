@@ -11,10 +11,13 @@ import Foundation
 /// - parameter page: starting from 1
 protocol TrackService {
     func track(trackId: String, completionHandler: @escaping (Track?, MMError?) -> Void)
+    func track(trackId: String) async -> Result<Track, MMError>
+    
     func listeningHistory(userId: String,
                           page: Int,
                           useCache permit: Bool,
                           completionHandler: @escaping ([Track]?, MMError?) -> Void)
+    
     func favoriteList(userId: String,
                       page: Int,
                       useCache permit: Bool,

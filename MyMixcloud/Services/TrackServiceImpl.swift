@@ -9,7 +9,7 @@
 import Foundation
 import Alamofire
 
-final class TrackServiceImpl: TrackService {
+final class TrackServiceImpl {
     private let networkReachabilityService: NetworkReachabilityService
     private let converter = JsonDataConverter()
     private let dispatchQueue = DispatchQueue.global(qos: .userInitiated)
@@ -17,7 +17,9 @@ final class TrackServiceImpl: TrackService {
     init(reachabilityService: NetworkReachabilityService) {
         self.networkReachabilityService = reachabilityService
     }
-    
+}
+
+extension TrackServiceImpl: TrackService {
     func track(trackId: String, completionHandler: @escaping (Track?, MMError?) -> Void) {
         let url = MixcloudApi.track.requestUrl(identifier: trackId)
         Alamofire.request(url)
@@ -29,7 +31,7 @@ final class TrackServiceImpl: TrackService {
                 }
         
                 let data: Data
-                if let responseData = response.result.value {
+                if let responseData = response.value {
                     data = responseData
                 } else if let request = Alamofire.request(url).request,
                     let cachedResponse = URLCache.shared.cachedResponse(for: request) {
@@ -39,7 +41,7 @@ final class TrackServiceImpl: TrackService {
                     if sSelf.networkReachabilityService.isReachable() {
                         error = MMError(type: .webServiceError,
                                         location: String(describing: self) + ".track",
-                                        what: (response.result.error as? AFError)?.errorDescription)
+                                        what: (response.error as? AFError)?.errorDescription)
                     } else {
                         error = MMError(type: .networkUnreachable,
                                         location: String(describing: self) + ".track",
@@ -82,9 +84,17 @@ final class TrackServiceImpl: TrackService {
         trackList(url: url, useCache: permit, completionHandler: completionHandler)
     }
     
-    private func trackList(url: String,
-                           useCache: Bool,
-                           completionHandler: @escaping ([Track]?, MMError?) -> Void) {
+    // MARK: - async
+    
+    func track(trackId: String) async -> Swift.Result<Track, MMError> {
+        return .failure(MMError(type: .noMatter))
+    }
+}
+    
+private extension TrackServiceImpl {
+     func trackList(url: String,
+                    useCache: Bool,
+                    completionHandler: @escaping ([Track]?, MMError?) -> Void) {
         Alamofire.request(url)
             .validate()
             .responseData(queue: dispatchQueue) { [weak self] response in
@@ -94,7 +104,7 @@ final class TrackServiceImpl: TrackService {
                 }
                 
                 let data: Data
-                if let responseData = response.result.value {
+                if let responseData = response.value {
                     data = responseData
                 } else if useCache, let request = Alamofire.request(url).request,
                     let cachedResponse = URLCache.shared.cachedResponse(for: request) {
@@ -104,7 +114,7 @@ final class TrackServiceImpl: TrackService {
                     if sSelf.networkReachabilityService.isReachable() {
                         error = MMError(type: .webServiceError,
                                         location: String(describing: self) + ".trackList",
-                                        what: (response.result.error as? AFError)?.errorDescription)
+                                        what: (response.error as? AFError)?.errorDescription)
                     } else {
                         error = MMError(type: .networkUnreachable,
                                         location: String(describing: self) + ".trackList",
