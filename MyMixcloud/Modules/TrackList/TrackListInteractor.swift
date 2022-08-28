@@ -22,20 +22,17 @@ extension TrackListInteractor: TrackListInteractorInput {
     func loadTrackList(of type: TrackListType,
                        userId: String,
                        page: Int,
-                       reason: LoadingReason,
-                       useCache permit: Bool) {
+                       reason: LoadingReason) {
         Task {
             do {
                 let tracks: [Track]
                 switch type {
                 case .history:
                     tracks = try await trackService.listeningHistory(userId: userId,
-                                                                     page: page,
-                                                                     useCache: permit)
+                                                                     page: page)
                 case .favorite:
                     tracks = try await trackService.favoriteList(userId: userId,
-                                                                 page: page,
-                                                                 useCache: permit)
+                                                                 page: page)
                 }
                 DispatchQueue.main.async { [weak self] in
                     self?.output?.didLoadTrackList(tracks, reason: reason)

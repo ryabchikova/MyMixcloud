@@ -34,8 +34,7 @@ protocol TrackListInteractorInput {
     func loadTrackList(of type: TrackListType,
                        userId: String,
                        page: Int,
-                       reason: LoadingReason,
-                       useCache permit: Bool)
+                       reason: LoadingReason)
 }
 
 protocol TrackListInteractorOutput: AnyObject {

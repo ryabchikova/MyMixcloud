@@ -57,8 +57,7 @@ extension TrackListPresenter: TrackListViewOutput {
         interactor.loadTrackList(of: trackListType,
                                  userId: userId,
                                  page: 1,
-                                 reason: .pullToRefresh,
-                                 useCache: viewIsEmpty)
+                                 reason: .pullToRefresh)
     }
     
     private func requestNextPage() {
@@ -69,8 +68,7 @@ extension TrackListPresenter: TrackListViewOutput {
         interactor.loadTrackList(of: trackListType,
                                  userId: userId,
                                  page: nextPage,
-                                 reason: .regular,
-                                 useCache: viewIsEmpty)
+                                 reason: .regular)
     }
     
     func didTapOnTrack(with trackId: String) {

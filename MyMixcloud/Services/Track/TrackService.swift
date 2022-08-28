@@ -23,9 +23,7 @@ protocol TrackService {
     // MARK: - async
     func track(trackId: String) async throws -> Track
     func listeningHistory(userId: String,
-                          page: Int,
-                          useCache permit: Bool) async throws -> [Track]
+                          page: Int) async throws -> [Track]
     func favoriteList(userId: String,
-                      page: Int,
-                      useCache permit: Bool) async throws -> [Track]
+                      page: Int) async throws -> [Track]
 }

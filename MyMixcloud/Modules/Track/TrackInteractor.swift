@@ -17,6 +17,7 @@ final class TrackInteractor {
     }
 }
 
+// TODO: как правильно возвращаться на main thread?
 extension TrackInteractor: TrackInteractorInput {
     func loadTrack(trackId: String) {
         Task {

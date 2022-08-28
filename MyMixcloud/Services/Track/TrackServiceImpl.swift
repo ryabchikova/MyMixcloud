@@ -72,7 +72,7 @@ extension TrackServiceImpl: TrackService {
         }
     }
     
-    @available(*, deprecated, renamed: "listeningHistory(userId:page:useCache:)")
+    @available(*, deprecated, renamed: "listeningHistory(userId:page:)")
     func listeningHistory(userId: String,
                           page: Int,
                           useCache permit: Bool,
@@ -84,7 +84,7 @@ extension TrackServiceImpl: TrackService {
         trackList(url: url, useCache: permit, completionHandler: completionHandler)
     }
     
-    @available(*, deprecated, renamed: "favoriteList(userId:page:useCache:)")
+    @available(*, deprecated, renamed: "favoriteList(userId:page:)")
     func favoriteList(userId: String,
                       page: Int,
                       useCache permit: Bool,
@@ -119,29 +119,25 @@ extension TrackServiceImpl: TrackService {
         }
     }
     
-    func listeningHistory(userId: String,
-                          page: Int,
-                          useCache permit: Bool) async throws -> [Track] {
+    func listeningHistory(userId: String, page: Int) async throws -> [Track] {
         guard let url = MixcloudApi.history.requestUrl(identifier: userId, page: page) else {
             throw MMError.executionError
         }
         
-        return try await trackList(url: url, useCache: permit)
+        return try await trackList(url: url)
     }
     
-    func favoriteList(userId: String,
-                      page: Int,
-                      useCache permit: Bool) async throws -> [Track] {
+    func favoriteList(userId: String, page: Int) async throws -> [Track] {
         guard let url = MixcloudApi.favorites.requestUrl(identifier: userId, page: page) else {
             throw MMError.executionError
         }
         
-        return try await trackList(url: url, useCache: permit)
+        return try await trackList(url: url)
     }
 }
     
 private extension TrackServiceImpl {
-    @available(*, deprecated, renamed: "trackList(url:useCache:)")
+    @available(*, deprecated, renamed: "trackList(url:)")
     func trackList(url: URL,
                    useCache: Bool,
                    completionHandler: @escaping ([Track]?, MMError?) -> Void) {
@@ -191,19 +187,9 @@ private extension TrackServiceImpl {
             }
     }
     
-    func trackList(url: URL, useCache: Bool) async throws -> [Track] {
-        let data: Data
-        do {
-            (data, _) = try await URLSession.shared.data(from: url)
-        } catch {
-            guard
-                useCache,
-                let cachedResponse = URLCache.shared.cachedResponse(for: URLRequest(url: url))
-            else {
-                throw MMError.webServiceError
-            }
-            
-            data = cachedResponse.data
+    func trackList(url: URL) async throws -> [Track] {
+        guard let (data, _) = try? await URLSession.shared.data(from: url) else {
+            throw MMError.webServiceError
         }
         
         do {
