@@ -111,11 +111,8 @@ extension TrackServiceImpl: TrackService {
             let jsonTrack: JsonTrack = try JsonHelper.decodedSnakeCaseData(data)
             return converter.makeTrack(from: jsonTrack)
         } catch {
-            let error = MMError(type: .decodingError,
-                                location: String(describing: self) + ".\(#function)",
-                                what: (error as? DecodingError)?.localizedDescription)
-            error.log()
-            throw error
+            throw MMError.decodingError(error, at: String(describing: self) + ".\(#function)")
+                .log()
         }
     }
     
@@ -196,12 +193,9 @@ private extension TrackServiceImpl {
             let jsonTrackList: JsonTrackList = try JsonHelper.decodedSnakeCaseData(data)
             return converter.makeTrackList(from: jsonTrackList)
         } catch {
-            let error = MMError(type: .decodingError,
-                                location: String(describing: self) + ".\(#function)",
-                                what: (error as? DecodingError)?.localizedDescription)
-            error.log()
-            throw error
+            throw MMError.decodingError(error, at: String(describing: self) + ".\(#function)")
+                .log()
         }
     }
-    
+
 }

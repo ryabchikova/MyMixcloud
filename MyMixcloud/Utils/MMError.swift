@@ -27,8 +27,10 @@ struct MMError: Error {
         self.what = what
     }
     
-    func log() {
+    @discardableResult
+    func log() -> Self {
         NSLog("[%@] [%@] %@", location ?? "", type.rawValue, what ?? "" )
+        return self
     }
 }
 
@@ -39,5 +41,11 @@ extension MMError {
     static let webServiceError = MMError(type: .webServiceError)
     static let decodingError = MMError(type: .decodingError)
     static let executionError = MMError(type: .executionError)
+    
+    static func decodingError(_ error: Error, at location: String?) -> Self {
+        MMError(type: .decodingError,
+                location: location,
+                what: (error as? DecodingError)?.localizedDescription)
+    }
 
 }
