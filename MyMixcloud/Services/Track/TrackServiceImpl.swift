@@ -104,7 +104,9 @@ extension TrackServiceImpl: TrackService {
         }
 
         guard let (data, _) = try? await URLSession.shared.data(from: url) else {
-            throw MMError.webServiceError
+            throw MMError.requestError(networkReachabilityService.isReachable(),
+                                       at: .callLocation(self, context: #function))
+                .log()
         }
         
         do {
@@ -186,7 +188,9 @@ private extension TrackServiceImpl {
     
     func trackList(url: URL) async throws -> [Track] {
         guard let (data, _) = try? await URLSession.shared.data(from: url) else {
-            throw MMError.webServiceError
+            throw MMError.requestError(networkReachabilityService.isReachable(),
+                                       at: .callLocation(self, context: #function))
+                .log()
         }
         
         do {

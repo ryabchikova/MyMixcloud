@@ -17,7 +17,8 @@ final class FollowingPresenter {
     
     private let userId: String
     private var nextPage: Int? = 1
-    private var isLoading = false
+    private var isLoading = false       // TODO: подходит под паттерн lock/unlock
+                                        // TODO: interactor похож на actor, с собственным lock
     
     var viewIsEmpty: Bool {
         return view?.isEmpty ?? false

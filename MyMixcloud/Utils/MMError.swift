@@ -47,5 +47,11 @@ extension MMError {
                 location: location,
                 what: (error as? DecodingError)?.localizedDescription)
     }
+    
+    /// When network request failed
+    static func requestError(_ isNetworkReachable: Bool, at location: String?) -> Self {
+        MMError(type: isNetworkReachable ? .webServiceError : .networkUnreachable,
+                location: location)
+    }
 
 }
