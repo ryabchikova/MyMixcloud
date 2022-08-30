@@ -85,7 +85,7 @@
 		425255BF22D7276700D2EDC9 /* TrackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 425255BE22D7276700D2EDC9 /* TrackView.swift */; };
 		425B2EA328B90B3000B2EEA1 /* Result+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 425B2EA228B90B3000B2EEA1 /* Result+Extensions.swift */; };
 		425B2EA828BA57DC00B2EEA1 /* JsonHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 425B2EA728BA57DC00B2EEA1 /* JsonHelper.swift */; };
-		425B2EAE28BCC68E00B2EEA1 /* CallLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 425B2EAD28BCC68E00B2EEA1 /* CallLocation.swift */; };
+		425B2EAE28BCC68E00B2EEA1 /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 425B2EAD28BCC68E00B2EEA1 /* String+Extensions.swift */; };
 		42B7D66722DA686D00ECDAB0 /* NetworkReachabilityService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42B7D66622DA686D00ECDAB0 /* NetworkReachabilityService.swift */; };
 		42B7D66922DA68BD00ECDAB0 /* NetworkReachabilityServiceImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42B7D66822DA68BD00ECDAB0 /* NetworkReachabilityServiceImpl.swift */; };
 		42B7D66B22DA892700ECDAB0 /* DummyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42B7D66A22DA892700ECDAB0 /* DummyViewModel.swift */; };
@@ -181,7 +181,7 @@
 		425255BE22D7276700D2EDC9 /* TrackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackView.swift; sourceTree = "<group>"; };
 		425B2EA228B90B3000B2EEA1 /* Result+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Result+Extensions.swift"; sourceTree = "<group>"; };
 		425B2EA728BA57DC00B2EEA1 /* JsonHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JsonHelper.swift; sourceTree = "<group>"; };
-		425B2EAD28BCC68E00B2EEA1 /* CallLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CallLocation.swift; sourceTree = "<group>"; };
+		425B2EAD28BCC68E00B2EEA1 /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
 		42B7D66622DA686D00ECDAB0 /* NetworkReachabilityService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkReachabilityService.swift; sourceTree = "<group>"; };
 		42B7D66822DA68BD00ECDAB0 /* NetworkReachabilityServiceImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkReachabilityServiceImpl.swift; sourceTree = "<group>"; };
 		42B7D66A22DA892700ECDAB0 /* DummyViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DummyViewModel.swift; sourceTree = "<group>"; };
@@ -372,7 +372,6 @@
 				4220E29422C5137300FEB7F8 /* MMFonts.swift */,
 				4220E29622C5139800FEB7F8 /* MMColors.swift */,
 				42B7D67122DD45DE00ECDAB0 /* LoadingReason.swift */,
-				425B2EAD28BCC68E00B2EEA1 /* CallLocation.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -439,6 +438,7 @@
 		425B2EA128B90ADF00B2EEA1 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				425B2EAD28BCC68E00B2EEA1 /* String+Extensions.swift */,
 				425B2EA228B90B3000B2EEA1 /* Result+Extensions.swift */,
 			);
 			path = Extensions;
@@ -743,7 +743,7 @@
 				4201813C22D27F75007752B9 /* AppRouter.swift in Sources */,
 				425255B822D7270100D2EDC9 /* TrackInteractor.swift in Sources */,
 				425255B922D7270100D2EDC9 /* TrackModuleBuilder.swift in Sources */,
-				425B2EAE28BCC68E00B2EEA1 /* CallLocation.swift in Sources */,
+				425B2EAE28BCC68E00B2EEA1 /* String+Extensions.swift in Sources */,
 				4220E29222C5093900FEB7F8 /* UserProfileView.swift in Sources */,
 				4220E2A522C62B1A00FEB7F8 /* FollowingViewController.swift in Sources */,
 				4201816322D32EC9007752B9 /* SettingsModuleBuilder.swift in Sources */,

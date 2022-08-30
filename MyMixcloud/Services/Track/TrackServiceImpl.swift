@@ -19,8 +19,6 @@ final class TrackServiceImpl {
     }
 }
 
-extension TrackServiceImpl: CallLocation {}
-
 extension TrackServiceImpl: TrackService {
     @available(*, deprecated, renamed: "track(trackId:)")
     func track(trackId: String, completionHandler: @escaping (Track?, MMError?) -> Void) {
@@ -195,7 +193,7 @@ private extension TrackServiceImpl {
             let jsonTrackList: JsonTrackList = try JsonHelper.decodedSnakeCaseData(data)
             return converter.makeTrackList(from: jsonTrackList)
         } catch {
-            throw MMError.decodingError(error, at: location(caller: #function))
+            throw MMError.decodingError(error, at: .callLocation(self, context: #function))
                 .log()
         }
     }
