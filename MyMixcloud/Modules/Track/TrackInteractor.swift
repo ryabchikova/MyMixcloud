@@ -17,19 +17,15 @@ final class TrackInteractor {
     }
 }
 
-// TODO: как правильно возвращаться на main thread?
 extension TrackInteractor: TrackInteractorInput {
+
     func loadTrack(trackId: String) {
         Task {
             do {
                 let track = try await trackService.track(trackId: trackId)
-                DispatchQueue.main.async { [weak self] in
-                    self?.output?.didLoadTrack(track)
-                }
+                await output?.didLoadTrack(track)
             } catch {
-                DispatchQueue.main.async { [weak self] in
-                    self?.output?.gotError(error as? MMError ?? .executionError)
-                }
+                await output?.gotError(error as? MMError ?? .executionError)
             }
         }
     }
