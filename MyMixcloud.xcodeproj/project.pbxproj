@@ -101,6 +101,8 @@
 		42DFD45228A3A8E100495440 /* ModuleBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42DFD45128A3A8E100495440 /* ModuleBuilder.swift */; };
 		42E19DAA28BF36E200A2227B /* NetworkServiceImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42E19DA928BF36E200A2227B /* NetworkServiceImpl.swift */; };
 		42E19DAC28BF451D00A2227B /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42E19DAB28BF451D00A2227B /* NetworkService.swift */; };
+		42E19DB328BF5B6B00A2227B /* JsonConversions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42E19DB228BF5B6B00A2227B /* JsonConversions.swift */; };
+		42E19DB528BF611200A2227B /* BusinessModelConvertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42E19DB428BF611200A2227B /* BusinessModelConvertible.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -201,6 +203,8 @@
 		42DFD45128A3A8E100495440 /* ModuleBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModuleBuilder.swift; sourceTree = "<group>"; };
 		42E19DA928BF36E200A2227B /* NetworkServiceImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkServiceImpl.swift; sourceTree = "<group>"; };
 		42E19DAB28BF451D00A2227B /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
+		42E19DB228BF5B6B00A2227B /* JsonConversions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JsonConversions.swift; sourceTree = "<group>"; };
+		42E19DB428BF611200A2227B /* BusinessModelConvertible.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusinessModelConvertible.swift; sourceTree = "<group>"; };
 		8FC0D2BAC2FD7FF3D288AFF4 /* Pods-MyMixcloud.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyMixcloud.release.xcconfig"; path = "Pods/Target Support Files/Pods-MyMixcloud/Pods-MyMixcloud.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -394,12 +398,10 @@
 		422EE0BB22C217CD00451EED /* JsonDecoding */ = {
 			isa = PBXGroup;
 			children = (
+				42E19DB628BF613900A2227B /* JsonModels */,
 				422EE0BE22C21C1700451EED /* JsonDataConverter.swift */,
-				422EE0BC22C2180600451EED /* JsonUser.swift */,
-				422EE0C022C2234F00451EED /* JsonFollowing.swift */,
-				42273C0022C79BAF00EDB1E5 /* JsonTrackList.swift */,
-				42273C0222C7A0C700EDB1E5 /* JsonTrack.swift */,
-				42273C0422C7A12600EDB1E5 /* JsonTag.swift */,
+				42E19DB228BF5B6B00A2227B /* JsonConversions.swift */,
+				42E19DB428BF611200A2227B /* BusinessModelConvertible.swift */,
 			);
 			path = JsonDecoding;
 			sourceTree = "<group>";
@@ -557,6 +559,18 @@
 				42E19DA928BF36E200A2227B /* NetworkServiceImpl.swift */,
 			);
 			path = Network;
+			sourceTree = "<group>";
+		};
+		42E19DB628BF613900A2227B /* JsonModels */ = {
+			isa = PBXGroup;
+			children = (
+				422EE0BC22C2180600451EED /* JsonUser.swift */,
+				422EE0C022C2234F00451EED /* JsonFollowing.swift */,
+				42273C0022C79BAF00EDB1E5 /* JsonTrackList.swift */,
+				42273C0222C7A0C700EDB1E5 /* JsonTrack.swift */,
+				42273C0422C7A12600EDB1E5 /* JsonTag.swift */,
+			);
+			path = JsonModels;
 			sourceTree = "<group>";
 		};
 		D241E16A069FBD01953A15AD /* Frameworks */ = {
@@ -744,6 +758,7 @@
 				4224F96F22CA3DEE00E847AB /* TrackListTableViewCell.swift in Sources */,
 				42273C0B22C7A7EA00EDB1E5 /* Tag.swift in Sources */,
 				4220E2A322C62B1A00FEB7F8 /* FollowingPresenter.swift in Sources */,
+				42E19DB528BF611200A2227B /* BusinessModelConvertible.swift in Sources */,
 				4224F96622CA37EC00E847AB /* TrackListProtocols.swift in Sources */,
 				4201813322D072DA007752B9 /* LoginProtocols.swift in Sources */,
 				422E6EA822D3B93500DBEB2E /* MainModuleBuilder.swift in Sources */,
@@ -778,6 +793,7 @@
 				4220E29022C5092400FEB7F8 /* UserProfileViewModel.swift in Sources */,
 				42DFD44D28A3092F00495440 /* LoginModuleBuilder.swift in Sources */,
 				422EE0CB22C25CC100451EED /* MainTabBarViewController.swift in Sources */,
+				42E19DB328BF5B6B00A2227B /* JsonConversions.swift in Sources */,
 				422E6EA622D3B93500DBEB2E /* MainProtocols.swift in Sources */,
 				4201816222D32EC9007752B9 /* SettingsInteractor.swift in Sources */,
 				4224F96722CA37EC00E847AB /* TrackListInteractor.swift in Sources */,

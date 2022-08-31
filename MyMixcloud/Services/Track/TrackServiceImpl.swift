@@ -10,7 +10,6 @@ import Foundation
 
 final class TrackServiceImpl {
     private let networkService: NetworkService
-    private let converter = JsonDataConverter()
     
     init(networkService: NetworkService) {
         self.networkService = networkService
@@ -25,7 +24,7 @@ extension TrackServiceImpl: TrackService {
         }
         
         let jsonTrack: JsonTrack = try await networkService.data(url: url)
-        return converter.makeTrack(from: jsonTrack)
+        return jsonTrack.businessModel
     }
     
     func listeningHistory(userId: String, page: Int) async throws -> [Track] {
@@ -34,7 +33,7 @@ extension TrackServiceImpl: TrackService {
         }
         
         let jsonTrackList: JsonTrackList = try await networkService.data(url: url)
-        return converter.makeTrackList(from: jsonTrackList)
+        return jsonTrackList.businessModel
     }
     
     func favoriteList(userId: String, page: Int) async throws -> [Track] {
@@ -43,7 +42,7 @@ extension TrackServiceImpl: TrackService {
         }
         
         let jsonTrackList: JsonTrackList = try await networkService.data(url: url)
-        return converter.makeTrackList(from: jsonTrackList)
+        return jsonTrackList.businessModel
     }
     
 }

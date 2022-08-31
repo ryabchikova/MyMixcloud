@@ -9,6 +9,7 @@
 import Foundation
 
 final class JsonDataConverter {
+    @available(*, deprecated)
     func makeUser(from jsonUser: JsonUser) -> User {
         return User(identifier: jsonUser.username,
                     name: jsonUser.name,
@@ -22,15 +23,18 @@ final class JsonDataConverter {
                     profileImage: jsonUser.pictures.large,
                     coverImage: jsonUser.coverPictures?.small)
     }
-    
+
+    @available(*, deprecated)
     func makeFollowingList(from jsonFollowing: JsonFollowing) -> [String] {
         return jsonFollowing.users.map { $0.username }
     }
     
+    @available(*, deprecated)
     func makeTag(from jsonTag: JsonTag) -> Tag {
         return Tag(identifier: jsonTag.key, name: jsonTag.name)
     }
     
+    @available(*, deprecated)
     func makeTrack(from jsonTrack: JsonTrack) -> Track {
         return Track(identifier: jsonTrack.key,
                      title: jsonTrack.name,
@@ -38,22 +42,20 @@ final class JsonDataConverter {
                      user: (identifier: jsonTrack.user.username, name: jsonTrack.user.name),
                      tags: jsonTrack.tags.map { makeTag(from: $0) },
                      playCount: jsonTrack.playCount,
-                     uploadedTime: convertTimestamp(jsonTrack.createdTime),
-                     listenTime: jsonTrack.listenTime.map { convertTimestamp($0) } ?? nil,
-                     audioLength: convertSecondsToReadableTime(jsonTrack.audioLength),
+                     uploadedTime: JsonDataConverter.convertTimestamp(jsonTrack.createdTime),
+                     listenTime: jsonTrack.listenTime.map { JsonDataConverter.convertTimestamp($0) } ?? nil,
+                     audioLength: JsonDataConverter.convertSecondsToReadableTime(jsonTrack.audioLength),
                      favoriteCount: jsonTrack.favoriteCount,
                      listenerCount: jsonTrack.listenerCount,
                      repostCount: jsonTrack.repostCount)
     }
     
+    @available(*, deprecated)
     func makeTrackList(from jsonTrackList: JsonTrackList) -> [Track] {
         return jsonTrackList.tracks.map { makeTrack(from: $0) }
     }
-}
 
-extension JsonDataConverter {
-
-    private func convertTimestamp(_ input: String) -> String? {
+    static func convertTimestamp(_ input: String) -> String? {
         let inputFormatter = DateFormatter()
         inputFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss'Z'"
         inputFormatter.locale = Locale(identifier: "en_US_POSIX")
@@ -67,7 +69,7 @@ extension JsonDataConverter {
         return inputFormatter.date(from: input).map { outputFormatter.string(from: $0) }
     }
     
-    private func convertSecondsToReadableTime(_ input: Int) -> String? {
+    static func convertSecondsToReadableTime(_ input: Int) -> String? {
         guard input > 0 && input < 24*60*60 else {
             return nil
         }
