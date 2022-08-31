@@ -10,8 +10,10 @@ import Foundation
 
 protocol TrackService {
     func track(trackId: String) async throws -> Track
+    
     /// - parameter page: starting from 1
     func listeningHistory(userId: String, page: Int) async throws -> [Track]
+    
     /// - parameter page: starting from 1
     func favoriteList(userId: String, page: Int) async throws -> [Track]
 }

@@ -103,6 +103,7 @@
 		42E19DAC28BF451D00A2227B /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42E19DAB28BF451D00A2227B /* NetworkService.swift */; };
 		42E19DB328BF5B6B00A2227B /* JsonConversions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42E19DB228BF5B6B00A2227B /* JsonConversions.swift */; };
 		42E19DB528BF611200A2227B /* BusinessModelConvertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42E19DB428BF611200A2227B /* BusinessModelConvertible.swift */; };
+		42E19DB828BF88D700A2227B /* UserServiveAsyncImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42E19DB728BF88D700A2227B /* UserServiveAsyncImpl.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -205,6 +206,7 @@
 		42E19DAB28BF451D00A2227B /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		42E19DB228BF5B6B00A2227B /* JsonConversions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JsonConversions.swift; sourceTree = "<group>"; };
 		42E19DB428BF611200A2227B /* BusinessModelConvertible.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusinessModelConvertible.swift; sourceTree = "<group>"; };
+		42E19DB728BF88D700A2227B /* UserServiveAsyncImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserServiveAsyncImpl.swift; sourceTree = "<group>"; };
 		8FC0D2BAC2FD7FF3D288AFF4 /* Pods-MyMixcloud.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyMixcloud.release.xcconfig"; path = "Pods/Target Support Files/Pods-MyMixcloud/Pods-MyMixcloud.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -473,6 +475,7 @@
 			children = (
 				422EE0A822B3F47A00451EED /* UserService.swift */,
 				422EE0AD22B7EF4200451EED /* UserServiceImpl.swift */,
+				42E19DB728BF88D700A2227B /* UserServiveAsyncImpl.swift */,
 			);
 			path = User;
 			sourceTree = "<group>";
@@ -781,6 +784,7 @@
 				42E19DAA28BF36E200A2227B /* NetworkServiceImpl.swift in Sources */,
 				4220E29922C585AC00FEB7F8 /* DummyView.swift in Sources */,
 				422EE0BF22C21C1700451EED /* JsonDataConverter.swift in Sources */,
+				42E19DB828BF88D700A2227B /* UserServiveAsyncImpl.swift in Sources */,
 				425255B722D7270100D2EDC9 /* TrackProtocols.swift in Sources */,
 				4220E29522C5137300FEB7F8 /* MMFonts.swift in Sources */,
 				4201815E22D32EC9007752B9 /* SettingsPresenter.swift in Sources */,

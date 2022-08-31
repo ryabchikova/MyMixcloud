@@ -116,6 +116,14 @@ final class UserServiceImpl: UserService {
         }
     }
     
+    func user(userId: String) async throws -> User {
+        fatalError("Not implemented")
+    }
+    
+    func following(userId: String, page: Int) async throws -> [User] {
+        fatalError("Not implemented")
+    }
+    
     private func followingList(userId: String,
                                page: Int,
                                useCache: Bool,
