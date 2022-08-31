@@ -42,14 +42,14 @@ extension MMError {
     static let decodingError = MMError(type: .decodingError)
     static let executionError = MMError(type: .executionError)
     
-    static func decodingError(_ error: Error, at location: String?) -> Self {
+    static func decodingError(_ error: Error, at location: String? = nil) -> Self {
         MMError(type: .decodingError,
                 location: location,
                 what: (error as? DecodingError)?.localizedDescription)
     }
     
     /// When network request failed
-    static func requestError(_ isNetworkReachable: Bool, at location: String?) -> Self {
+    static func requestError(_ isNetworkReachable: Bool, at location: String? = nil) -> Self {
         MMError(type: isNetworkReachable ? .webServiceError : .networkUnreachable,
                 location: location)
     }

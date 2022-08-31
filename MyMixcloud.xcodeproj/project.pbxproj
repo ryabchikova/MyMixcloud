@@ -99,6 +99,8 @@
 		42DFD44D28A3092F00495440 /* LoginModuleBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42DFD44C28A3092F00495440 /* LoginModuleBuilder.swift */; };
 		42DFD45028A30B9000495440 /* Module.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42DFD44F28A30B9000495440 /* Module.swift */; };
 		42DFD45228A3A8E100495440 /* ModuleBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42DFD45128A3A8E100495440 /* ModuleBuilder.swift */; };
+		42E19DAA28BF36E200A2227B /* NetworkServiceImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42E19DA928BF36E200A2227B /* NetworkServiceImpl.swift */; };
+		42E19DAC28BF451D00A2227B /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42E19DAB28BF451D00A2227B /* NetworkService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -197,6 +199,8 @@
 		42DFD44C28A3092F00495440 /* LoginModuleBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginModuleBuilder.swift; sourceTree = "<group>"; };
 		42DFD44F28A30B9000495440 /* Module.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Module.swift; sourceTree = "<group>"; };
 		42DFD45128A3A8E100495440 /* ModuleBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModuleBuilder.swift; sourceTree = "<group>"; };
+		42E19DA928BF36E200A2227B /* NetworkServiceImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkServiceImpl.swift; sourceTree = "<group>"; };
+		42E19DAB28BF451D00A2227B /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		8FC0D2BAC2FD7FF3D288AFF4 /* Pods-MyMixcloud.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyMixcloud.release.xcconfig"; path = "Pods/Target Support Files/Pods-MyMixcloud/Pods-MyMixcloud.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -354,8 +358,9 @@
 		422EE0A522B3F15200451EED /* Services */ = {
 			isa = PBXGroup;
 			children = (
-				422EE0BB22C217CD00451EED /* JsonDecoding */,
 				422EE0AA22B436D600451EED /* MixcloudApi.swift */,
+				422EE0BB22C217CD00451EED /* JsonDecoding */,
+				42E19DA828BF36BA00A2227B /* Network */,
 				425B2EAC28BA8F5A00B2EEA1 /* NetworkReachability */,
 				425B2EAB28BA8F2800B2EEA1 /* Settings */,
 				425B2EA928BA8EFB00B2EEA1 /* Track */,
@@ -543,6 +548,15 @@
 				42DFD44F28A30B9000495440 /* Module.swift */,
 			);
 			path = Common;
+			sourceTree = "<group>";
+		};
+		42E19DA828BF36BA00A2227B /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				42E19DAB28BF451D00A2227B /* NetworkService.swift */,
+				42E19DA928BF36E200A2227B /* NetworkServiceImpl.swift */,
+			);
+			path = Network;
 			sourceTree = "<group>";
 		};
 		D241E16A069FBD01953A15AD /* Frameworks */ = {
@@ -749,6 +763,7 @@
 				4201816322D32EC9007752B9 /* SettingsModuleBuilder.swift in Sources */,
 				4201813422D072DA007752B9 /* LoginInteractor.swift in Sources */,
 				422EE0AB22B436D600451EED /* MixcloudApi.swift in Sources */,
+				42E19DAA28BF36E200A2227B /* NetworkServiceImpl.swift in Sources */,
 				4220E29922C585AC00FEB7F8 /* DummyView.swift in Sources */,
 				422EE0BF22C21C1700451EED /* JsonDataConverter.swift in Sources */,
 				425255B722D7270100D2EDC9 /* TrackProtocols.swift in Sources */,
@@ -766,6 +781,7 @@
 				422E6EA622D3B93500DBEB2E /* MainProtocols.swift in Sources */,
 				4201816222D32EC9007752B9 /* SettingsInteractor.swift in Sources */,
 				4224F96722CA37EC00E847AB /* TrackListInteractor.swift in Sources */,
+				42E19DAC28BF451D00A2227B /* NetworkService.swift in Sources */,
 				422EE0AE22B7EF4200451EED /* UserServiceImpl.swift in Sources */,
 				42DD63CB22B3E9E600A57196 /* AppDelegate.swift in Sources */,
 				4224F96822CA37EC00E847AB /* TrackListModuleBuilder.swift in Sources */,

@@ -51,13 +51,11 @@ final class TableViewManager<Model: Identifiable, Cell: UITableViewCell & MMTabl
     func set(viewModels: [Model]) {
         models.append(contentsOf: viewModels)
         tableView?.reloadData()
-        print("DBG set: \(String(describing: Model.self)) volume: \(models.count)")
     }
     
     func reset(viewModels: [Model]) {
         models = viewModels
         tableView?.reloadData()
-        print("DBG reset: \(String(describing: Model.self)) volume: \(models.count)")
     }
 
     // MARK: - UITableViewDataSource
