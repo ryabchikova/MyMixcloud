@@ -31,9 +31,10 @@ protocol FollowingViewOutput: AnyObject {
 
 // MARK: - Interactor
 protocol FollowingInteractorInput {
-    func loadFollowing(userId: String, page: Int, reason: LoadingReason, useCache permit: Bool)
+    func loadFollowing(userId: String, page: Int, reason: LoadingReason)
 }
 
+@MainActor
 protocol FollowingInteractorOutput: AnyObject {
     func gotError(_ error: MMError)
     func didLoadFollowing(_ users: [User], reason: LoadingReason)

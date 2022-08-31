@@ -55,7 +55,7 @@ extension FollowingPresenter: FollowingViewOutput {
         }
         
         isLoading = true
-        interactor.loadFollowing(userId: userId, page: 1, reason: .pullToRefresh, useCache: viewIsEmpty)
+        interactor.loadFollowing(userId: userId, page: 1, reason: .pullToRefresh)
     }
     
     private func requestNextPage() {
@@ -63,7 +63,7 @@ extension FollowingPresenter: FollowingViewOutput {
             return
         }
         isLoading = true
-        interactor.loadFollowing(userId: userId, page: nextPage, reason: .regular, useCache: viewIsEmpty)
+        interactor.loadFollowing(userId: userId, page: nextPage, reason: .regular)
     }
     
     func didTapOnUser(with userId: String) {

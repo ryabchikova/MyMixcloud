@@ -27,6 +27,7 @@ protocol LoginInteractorInput {
     func login(with username: String)
 }
 
+@MainActor
 protocol LoginInteractorOutput: AnyObject {
     func didLogin()
     func loginFailed()

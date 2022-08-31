@@ -21,14 +21,13 @@ final class LoginInteractor {
 
 extension LoginInteractor: LoginInteractorInput {
     func login(with username: String) {
-        userService.user(userId: username) { [weak self] user, error in
-            DispatchQueue.main.async {
-                if user != nil && error == nil {
-                    self?.settingsService.setCurrentUserId(username)
-                    self?.output?.didLogin()
-                } else {
-                    self?.output?.loginFailed()
-                }
+        Task {
+            do {
+                _ = try await userService.user(userId: username)
+                settingsService.setCurrentUserId(username)
+                await output?.didLogin()
+            } catch {
+                await output?.loginFailed()
             }
         }
     }

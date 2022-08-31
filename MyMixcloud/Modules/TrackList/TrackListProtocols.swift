@@ -37,6 +37,7 @@ protocol TrackListInteractorInput {
                        reason: LoadingReason)
 }
 
+@MainActor
 protocol TrackListInteractorOutput: AnyObject {
     func gotError(_ error: MMError)
     func didLoadTrackList(_ tracks: [Track], reason: LoadingReason)

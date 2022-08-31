@@ -19,16 +19,12 @@ final class UserProfileInteractor {
 
 extension UserProfileInteractor: UserProfileInteractorInput {
     func loadUser(userId: String) {
-        userService.user(userId: userId) { [weak self] user, error in
-            DispatchQueue.main.async {
-                if let error = error {
-                    self?.output?.gotError(error)
-                    return
-                }
-                
-                if let user = user {
-                    self?.output?.didLoadUser(user)
-                }
+        Task.init {
+            do {
+                let user = try await userService.user(userId: userId)
+                await output?.didLoadUser(user)
+            } catch {
+                await output?.gotError(error as? MMError ?? .executionError)
             }
         }
     }

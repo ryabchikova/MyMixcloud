@@ -34,6 +34,7 @@ protocol UserProfileInteractorInput {
     func loadUser(userId: String)
 }
 
+@MainActor
 protocol UserProfileInteractorOutput: AnyObject {
     func gotError(_ error: MMError)
     func didLoadUser(_ user: User)

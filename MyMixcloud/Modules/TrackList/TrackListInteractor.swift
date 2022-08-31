@@ -34,14 +34,9 @@ extension TrackListInteractor: TrackListInteractorInput {
                     tracks = try await trackService.favoriteList(userId: userId,
                                                                  page: page)
                 }
-                DispatchQueue.main.async { [weak self] in
-                    self?.output?.didLoadTrackList(tracks, reason: reason)
-                }
-                
+                await output?.didLoadTrackList(tracks, reason: reason)
             } catch {
-                DispatchQueue.main.async { [weak self] in
-                    self?.output?.gotError(error as? MMError ?? .executionError)
-                }
+                await output?.gotError(error as? MMError ?? .executionError)
             }
         }
     }
