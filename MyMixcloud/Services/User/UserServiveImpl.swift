@@ -1,5 +1,5 @@
 //
-//  UserServiveAsyncImpl.swift
+//  UserServiveImpl.swift
 //  MyMixcloud
 //
 //  Created by Elena Ryabchikova on 31.08.2022.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-final class UserServiveAsyncImpl {
+final class UserServiveImpl {
     private let networkService: NetworkService
     
     init(networkService: NetworkService) {
@@ -16,14 +16,7 @@ final class UserServiveAsyncImpl {
     }
 }
 
-extension UserServiveAsyncImpl: UserService {
-    
-    func user(userId: String, completionHandler: @escaping (User?, MMError?) -> Void) {
-        completionHandler(nil, .noMatter)
-    }
-    func following(userId: String, page: Int, useCache permit: Bool, completionHandler: @escaping ([User]?, MMError?) -> Void) {
-        completionHandler(nil, .noMatter)
-    }
+extension UserServiveImpl: UserService {
     
     func user(userId: String) async throws -> User {
         try Task.checkCancellation()
@@ -45,29 +38,6 @@ extension UserServiveAsyncImpl: UserService {
             return []
         }
         
-        /*
-        return await withTaskGroup(of: (Int, User)?.self) { group in
-            for (index, userId) in followingList.enumerated() {
-                group.addTask {
-                    guard let user = try? await self.user(userId: userId) else {
-                        return nil
-                    }
-                    
-                    return (index, user)
-                }
-            }
-            
-            var users: [User?] = Array(repeating: nil, count: followingList.count)
-            for await (index, user) in group.compactMap({ $0 }) {
-                // use index to store User objects in the same order as input following list
-                users[index] = user
-            }
-            
-            return users.compactMap { $0 }
-        }
-         */
-        
-        // TODO: при ошибке в одном из тасков, исключение прокидывается выше, результат не возвращается
         return try await withThrowingTaskGroup(of: (Int, User).self) { group in
             for (index, userId) in followingList.enumerated() {
                 group.addTask {
@@ -88,7 +58,7 @@ extension UserServiveAsyncImpl: UserService {
     
 }
 
-private extension UserServiveAsyncImpl {
+private extension UserServiveImpl {
     
     private func followingList(userId: String, page: Int) async throws -> [String] {
         guard let url = MixcloudApi.following.requestUrl(identifier: userId, page: page) else {

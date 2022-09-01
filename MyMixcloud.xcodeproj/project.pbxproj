@@ -68,7 +68,7 @@
 		422EE0A722B3F1AB00451EED /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 422EE0A622B3F1AB00451EED /* User.swift */; };
 		422EE0A922B3F47A00451EED /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 422EE0A822B3F47A00451EED /* UserService.swift */; };
 		422EE0AB22B436D600451EED /* MixcloudApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 422EE0AA22B436D600451EED /* MixcloudApi.swift */; };
-		422EE0AE22B7EF4200451EED /* UserServiceImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 422EE0AD22B7EF4200451EED /* UserServiceImpl.swift */; };
+		422EE0AE22B7EF4200451EED /* OldUserServiceImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 422EE0AD22B7EF4200451EED /* OldUserServiceImpl.swift */; };
 		422EE0B022B803C300451EED /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 422EE0AF22B803C300451EED /* Constants.swift */; };
 		422EE0B522BA180D00451EED /* whatever.swift in Sources */ = {isa = PBXBuildFile; fileRef = 422EE0B422BA180D00451EED /* whatever.swift */; };
 		422EE0B722BA2A0A00451EED /* MMError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 422EE0B622BA2A0A00451EED /* MMError.swift */; };
@@ -103,7 +103,10 @@
 		42E19DAC28BF451D00A2227B /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42E19DAB28BF451D00A2227B /* NetworkService.swift */; };
 		42E19DB328BF5B6B00A2227B /* JsonConversions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42E19DB228BF5B6B00A2227B /* JsonConversions.swift */; };
 		42E19DB528BF611200A2227B /* BusinessModelConvertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42E19DB428BF611200A2227B /* BusinessModelConvertible.swift */; };
-		42E19DB828BF88D700A2227B /* UserServiveAsyncImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42E19DB728BF88D700A2227B /* UserServiveAsyncImpl.swift */; };
+		42E19DB828BF88D700A2227B /* UserServiveImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42E19DB728BF88D700A2227B /* UserServiveImpl.swift */; };
+		42E19DBA28C125AB00A2227B /* async_await.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42E19DB928C125AB00A2227B /* async_await.swift */; };
+		42E19DBC28C1266800A2227B /* OldUserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42E19DBB28C1266800A2227B /* OldUserService.swift */; };
+		42E19DBE28C1295000A2227B /* caching.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42E19DBD28C1295000A2227B /* caching.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -169,7 +172,7 @@
 		422EE0A622B3F1AB00451EED /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		422EE0A822B3F47A00451EED /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
 		422EE0AA22B436D600451EED /* MixcloudApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MixcloudApi.swift; sourceTree = "<group>"; };
-		422EE0AD22B7EF4200451EED /* UserServiceImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserServiceImpl.swift; sourceTree = "<group>"; };
+		422EE0AD22B7EF4200451EED /* OldUserServiceImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OldUserServiceImpl.swift; sourceTree = "<group>"; };
 		422EE0AF22B803C300451EED /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		422EE0B422BA180D00451EED /* whatever.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = whatever.swift; sourceTree = "<group>"; };
 		422EE0B622BA2A0A00451EED /* MMError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MMError.swift; sourceTree = "<group>"; };
@@ -206,7 +209,10 @@
 		42E19DAB28BF451D00A2227B /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		42E19DB228BF5B6B00A2227B /* JsonConversions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JsonConversions.swift; sourceTree = "<group>"; };
 		42E19DB428BF611200A2227B /* BusinessModelConvertible.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusinessModelConvertible.swift; sourceTree = "<group>"; };
-		42E19DB728BF88D700A2227B /* UserServiveAsyncImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserServiveAsyncImpl.swift; sourceTree = "<group>"; };
+		42E19DB728BF88D700A2227B /* UserServiveImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserServiveImpl.swift; sourceTree = "<group>"; };
+		42E19DB928C125AB00A2227B /* async_await.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = async_await.swift; sourceTree = "<group>"; };
+		42E19DBB28C1266800A2227B /* OldUserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OldUserService.swift; sourceTree = "<group>"; };
+		42E19DBD28C1295000A2227B /* caching.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = caching.swift; sourceTree = "<group>"; };
 		8FC0D2BAC2FD7FF3D288AFF4 /* Pods-MyMixcloud.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyMixcloud.release.xcconfig"; path = "Pods/Target Support Files/Pods-MyMixcloud/Pods-MyMixcloud.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -393,6 +399,8 @@
 				42DFD45128A3A8E100495440 /* ModuleBuilder.swift */,
 				422EE0CA22C25CC100451EED /* MainTabBarViewController.swift */,
 				422EE0B422BA180D00451EED /* whatever.swift */,
+				42E19DB928C125AB00A2227B /* async_await.swift */,
+				42E19DBD28C1295000A2227B /* caching.swift */,
 			);
 			path = TestStuff;
 			sourceTree = "<group>";
@@ -474,8 +482,9 @@
 			isa = PBXGroup;
 			children = (
 				422EE0A822B3F47A00451EED /* UserService.swift */,
-				422EE0AD22B7EF4200451EED /* UserServiceImpl.swift */,
-				42E19DB728BF88D700A2227B /* UserServiveAsyncImpl.swift */,
+				42E19DB728BF88D700A2227B /* UserServiveImpl.swift */,
+				42E19DBB28C1266800A2227B /* OldUserService.swift */,
+				422EE0AD22B7EF4200451EED /* OldUserServiceImpl.swift */,
 			);
 			path = User;
 			sourceTree = "<group>";
@@ -727,12 +736,14 @@
 				42B7D66922DA68BD00ECDAB0 /* NetworkReachabilityServiceImpl.swift in Sources */,
 				42273C0522C7A12600EDB1E5 /* JsonTag.swift in Sources */,
 				425255B622D7270100D2EDC9 /* TrackViewController.swift in Sources */,
+				42E19DBE28C1295000A2227B /* caching.swift in Sources */,
 				42DFD45228A3A8E100495440 /* ModuleBuilder.swift in Sources */,
 				425255B422D7270100D2EDC9 /* TrackPresenter.swift in Sources */,
 				4224F96322CA37EC00E847AB /* TrackListPresenter.swift in Sources */,
 				422EE0A722B3F1AB00451EED /* User.swift in Sources */,
 				4220E2A622C62B1A00FEB7F8 /* FollowingProtocols.swift in Sources */,
 				4220E29722C5139800FEB7F8 /* MMColors.swift in Sources */,
+				42E19DBA28C125AB00A2227B /* async_await.swift in Sources */,
 				4220E2AC22C62B7600FEB7F8 /* FollowingUserViewModel.swift in Sources */,
 				4201813822D0730C007752B9 /* LoginViewModel.swift in Sources */,
 				4220E28822C4E61900FEB7F8 /* UserProfilePresenter.swift in Sources */,
@@ -784,7 +795,7 @@
 				42E19DAA28BF36E200A2227B /* NetworkServiceImpl.swift in Sources */,
 				4220E29922C585AC00FEB7F8 /* DummyView.swift in Sources */,
 				422EE0BF22C21C1700451EED /* JsonDataConverter.swift in Sources */,
-				42E19DB828BF88D700A2227B /* UserServiveAsyncImpl.swift in Sources */,
+				42E19DB828BF88D700A2227B /* UserServiveImpl.swift in Sources */,
 				425255B722D7270100D2EDC9 /* TrackProtocols.swift in Sources */,
 				4220E29522C5137300FEB7F8 /* MMFonts.swift in Sources */,
 				4201815E22D32EC9007752B9 /* SettingsPresenter.swift in Sources */,
@@ -802,7 +813,7 @@
 				4201816222D32EC9007752B9 /* SettingsInteractor.swift in Sources */,
 				4224F96722CA37EC00E847AB /* TrackListInteractor.swift in Sources */,
 				42E19DAC28BF451D00A2227B /* NetworkService.swift in Sources */,
-				422EE0AE22B7EF4200451EED /* UserServiceImpl.swift in Sources */,
+				422EE0AE22B7EF4200451EED /* OldUserServiceImpl.swift in Sources */,
 				42DD63CB22B3E9E600A57196 /* AppDelegate.swift in Sources */,
 				4224F96822CA37EC00E847AB /* TrackListModuleBuilder.swift in Sources */,
 				4220E28D22C4E61900FEB7F8 /* UserProfileModuleBuilder.swift in Sources */,
@@ -815,6 +826,7 @@
 				4224F96D22CA3D7200E847AB /* TrackListItemView.swift in Sources */,
 				422EE0B522BA180D00451EED /* whatever.swift in Sources */,
 				425255BF22D7276700D2EDC9 /* TrackView.swift in Sources */,
+				42E19DBC28C1266800A2227B /* OldUserService.swift in Sources */,
 				42273C0322C7A0C700EDB1E5 /* JsonTrack.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

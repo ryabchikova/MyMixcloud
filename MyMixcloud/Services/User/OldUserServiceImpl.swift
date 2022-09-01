@@ -1,5 +1,5 @@
 //
-//  UserServiceImpl.swift
+//  OldUserServiceImpl.swift
 //  MyMixcloud
 //
 //  Created by Ryabchikova Elena on 17/06/2019.
@@ -9,9 +9,8 @@
 import Foundation
 import Alamofire
 
-final class UserServiceImpl: UserService {
+final class OldUserServiceImpl: UserService {
     private let networkReachabilityService: NetworkReachabilityService
-    private let converter = JsonDataConverter()
     private let dispatchQueue = DispatchQueue.global(qos: .userInitiated)
     
     init(reachabilityService: NetworkReachabilityService) {
@@ -57,7 +56,7 @@ final class UserServiceImpl: UserService {
                     let decoder = JSONDecoder()
                     decoder.keyDecodingStrategy = .convertFromSnakeCase
                     let jsonUser = try decoder.decode(JsonUser.self, from: data)
-                    let user = sSelf.converter.makeUser(from: jsonUser)
+                    let user = jsonUser.businessModel
                     completionHandler(user, nil)
                 } catch {
                     let error = MMError(type: .decodingError,
@@ -166,7 +165,7 @@ final class UserServiceImpl: UserService {
                     let decoder = JSONDecoder()
                     decoder.keyDecodingStrategy = .convertFromSnakeCase
                     let jsonFollowing = try decoder.decode(JsonFollowing.self, from: data)
-                    let followingList = sSelf.converter.makeFollowingList(from: jsonFollowing)
+                    let followingList = jsonFollowing.businessModel
                     completionHandler(followingList, nil)
                 } catch {
                     let error = MMError(type: .decodingError,

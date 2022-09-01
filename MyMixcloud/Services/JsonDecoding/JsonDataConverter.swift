@@ -9,51 +9,6 @@
 import Foundation
 
 final class JsonDataConverter {
-    @available(*, deprecated)
-    func makeUser(from jsonUser: JsonUser) -> User {
-        return User(identifier: jsonUser.username,
-                    name: jsonUser.name,
-                    country: jsonUser.country,
-                    city: jsonUser.city,
-                    bio: jsonUser.biog,
-                    favoritesCount: jsonUser.favoriteCount,
-                    followersCount: jsonUser.followerCount,
-                    followingCount: jsonUser.followingCount,
-                    cloudcastsCount: jsonUser.cloudcastCount,
-                    profileImage: jsonUser.pictures.large,
-                    coverImage: jsonUser.coverPictures?.small)
-    }
-
-    @available(*, deprecated)
-    func makeFollowingList(from jsonFollowing: JsonFollowing) -> [String] {
-        return jsonFollowing.users.map { $0.username }
-    }
-    
-    @available(*, deprecated)
-    func makeTag(from jsonTag: JsonTag) -> Tag {
-        return Tag(identifier: jsonTag.key, name: jsonTag.name)
-    }
-    
-    @available(*, deprecated)
-    func makeTrack(from jsonTrack: JsonTrack) -> Track {
-        return Track(identifier: jsonTrack.key,
-                     title: jsonTrack.name,
-                     coverImage: jsonTrack.pictures.large,
-                     user: (identifier: jsonTrack.user.username, name: jsonTrack.user.name),
-                     tags: jsonTrack.tags.map { makeTag(from: $0) },
-                     playCount: jsonTrack.playCount,
-                     uploadedTime: JsonDataConverter.convertTimestamp(jsonTrack.createdTime),
-                     listenTime: jsonTrack.listenTime.map { JsonDataConverter.convertTimestamp($0) } ?? nil,
-                     audioLength: JsonDataConverter.convertSecondsToReadableTime(jsonTrack.audioLength),
-                     favoriteCount: jsonTrack.favoriteCount,
-                     listenerCount: jsonTrack.listenerCount,
-                     repostCount: jsonTrack.repostCount)
-    }
-    
-    @available(*, deprecated)
-    func makeTrackList(from jsonTrackList: JsonTrackList) -> [Track] {
-        return jsonTrackList.tracks.map { makeTrack(from: $0) }
-    }
 
     static func convertTimestamp(_ input: String) -> String? {
         let inputFormatter = DateFormatter()
