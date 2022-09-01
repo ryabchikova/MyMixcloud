@@ -75,7 +75,6 @@
 		422EE0BD22C2180600451EED /* JsonUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 422EE0BC22C2180600451EED /* JsonUser.swift */; };
 		422EE0BF22C21C1700451EED /* JsonDataConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 422EE0BE22C21C1700451EED /* JsonDataConverter.swift */; };
 		422EE0C122C2234F00451EED /* JsonFollowing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 422EE0C022C2234F00451EED /* JsonFollowing.swift */; };
-		422EE0CB22C25CC100451EED /* MainTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 422EE0CA22C25CC100451EED /* MainTabBarViewController.swift */; };
 		425255B422D7270100D2EDC9 /* TrackPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 425255AE22D7270100D2EDC9 /* TrackPresenter.swift */; };
 		425255B622D7270100D2EDC9 /* TrackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 425255B022D7270100D2EDC9 /* TrackViewController.swift */; };
 		425255B722D7270100D2EDC9 /* TrackProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 425255B122D7270100D2EDC9 /* TrackProtocols.swift */; };
@@ -179,7 +178,6 @@
 		422EE0BC22C2180600451EED /* JsonUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JsonUser.swift; sourceTree = "<group>"; };
 		422EE0BE22C21C1700451EED /* JsonDataConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JsonDataConverter.swift; sourceTree = "<group>"; };
 		422EE0C022C2234F00451EED /* JsonFollowing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JsonFollowing.swift; sourceTree = "<group>"; };
-		422EE0CA22C25CC100451EED /* MainTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarViewController.swift; sourceTree = "<group>"; };
 		425255AE22D7270100D2EDC9 /* TrackPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackPresenter.swift; sourceTree = "<group>"; };
 		425255B022D7270100D2EDC9 /* TrackViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackViewController.swift; sourceTree = "<group>"; };
 		425255B122D7270100D2EDC9 /* TrackProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackProtocols.swift; sourceTree = "<group>"; };
@@ -397,7 +395,6 @@
 			isa = PBXGroup;
 			children = (
 				42DFD45128A3A8E100495440 /* ModuleBuilder.swift */,
-				422EE0CA22C25CC100451EED /* MainTabBarViewController.swift */,
 				422EE0B422BA180D00451EED /* whatever.swift */,
 				42E19DB928C125AB00A2227B /* async_await.swift */,
 				42E19DBD28C1295000A2227B /* caching.swift */,
@@ -807,7 +804,6 @@
 				4220E2A722C62B1A00FEB7F8 /* FollowingInteractor.swift in Sources */,
 				4220E29022C5092400FEB7F8 /* UserProfileViewModel.swift in Sources */,
 				42DFD44D28A3092F00495440 /* LoginModuleBuilder.swift in Sources */,
-				422EE0CB22C25CC100451EED /* MainTabBarViewController.swift in Sources */,
 				42E19DB328BF5B6B00A2227B /* JsonConversions.swift in Sources */,
 				422E6EA622D3B93500DBEB2E /* MainProtocols.swift in Sources */,
 				4201816222D32EC9007752B9 /* SettingsInteractor.swift in Sources */,
