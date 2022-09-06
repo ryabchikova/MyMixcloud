@@ -17,8 +17,6 @@ final class FollowingPresenter {
     
     private let userId: String
     private var nextPage: Int? = 1
-    private var isLoading = false       // TODO: подходит под паттерн lock/unlock
-                                        // TODO: interactor похож на actor, с собственным lock
     
     var viewIsEmpty: Bool {
         return view?.isEmpty ?? false
@@ -50,19 +48,14 @@ extension FollowingPresenter: FollowingViewOutput {
     }
     
     func didPullToRefresh() {
-        guard !isLoading else {
-            return
-        }
-        
-        isLoading = true
         interactor.loadFollowing(userId: userId, page: 1, reason: .pullToRefresh)
     }
     
     private func requestNextPage() {
-        guard !isLoading, let nextPage = nextPage else {
+        guard let nextPage = nextPage else {
             return
         }
-        isLoading = true
+
         interactor.loadFollowing(userId: userId, page: nextPage, reason: .regular)
     }
     
@@ -75,7 +68,6 @@ extension FollowingPresenter: FollowingViewOutput {
 
 extension FollowingPresenter: FollowingInteractorOutput {
     func gotError(_ error: MMError) {
-        isLoading = false
         if let viewController = view, viewController.isEmpty {
             viewController.showDummyView(for: error) { [weak self] in
                 self?.requestNextPage()
@@ -87,15 +79,13 @@ extension FollowingPresenter: FollowingInteractorOutput {
         view?.hideDummyViewIfNeed()
         
         let viewModels = users.map { FollowingUserViewModel(user: $0) }
+        nextPage = users.isEmpty ? nil : nextPage?.advanced(by: 1)
+        
         switch reason {
         case .regular:
-            nextPage = users.isEmpty ? nil : nextPage?.advanced(by: 1)
             view?.set(viewModels: viewModels)
         case .pullToRefresh:
-            nextPage = 2
             view?.reset(viewModels: viewModels)
         }
-
-        isLoading = false
     }
 }
