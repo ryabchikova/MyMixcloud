@@ -20,6 +20,7 @@ final class NetworkServiceImpl {
 extension NetworkServiceImpl: NetworkService {
 
     func data<T: Decodable>(url: URL) async throws -> T {
+        // print("[DBG] Request:", url.absoluteString)
         let request = URLRequest(url: url, cachePolicy: .reloadRevalidatingCacheData)
         let jsonData: Data
         do {

@@ -10,10 +10,10 @@ import Foundation
 
 
 final class FollowingInteractor {
-	weak var output: FollowingInteractorOutput?
+    weak var output: FollowingInteractorOutput?
     private let userService: UserService
     
-    private var isLoading = false
+    @SharedValue(false) var isLoading: Bool
     
     init(userService: UserService) {
         self.userService = userService
@@ -29,9 +29,7 @@ extension FollowingInteractor: FollowingInteractorInput {
 
         isLoading = true
         Task.init {
-            defer {
-                isLoading = false
-            }
+            defer { isLoading = false }
             
             do {
                 let users = try await userService.following(userId: userId, page: page)
