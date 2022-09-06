@@ -9,7 +9,6 @@
 import Foundation
 import UIKit
 
-// TODO: Включить в модель обработчик нажатия кнопки
 struct LoginViewModel {
     
     enum ButtonState {
@@ -21,20 +20,20 @@ struct LoginViewModel {
     func startButtonString(for state: ButtonState) -> NSAttributedString {
         return NSAttributedString(string: "Let's go!", attributes: Styles.startButton(for: state))
     }
+    
+    var onButtonTap: ((String) -> Void)?
 }
 
-extension LoginViewModel {
+private extension LoginViewModel {
     
-    private struct Styles {
-        static let welcome: [NSAttributedString.Key: Any] = {
-            return [
-                .font: MMFonts.largeBold,
-                .foregroundColor: MMColors.darkGray
-            ]
-        }()
+     struct Styles {
+        static let welcome: [NSAttributedString.Key: Any] = [
+            .font: MMFonts.largeBold,
+            .foregroundColor: MMColors.darkGray
+        ]
         
         static func startButton(for state: ButtonState) -> [NSAttributedString.Key: Any] {
-            return [
+            [
                 .font: MMFonts.mediumBold,
                 .foregroundColor: state == .normal ? MMColors.darkGray : MMColors.lightGray
             ]

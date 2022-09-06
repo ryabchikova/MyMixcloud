@@ -27,8 +27,11 @@ final class LoginPresenter {
 extension LoginPresenter: LoginModuleInput {}
 
 extension LoginPresenter: LoginViewOutput {
-    func didTapStart(with username: String) {
-        interactor.login(with: username)
+    func viewDidLoad() {
+        let model = LoginViewModel { [weak self] username in
+            self?.interactor.login(with: username)
+        }
+        view?.set(viewModel: model)
     }
 }
 

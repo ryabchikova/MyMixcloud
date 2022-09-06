@@ -12,12 +12,10 @@ import UIKit
 
 final class LoginViewController: UIViewController {
 	private let output: LoginViewOutput
-    private let loginView: LoginView
+    private let loginView = LoginView()
 
     init(output: LoginViewOutput) {
         self.output = output
-        self.loginView = LoginView(model: LoginViewModel())
-        self.loginView.output = output
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -33,6 +31,7 @@ final class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = MMColors.white
+        output.viewDidLoad()
     }
     
     override func viewDidLayoutSubviews() {
@@ -42,4 +41,7 @@ final class LoginViewController: UIViewController {
 }
 
 extension LoginViewController: LoginViewInput {
+    func set(viewModel: LoginViewModel) {
+        loginView.setup(with: viewModel)
+    }
 }

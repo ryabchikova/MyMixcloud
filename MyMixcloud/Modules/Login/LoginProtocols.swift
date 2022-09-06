@@ -16,10 +16,12 @@ protocol LoginModuleOutput: AnyObject {
 }
 
 // MARK: - View
-protocol LoginViewInput: AnyObject {}
+protocol LoginViewInput: AnyObject {
+    func set(viewModel: LoginViewModel)
+}
 
 protocol LoginViewOutput: AnyObject {
-    func didTapStart(with username: String)
+    func viewDidLoad()
 }
 
 // MARK: - Interactor

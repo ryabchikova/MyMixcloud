@@ -9,16 +9,17 @@
 import Foundation
 import FlexLayout
 
+// TODO: Start is Enabled when textfield not Empty
+
 final class LoginView: UIView {
-    weak var output: LoginViewOutput?       // TODO: подумать, хорошо ли использовать протокол контроллера
     private let welcomeLabel = UILabel()
     private let userNameTextField = UITextField()
     private let startButton = UIButton(type: .custom)
+    private var onButtonTap: ((String) -> Void)?
     
-    init(model: LoginViewModel) {
+    init() {
         super.init(frame: .zero)
         createFlex()
-        setup(with: model)
     }
     
     @available(*, unavailable)
@@ -31,7 +32,7 @@ final class LoginView: UIView {
         flex.layout(mode: .fitContainer)
     }
     
-    private func setup(with model: LoginViewModel) {
+    func setup(with model: LoginViewModel) {
         backgroundColor = Styles.backgroundColor
     
         welcomeLabel.backgroundColor = Styles.backgroundColor
@@ -61,6 +62,7 @@ final class LoginView: UIView {
         startButton.setAttributedTitle(model.startButtonString(for: .disabled), for: .disabled)
         startButton.setAttributedTitle(model.startButtonString(for: .highlited), for: .highlighted)
         startButton.addTarget(self, action: #selector(startButtonPressed), for: .touchUpInside)
+        onButtonTap = model.onButtonTap
         
         addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(didTapOutsideKeyboard)))
         
@@ -95,7 +97,11 @@ final class LoginView: UIView {
     }
     
     @objc private func startButtonPressed() {
-        output?.didTapStart(with: userNameTextField.text ?? "")
+        guard let text = userNameTextField.text else {
+            return
+        }
+        
+        onButtonTap?(text)
     }
     
     @objc private func didTapOutsideKeyboard() {
