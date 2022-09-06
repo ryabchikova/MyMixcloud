@@ -15,10 +15,13 @@ protocol SettingsModuleInput: AnyObject {}
 protocol SettingsModuleOutput: AnyObject {}
 
 // MARK: - View
-protocol SettingsViewInput: AnyObject {}
+protocol SettingsViewInput: AnyObject {
+    func set(viewModels: [SettingsViewModel])
+}
 
 protocol SettingsViewOutput: AnyObject {
-    func didSelectItem(_ item: SettingsItem)
+    func viewDidLoad()
+    func didSelectItem(_ itemId: String)
 }
 
 // MARK: - Interactor

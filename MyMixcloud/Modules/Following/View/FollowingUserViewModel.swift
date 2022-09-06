@@ -36,9 +36,9 @@ struct FollowingUserViewModel: Identifiable {
     }
 }
 
-extension FollowingUserViewModel {
+private extension FollowingUserViewModel {
     
-    private struct Styles {
+    struct Styles {
         static let name: [NSAttributedString.Key: Any] = {
             let style = NSMutableParagraphStyle()
             style.lineBreakMode = .byTruncatingTail

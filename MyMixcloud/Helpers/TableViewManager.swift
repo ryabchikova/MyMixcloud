@@ -9,16 +9,6 @@
 import Foundation
 import UIKit
 
-protocol Identifiable {
-    var identifier: String { get }
-}
-
-protocol MMTableViewCell {
-    associatedtype T
-    
-    static var height: CGFloat { get }
-    func update(with model: T)
-}
 
 final class TableViewManager<Model: Identifiable, Cell: UITableViewCell & MMTableViewCell>: NSObject, UITableViewDataSource, UITableViewDelegate where Cell.T == Model {
     

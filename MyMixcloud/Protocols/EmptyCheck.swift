@@ -6,7 +6,6 @@
 //  Copyright © 2019 ryabchikova. All rights reserved.
 //
 
-import Foundation
 
 protocol EmptyCheck {
     var isEmpty: Bool { get }

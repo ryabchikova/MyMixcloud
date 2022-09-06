@@ -27,8 +27,15 @@ final class SettingsPresenter {
 extension SettingsPresenter: SettingsModuleInput {}
 
 extension SettingsPresenter: SettingsViewOutput {
-    func didSelectItem(_ item: SettingsItem) {
-        guard let viewController = view as? UIViewController else {
+    func viewDidLoad() {
+        view?.set(viewModels: [.logout, .theme])
+    }
+    
+    func didSelectItem(_ itemId: String) {
+        guard
+            let viewController = view as? UIViewController,
+            let item = SettingsViewModel(rawValue: itemId)
+        else {
             return
         }
         

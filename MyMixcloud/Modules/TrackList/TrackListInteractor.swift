@@ -26,7 +26,6 @@ extension TrackListInteractor: TrackListInteractorInput {
                        page: Int,
                        reason: LoadingReason) {
         guard !isLoading else {
-            print("TrackListInteractor: guard exit while isLoading")
             return
         }
 
