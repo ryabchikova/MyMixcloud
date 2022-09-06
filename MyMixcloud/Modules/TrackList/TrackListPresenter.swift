@@ -18,7 +18,6 @@ final class TrackListPresenter {
     private let userId: String
     private let trackListType: TrackListType
     private var nextPage: Int? = 1
-    private var isLoading = false
     
     var viewIsEmpty: Bool {
         return view?.isEmpty ?? false
@@ -50,10 +49,6 @@ extension TrackListPresenter: TrackListViewOutput {
     }
     
     func didPullToRefresh() {
-        guard !isLoading else {
-            return
-        }
-        isLoading = true
         interactor.loadTrackList(of: trackListType,
                                  userId: userId,
                                  page: 1,
@@ -61,10 +56,10 @@ extension TrackListPresenter: TrackListViewOutput {
     }
     
     private func requestNextPage() {
-        guard !isLoading, let nextPage = nextPage else {
+        guard let nextPage = nextPage else {
             return
         }
-        isLoading = true
+
         interactor.loadTrackList(of: trackListType,
                                  userId: userId,
                                  page: nextPage,
@@ -81,7 +76,6 @@ extension TrackListPresenter: TrackListViewOutput {
 extension TrackListPresenter: TrackListInteractorOutput {
     @MainActor
     func gotError(_ error: MMError) async {
-        isLoading = false
         if let viewController = view, viewController.isEmpty {
             viewController.showDummyView(for: error) { [weak self] in
                 self?.requestNextPage()
@@ -94,15 +88,13 @@ extension TrackListPresenter: TrackListInteractorOutput {
         view?.hideDummyViewIfNeed()
 
         let viewModels = tracks.map { TrackListItemViewModel(track: $0) }
+        nextPage = tracks.isEmpty ? nil : nextPage?.advanced(by: 1)
+
         switch reason {
         case .regular:
-            nextPage = tracks.isEmpty ? nil : nextPage?.advanced(by: 1)
             view?.set(viewModels: viewModels)
         case .pullToRefresh:
-            nextPage = 2
             view?.reset(viewModels: viewModels)
         }
-        
-        isLoading = false
     }
 }
