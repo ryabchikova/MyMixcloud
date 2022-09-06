@@ -27,10 +27,9 @@ protocol LoginInteractorInput {
     func login(with username: String)
 }
 
-@MainActor
 protocol LoginInteractorOutput: AnyObject {
-    func didLogin()
-    func loginFailed()
+    func didLogin() async
+    func loginFailed() async
 }
 
 // MARK: - Router

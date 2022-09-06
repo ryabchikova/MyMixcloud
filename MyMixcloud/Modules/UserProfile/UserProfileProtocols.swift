@@ -34,10 +34,9 @@ protocol UserProfileInteractorInput {
     func loadUser(userId: String)
 }
 
-@MainActor
 protocol UserProfileInteractorOutput: AnyObject {
-    func gotError(_ error: MMError)
-    func didLoadUser(_ user: User)
+    func gotError(_ error: MMError) async
+    func didLoadUser(_ user: User) async
 }
 
 // MARK: - Router

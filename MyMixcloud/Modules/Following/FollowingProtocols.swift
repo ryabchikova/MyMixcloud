@@ -34,10 +34,9 @@ protocol FollowingInteractorInput {
     func loadFollowing(userId: String, page: Int, reason: LoadingReason)
 }
 
-@MainActor
 protocol FollowingInteractorOutput: AnyObject {
-    func gotError(_ error: MMError)
-    func didLoadFollowing(_ users: [User], reason: LoadingReason)
+    func gotError(_ error: MMError) async
+    func didLoadFollowing(_ users: [User], reason: LoadingReason) async
 }
 
 // MARK: - Router

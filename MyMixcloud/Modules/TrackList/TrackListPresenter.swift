@@ -79,7 +79,8 @@ extension TrackListPresenter: TrackListViewOutput {
 }
 
 extension TrackListPresenter: TrackListInteractorOutput {
-    func gotError(_ error: MMError) {
+    @MainActor
+    func gotError(_ error: MMError) async {
         isLoading = false
         if let viewController = view, viewController.isEmpty {
             viewController.showDummyView(for: error) { [weak self] in
@@ -88,7 +89,8 @@ extension TrackListPresenter: TrackListInteractorOutput {
         }
     }
     
-    func didLoadTrackList(_ tracks: [Track], reason: LoadingReason) {
+    @MainActor
+    func didLoadTrackList(_ tracks: [Track], reason: LoadingReason) async {
         view?.hideDummyViewIfNeed()
 
         let viewModels = tracks.map { TrackListItemViewModel(track: $0) }

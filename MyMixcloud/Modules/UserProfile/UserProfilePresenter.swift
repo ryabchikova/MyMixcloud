@@ -48,7 +48,8 @@ extension UserProfilePresenter: UserProfileViewOutput {
 }
 
 extension UserProfilePresenter: UserProfileInteractorOutput {
-    func gotError(_ error: MMError) {
+    @MainActor
+    func gotError(_ error: MMError) async {
         view?.hideActivity()
         
         guard let viewController = view, viewController.isEmpty else {
@@ -63,7 +64,8 @@ extension UserProfilePresenter: UserProfileInteractorOutput {
         }
     }
     
-    func didLoadUser(_ user: User) {
+    @MainActor
+    func didLoadUser(_ user: User) async {
         view?.hideActivity()
         view?.hideDummyViewIfNeed()
         view?.set(userProfileViewModel: UserProfileViewModel(user: user))

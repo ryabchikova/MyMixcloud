@@ -38,7 +38,8 @@ extension TrackPresenter: TrackViewOutput {
 }
 
 extension TrackPresenter: TrackInteractorOutput {
-    func gotError(_ error: MMError) {
+    @MainActor
+    func gotError(_ error: MMError) async {
         view?.hideActivity()
         
         guard let viewController = view, viewController.isEmpty else {
@@ -53,7 +54,8 @@ extension TrackPresenter: TrackInteractorOutput {
         }
     }
     
-    func didLoadTrack(_ track: Track) {
+    @MainActor
+    func didLoadTrack(_ track: Track) async {
         view?.hideActivity()
         view?.hideDummyViewIfNeed()
         view?.set(trackViewModel: TrackViewModel(track: track))

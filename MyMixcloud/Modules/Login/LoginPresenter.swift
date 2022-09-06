@@ -34,12 +34,14 @@ extension LoginPresenter: LoginViewOutput {
 
 extension LoginPresenter: LoginInteractorOutput {
     
-    func didLogin() {
+    @MainActor
+    func didLogin() async {
         moduleOutput?.didLogin()
     }
     
-    func loginFailed() {
-        if let viewController = view as? UIViewController {             // TODO: можно ли без кастования?
+    @MainActor
+    func loginFailed() async {
+        if let viewController = view as? UIViewController {       // TODO: можно ли без кастования?
             router.showErrorAlert(in: viewController)
         }
     }

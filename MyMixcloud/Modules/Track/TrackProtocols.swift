@@ -32,8 +32,7 @@ protocol TrackInteractorInput {
     func loadTrack(trackId: String)
 }
 
-@MainActor
 protocol TrackInteractorOutput: AnyObject {
-    func gotError(_ error: MMError)
-    func didLoadTrack(_ track: Track)
+    func gotError(_ error: MMError) async
+    func didLoadTrack(_ track: Track) async
 }
