@@ -27,8 +27,7 @@ final class MainViewController: UITabBarController {
             $0.tabBarItem.imageInsets.top = 6.0
             $0.tabBarItem.imageInsets.bottom = -6.0
         }
-        
-        tabBar.isTranslucent = false
+
         selectedIndex = 0
     }
 }
