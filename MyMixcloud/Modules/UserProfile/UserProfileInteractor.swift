@@ -23,8 +23,10 @@ extension UserProfileInteractor: UserProfileInteractorInput {
             do {
                 let user = try await userService.user(userId: userId)
                 await output?.didLoadUser(user)
+            } catch let error as MMError {
+                await output?.gotError(error)
             } catch {
-                await output?.gotError(error as? MMError ?? .executionError)
+                await output?.gotError(.executionError)
             }
         }
     }

@@ -8,9 +8,7 @@
 
 import Foundation
 
-/**
- Thread-safe value wrapper for shared data
- */
+/// Thread-safe value wrapper for shared data
 @propertyWrapper
 final class SharedValue<T>: NSLock {
     private var value: T
