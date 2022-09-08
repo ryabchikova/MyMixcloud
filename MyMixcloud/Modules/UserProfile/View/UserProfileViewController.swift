@@ -72,7 +72,7 @@ extension UserProfileViewController: EmptyCheck {
 
 extension UserProfileViewController: UserProfileViewInput {
     func set(userProfileViewModel: UserProfileViewModel) {
-        profileView.update(with: userProfileViewModel)
+        profileView.configure(with: userProfileViewModel)
         view.setNeedsLayout()
     }
 }

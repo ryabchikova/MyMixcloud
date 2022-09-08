@@ -10,7 +10,6 @@ import Foundation
 import UIKit
 
 struct LoginViewModel {
-    
     enum ButtonState {
         case normal, disabled, highlited
     }
@@ -25,8 +24,7 @@ struct LoginViewModel {
 }
 
 private extension LoginViewModel {
-    
-     struct Styles {
+     enum Styles {
         static let welcome: [NSAttributedString.Key: Any] = [
             .font: MMFonts.largeBold,
             .foregroundColor: MMColors.darkGray

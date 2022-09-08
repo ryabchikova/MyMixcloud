@@ -74,8 +74,10 @@ final class FollowingUserView: UIView {
                     }
             }
     }
+}
 
-    func update(with model: FollowingUserViewModel) {
+extension FollowingUserView: ConfigurableView {
+    func configure(with model: FollowingUserViewModel) {
         avatarImageView.sd_setImage(with: model.avatarImageUrl)
         
         nameLabel.attributedText = model.nameString
@@ -93,9 +95,8 @@ final class FollowingUserView: UIView {
     }
 }
 
-extension FollowingUserView {
-    
-    private struct Constants {
+private extension FollowingUserView {
+    enum Constants {
         static let avatarSize: CGFloat = 60.0
         static let outerMargin: CGFloat = 8.0
         static let borderWidth: CGFloat = 0.5
@@ -103,7 +104,7 @@ extension FollowingUserView {
         static let innerTopMargin: CGFloat = 4.0
     }
     
-    private struct Styles {
+    enum Styles {
         static let backgroundColor = MMColors.white
         static let borderColor = MMColors.lightGray
     }

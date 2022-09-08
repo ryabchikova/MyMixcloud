@@ -8,6 +8,7 @@
 
 import Foundation
 
+// TODO: подумать над решением
 enum SettingsViewModel: String {
     case logout
     case theme
@@ -20,7 +21,6 @@ extension SettingsViewModel: Identifiable {
 }
 
 extension SettingsViewModel {
-    
     var title: NSAttributedString {
         let attributes = isEnabled ? Styles.title : Styles.titleDisabled
         switch self {
@@ -39,11 +39,10 @@ extension SettingsViewModel {
             return false
         }
     }
-
 }
     
 private extension SettingsViewModel {
-    struct Styles {
+    enum Styles {
         static let title: [NSAttributedString.Key: Any] = [
             .font: MMFonts.mediumBold,
             .foregroundColor: MMColors.darkGray

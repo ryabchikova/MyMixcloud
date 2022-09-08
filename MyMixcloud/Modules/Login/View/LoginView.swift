@@ -32,43 +32,6 @@ final class LoginView: UIView {
         flex.layout(mode: .fitContainer)
     }
     
-    func setup(with model: LoginViewModel) {
-        backgroundColor = Styles.backgroundColor
-    
-        welcomeLabel.backgroundColor = Styles.backgroundColor
-        welcomeLabel.numberOfLines = 0
-        welcomeLabel.textAlignment = .center
-        welcomeLabel.attributedText = model.welcomeString
-        welcomeLabel.flex.markDirty()
-        
-        userNameTextField.backgroundColor = Styles.textFieldColor
-        userNameTextField.layer.cornerRadius = Constants.cornerRadius
-        userNameTextField.layer.masksToBounds = true
-        userNameTextField.clearButtonMode = .whileEditing
-        userNameTextField.font = Styles.userNameFont
-        userNameTextField.textColor = Styles.userNameColor
-        userNameTextField.textAlignment = .center
-        userNameTextField.adjustsFontSizeToFitWidth = true
-        userNameTextField.autocapitalizationType = .none
-        userNameTextField.autocorrectionType = .no
-        userNameTextField.returnKeyType = .done
-        userNameTextField.delegate = self
-        
-        startButton.backgroundColor = Styles.buttonColor
-        startButton.layer.cornerRadius = Constants.cornerRadius
-        startButton.layer.masksToBounds = true
-        startButton.isEnabled = false
-        startButton.setAttributedTitle(model.startButtonString(for: .normal), for: .normal)
-        startButton.setAttributedTitle(model.startButtonString(for: .disabled), for: .disabled)
-        startButton.setAttributedTitle(model.startButtonString(for: .highlited), for: .highlighted)
-        startButton.addTarget(self, action: #selector(startButtonPressed), for: .touchUpInside)
-        onButtonTap = model.onButtonTap
-        
-        addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(didTapOutsideKeyboard)))
-        
-        setNeedsLayout()
-    }
-    
     private func createFlex() {
         flex.addItem()
             .direction(.column)
@@ -109,6 +72,45 @@ final class LoginView: UIView {
     }
 }
 
+extension LoginView: ConfigurableView {
+    func configure(with model: LoginViewModel) {
+        backgroundColor = Styles.backgroundColor
+    
+        welcomeLabel.backgroundColor = Styles.backgroundColor
+        welcomeLabel.numberOfLines = 0
+        welcomeLabel.textAlignment = .center
+        welcomeLabel.attributedText = model.welcomeString
+        welcomeLabel.flex.markDirty()
+        
+        userNameTextField.backgroundColor = Styles.textFieldColor
+        userNameTextField.layer.cornerRadius = Constants.cornerRadius
+        userNameTextField.layer.masksToBounds = true
+        userNameTextField.clearButtonMode = .whileEditing
+        userNameTextField.font = Styles.userNameFont
+        userNameTextField.textColor = Styles.userNameColor
+        userNameTextField.textAlignment = .center
+        userNameTextField.adjustsFontSizeToFitWidth = true
+        userNameTextField.autocapitalizationType = .none
+        userNameTextField.autocorrectionType = .no
+        userNameTextField.returnKeyType = .done
+        userNameTextField.delegate = self
+        
+        startButton.backgroundColor = Styles.buttonColor
+        startButton.layer.cornerRadius = Constants.cornerRadius
+        startButton.layer.masksToBounds = true
+        startButton.isEnabled = false
+        startButton.setAttributedTitle(model.startButtonString(for: .normal), for: .normal)
+        startButton.setAttributedTitle(model.startButtonString(for: .disabled), for: .disabled)
+        startButton.setAttributedTitle(model.startButtonString(for: .highlited), for: .highlighted)
+        startButton.addTarget(self, action: #selector(startButtonPressed), for: .touchUpInside)
+        onButtonTap = model.onButtonTap
+        
+        addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(didTapOutsideKeyboard)))
+        
+        setNeedsLayout()
+    }
+}
+
 extension LoginView: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
@@ -121,9 +123,8 @@ extension LoginView: UITextFieldDelegate {
     }
 }
 
-extension LoginView {
-    
-    private struct Constants {
+private extension LoginView {
+    enum Constants {
         static let contentHorizontalMargin: CGFloat = 40.0
         static let textFieldHeight: CGFloat = 40.0
         static let startButtonHeight: CGFloat = 40.0
@@ -131,7 +132,7 @@ extension LoginView {
         static let topMargin: CGFloat = 30.0
     }
     
-    private struct Styles {
+    enum Styles {
         static let backgroundColor = MMColors.white
         static let textFieldColor = MMColors.superLightGray
         static let buttonColor = MMColors.sunny

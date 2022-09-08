@@ -9,13 +9,11 @@
 import Foundation
 import PinLayout
 
-final class TrackListTableViewCell: UITableViewCell, MMTableViewCell {
+final class TrackListTableViewCell: UITableViewCell {
     private let itemView = TrackListItemView()
-    static let height: CGFloat = 92.0
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        selectionStyle = .none
         contentView.addSubview(itemView)
     }
     
@@ -28,8 +26,14 @@ final class TrackListTableViewCell: UITableViewCell, MMTableViewCell {
         super.layoutSubviews()
         itemView.pin.all()
     }
-    
-    func update(with model: TrackListItemViewModel) {
-        itemView.update(with: model)
+}
+
+extension TrackListTableViewCell: FixedHeightView {
+    static let height: CGFloat = 92.0
+}
+
+extension TrackListTableViewCell: ConfigurableView {
+    func configure(with model: TrackListItemViewModel) {
+        itemView.configure(with: model)
     }
 }

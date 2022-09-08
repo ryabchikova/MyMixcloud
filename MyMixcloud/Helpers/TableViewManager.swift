@@ -9,8 +9,11 @@
 import Foundation
 import UIKit
 
+typealias TableViewCell = UITableViewCell & ConfigurableView & FixedHeightView
 
-final class TableViewManager<Model: Identifiable, Cell: UITableViewCell & MMTableViewCell>: NSObject, UITableViewDataSource, UITableViewDelegate where Cell.T == Model {
+final class TableViewManager<Model: Identifiable, Cell: TableViewCell>:
+    NSObject, UITableViewDataSource, UITableViewDelegate
+    where Cell.Model == Model {
     
     var tableIsEmpty: Bool {
         return models.isEmpty
@@ -24,14 +27,14 @@ final class TableViewManager<Model: Identifiable, Cell: UITableViewCell & MMTabl
     private var models: [Model] = []
     
     init(cellReuseIdentifier: String) {
-        self.cellReuseIdentifier = cellReuseIdentifier
+        self.cellReuseIdentifier = cellReuseIdentifier      // TODO
     }
     
     func configure(tableView: UITableView) {
         tableView.dataSource = self
         tableView.delegate = self
         tableView.tableFooterView = UIView()
-        tableView.register(Cell.self, forCellReuseIdentifier: self.cellReuseIdentifier)
+        tableView.register(Cell.self, forCellReuseIdentifier: cellReuseIdentifier)    // String(describing: Cell.self)
         tableView.rowHeight = Cell.height
         tableView.separatorInset.left = Constants.tableViewSeparatorInset
         tableView.separatorInset.right = Constants.tableViewSeparatorInset
@@ -56,7 +59,7 @@ final class TableViewManager<Model: Identifiable, Cell: UITableViewCell & MMTabl
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: self.cellReuseIdentifier, for: indexPath) as! Cell
-        cell.update(with: models[indexPath.row] )
+        cell.configure(with: models[indexPath.row] )
         return cell
     }
 

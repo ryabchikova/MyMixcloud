@@ -10,7 +10,6 @@ import Foundation
 import UIKit
 
 struct TrackListItemViewModel: Identifiable {
-    
     let identifier: String
     let coverImageUrl: URL?
     let userNameString: NSAttributedString
@@ -26,10 +25,8 @@ struct TrackListItemViewModel: Identifiable {
     }
 }
 
-extension TrackListItemViewModel {
-    
-    private struct Styles {
-        
+private extension TrackListItemViewModel {
+     enum Styles {
         static let name: [NSAttributedString.Key: Any] = {
             return [
                 .font: MMFonts.medium,

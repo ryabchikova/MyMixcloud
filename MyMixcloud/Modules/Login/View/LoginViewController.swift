@@ -42,6 +42,6 @@ final class LoginViewController: UIViewController {
 
 extension LoginViewController: LoginViewInput {
     func set(viewModel: LoginViewModel) {
-        loginView.setup(with: viewModel)
+        loginView.configure(with: viewModel)
     }
 }

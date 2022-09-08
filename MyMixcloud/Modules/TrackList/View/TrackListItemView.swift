@@ -77,8 +77,10 @@ final class TrackListItemView: UIView {
                     }
             }
     }
-    
-    func update(with model: TrackListItemViewModel) {
+}
+
+extension TrackListItemView: ConfigurableView {
+    func configure(with model: TrackListItemViewModel) {
         coverImageView.sd_setImage(with: model.coverImageUrl)
         
         userNameLabel.attributedText = model.userNameString
@@ -95,9 +97,8 @@ final class TrackListItemView: UIView {
     }
 }
 
-extension TrackListItemView {
-    
-    private struct Constants {
+private extension TrackListItemView {
+    enum Constants {
         static let coverSize: CGFloat = 60.0
         static let outerMargin: CGFloat = 8.0
         static let borderWidth: CGFloat = 0.5
@@ -105,7 +106,7 @@ extension TrackListItemView {
         static let innerTopMargin: CGFloat = 4.0
     }
     
-    private struct Styles {
+    enum Styles {
         static let backgroundColor = MMColors.white
         static let borderColor = MMColors.lightGray
     }
