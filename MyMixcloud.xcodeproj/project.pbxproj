@@ -91,7 +91,6 @@
 		4283285628C7B58E00CD4F4D /* Identifiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4283285528C7B58E00CD4F4D /* Identifiable.swift */; };
 		4283285828C7B5FC00CD4F4D /* ViewProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4283285728C7B5FC00CD4F4D /* ViewProtocols.swift */; };
 		4283285A28C7BC1100CD4F4D /* SettingsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4283285928C7BC1100CD4F4D /* SettingsTableViewCell.swift */; };
-		4283285C28CA3F3500CD4F4D /* MMTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4283285B28CA3F3500CD4F4D /* MMTableViewCell.swift */; };
 		42B7D66722DA686D00ECDAB0 /* NetworkReachabilityService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42B7D66622DA686D00ECDAB0 /* NetworkReachabilityService.swift */; };
 		42B7D66922DA68BD00ECDAB0 /* NetworkReachabilityServiceImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42B7D66822DA68BD00ECDAB0 /* NetworkReachabilityServiceImpl.swift */; };
 		42B7D66B22DA892700ECDAB0 /* DummyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42B7D66A22DA892700ECDAB0 /* DummyViewModel.swift */; };
@@ -201,7 +200,6 @@
 		4283285528C7B58E00CD4F4D /* Identifiable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Identifiable.swift; sourceTree = "<group>"; };
 		4283285728C7B5FC00CD4F4D /* ViewProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewProtocols.swift; sourceTree = "<group>"; };
 		4283285928C7BC1100CD4F4D /* SettingsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewCell.swift; sourceTree = "<group>"; };
-		4283285B28CA3F3500CD4F4D /* MMTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MMTableViewCell.swift; sourceTree = "<group>"; };
 		42B7D66622DA686D00ECDAB0 /* NetworkReachabilityService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkReachabilityService.swift; sourceTree = "<group>"; };
 		42B7D66822DA68BD00ECDAB0 /* NetworkReachabilityServiceImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkReachabilityServiceImpl.swift; sourceTree = "<group>"; };
 		42B7D66A22DA892700ECDAB0 /* DummyViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DummyViewModel.swift; sourceTree = "<group>"; };
@@ -281,7 +279,6 @@
 			children = (
 				42B7D66E22DCED3800ECDAB0 /* Dummy */,
 				42B7D66C22DCDF1100ECDAB0 /* MMViewController.swift */,
-				4283285B28CA3F3500CD4F4D /* MMTableViewCell.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -801,7 +798,6 @@
 				4224F96F22CA3DEE00E847AB /* TrackListTableViewCell.swift in Sources */,
 				42273C0B22C7A7EA00EDB1E5 /* Tag.swift in Sources */,
 				4220E2A322C62B1A00FEB7F8 /* FollowingPresenter.swift in Sources */,
-				4283285C28CA3F3500CD4F4D /* MMTableViewCell.swift in Sources */,
 				42E19DB528BF611200A2227B /* BusinessModelConvertible.swift in Sources */,
 				4224F96622CA37EC00E847AB /* TrackListProtocols.swift in Sources */,
 				4201813322D072DA007752B9 /* LoginProtocols.swift in Sources */,

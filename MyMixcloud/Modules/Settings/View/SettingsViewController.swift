@@ -12,11 +12,7 @@ import UIKit
 final class SettingsViewController: UIViewController {
 	private let output: SettingsViewOutput
     private let tableView = UITableView()
-    private let tableViewManager = {
-        TableViewManager<SettingsViewModel, SettingsTableViewCell>(
-            cellReuseIdentifier: String(describing: SettingsTableViewCell.self)
-        )
-    }()
+    private let tableViewManager = TableViewManager<SettingsViewModel, SettingsTableViewCell>()
 
     init(output: SettingsViewOutput) {
         self.output = output

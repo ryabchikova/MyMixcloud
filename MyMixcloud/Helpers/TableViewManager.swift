@@ -23,18 +23,16 @@ final class TableViewManager<Model: Identifiable, Cell: TableViewCell>:
     var didSelectItemWithId: ((String) -> Void)?
     
     private weak var tableView: UITableView?
-    private let cellReuseIdentifier: String
     private var models: [Model] = []
-    
-    init(cellReuseIdentifier: String) {
-        self.cellReuseIdentifier = cellReuseIdentifier      // TODO
+    private var cellReuseIdentifier: String {
+        String(describing: Cell.self)
     }
     
     func configure(tableView: UITableView) {
         tableView.dataSource = self
         tableView.delegate = self
         tableView.tableFooterView = UIView()
-        tableView.register(Cell.self, forCellReuseIdentifier: cellReuseIdentifier)    // String(describing: Cell.self)
+        tableView.register(Cell.self, forCellReuseIdentifier: cellReuseIdentifier)
         tableView.rowHeight = Cell.height
         tableView.separatorInset.left = Constants.tableViewSeparatorInset
         tableView.separatorInset.right = Constants.tableViewSeparatorInset
@@ -58,7 +56,7 @@ final class TableViewManager<Model: Identifiable, Cell: TableViewCell>:
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: self.cellReuseIdentifier, for: indexPath) as! Cell
+        let cell = tableView.dequeueReusableCell(withIdentifier: cellReuseIdentifier, for: indexPath) as! Cell
         cell.configure(with: models[indexPath.row] )
         return cell
     }

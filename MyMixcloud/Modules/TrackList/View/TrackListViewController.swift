@@ -11,9 +11,7 @@ import UIKit
 final class TrackListViewController: MMViewController {
 	private let output: TrackListViewOutput
     private let tableView = UITableView()
-    private let tableViewManager = {
-        TableViewManager<TrackListItemViewModel, TrackListTableViewCell>(cellReuseIdentifier: String(describing: TrackListTableViewCell.self))
-    }()
+    private let tableViewManager = TableViewManager<TrackListItemViewModel, TrackListTableViewCell>()
 
     init(output: TrackListViewOutput, title: String) {
         self.output = output

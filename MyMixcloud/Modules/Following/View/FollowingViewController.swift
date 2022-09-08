@@ -11,9 +11,7 @@ import UIKit
 final class FollowingViewController: MMViewController {
 	private let output: FollowingViewOutput
     private let tableView = UITableView()
-    private let tableViewManager = {
-        TableViewManager<FollowingUserViewModel, FollowingTableViewCell>(cellReuseIdentifier: String(describing: FollowingTableViewCell.self))
-    }()
+    private let tableViewManager = TableViewManager<FollowingUserViewModel, FollowingTableViewCell>()
 
     init(output: FollowingViewOutput) {
         self.output = output
