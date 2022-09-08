@@ -79,7 +79,7 @@ class MMViewController: UIViewController {
             return
         }
         
-        let activityIndicator = UIActivityIndicatorView(style: .whiteLarge)
+        let activityIndicator = UIActivityIndicatorView(style: .large)
         activityIndicator.color = Styles.loadingIndicatorColor
         activityIndicator.hidesWhenStopped = true
         view.addSubview(activityIndicator)
