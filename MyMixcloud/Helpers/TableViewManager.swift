@@ -20,7 +20,7 @@ final class TableViewManager<Model: Identifiable, Cell: TableViewCell>:
     }
     
     var didScrollPage: (() -> Void)?
-    var didSelectItemWithId: ((String) -> Void)?
+    var didSelectItemWithId: ((Model.ID) -> Void)?
     
     private weak var tableView: UITableView?
     private var models: [Model] = []
@@ -73,6 +73,6 @@ final class TableViewManager<Model: Identifiable, Cell: TableViewCell>:
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        didSelectItemWithId?(models[indexPath.row].identifier)
+        didSelectItemWithId?(models[indexPath.row].id)
     }
 }

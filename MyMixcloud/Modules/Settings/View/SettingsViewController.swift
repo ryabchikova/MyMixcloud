@@ -19,8 +19,8 @@ final class SettingsViewController: UIViewController {
         super.init(nibName: nil, bundle: nil)
         navigationItem.title = "Settings"
         
-        tableViewManager.didSelectItemWithId = { [weak self] itemId in
-            self?.output.didSelectItem(itemId)
+        tableViewManager.didSelectItemWithId = { [weak self] id in
+            self?.output.didSelectOption(id)
         }
     }
     

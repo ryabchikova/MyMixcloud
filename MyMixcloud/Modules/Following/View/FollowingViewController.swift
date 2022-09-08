@@ -21,8 +21,8 @@ final class FollowingViewController: MMViewController {
         tableViewManager.didScrollPage = { [weak self] in
             self?.output.viewDidScrollPage()
         }
-        tableViewManager.didSelectItemWithId = { [weak self] userId in
-            self?.output.didTapOnUser(with: userId)
+        tableViewManager.didSelectItemWithId = { [weak self] id in
+            self?.output.didTapOnUser(with: id)
         }
     }
     

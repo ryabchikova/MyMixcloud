@@ -8,37 +8,36 @@
 
 import Foundation
 
-// TODO: подумать над решением
-enum SettingsViewModel: String {
-    case logout
-    case theme
-}
 
-extension SettingsViewModel: Identifiable {
-    var identifier: String {
-        rawValue
-    }
-}
-
-extension SettingsViewModel {
-    var title: NSAttributedString {
-        let attributes = isEnabled ? Styles.title : Styles.titleDisabled
-        switch self {
-        case .logout:
-            return NSAttributedString(string: "Log out", attributes: attributes)
-        case .theme:
-            return NSAttributedString(string: "Theme", attributes: attributes)
-        }
+struct SettingsViewModel {
+    private let option: SettingsOption
+    
+    init(_ option: SettingsOption) {
+        self.option = option
     }
     
     var isEnabled: Bool {
-        switch self {
+        switch option {
         case .logout:
             return true
         case .theme:
             return false
         }
     }
+
+    var title: NSAttributedString {
+        let attributes = isEnabled ? Styles.title : Styles.titleDisabled
+        switch option {
+        case .logout:
+            return NSAttributedString(string: "Log out", attributes: attributes)
+        case .theme:
+            return NSAttributedString(string: "Theme", attributes: attributes)
+        }
+    }
+}
+
+extension SettingsViewModel: Identifiable {
+    var id: SettingsOption { option }
 }
     
 private extension SettingsViewModel {

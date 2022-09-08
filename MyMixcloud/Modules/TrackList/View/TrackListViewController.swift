@@ -21,8 +21,8 @@ final class TrackListViewController: MMViewController {
         tableViewManager.didScrollPage = { [weak self] in
             self?.output.viewDidScrollPage()
         }
-        tableViewManager.didSelectItemWithId = { [weak self] trackId in
-            self?.output.didTapOnTrack(with: trackId)
+        tableViewManager.didSelectItemWithId = { [weak self] id in
+            self?.output.didTapOnTrack(with: id)
         }
     }
     

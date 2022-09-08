@@ -9,20 +9,24 @@
 import Foundation
 import UIKit
 
-struct TrackListItemViewModel: Identifiable {
-    let identifier: String
+struct TrackListItemViewModel {
+    private let trackId: String
     let coverImageUrl: URL?
     let userNameString: NSAttributedString
     let trackTitleString: NSAttributedString
     let audioLengthString: NSAttributedString?
     
     init(track: Track) {
-        identifier = track.identifier
+        trackId = track.identifier
         coverImageUrl = track.coverImage
         userNameString = NSAttributedString(string: "by " + track.user.name, attributes: Styles.name)
         trackTitleString = NSAttributedString(string: track.title, attributes: Styles.title)
         audioLengthString = track.audioLength.map { NSAttributedString(string: $0, attributes: Styles.length) }
     }
+}
+
+extension TrackListItemViewModel: Identifiable {
+    var id: String { trackId }
 }
 
 private extension TrackListItemViewModel {

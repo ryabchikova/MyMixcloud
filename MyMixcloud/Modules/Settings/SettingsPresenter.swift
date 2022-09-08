@@ -15,6 +15,8 @@ final class SettingsPresenter {
 	private let interactor: SettingsInteractorInput
     private weak var moduleOutput: SettingsModuleOutput?
     
+    let options: [SettingsOption] = [.logout, .theme]
+    
     init(router: SettingsRouterInput,
          interactor: SettingsInteractorInput,
          moduleOutput: SettingsModuleOutput?) {
@@ -28,18 +30,15 @@ extension SettingsPresenter: SettingsModuleInput {}
 
 extension SettingsPresenter: SettingsViewOutput {
     func viewDidLoad() {
-        view?.set(viewModels: [.logout, .theme])
+        view?.set(viewModels: options.map { SettingsViewModel.init($0) })
     }
     
-    func didSelectItem(_ itemId: String) {
-        guard
-            let viewController = view as? UIViewController,
-            let item = SettingsViewModel(rawValue: itemId)
-        else {
+    func didSelectOption(_ option: SettingsOption) {
+        guard let viewController = view as? UIViewController else {
             return
         }
         
-        switch item {
+        switch option {
         case .logout:
             router.showLogoutAlert(in: viewController) { [weak self] _ in
                 self?.interactor.logout()

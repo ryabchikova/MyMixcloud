@@ -7,16 +7,6 @@
 //
 
 import CoreGraphics
-import UIKit
-
-// TODO: try to rewrite
-//protocol MMTableViewCell {
-//    associatedtype Model
-//
-//    static var height: CGFloat { get }
-//    func update(with model: Model)
-//}
-
 
 protocol ConfigurableView: AnyObject {
     associatedtype Model

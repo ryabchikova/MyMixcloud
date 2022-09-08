@@ -21,7 +21,7 @@ protocol SettingsViewInput: AnyObject {
 
 protocol SettingsViewOutput: AnyObject {
     func viewDidLoad()
-    func didSelectItem(_ itemId: String)
+    func didSelectOption(_ option: SettingsOption)
 }
 
 // MARK: - Interactor
