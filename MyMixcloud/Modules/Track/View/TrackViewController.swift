@@ -51,12 +51,6 @@ final class TrackViewController: MMViewController {
     }
 }
 
-extension TrackViewController: EmptyCheck {
-    var isEmpty: Bool {
-        return trackView.isEmpty
-    }
-}
-
 extension TrackViewController: TrackViewInput {
     func set(trackViewModel: TrackViewModel) {
         trackView.update(with: trackViewModel)

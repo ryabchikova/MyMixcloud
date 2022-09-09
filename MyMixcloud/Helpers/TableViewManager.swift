@@ -15,10 +15,6 @@ final class TableViewManager<Model: Identifiable, Cell: TableViewCell>:
     NSObject, UITableViewDataSource, UITableViewDelegate
     where Cell.Model == Model {
     
-    var tableIsEmpty: Bool {
-        return models.isEmpty
-    }
-    
     var didScrollPage: (() -> Void)?
     var didSelectItemWithId: ((Model.ID) -> Void)?
     
@@ -75,4 +71,8 @@ final class TableViewManager<Model: Identifiable, Cell: TableViewCell>:
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         didSelectItemWithId?(models[indexPath.row].id)
     }
+}
+
+extension TableViewManager: EmptyCheckTrait {
+    var isEmpty: Bool { models.isEmpty }
 }

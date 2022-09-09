@@ -64,12 +64,6 @@ final class UserProfileViewController: MMViewController {
     }
 }
 
-extension UserProfileViewController: EmptyCheck {
-    var isEmpty: Bool {
-        return profileView.isEmpty
-    }
-}
-
 extension UserProfileViewController: UserProfileViewInput {
     func set(userProfileViewModel: UserProfileViewModel) {
         profileView.configure(with: userProfileViewModel)

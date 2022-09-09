@@ -54,10 +54,8 @@ final class TrackListViewController: MMViewController {
     }
 }
 
-extension TrackListViewController: EmptyCheck {
-    var isEmpty: Bool {
-        return tableViewManager.tableIsEmpty
-    }
+extension TrackListViewController: EmptyCheckTrait {
+    var isEmpty: Bool { tableViewManager.isEmpty }
 }
 
 extension TrackListViewController: TrackListViewInput {

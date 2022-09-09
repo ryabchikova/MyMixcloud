@@ -51,16 +51,9 @@ extension UserProfilePresenter: UserProfileInteractorOutput {
     @MainActor
     func gotError(_ error: MMError) async {
         view?.hideActivity()
-        
-        guard let viewController = view, viewController.isEmpty else {
-            return
-        }
-    
-        viewController.showDummyView(for: error) { [weak self] in
-            guard let sSelf = self else {
-                return
-            }
-            sSelf.interactor.loadUser(userId: sSelf.userId)
+        view?.showDummyView(for: error) { [weak self] in
+            guard let self = self else { return }
+            self.interactor.loadUser(userId: self.userId)
         }
     }
     

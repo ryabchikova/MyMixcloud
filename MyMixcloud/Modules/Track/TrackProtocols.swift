@@ -14,7 +14,6 @@ protocol TrackModuleOutput: AnyObject {}
 
 // MARK: - View
 protocol TrackViewInput: AnyObject {
-    var isEmpty: Bool { get }
     func set(trackViewModel: TrackViewModel)
     func showDummyView(for error: MMError, retryHandler: @escaping () -> Void)
     func hideDummyViewIfNeed()

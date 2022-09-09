@@ -14,8 +14,7 @@ protocol TrackListModuleInput: AnyObject {}
 protocol TrackListModuleOutput: AnyObject {}
 
 // MARK: - View
-protocol TrackListViewInput: AnyObject {
-    var isEmpty: Bool { get }
+protocol TrackListViewInput: AnyObject, EmptyCheckTrait {
     func set(viewModels: [TrackListItemViewModel])
     func reset(viewModels: [TrackListItemViewModel])
     func showDummyView(for error: MMError, retryHandler: @escaping () -> Void)

@@ -54,10 +54,8 @@ final class FollowingViewController: MMViewController {
     }
 }
 
-extension FollowingViewController: EmptyCheck {
-    var isEmpty: Bool {
-        return tableViewManager.tableIsEmpty
-    }
+extension FollowingViewController: EmptyCheckTrait {
+    var isEmpty: Bool { tableViewManager.isEmpty }
 }
 
 extension FollowingViewController: FollowingViewInput {

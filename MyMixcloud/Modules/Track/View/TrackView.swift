@@ -26,8 +26,6 @@ final class TrackView: UIView {
     private let countersContainerView = UIView()
     private let tagsContainerView = UIView()
     
-    private(set) var isEmpty = true
-    
     init() {
         super.init(frame: .zero)
         setup()
@@ -194,8 +192,6 @@ final class TrackView: UIView {
         model.tags.map { $0.forEach { tagsContainerView.flex.addItem(makeTagLabel(with: $0)).marginRight(Constants.innerHorizontalMargin) }}
         tagsContainerView.flex.display(tagsContainerView.subviews.isEmpty ? .none : .flex)
         tagsContainerView.flex.markDirty()
-        
-        isEmpty = false
         
         setNeedsLayout()
     }

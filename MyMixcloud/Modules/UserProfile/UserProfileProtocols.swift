@@ -15,7 +15,6 @@ protocol UserProfileModuleOutput: AnyObject {}
 
 // MARK: - View
 protocol UserProfileViewInput: AnyObject {
-    var isEmpty: Bool { get }
     func set(userProfileViewModel: UserProfileViewModel)
     func showDummyView(for error: MMError, retryHandler: @escaping () -> Void)
     func hideDummyViewIfNeed()

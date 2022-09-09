@@ -1,5 +1,5 @@
 //
-//  EmptyCheck.swift
+//  EmptyCheckTrait.swift
 //  MyMixcloud
 //
 //  Created by Ryabchikova Elena on 16/07/2019.
@@ -7,6 +7,6 @@
 //
 
 
-protocol EmptyCheck {
+protocol EmptyCheckTrait {
     var isEmpty: Bool { get }
 }

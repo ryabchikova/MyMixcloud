@@ -69,10 +69,12 @@ extension FollowingPresenter: FollowingViewOutput {
 extension FollowingPresenter: FollowingInteractorOutput {
     @MainActor
     func gotError(_ error: MMError) async {
-        if let viewController = view, viewController.isEmpty {
-            viewController.showDummyView(for: error) { [weak self] in
-                self?.requestNextPage()
-            }
+        guard viewIsEmpty else {
+            return
+        }
+        
+        view?.showDummyView(for: error) { [weak self] in
+            self?.requestNextPage()
         }
     }
     
