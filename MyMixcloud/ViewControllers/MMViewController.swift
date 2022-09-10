@@ -25,11 +25,6 @@ class MMViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        dummyView?.pin.all(view.pin.safeArea)       // TODO: переметсить в showDummyView
-    }
-    
     // MARK: - Pull To Refresh
     
     func setupPullToRefresh(in scrollView: UIScrollView, pullToRefreshCompletion: @escaping (() -> Void)) {
@@ -81,6 +76,7 @@ extension MMViewController: ActivityIndicatorDisplayable {
         activityIndicator.hidesWhenStopped = true
         view.addSubview(activityIndicator)
         activityIndicator.pin.center(to: view.anchor.center)
+        
         self.activityIndicator = activityIndicator
     }
 }
@@ -88,15 +84,20 @@ extension MMViewController: ActivityIndicatorDisplayable {
 extension MMViewController: DummyViewDisplayable {    
     func showDummyView(for error: MMError, retryHandler: @escaping () -> Void) {
         hideDummyViewIfNeed()
-        dummyView = DummyView(model: DummyViewModel(error: error), retryHandler: retryHandler)
-        view.addSubview(dummyView!)
+        
+        let dummyView = DummyView(model: DummyViewModel(error: error), retryHandler: retryHandler)
+        view.addSubview(dummyView)
+        dummyView.pin.all(view.pin.safeArea)
+        
+        self.dummyView = dummyView
     }
     
     func hideDummyViewIfNeed() {
-        guard let dummy = dummyView else {
+        guard dummyView == nil else {
             return
         }
-        dummy.removeFromSuperview()
+        
+        dummyView?.removeFromSuperview()
         dummyView = nil
     }
 }
