@@ -35,7 +35,6 @@ final class TrackViewController: MMViewController {
         setupPullToRefresh(in: scrollView) { [weak self] in
             self?.output.didPullToRefresh()
         }
-        setupActivityIndicator()
     }
     
     override func viewWillAppear(_ animated: Bool) {

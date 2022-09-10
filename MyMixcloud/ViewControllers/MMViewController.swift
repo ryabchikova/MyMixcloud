@@ -10,11 +10,12 @@ import Foundation
 import UIKit
 
 class MMViewController: UIViewController {
-    private var dummyView: DummyView?
     private weak var scrollView: UIScrollView?
+    private var dummyView: DummyView?
     private var refreshControl: UIRefreshControl?
-    private var didPullToRefresh: (() -> Void)?
     private var activityIndicator: UIActivityIndicatorView?
+    
+    private var didPullToRefresh: (() -> Void)?
     
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
@@ -26,8 +27,7 @@ class MMViewController: UIViewController {
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        dummyView?.pin.all(view.pin.safeArea)
-        activityIndicator?.pin.center(to: view.anchor.center)
+        dummyView?.pin.all(view.pin.safeArea)       // TODO: переметсить в showDummyView
     }
     
     // MARK: - Pull To Refresh
@@ -55,23 +55,12 @@ class MMViewController: UIViewController {
         didPullToRefresh?()
         refreshControl?.endRefreshing()
     }
-    
-    // MARK: - Activity Indicator
-    
-    func setupActivityIndicator() {
-        guard activityIndicator == nil else {
-            return
-        }
-        
-        let activityIndicator = UIActivityIndicatorView(style: .large)
-        activityIndicator.color = Styles.loadingIndicatorColor
-        activityIndicator.hidesWhenStopped = true
-        view.addSubview(activityIndicator)
-        self.activityIndicator = activityIndicator
-    }
-    
+}
+
+extension MMViewController: ActivityIndicatorDisplayable {
     func showActivity() {
         DispatchQueue.main.async {
+            self.createActivityIndicatorIfNeed()
             self.activityIndicator?.startAnimating()
         }
     }
@@ -80,6 +69,19 @@ class MMViewController: UIViewController {
         DispatchQueue.main.async {
             self.activityIndicator?.stopAnimating()
         }
+    }
+    
+    private func createActivityIndicatorIfNeed() {
+        guard activityIndicator == nil else {
+            return
+        }
+        
+        let activityIndicator = UIActivityIndicatorView(style: .large)
+        activityIndicator.color = Styles.loadingIndicatorColor
+        activityIndicator.hidesWhenStopped = true
+        view.addSubview(activityIndicator)
+        activityIndicator.pin.center(to: view.anchor.center)
+        self.activityIndicator = activityIndicator
     }
 }
 

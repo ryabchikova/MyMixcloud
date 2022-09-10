@@ -14,10 +14,8 @@ protocol UserProfileModuleInput: AnyObject {}
 protocol UserProfileModuleOutput: AnyObject {}
 
 // MARK: - View
-protocol UserProfileViewInput: DummyViewDisplayable {
+protocol UserProfileViewInput: ActivityIndicatorDisplayable, DummyViewDisplayable {
     func set(userProfileViewModel: UserProfileViewModel)
-    func showActivity()
-    func hideActivity()
 }
 
 protocol UserProfileViewOutput {

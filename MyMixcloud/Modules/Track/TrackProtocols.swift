@@ -13,10 +13,8 @@ protocol TrackModuleInput: AnyObject {}
 protocol TrackModuleOutput: AnyObject {}
 
 // MARK: - View
-protocol TrackViewInput: DummyViewDisplayable {
+protocol TrackViewInput: ActivityIndicatorDisplayable, DummyViewDisplayable {
     func set(trackViewModel: TrackViewModel)
-    func showActivity()
-    func hideActivity()
 }
 
 protocol TrackViewOutput: AnyObject {
