@@ -14,11 +14,9 @@ protocol FollowingModuleInput: AnyObject {}
 protocol FollowingModuleOutput: AnyObject {}
 
 // MARK: - View
-protocol FollowingViewInput: AnyObject, EmptyCheckTrait {
+protocol FollowingViewInput: DummyViewDisplayable, EmptyCheckTrait {
     func set(viewModels: [FollowingUserViewModel])
     func reset(viewModels: [FollowingUserViewModel])
-    func showDummyView(for error: MMError, retryHandler: @escaping () -> Void)
-    func hideDummyViewIfNeed()
 }
 
 protocol FollowingViewOutput: AnyObject {

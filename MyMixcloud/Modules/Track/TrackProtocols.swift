@@ -13,10 +13,8 @@ protocol TrackModuleInput: AnyObject {}
 protocol TrackModuleOutput: AnyObject {}
 
 // MARK: - View
-protocol TrackViewInput: AnyObject {
+protocol TrackViewInput: DummyViewDisplayable {
     func set(trackViewModel: TrackViewModel)
-    func showDummyView(for error: MMError, retryHandler: @escaping () -> Void)
-    func hideDummyViewIfNeed()
     func showActivity()
     func hideActivity()
 }

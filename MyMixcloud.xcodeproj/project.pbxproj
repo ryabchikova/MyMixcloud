@@ -91,6 +91,7 @@
 		4283285828C7B5FC00CD4F4D /* ViewProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4283285728C7B5FC00CD4F4D /* ViewProtocols.swift */; };
 		4283285A28C7BC1100CD4F4D /* SettingsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4283285928C7BC1100CD4F4D /* SettingsTableViewCell.swift */; };
 		4283285E28CA813500CD4F4D /* SettingsOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4283285D28CA813500CD4F4D /* SettingsOption.swift */; };
+		4283286028CB331800CD4F4D /* DummyViewDisplayable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4283285F28CB331800CD4F4D /* DummyViewDisplayable.swift */; };
 		42B7D66722DA686D00ECDAB0 /* NetworkReachabilityService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42B7D66622DA686D00ECDAB0 /* NetworkReachabilityService.swift */; };
 		42B7D66922DA68BD00ECDAB0 /* NetworkReachabilityServiceImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42B7D66822DA68BD00ECDAB0 /* NetworkReachabilityServiceImpl.swift */; };
 		42B7D66B22DA892700ECDAB0 /* DummyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42B7D66A22DA892700ECDAB0 /* DummyViewModel.swift */; };
@@ -200,6 +201,7 @@
 		4283285728C7B5FC00CD4F4D /* ViewProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewProtocols.swift; sourceTree = "<group>"; };
 		4283285928C7BC1100CD4F4D /* SettingsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewCell.swift; sourceTree = "<group>"; };
 		4283285D28CA813500CD4F4D /* SettingsOption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsOption.swift; sourceTree = "<group>"; };
+		4283285F28CB331800CD4F4D /* DummyViewDisplayable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DummyViewDisplayable.swift; sourceTree = "<group>"; };
 		42B7D66622DA686D00ECDAB0 /* NetworkReachabilityService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkReachabilityService.swift; sourceTree = "<group>"; };
 		42B7D66822DA68BD00ECDAB0 /* NetworkReachabilityServiceImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkReachabilityServiceImpl.swift; sourceTree = "<group>"; };
 		42B7D66A22DA892700ECDAB0 /* DummyViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DummyViewModel.swift; sourceTree = "<group>"; };
@@ -583,6 +585,7 @@
 			children = (
 				42B7D67322DDCC9800ECDAB0 /* EmptyCheckTrait.swift */,
 				4283285728C7B5FC00CD4F4D /* ViewProtocols.swift */,
+				4283285F28CB331800CD4F4D /* DummyViewDisplayable.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -832,6 +835,7 @@
 				422EE0BD22C2180600451EED /* JsonUser.swift in Sources */,
 				4201813A22D0731D007752B9 /* LoginView.swift in Sources */,
 				4201812622CFDEB0007752B9 /* SettingsService.swift in Sources */,
+				4283286028CB331800CD4F4D /* DummyViewDisplayable.swift in Sources */,
 				4220E2A722C62B1A00FEB7F8 /* FollowingInteractor.swift in Sources */,
 				4220E29022C5092400FEB7F8 /* UserProfileViewModel.swift in Sources */,
 				42DFD44D28A3092F00495440 /* LoginModuleBuilder.swift in Sources */,

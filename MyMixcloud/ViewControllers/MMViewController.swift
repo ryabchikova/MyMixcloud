@@ -30,22 +30,6 @@ class MMViewController: UIViewController {
         activityIndicator?.pin.center(to: view.anchor.center)
     }
     
-    // MARK: - Dummy View
-    
-    func showDummyView(for error: MMError, retryHandler: @escaping () -> Void) {
-        hideDummyViewIfNeed()
-        dummyView = DummyView(model: DummyViewModel(error: error), retryHandler: retryHandler)
-        view.addSubview(dummyView!)
-    }
-    
-    func hideDummyViewIfNeed() {
-        guard let dummy = dummyView else {
-            return
-        }
-        dummy.removeFromSuperview()
-        dummyView = nil
-    }
-    
     // MARK: - Pull To Refresh
     
     func setupPullToRefresh(in scrollView: UIScrollView, pullToRefreshCompletion: @escaping (() -> Void)) {
@@ -99,8 +83,24 @@ class MMViewController: UIViewController {
     }
 }
 
-extension MMViewController {
-    private struct Styles {
+extension MMViewController: DummyViewDisplayable {    
+    func showDummyView(for error: MMError, retryHandler: @escaping () -> Void) {
+        hideDummyViewIfNeed()
+        dummyView = DummyView(model: DummyViewModel(error: error), retryHandler: retryHandler)
+        view.addSubview(dummyView!)
+    }
+    
+    func hideDummyViewIfNeed() {
+        guard let dummy = dummyView else {
+            return
+        }
+        dummy.removeFromSuperview()
+        dummyView = nil
+    }
+}
+
+private extension MMViewController {
+    enum Styles {
         static let loadingIndicatorColor = MMColors.darkGray
     }
 }

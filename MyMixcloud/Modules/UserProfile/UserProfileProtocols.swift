@@ -14,10 +14,8 @@ protocol UserProfileModuleInput: AnyObject {}
 protocol UserProfileModuleOutput: AnyObject {}
 
 // MARK: - View
-protocol UserProfileViewInput: AnyObject {
+protocol UserProfileViewInput: DummyViewDisplayable {
     func set(userProfileViewModel: UserProfileViewModel)
-    func showDummyView(for error: MMError, retryHandler: @escaping () -> Void)
-    func hideDummyViewIfNeed()
     func showActivity()
     func hideActivity()
 }
