@@ -33,7 +33,11 @@ final class SettingsServiceImpl: SettingsService {
     // MARK: - Cache usage
     
     func isCacheUsageEnabled() -> Bool {
-        userDefaults.bool(forKey: UserDefaultsKey.cacheUsage)
+        guard let value = userDefaults.object(forKey: UserDefaultsKey.cacheUsage) else {
+            return true
+        }
+        
+        return value as! Bool
     }
     
     func setCacheUsageEnabled(_ isEnabled: Bool) {

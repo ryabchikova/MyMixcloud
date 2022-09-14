@@ -9,8 +9,14 @@
 import UIKit
 
 final class SettingsTableViewCell: UITableViewCell {
-    private lazy var switcher = UISwitch()
+    private var switcher = UISwitch()
     private var onSwitch: ((Bool) -> Void)?
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        
+        switcher.removeTarget(self, action: #selector(didToggleSwitcher), for: .valueChanged)
+    }
 
     @objc
     private func didToggleSwitcher() {
@@ -35,6 +41,5 @@ extension SettingsTableViewCell: ConfigurableView {
         } else {
             accessoryView = nil
         }
-        
     }
 }
