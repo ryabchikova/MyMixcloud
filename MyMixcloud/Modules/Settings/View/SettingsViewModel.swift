@@ -10,19 +10,26 @@ import Foundation
 
 
 struct SettingsViewModel {
+    let shouldShowAccessoryView: Bool
+    let isSwitcherOn: Bool
+    let onSwitch: ((Bool) -> Void)?
+    
     private let option: SettingsOption
     
-    init(_ option: SettingsOption) {
+    init(_ option: SettingsOption, onSwitch: ((Bool) -> Void)? = nil) {
         self.option = option
+        if case let .cashing(isOn) = option {
+            shouldShowAccessoryView = true
+            isSwitcherOn = isOn
+        } else {
+            shouldShowAccessoryView = false
+            isSwitcherOn = false
+        }
+        self.onSwitch = onSwitch
     }
     
     var isEnabled: Bool {
-        switch option {
-        case .logout:
-            return true
-        case .theme:
-            return false
-        }
+        option != .theme
     }
 
     var title: NSAttributedString {
@@ -30,6 +37,8 @@ struct SettingsViewModel {
         switch option {
         case .logout:
             return NSAttributedString(string: "Log out", attributes: attributes)
+        case .cashing:
+            return NSAttributedString(string: "Cache usage", attributes: attributes)
         case .theme:
             return NSAttributedString(string: "Theme", attributes: attributes)
         }

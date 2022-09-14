@@ -9,8 +9,13 @@
 import Foundation
 
 protocol SettingsService {
+    // MARK: - User
     func isLoggedIn() -> Bool
     func currentUserId() -> String?
     func setCurrentUserId(_ userId: String)
     func removeCurrentUserId()
+    
+    // MARK: - Cache usage
+    func isCacheUsageEnabled() -> Bool
+    func setCacheUsageEnabled(_ isEnabled: Bool)
 }

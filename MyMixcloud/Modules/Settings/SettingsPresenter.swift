@@ -15,8 +15,6 @@ final class SettingsPresenter {
 	private let interactor: SettingsInteractorInput
     private weak var moduleOutput: SettingsModuleOutput?
     
-    let options: [SettingsOption] = [.logout, .theme]
-    
     init(router: SettingsRouterInput,
          interactor: SettingsInteractorInput,
          moduleOutput: SettingsModuleOutput?) {
@@ -30,7 +28,14 @@ extension SettingsPresenter: SettingsModuleInput {}
 
 extension SettingsPresenter: SettingsViewOutput {
     func viewDidLoad() {
-        view?.set(viewModels: options.map { SettingsViewModel.init($0) })
+        let viewModels = [
+            SettingsViewModel(.logout),
+            SettingsViewModel(.cashing(isOn: interactor.isCacheUsageEnabled())) { [weak self] in
+                self?.interactor.setCacheUsageEnabled($0)
+            },
+            SettingsViewModel(.theme)
+        ]
+        view?.set(viewModels: viewModels)
     }
     
     func didSelectOption(_ option: SettingsOption) {
@@ -43,7 +48,7 @@ extension SettingsPresenter: SettingsViewOutput {
             router.showLogoutAlert(in: viewController) { [weak self] _ in
                 self?.interactor.logout()
             }
-        case .theme:
+        case .cashing, .theme:
             return
         }
     }

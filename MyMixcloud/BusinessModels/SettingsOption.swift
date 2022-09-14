@@ -6,7 +6,8 @@
 //  Copyright © 2022 ryabchikova. All rights reserved.
 //
 
-enum SettingsOption: String {
+enum SettingsOption: Hashable {
     case logout
+    case cashing(isOn: Bool)
     case theme
 }

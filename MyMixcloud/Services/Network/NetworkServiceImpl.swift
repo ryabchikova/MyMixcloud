@@ -11,9 +11,11 @@ import Foundation
 
 final class NetworkServiceImpl {
     private let networkReachabilityService: NetworkReachabilityService
+    private let settingsService: SettingsService
     
-    init(reachabilityService: NetworkReachabilityService) {
+    init(reachabilityService: NetworkReachabilityService, settingsService: SettingsService) {
         self.networkReachabilityService = reachabilityService
+        self.settingsService = settingsService
     }
 }
 
@@ -29,7 +31,10 @@ extension NetworkServiceImpl: NetworkService {
             URLCache.shared.storeCachedResponse(CachedURLResponse(response: response, data: data),
                                                 for: request)
         } catch {
-            guard let cachedResponse = URLCache.shared.cachedResponse(for: request) else {
+            guard
+                settingsService.isCacheUsageEnabled(),
+                let cachedResponse = URLCache.shared.cachedResponse(for: request)
+            else {
                 throw MMError.requestError(isNetworkReachable).log()
             }
             print("[DBG] Get data from cache")

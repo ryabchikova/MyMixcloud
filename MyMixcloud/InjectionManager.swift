@@ -21,7 +21,10 @@ final class InjectionManager {
     
     private init() {
         container.register(NetworkService.self) { resolver in
-            NetworkServiceImpl(reachabilityService: resolver.resolve(NetworkReachabilityService.self)!)
+            NetworkServiceImpl(
+                reachabilityService: resolver.resolve(NetworkReachabilityService.self)!,
+                settingsService: resolver.resolve(SettingsService.self)!
+            )
         }
         
         container.register(UserService.self) { resolver in

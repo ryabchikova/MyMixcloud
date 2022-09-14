@@ -21,4 +21,12 @@ extension SettingsInteractor: SettingsInteractorInput {
         settingsService.removeCurrentUserId()
         output?.didLogout()
     }
+    
+    func isCacheUsageEnabled() -> Bool {
+        settingsService.isCacheUsageEnabled()
+    }
+    
+    func setCacheUsageEnabled(_ isEnabled: Bool) {
+        settingsService.setCacheUsageEnabled(isEnabled)
+    }
 }

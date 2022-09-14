@@ -8,7 +8,15 @@
 
 import UIKit
 
-final class SettingsTableViewCell: UITableViewCell {}
+final class SettingsTableViewCell: UITableViewCell {
+    private lazy var switcher = UISwitch()
+    private var onSwitch: ((Bool) -> Void)?
+
+    @objc
+    private func didToggleSwitcher() {
+        onSwitch?(switcher.isOn)
+    }
+}
 
 extension SettingsTableViewCell: FixedHeightView {
     static let height: CGFloat = 40.0
@@ -18,5 +26,15 @@ extension SettingsTableViewCell: ConfigurableView {
     func configure(with model: SettingsViewModel) {
         textLabel?.attributedText = model.title
         isUserInteractionEnabled = model.isEnabled
+        onSwitch = model.onSwitch
+        
+        if model.shouldShowAccessoryView {
+            accessoryView = switcher
+            switcher.isOn = model.isSwitcherOn
+            switcher.addTarget(self, action: #selector(didToggleSwitcher), for: .valueChanged)
+        } else {
+            accessoryView = nil
+        }
+        
     }
 }

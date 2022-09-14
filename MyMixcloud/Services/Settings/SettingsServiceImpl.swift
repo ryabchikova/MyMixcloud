@@ -11,24 +11,39 @@ import Foundation
 final class SettingsServiceImpl: SettingsService {
     
     private let userDefaults = UserDefaults.standard
-    
-    private enum UserDefaultsKey: String {
-        case currentUserId
-    }
+
+    // MARK: - User
     
     func currentUserId() -> String? {
-        return userDefaults.string(forKey: UserDefaultsKey.currentUserId.rawValue)
+        return userDefaults.string(forKey: UserDefaultsKey.currentUserId)
     }
     
     func setCurrentUserId(_ userId: String) {
-        userDefaults.set(userId, forKey: UserDefaultsKey.currentUserId.rawValue)
+        userDefaults.set(userId, forKey: UserDefaultsKey.currentUserId)
     }
     
     func removeCurrentUserId() {
-        userDefaults.removeObject(forKey: UserDefaultsKey.currentUserId.rawValue)
+        userDefaults.removeObject(forKey: UserDefaultsKey.currentUserId)
     }
     
     func isLoggedIn() -> Bool {
         return currentUserId() != nil
+    }
+    
+    // MARK: - Cache usage
+    
+    func isCacheUsageEnabled() -> Bool {
+        userDefaults.bool(forKey: UserDefaultsKey.cacheUsage)
+    }
+    
+    func setCacheUsageEnabled(_ isEnabled: Bool) {
+        userDefaults.set(isEnabled, forKey: UserDefaultsKey.cacheUsage)
+    }
+}
+
+private extension SettingsServiceImpl {
+    enum UserDefaultsKey {
+        static let currentUserId = "currentUserId"
+        static let cacheUsage = "cacheUsage"
     }
 }

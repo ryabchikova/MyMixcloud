@@ -27,6 +27,8 @@ protocol SettingsViewOutput: AnyObject {
 // MARK: - Interactor
 protocol SettingsInteractorInput {
     func logout()
+    func isCacheUsageEnabled() -> Bool
+    func setCacheUsageEnabled(_ isEnabled: Bool)
 }
 
 protocol SettingsInteractorOutput: AnyObject {
