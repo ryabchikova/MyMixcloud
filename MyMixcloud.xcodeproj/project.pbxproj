@@ -93,6 +93,7 @@
 		4283285E28CA813500CD4F4D /* SettingsOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4283285D28CA813500CD4F4D /* SettingsOption.swift */; };
 		4283286028CB331800CD4F4D /* DummyViewDisplayable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4283285F28CB331800CD4F4D /* DummyViewDisplayable.swift */; };
 		42A31B8328CCC23900F56156 /* ActivityIndicatorDisplayable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42A31B8228CCC23900F56156 /* ActivityIndicatorDisplayable.swift */; };
+		42A31B8528D0DDB100F56156 /* OperationQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42A31B8428D0DDB100F56156 /* OperationQueue.swift */; };
 		42B7D66722DA686D00ECDAB0 /* NetworkReachabilityService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42B7D66622DA686D00ECDAB0 /* NetworkReachabilityService.swift */; };
 		42B7D66922DA68BD00ECDAB0 /* NetworkReachabilityServiceImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42B7D66822DA68BD00ECDAB0 /* NetworkReachabilityServiceImpl.swift */; };
 		42B7D66B22DA892700ECDAB0 /* DummyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42B7D66A22DA892700ECDAB0 /* DummyViewModel.swift */; };
@@ -204,6 +205,7 @@
 		4283285D28CA813500CD4F4D /* SettingsOption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsOption.swift; sourceTree = "<group>"; };
 		4283285F28CB331800CD4F4D /* DummyViewDisplayable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DummyViewDisplayable.swift; sourceTree = "<group>"; };
 		42A31B8228CCC23900F56156 /* ActivityIndicatorDisplayable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicatorDisplayable.swift; sourceTree = "<group>"; };
+		42A31B8428D0DDB100F56156 /* OperationQueue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OperationQueue.swift; sourceTree = "<group>"; };
 		42B7D66622DA686D00ECDAB0 /* NetworkReachabilityService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkReachabilityService.swift; sourceTree = "<group>"; };
 		42B7D66822DA68BD00ECDAB0 /* NetworkReachabilityServiceImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkReachabilityServiceImpl.swift; sourceTree = "<group>"; };
 		42B7D66A22DA892700ECDAB0 /* DummyViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DummyViewModel.swift; sourceTree = "<group>"; };
@@ -416,6 +418,7 @@
 				42E19DB928C125AB00A2227B /* async_await.swift */,
 				42E19DBD28C1295000A2227B /* caching.swift */,
 				4283285028C753D800CD4F4D /* SharedValueV2.swift */,
+				42A31B8428D0DDB100F56156 /* OperationQueue.swift */,
 			);
 			path = TestStuff;
 			sourceTree = "<group>";
@@ -809,6 +812,7 @@
 				4224F96622CA37EC00E847AB /* TrackListProtocols.swift in Sources */,
 				4201813322D072DA007752B9 /* LoginProtocols.swift in Sources */,
 				422E6EA822D3B93500DBEB2E /* MainModuleBuilder.swift in Sources */,
+				42A31B8528D0DDB100F56156 /* OperationQueue.swift in Sources */,
 				425B2EA328B90B3000B2EEA1 /* Result+Extensions.swift in Sources */,
 				4283285828C7B5FC00CD4F4D /* ViewProtocols.swift in Sources */,
 				42273C0122C79BAF00EDB1E5 /* JsonTrackList.swift in Sources */,
