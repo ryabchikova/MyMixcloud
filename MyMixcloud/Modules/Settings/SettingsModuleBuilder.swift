@@ -20,7 +20,6 @@ struct SettingsModuleBuilder {
 
 		presenter.view = viewController
 		interactor.output = presenter
-        router.applicationRouter = InjectionManager.shared.appRouter()
 
         return Module(viewController, presenter)
 	}

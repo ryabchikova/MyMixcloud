@@ -12,7 +12,9 @@ import UIKit
 // MARK: - Module
 protocol SettingsModuleInput: AnyObject {}
 
-protocol SettingsModuleOutput: AnyObject {}
+protocol SettingsModuleOutput: AnyObject {
+    func didLogout()
+}
 
 // MARK: - View
 protocol SettingsViewInput: AnyObject {
@@ -37,7 +39,6 @@ protocol SettingsInteractorOutput: AnyObject {
 
 // MARK: - Router
 protocol SettingsRouterInput {
-    func showLoginScreen()
     func showLogoutAlert(in viewController: UIViewController,
                          logoutCompletion: @escaping (UIAlertAction) -> Void)
 }

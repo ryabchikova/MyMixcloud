@@ -8,14 +8,9 @@
 
 import UIKit
 
-final class SettingsRouter {
-    weak var applicationRouter: AppRouter?
-}
+final class SettingsRouter {}
 
 extension SettingsRouter: SettingsRouterInput {
-    func showLoginScreen() {
-        applicationRouter?.showLoginScreen()
-    }
     
     func showLogoutAlert(in viewController: UIViewController, logoutCompletion: @escaping (UIAlertAction) -> Void) {
         let alertController = UIAlertController(title: nil,

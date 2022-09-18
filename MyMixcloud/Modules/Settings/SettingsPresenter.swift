@@ -56,6 +56,6 @@ extension SettingsPresenter: SettingsViewOutput {
 
 extension SettingsPresenter: SettingsInteractorOutput {
     func didLogout() {
-        router.showLoginScreen()
+        moduleOutput?.didLogout()
     }
 }

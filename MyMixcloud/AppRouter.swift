@@ -45,3 +45,9 @@ extension AppRouter: LoginModuleOutput {
         showMainScreen()
     }
 }
+
+extension AppRouter: SettingsModuleOutput {
+    func didLogout() {
+        showLoginScreen()
+    }
+}

@@ -12,7 +12,7 @@ final class UserProfileRouter {}
 
 extension UserProfileRouter: UserProfileRouterInput {
     func showSettingsScreen(in viewController: UIViewController) {
-        let module = SettingsModuleBuilder.build()
+        let module = SettingsModuleBuilder.build(moduleOutput: InjectionManager.shared.appRouter())
         viewController.show(module.viewController, sender: self)
     }
 }
