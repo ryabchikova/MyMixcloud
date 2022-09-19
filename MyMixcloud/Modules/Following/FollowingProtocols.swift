@@ -35,9 +35,3 @@ protocol FollowingInteractorOutput: AnyObject {
     func gotError(_ error: MMError) async
     func didLoadFollowing(_ users: [User], reason: LoadingReason) async
 }
-
-// MARK: - Router
-protocol FollowingRouterInput {
-    func showUserProfileScreen(in viewController: UIViewController, userId: String)
-}
-

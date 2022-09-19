@@ -33,8 +33,3 @@ protocol LoginInteractorOutput: AnyObject {
     func didLogin() async
     func loginFailed() async
 }
-
-// MARK: - Router
-protocol LoginRouterInput {
-    func showErrorAlert(in viewController: UIViewController)
-}

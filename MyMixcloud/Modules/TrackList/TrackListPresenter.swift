@@ -11,7 +11,7 @@ import UIKit
 final class TrackListPresenter {
 	weak var view: TrackListViewInput?
 	
-    private let router: TrackListRouterInput
+    private let router: Router
 	private let interactor: TrackListInteractorInput
     private weak var moduleOutput: TrackListModuleOutput?
     
@@ -23,7 +23,7 @@ final class TrackListPresenter {
         return view?.isEmpty ?? false
     }
     
-    init(router: TrackListRouterInput,
+    init(router: Router,
          interactor: TrackListInteractorInput,
          moduleOutput: TrackListModuleOutput?,
          context: TrackListContext) {
@@ -67,9 +67,7 @@ extension TrackListPresenter: TrackListViewOutput {
     }
     
     func didTapOnTrack(with trackId: String) {
-        if let viewController = view as? UIViewController {
-            router.showTrackScreen(in: viewController, trackId: trackId)
-        }
+        router.showTrackScreen(trackId: trackId)
     }
 }
 

@@ -13,7 +13,7 @@ struct TrackListModuleBuilder {
 
 	static func build(_ context: TrackListContext,
                       moduleOutput: TrackListModuleOutput? = nil) -> Module<TrackListModuleInput> {
-        let router = TrackListRouter()
+        let router = Router()
         let interactor = TrackListInteractor(trackService: InjectionManager.shared.trackService())
         let presenter = TrackListPresenter(router: router,
                                            interactor: interactor,
@@ -24,6 +24,7 @@ struct TrackListModuleBuilder {
         let viewController = TrackListViewController(output: presenter, title: title)
 
 		presenter.view = viewController
+        router.viewController = viewController
 		interactor.output = presenter
 
         return Module(viewController, presenter)

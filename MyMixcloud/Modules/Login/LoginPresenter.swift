@@ -11,11 +11,11 @@ import UIKit
 final class LoginPresenter {
 	weak var view: LoginViewInput?
 
-	private let router: LoginRouterInput
+	private let router: Router
 	private let interactor: LoginInteractorInput
     private weak var moduleOutput: LoginModuleOutput?
     
-    init(router: LoginRouterInput,
+    init(router: Router,
          interactor: LoginInteractorInput,
          moduleOutput: LoginModuleOutput?) {
         self.router = router
@@ -44,8 +44,6 @@ extension LoginPresenter: LoginInteractorOutput {
     
     @MainActor
     func loginFailed() async {
-        if let viewController = view as? UIViewController {       // TODO: можно ли без кастования?
-            router.showErrorAlert(in: viewController)
-        }
+        router.showAlert(model: .login)
     }
 }

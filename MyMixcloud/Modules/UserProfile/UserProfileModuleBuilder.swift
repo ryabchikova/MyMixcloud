@@ -12,7 +12,7 @@ struct UserProfileModuleBuilder {
 
 	static func build(_ context: UserProfileContext,
                       moduleOutput: UserProfileModuleOutput? = nil) -> Module<UserProfileModuleInput> {
-        let router = UserProfileRouter()
+        let router = Router()
         let interactor = UserProfileInteractor(userService: InjectionManager.shared.userService())
         let presenter = UserProfilePresenter(router: router,
                                              interactor: interactor,
@@ -21,6 +21,7 @@ struct UserProfileModuleBuilder {
         let viewController = UserProfileViewController(output: presenter, isMyProfile: context.isMyProfile)
 
 		presenter.view = viewController
+        router.viewController = viewController
 		interactor.output = presenter
 
         return Module(viewController, presenter)

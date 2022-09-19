@@ -13,7 +13,7 @@ struct FollowingModuleBuilder {
 
 	static func build(_ context: FollowingContext,
                       moduleOutput: FollowingModuleOutput? = nil) -> Module<FollowingModuleInput> {
-        let router = FollowingRouter()
+        let router = Router()
         let interactor = FollowingInteractor(userService: InjectionManager.shared.userService())
         let presenter = FollowingPresenter(router: router,
                                            interactor: interactor,
@@ -22,6 +22,7 @@ struct FollowingModuleBuilder {
 		let viewController = FollowingViewController(output: presenter)
 
 		presenter.view = viewController
+        router.viewController = viewController
 		interactor.output = presenter
 
         return Module(viewController, presenter)

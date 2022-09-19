@@ -33,8 +33,3 @@ protocol UserProfileInteractorOutput: AnyObject {
     func gotError(_ error: MMError) async
     func didLoadUser(_ user: User) async
 }
-
-// MARK: - Router
-protocol UserProfileRouterInput {
-    func showSettingsScreen(in viewController: UIViewController)
-}

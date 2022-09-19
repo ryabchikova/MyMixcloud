@@ -11,11 +11,11 @@ import UIKit
 final class SettingsPresenter {
 	weak var view: SettingsViewInput?
     
-	private let router: SettingsRouterInput
+	private let router: Router
 	private let interactor: SettingsInteractorInput
     private weak var moduleOutput: SettingsModuleOutput?
     
-    init(router: SettingsRouterInput,
+    init(router: Router,
          interactor: SettingsInteractorInput,
          moduleOutput: SettingsModuleOutput?) {
         self.router = router
@@ -39,15 +39,13 @@ extension SettingsPresenter: SettingsViewOutput {
     }
     
     func didSelectOption(_ option: SettingsOption) {
-        guard let viewController = view as? UIViewController else {
-            return
-        }
-        
         switch option {
         case .logout:
-            router.showLogoutAlert(in: viewController) { [weak self] _ in
-                self?.interactor.logout()
-            }
+            router.showAlert(
+                model: .logout { [weak self] _ in
+                    self?.interactor.logout()
+                }
+            )
         case .cashing, .theme:
             return
         }

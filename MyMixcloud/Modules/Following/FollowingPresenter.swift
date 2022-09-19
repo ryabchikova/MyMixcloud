@@ -11,7 +11,7 @@ import UIKit
 final class FollowingPresenter {    
 	weak var view: FollowingViewInput?
 
-	private let router: FollowingRouterInput
+	private let router: Router
 	private let interactor: FollowingInteractorInput
     private weak var moduleOutput: FollowingModuleOutput?
     
@@ -22,7 +22,7 @@ final class FollowingPresenter {
         return view?.isEmpty ?? false
     }
     
-    init(router: FollowingRouterInput,
+    init(router: Router,
          interactor: FollowingInteractorInput,
          moduleOutput: FollowingModuleOutput?,
          userId: String
@@ -60,9 +60,7 @@ extension FollowingPresenter: FollowingViewOutput {
     }
     
     func didTapOnUser(with userId: String) {
-        if let viewController = view as? UIViewController {
-            router.showUserProfileScreen(in: viewController, userId: userId)
-        }
+        router.showUserProfileScreen(userId: userId, isMyProfile: false)
     }
 }
 

@@ -38,8 +38,3 @@ protocol TrackListInteractorOutput: AnyObject {
     func gotError(_ error: MMError) async
     func didLoadTrackList(_ tracks: [Track], reason: LoadingReason) async
 }
-
-// MARK: - Router
-protocol TrackListRouterInput {
-    func showTrackScreen(in viewController: UIViewController, trackId: String)
-}

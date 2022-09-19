@@ -11,13 +11,13 @@ import UIKit
 final class UserProfilePresenter {
 	weak var view: UserProfileViewInput?
 
-	private let router: UserProfileRouterInput
+	private let router: Router
 	private let interactor: UserProfileInteractorInput
     private weak var moduleOutput: UserProfileModuleOutput?
     
     private let userId: String
     
-    init(router: UserProfileRouterInput,
+    init(router: Router,
          interactor: UserProfileInteractorInput,
          moduleOutput: UserProfileModuleOutput?,
          context: UserProfileContext) {
@@ -41,9 +41,7 @@ extension UserProfilePresenter: UserProfileViewOutput {
     }
     
     func didTapSettingsButton() {
-        if let viewController = view as? UIViewController {
-            router.showSettingsScreen(in: viewController)
-        }
+        router.showSettingsScreen()
     }
 }
 

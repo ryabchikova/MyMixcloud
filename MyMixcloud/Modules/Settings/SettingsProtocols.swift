@@ -36,9 +36,3 @@ protocol SettingsInteractorInput {
 protocol SettingsInteractorOutput: AnyObject {
     func didLogout()
 }
-
-// MARK: - Router
-protocol SettingsRouterInput {
-    func showLogoutAlert(in viewController: UIViewController,
-                         logoutCompletion: @escaping (UIAlertAction) -> Void)
-}

@@ -11,7 +11,7 @@ struct SettingsModuleBuilder {
     private init() {}
 
 	static func build(moduleOutput: SettingsModuleOutput? = nil) -> Module<SettingsModuleInput> {
-        let router = SettingsRouter()
+        let router = Router()
         let interactor = SettingsInteractor(settingsService: InjectionManager.shared.settingsService())
         let presenter = SettingsPresenter(router: router,
                                           interactor: interactor,
@@ -19,6 +19,7 @@ struct SettingsModuleBuilder {
 		let viewController = SettingsViewController(output: presenter)
 
 		presenter.view = viewController
+        router.viewController = viewController
 		interactor.output = presenter
 
         return Module(viewController, presenter)
