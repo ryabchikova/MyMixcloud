@@ -11,13 +11,13 @@ import UIKit
 final class UserProfilePresenter {
 	weak var view: UserProfileViewInput?
 
-	private let router: Router
+	private let router: RoutingTrait
 	private let interactor: UserProfileInteractorInput
     private weak var moduleOutput: UserProfileModuleOutput?
     
     private let userId: String
     
-    init(router: Router,
+    init(router: RoutingTrait,
          interactor: UserProfileInteractorInput,
          moduleOutput: UserProfileModuleOutput?,
          context: UserProfileContext) {

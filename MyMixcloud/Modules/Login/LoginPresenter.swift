@@ -11,11 +11,11 @@ import UIKit
 final class LoginPresenter {
 	weak var view: LoginViewInput?
 
-	private let router: Router
+	private let router: RoutingTrait
 	private let interactor: LoginInteractorInput
     private weak var moduleOutput: LoginModuleOutput?
     
-    init(router: Router,
+    init(router: RoutingTrait,
          interactor: LoginInteractorInput,
          moduleOutput: LoginModuleOutput?) {
         self.router = router

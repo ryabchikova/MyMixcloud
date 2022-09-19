@@ -11,11 +11,11 @@ import UIKit
 final class SettingsPresenter {
 	weak var view: SettingsViewInput?
     
-	private let router: Router
+	private let router: RoutingTrait
 	private let interactor: SettingsInteractorInput
     private weak var moduleOutput: SettingsModuleOutput?
     
-    init(router: Router,
+    init(router: RoutingTrait,
          interactor: SettingsInteractorInput,
          moduleOutput: SettingsModuleOutput?) {
         self.router = router

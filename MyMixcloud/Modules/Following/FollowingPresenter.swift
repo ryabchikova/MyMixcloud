@@ -11,7 +11,7 @@ import UIKit
 final class FollowingPresenter {    
 	weak var view: FollowingViewInput?
 
-	private let router: Router
+	private let router: RoutingTrait
 	private let interactor: FollowingInteractorInput
     private weak var moduleOutput: FollowingModuleOutput?
     
@@ -22,7 +22,7 @@ final class FollowingPresenter {
         return view?.isEmpty ?? false
     }
     
-    init(router: Router,
+    init(router: RoutingTrait,
          interactor: FollowingInteractorInput,
          moduleOutput: FollowingModuleOutput?,
          userId: String

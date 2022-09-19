@@ -8,6 +8,8 @@
 
 import UIKit
 
+/// Describe interface for routing in application,
+/// except routing associated with Application's rootViewController
 protocol RoutingTrait: BaseRouter {
     func showAlert(model: AlertViewModel)
     func showSettingsScreen()

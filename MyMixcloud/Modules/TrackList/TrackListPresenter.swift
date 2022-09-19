@@ -11,7 +11,7 @@ import UIKit
 final class TrackListPresenter {
 	weak var view: TrackListViewInput?
 	
-    private let router: Router
+    private let router: RoutingTrait
 	private let interactor: TrackListInteractorInput
     private weak var moduleOutput: TrackListModuleOutput?
     
@@ -23,7 +23,7 @@ final class TrackListPresenter {
         return view?.isEmpty ?? false
     }
     
-    init(router: Router,
+    init(router: RoutingTrait,
          interactor: TrackListInteractorInput,
          moduleOutput: TrackListModuleOutput?,
          context: TrackListContext) {
