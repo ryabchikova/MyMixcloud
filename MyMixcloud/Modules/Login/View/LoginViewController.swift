@@ -8,7 +8,6 @@
 
 import UIKit
 
-// TODO fix text choppy when tap on textfield
 
 final class LoginViewController: UIViewController {
 	private let output: LoginViewOutput

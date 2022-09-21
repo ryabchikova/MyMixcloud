@@ -48,7 +48,6 @@ final class FollowingViewController: MMViewController {
         output.viewWillAppear()
     }
     
-    // TODO: перенести viewWillLayoutSubviews() везде
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         tableView.pin.all(view.pin.safeArea)

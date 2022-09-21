@@ -14,10 +14,11 @@ struct LoginViewModel {
         case normal, disabled, highlited
     }
     
-    let welcomeString = NSAttributedString(string: "Hi! To start\nenter your username", attributes: Styles.welcome)
+    let welcomeString = NSAttributedString(string: "Hi! To start\nenter your username",
+                                           attributes: Styles.welcome)
     
     func startButtonString(for state: ButtonState) -> NSAttributedString {
-        return NSAttributedString(string: "Let's go!", attributes: Styles.startButton(for: state))
+        NSAttributedString(string: "Let's go!", attributes: Styles.startButton(for: state))
     }
     
     var onButtonTap: ((String) -> Void)?

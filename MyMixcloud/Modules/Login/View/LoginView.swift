@@ -9,7 +9,6 @@
 import Foundation
 import FlexLayout
 
-// TODO: Start is Enabled when textfield not Empty
 
 final class LoginView: UIView {
     private let welcomeLabel = UILabel()
