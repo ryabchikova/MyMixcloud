@@ -10,21 +10,9 @@ import Foundation
 import Alamofire
 
 final class NetworkReachabilityServiceImpl: NetworkReachabilityService {
-    private let reachabilityManager: NetworkReachabilityManager?
-    
-    init() {
-        guard
-            let manager = NetworkReachabilityManager(),
-            manager.startListening()
-        else {
-            reachabilityManager = nil
-            return
-        }
-        
-        reachabilityManager = manager
-    }
+    private let reachabilityManager = NetworkReachabilityManager()
     
     func isReachable() -> Bool {
-        return reachabilityManager?.isReachable ?? true
+        reachabilityManager?.isReachable ?? true
     }
 }

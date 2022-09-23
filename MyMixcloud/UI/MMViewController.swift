@@ -93,7 +93,7 @@ extension MMViewController: DummyViewDisplayable {
     }
     
     func hideDummyViewIfNeed() {
-        guard dummyView == nil else {
+        guard dummyView != nil else {
             return
         }
         

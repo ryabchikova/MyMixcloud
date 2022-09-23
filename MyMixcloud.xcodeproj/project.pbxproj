@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -64,7 +64,6 @@
 		422EE0A722B3F1AB00451EED /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 422EE0A622B3F1AB00451EED /* User.swift */; };
 		422EE0A922B3F47A00451EED /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 422EE0A822B3F47A00451EED /* UserService.swift */; };
 		422EE0AB22B436D600451EED /* MixcloudApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 422EE0AA22B436D600451EED /* MixcloudApi.swift */; };
-		422EE0AE22B7EF4200451EED /* OldUserServiceImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 422EE0AD22B7EF4200451EED /* OldUserServiceImpl.swift */; };
 		422EE0B022B803C300451EED /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 422EE0AF22B803C300451EED /* Constants.swift */; };
 		422EE0B522BA180D00451EED /* whatever.swift in Sources */ = {isa = PBXBuildFile; fileRef = 422EE0B422BA180D00451EED /* whatever.swift */; };
 		422EE0B722BA2A0A00451EED /* MMError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 422EE0B622BA2A0A00451EED /* MMError.swift */; };
@@ -114,7 +113,6 @@
 		42E19DB528BF611200A2227B /* BusinessModelConvertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42E19DB428BF611200A2227B /* BusinessModelConvertible.swift */; };
 		42E19DB828BF88D700A2227B /* UserServiveImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42E19DB728BF88D700A2227B /* UserServiveImpl.swift */; };
 		42E19DBA28C125AB00A2227B /* async_await.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42E19DB928C125AB00A2227B /* async_await.swift */; };
-		42E19DBC28C1266800A2227B /* OldUserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42E19DBB28C1266800A2227B /* OldUserService.swift */; };
 		42E19DBE28C1295000A2227B /* caching.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42E19DBD28C1295000A2227B /* caching.swift */; };
 /* End PBXBuildFile section */
 
@@ -177,7 +175,6 @@
 		422EE0A622B3F1AB00451EED /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		422EE0A822B3F47A00451EED /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
 		422EE0AA22B436D600451EED /* MixcloudApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MixcloudApi.swift; sourceTree = "<group>"; };
-		422EE0AD22B7EF4200451EED /* OldUserServiceImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OldUserServiceImpl.swift; sourceTree = "<group>"; };
 		422EE0AF22B803C300451EED /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		422EE0B422BA180D00451EED /* whatever.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = whatever.swift; sourceTree = "<group>"; };
 		422EE0B622BA2A0A00451EED /* MMError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MMError.swift; sourceTree = "<group>"; };
@@ -229,7 +226,6 @@
 		42E19DB428BF611200A2227B /* BusinessModelConvertible.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusinessModelConvertible.swift; sourceTree = "<group>"; };
 		42E19DB728BF88D700A2227B /* UserServiveImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserServiveImpl.swift; sourceTree = "<group>"; };
 		42E19DB928C125AB00A2227B /* async_await.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = async_await.swift; sourceTree = "<group>"; };
-		42E19DBB28C1266800A2227B /* OldUserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OldUserService.swift; sourceTree = "<group>"; };
 		42E19DBD28C1295000A2227B /* caching.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = caching.swift; sourceTree = "<group>"; };
 		8FC0D2BAC2FD7FF3D288AFF4 /* Pods-MyMixcloud.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyMixcloud.release.xcconfig"; path = "Pods/Target Support Files/Pods-MyMixcloud/Pods-MyMixcloud.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -503,8 +499,6 @@
 			children = (
 				422EE0A822B3F47A00451EED /* UserService.swift */,
 				42E19DB728BF88D700A2227B /* UserServiveImpl.swift */,
-				42E19DBB28C1266800A2227B /* OldUserService.swift */,
-				422EE0AD22B7EF4200451EED /* OldUserServiceImpl.swift */,
 			);
 			path = User;
 			sourceTree = "<group>";
@@ -674,7 +668,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1020;
-				LastUpgradeCheck = 1020;
+				LastUpgradeCheck = 1340;
 				ORGANIZATIONNAME = ryabchikova;
 				TargetAttributes = {
 					42DD63C622B3E9E600A57196 = {
@@ -741,30 +735,15 @@
 			files = (
 			);
 			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-MyMixcloud/Pods-MyMixcloud-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
-				"${BUILT_PRODUCTS_DIR}/AlamofireNetworkActivityIndicator/AlamofireNetworkActivityIndicator.framework",
-				"${BUILT_PRODUCTS_DIR}/FlexLayout/FlexLayout.framework",
-				"${BUILT_PRODUCTS_DIR}/PinLayout/PinLayout.framework",
-				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
-				"${BUILT_PRODUCTS_DIR}/Swinject/Swinject.framework",
+				"${PODS_ROOT}/Target Support Files/Pods-MyMixcloud/Pods-MyMixcloud-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
-			);
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AlamofireNetworkActivityIndicator.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FlexLayout.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PinLayout.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Swinject.framework",
+				"${PODS_ROOT}/Target Support Files/Pods-MyMixcloud/Pods-MyMixcloud-frameworks-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MyMixcloud/Pods-MyMixcloud-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-MyMixcloud/Pods-MyMixcloud-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -865,7 +844,6 @@
 				4201816222D32EC9007752B9 /* SettingsInteractor.swift in Sources */,
 				4224F96722CA37EC00E847AB /* TrackListInteractor.swift in Sources */,
 				42E19DAC28BF451D00A2227B /* NetworkService.swift in Sources */,
-				422EE0AE22B7EF4200451EED /* OldUserServiceImpl.swift in Sources */,
 				42DD63CB22B3E9E600A57196 /* AppDelegate.swift in Sources */,
 				4224F96822CA37EC00E847AB /* TrackListModuleBuilder.swift in Sources */,
 				4220E28D22C4E61900FEB7F8 /* UserProfileModuleBuilder.swift in Sources */,
@@ -877,7 +855,6 @@
 				4224F96D22CA3D7200E847AB /* TrackListItemView.swift in Sources */,
 				422EE0B522BA180D00451EED /* whatever.swift in Sources */,
 				425255BF22D7276700D2EDC9 /* TrackView.swift in Sources */,
-				42E19DBC28C1266800A2227B /* OldUserService.swift in Sources */,
 				42273C0322C7A0C700EDB1E5 /* JsonTrack.swift in Sources */,
 				4283284F28C73A3700CD4F4D /* SharedValue.swift in Sources */,
 			);
@@ -923,6 +900,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -948,7 +926,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -984,6 +962,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -1003,7 +982,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;

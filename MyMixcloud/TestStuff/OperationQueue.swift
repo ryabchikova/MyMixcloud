@@ -26,7 +26,6 @@ func testOperations() {
     var journal = ""
     var res1 = 0
     var res2 = 0
-    var res3 = 0
     
     let op1 = BaseOperation {
         sleep(1)
@@ -45,7 +44,7 @@ func testOperations() {
     
     let op3 = BaseOperation {
         print(Thread.current.description, "execute operation3")
-        res3 = res2 * 3
+        _ = res2 * 3
         journal.append("op3 finished.")
     }
     op2.addDependency(op1)
