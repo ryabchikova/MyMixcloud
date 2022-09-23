@@ -405,6 +405,7 @@
 		422EE0B322BA17A600451EED /* TestStuff */ = {
 			isa = PBXGroup;
 			children = (
+				425B2EA228B90B3000B2EEA1 /* Result+Extensions.swift */,
 				42DFD45128A3A8E100495440 /* ModuleBuilder.swift */,
 				422EE0B422BA180D00451EED /* whatever.swift */,
 				42E19DB928C125AB00A2227B /* async_await.swift */,
@@ -466,7 +467,6 @@
 			isa = PBXGroup;
 			children = (
 				425B2EAD28BCC68E00B2EEA1 /* String+Extensions.swift */,
-				425B2EA228B90B3000B2EEA1 /* Result+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -474,10 +474,9 @@
 		425B2EA628BA57C900B2EEA1 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				4201812322CF367A007752B9 /* InjectionManager.swift */,
 				42B7D66F22DD05C000ECDAB0 /* TableViewManager.swift */,
 				425B2EA728BA57DC00B2EEA1 /* JsonHelper.swift */,
-				427AE5D528D8698100DFE6F3 /* BaseRouter.swift */,
-				421DA04928D4CC2D007C028F /* Router.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -546,6 +545,16 @@
 			path = Dummy;
 			sourceTree = "<group>";
 		};
+		42DC23E728DE084800CFD878 /* Routing */ = {
+			isa = PBXGroup;
+			children = (
+				4201813B22D27F75007752B9 /* AppRouter.swift */,
+				427AE5D528D8698100DFE6F3 /* BaseRouter.swift */,
+				421DA04928D4CC2D007C028F /* Router.swift */,
+			);
+			path = Routing;
+			sourceTree = "<group>";
+		};
 		42DD63BE22B3E9E600A57196 = {
 			isa = PBXGroup;
 			children = (
@@ -567,19 +576,18 @@
 		42DD63C922B3E9E600A57196 /* MyMixcloud */ = {
 			isa = PBXGroup;
 			children = (
-				42DD63CA22B3E9E600A57196 /* AppDelegate.swift */,
-				4201813B22D27F75007752B9 /* AppRouter.swift */,
-				4201812322CF367A007752B9 /* InjectionManager.swift */,
 				42DD63D522B3E9E800A57196 /* LaunchScreen.storyboard */,
+				42DD63CA22B3E9E600A57196 /* AppDelegate.swift */,
 				42DD63D322B3E9E800A57196 /* Assets.xcassets */,
 				42DD63D822B3E9E800A57196 /* Info.plist */,
-				42DFD44E28A30B7400495440 /* Protocols */,
-				425B2EA628BA57C900B2EEA1 /* Helpers */,
 				4220E27522C4A8E400FEB7F8 /* UI */,
+				42DC23E728DE084800CFD878 /* Routing */,
 				422EE0C222C2556E00451EED /* Modules */,
-				422EE0A522B3F15200451EED /* Services */,
 				422EE0A422B3F14600451EED /* BusinessModels */,
 				425B2EA128B90ADF00B2EEA1 /* Extensions */,
+				425B2EA628BA57C900B2EEA1 /* Helpers */,
+				42DFD44E28A30B7400495440 /* Protocols */,
+				422EE0A522B3F15200451EED /* Services */,
 				422EE0AC22B7EEB800451EED /* UtilityTypes */,
 				422EE0B322BA17A600451EED /* TestStuff */,
 			);
