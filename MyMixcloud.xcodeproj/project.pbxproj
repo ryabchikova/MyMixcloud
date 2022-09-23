@@ -81,7 +81,6 @@
 		425B2EA828BA57DC00B2EEA1 /* JsonHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 425B2EA728BA57DC00B2EEA1 /* JsonHelper.swift */; };
 		425B2EAE28BCC68E00B2EEA1 /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 425B2EAD28BCC68E00B2EEA1 /* String+Extensions.swift */; };
 		427AE5CB28D7B63D00DFE6F3 /* RoutingTrait.swift in Sources */ = {isa = PBXBuildFile; fileRef = 427AE5CA28D7B63D00DFE6F3 /* RoutingTrait.swift */; };
-		427AE5CF28D8509100DFE6F3 /* RouterFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 427AE5CE28D8509100DFE6F3 /* RouterFunctions.swift */; };
 		427AE5D128D85EAE00DFE6F3 /* AlertViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 427AE5D028D85EAE00DFE6F3 /* AlertViewModel.swift */; };
 		427AE5D428D8658F00DFE6F3 /* AlertViewModel+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 427AE5D328D8658F00DFE6F3 /* AlertViewModel+Extensions.swift */; };
 		427AE5D628D8698100DFE6F3 /* BaseRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 427AE5D528D8698100DFE6F3 /* BaseRouter.swift */; };
@@ -192,7 +191,6 @@
 		425B2EA728BA57DC00B2EEA1 /* JsonHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JsonHelper.swift; sourceTree = "<group>"; };
 		425B2EAD28BCC68E00B2EEA1 /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
 		427AE5CA28D7B63D00DFE6F3 /* RoutingTrait.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutingTrait.swift; sourceTree = "<group>"; };
-		427AE5CE28D8509100DFE6F3 /* RouterFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouterFunctions.swift; sourceTree = "<group>"; };
 		427AE5D028D85EAE00DFE6F3 /* AlertViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertViewModel.swift; sourceTree = "<group>"; };
 		427AE5D328D8658F00DFE6F3 /* AlertViewModel+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AlertViewModel+Extensions.swift"; sourceTree = "<group>"; };
 		427AE5D528D8698100DFE6F3 /* BaseRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseRouter.swift; sourceTree = "<group>"; };
@@ -413,7 +411,6 @@
 				42E19DBD28C1295000A2227B /* caching.swift */,
 				4283285028C753D800CD4F4D /* SharedValueV2.swift */,
 				42A31B8428D0DDB100F56156 /* OperationQueue.swift */,
-				427AE5CE28D8509100DFE6F3 /* RouterFunctions.swift */,
 			);
 			path = TestStuff;
 			sourceTree = "<group>";
@@ -795,7 +792,6 @@
 				4224F96F22CA3DEE00E847AB /* TrackListTableViewCell.swift in Sources */,
 				42273C0B22C7A7EA00EDB1E5 /* Tag.swift in Sources */,
 				4220E2A322C62B1A00FEB7F8 /* FollowingPresenter.swift in Sources */,
-				427AE5CF28D8509100DFE6F3 /* RouterFunctions.swift in Sources */,
 				42E19DB528BF611200A2227B /* BusinessModelConvertible.swift in Sources */,
 				4224F96622CA37EC00E847AB /* TrackListProtocols.swift in Sources */,
 				4201813322D072DA007752B9 /* LoginProtocols.swift in Sources */,
