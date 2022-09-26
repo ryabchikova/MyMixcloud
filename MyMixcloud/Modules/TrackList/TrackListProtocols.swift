@@ -6,44 +6,35 @@
 //  Copyright © 2019 ryabchikova. All rights reserved.
 //
 
-import Foundation
 import UIKit
 
-protocol TrackListModuleInput {
-	var moduleOutput: TrackListModuleOutput? { get }
-}
+// MARK: - Module
+protocol TrackListModuleInput: AnyObject {}
 
-protocol TrackListModuleOutput: class {
-}
+protocol TrackListModuleOutput: AnyObject {}
 
-protocol TrackListViewInput: class {
-    var isEmpty: Bool { get }
+// MARK: - View
+protocol TrackListViewInput: DummyViewDisplayable, EmptyCheckTrait {
     func set(viewModels: [TrackListItemViewModel])
     func reset(viewModels: [TrackListItemViewModel])
-    func showDummyView(for error: MMError, retryHandler: @escaping () -> Void)
-    func hideDummyViewIfNeed()
 }
 
-protocol TrackListViewOutput: class {
+protocol TrackListViewOutput: AnyObject {
     func viewWillAppear()
     func viewDidScrollPage()
     func didPullToRefresh()
     func didTapOnTrack(with trackId: String)
 }
 
-protocol TrackListInteractorInput: class {
+// MARK: - Interactor
+protocol TrackListInteractorInput {
     func loadTrackList(of type: TrackListType,
                        userId: String,
                        page: Int,
-                       reason: LoadingReason,
-                       useCache permit: Bool)
+                       reason: LoadingReason)
 }
 
-protocol TrackListInteractorOutput: class {
-    func gotError(_ error: MMError)
-    func didLoadTrackList(_ tracks: [Track], reason: LoadingReason)
-}
-
-protocol TrackListRouterInput: class {
-    func showTrackScreen(in viewController: UIViewController, trackId: String)
+protocol TrackListInteractorOutput: AnyObject {
+    func gotError(_ error: MMError) async
+    func didLoadTrackList(_ tracks: [Track], reason: LoadingReason) async
 }

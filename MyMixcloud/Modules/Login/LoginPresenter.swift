@@ -6,40 +6,44 @@
 //  Copyright © 2019 ryabchikova. All rights reserved.
 //
 
-import Foundation
 import UIKit
 
 final class LoginPresenter {
 	weak var view: LoginViewInput?
-    weak var moduleOutput: LoginModuleOutput?
-    
-	private let router: LoginRouterInput
+
+	private let router: RoutingTrait
 	private let interactor: LoginInteractorInput
+    private weak var moduleOutput: LoginModuleOutput?
     
-    init(router: LoginRouterInput, interactor: LoginInteractorInput) {
+    init(router: RoutingTrait,
+         interactor: LoginInteractorInput,
+         moduleOutput: LoginModuleOutput?) {
         self.router = router
         self.interactor = interactor
+        self.moduleOutput = moduleOutput
     }
 }
 
-extension LoginPresenter: LoginModuleInput {
-}
+extension LoginPresenter: LoginModuleInput {}
 
 extension LoginPresenter: LoginViewOutput {
-    func didTapStart(with username: String) {
-        interactor.login(with: username)
+    func viewDidLoad() {
+        let model = LoginViewModel { [weak self] username in
+            self?.interactor.login(with: username)
+        }
+        view?.set(viewModel: model)
     }
 }
 
 extension LoginPresenter: LoginInteractorOutput {
     
-    func didLogin() {
+    @MainActor
+    func didLogin() async {
         moduleOutput?.didLogin()
     }
     
-    func loginFailed() {
-        if let viewController = view as? UIViewController {
-            router.showErrorAlert(in: viewController)
-        }
+    @MainActor
+    func loginFailed() async {
+        router.showAlert(model: .login)
     }
 }

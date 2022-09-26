@@ -19,24 +19,27 @@ enum MixcloudApi {
         return "https://api.mixcloud.com"
     }
     
-    func requestUrl(identifier: String, page: Int? = nil) -> String {
+    func requestUrl(identifier: String, page: Int? = nil) -> URL? {
         let userUrl = baseUrl + "/" + identifier + "/"
         
         let page = page ?? 0
         let offset = page < 1 ? 0 : (page - 1) * Constants.limit
         let parameters = "?limit=" + Constants.limit.description + "&offset=" + offset.description
         
+        let value: String
         switch self {
             case .user:
-                return userUrl
+                value = userUrl
             case .track:
-                return baseUrl + identifier
+                value = baseUrl + identifier
             case .history:
-                return userUrl + "listens/" + parameters
+                value = userUrl + "listens/" + parameters
             case .favorites:
-                return userUrl + "favorites/" + parameters
+                value = userUrl + "favorites/" + parameters
             case .following:
-                return userUrl + "following/" + parameters
+                value = userUrl + "following/" + parameters
         }
+        
+        return URL(string: value)
     }
 }

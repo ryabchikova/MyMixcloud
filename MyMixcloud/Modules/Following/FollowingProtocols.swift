@@ -6,41 +6,32 @@
 //  Copyright © 2019 ryabchikova. All rights reserved.
 //
 
-import Foundation
 import UIKit
 
-protocol FollowingModuleInput {
-	var moduleOutput: FollowingModuleOutput? { get }
-}
+// MARK: - Module
+protocol FollowingModuleInput: AnyObject {}
 
-protocol FollowingModuleOutput: class {
-}
+protocol FollowingModuleOutput: AnyObject {}
 
-protocol FollowingViewInput: class {
-    var isEmpty: Bool { get }
+// MARK: - View
+protocol FollowingViewInput: DummyViewDisplayable, EmptyCheckTrait {
     func set(viewModels: [FollowingUserViewModel])
     func reset(viewModels: [FollowingUserViewModel])
-    func showDummyView(for error: MMError, retryHandler: @escaping () -> Void)
-    func hideDummyViewIfNeed()
 }
 
-protocol FollowingViewOutput: class {
+protocol FollowingViewOutput: AnyObject {
     func viewWillAppear()
     func viewDidScrollPage()
     func didPullToRefresh()
     func didTapOnUser(with userId: String)
 }
 
-protocol FollowingInteractorInput: class {
-    func loadFollowing(userId: String, page: Int, reason: LoadingReason, useCache permit: Bool)
+// MARK: - Interactor
+protocol FollowingInteractorInput {
+    func loadFollowing(userId: String, page: Int, reason: LoadingReason)
 }
 
-protocol FollowingInteractorOutput: class {
-    func gotError(_ error: MMError)
-    func didLoadFollowing(_ users: [User], reason: LoadingReason)
+protocol FollowingInteractorOutput: AnyObject {
+    func gotError(_ error: MMError) async
+    func didLoadFollowing(_ users: [User], reason: LoadingReason) async
 }
-
-protocol FollowingRouterInput: class {
-    func showUserProfileScreen(in viewController: UIViewController, userId: String)
-}
-

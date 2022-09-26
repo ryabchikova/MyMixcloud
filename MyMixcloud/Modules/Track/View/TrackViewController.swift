@@ -35,7 +35,6 @@ final class TrackViewController: MMViewController {
         setupPullToRefresh(in: scrollView) { [weak self] in
             self?.output.didPullToRefresh()
         }
-        setupActivityIndicator()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -48,12 +47,6 @@ final class TrackViewController: MMViewController {
         trackView.pin.top().left().right()
         trackView.flex.layout(mode: .adjustHeight)
         scrollView.contentSize = trackView.frame.size
-    }
-}
-
-extension TrackViewController: EmptyCheck {
-    var isEmpty: Bool {
-        return trackView.isEmpty
     }
 }
 

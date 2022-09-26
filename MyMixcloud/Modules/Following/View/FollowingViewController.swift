@@ -11,9 +11,7 @@ import UIKit
 final class FollowingViewController: MMViewController {
 	private let output: FollowingViewOutput
     private let tableView = UITableView()
-    private let tableViewManager = {
-        TableViewManager<FollowingUserViewModel, FollowingTableViewCell>(cellReuseIdentifier: String(describing: FollowingTableViewCell.self))
-    }()
+    private let tableViewManager = TableViewManager<FollowingUserViewModel, FollowingTableViewCell>()
 
     init(output: FollowingViewOutput) {
         self.output = output
@@ -23,8 +21,8 @@ final class FollowingViewController: MMViewController {
         tableViewManager.didScrollPage = { [weak self] in
             self?.output.viewDidScrollPage()
         }
-        tableViewManager.didSelectItemWithId = { [weak self] userId in
-            self?.output.didTapOnUser(with: userId)
+        tableViewManager.didSelectItemWithId = { [weak self] id in
+            self?.output.didTapOnUser(with: id)
         }
     }
     
@@ -56,10 +54,8 @@ final class FollowingViewController: MMViewController {
     }
 }
 
-extension FollowingViewController: EmptyCheck {
-    var isEmpty: Bool {
-        return tableViewManager.tableIsEmpty
-    }
+extension FollowingViewController: EmptyCheckTrait {
+    var isEmpty: Bool { tableViewManager.isEmpty }
 }
 
 extension FollowingViewController: FollowingViewInput {

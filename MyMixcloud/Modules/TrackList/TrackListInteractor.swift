@@ -12,41 +12,39 @@ final class TrackListInteractor {
 	weak var output: TrackListInteractorOutput?
     private let trackService: TrackService
     
+    @SharedValue(false) var isLoading: Bool
+    
     init(trackService: TrackService) {
         self.trackService = trackService
     }
 }
 
 extension TrackListInteractor: TrackListInteractorInput {
+    
     func loadTrackList(of type: TrackListType,
                        userId: String,
                        page: Int,
-                       reason: LoadingReason,
-                       useCache permit: Bool) {
-        let completion: ([Track]?, MMError?) -> Void = { [weak self] tracks, error in
-            DispatchQueue.main.async {
-                if let error = error {
-                    self?.output?.gotError(error)
-                    return
-                }
-                
-                if let tracks = tracks {
-                    self?.output?.didLoadTrackList(tracks, reason: reason)
-                }
-            }
+                       reason: LoadingReason) {
+        guard !isLoading else {
+            return
         }
-        
-        switch type {
-        case .history:
-            trackService.listeningHistory(userId: userId,
-                                          page: page,
-                                          useCache: permit,
-                                          completionHandler: completion)
-        case .favorite:
-            trackService.favoriteList(userId: userId,
-                                      page: page,
-                                      useCache: permit,
-                                      completionHandler: completion)
+
+        isLoading = true
+        Task {
+            defer { isLoading = false }
+            
+            do {
+                let tracks: [Track]
+                switch type {
+                case .history:
+                    tracks = try await trackService.listeningHistory(userId: userId, page: page)
+                case .favorite:
+                    tracks = try await trackService.favoriteList(userId: userId, page: page)
+                }
+                await output?.didLoadTrackList(tracks, reason: reason)
+            } catch {
+                await output?.gotError(error as? MMError ?? .executionError)
+            }
         }
     }
 }

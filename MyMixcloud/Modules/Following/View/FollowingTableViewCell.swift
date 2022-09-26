@@ -9,13 +9,11 @@
 import Foundation
 import PinLayout
 
-final class FollowingTableViewCell: UITableViewCell, MMTableViewCell {
+final class FollowingTableViewCell: UITableViewCell {
     private let userView = FollowingUserView()
-    static let height: CGFloat = 76.0
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        selectionStyle = .none
         contentView.addSubview(userView)
     }
     
@@ -28,8 +26,14 @@ final class FollowingTableViewCell: UITableViewCell, MMTableViewCell {
         super.layoutSubviews()
         userView.pin.all()
     }
-    
-    func update(with model: FollowingUserViewModel) {
-        userView.update(with: model)
+}
+
+extension FollowingTableViewCell: FixedHeightView {
+    static let height: CGFloat = 76.0
+}
+
+extension FollowingTableViewCell: ConfigurableView {
+    func configure(with model: FollowingUserViewModel) {
+        userView.configure(with: model)
     }
 }

@@ -18,17 +18,14 @@ final class TrackInteractor {
 }
 
 extension TrackInteractor: TrackInteractorInput {
+
     func loadTrack(trackId: String) {
-        trackService.track(trackId: trackId) { [weak self] track, error in
-            DispatchQueue.main.async {
-                if let error = error {
-                    self?.output?.gotError(error)
-                    return
-                }
-                
-                if let track = track {
-                    self?.output?.didLoadTrack(track)
-                }
+        Task {
+            do {
+                let track = try await trackService.track(trackId: trackId)
+                await output?.didLoadTrack(track)
+            } catch {
+                await output?.gotError(error as? MMError ?? .executionError)
             }
         }
     }

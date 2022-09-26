@@ -11,9 +11,7 @@ import UIKit
 final class TrackListViewController: MMViewController {
 	private let output: TrackListViewOutput
     private let tableView = UITableView()
-    private let tableViewManager = {
-        TableViewManager<TrackListItemViewModel, TrackListTableViewCell>(cellReuseIdentifier: String(describing: TrackListTableViewCell.self))
-    }()
+    private let tableViewManager = TableViewManager<TrackListItemViewModel, TrackListTableViewCell>()
 
     init(output: TrackListViewOutput, title: String) {
         self.output = output
@@ -23,8 +21,8 @@ final class TrackListViewController: MMViewController {
         tableViewManager.didScrollPage = { [weak self] in
             self?.output.viewDidScrollPage()
         }
-        tableViewManager.didSelectItemWithId = { [weak self] trackId in
-            self?.output.didTapOnTrack(with: trackId)
+        tableViewManager.didSelectItemWithId = { [weak self] id in
+            self?.output.didTapOnTrack(with: id)
         }
     }
     
@@ -56,10 +54,8 @@ final class TrackListViewController: MMViewController {
     }
 }
 
-extension TrackListViewController: EmptyCheck {
-    var isEmpty: Bool {
-        return tableViewManager.tableIsEmpty
-    }
+extension TrackListViewController: EmptyCheckTrait {
+    var isEmpty: Bool { tableViewManager.isEmpty }
 }
 
 extension TrackListViewController: TrackListViewInput {

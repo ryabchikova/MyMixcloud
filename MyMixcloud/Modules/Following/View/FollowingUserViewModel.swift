@@ -9,15 +9,15 @@
 import Foundation
 import UIKit
 
-struct FollowingUserViewModel: Identifiable {
-    let identifier: String
+struct FollowingUserViewModel {
+    private let userId: String
     let avatarImageUrl: URL?
     let nameString: NSAttributedString
     let locationString: NSAttributedString?
     let followersString: NSAttributedString?
     
     init(user: User) {
-        identifier = user.identifier
+        userId = user.identifier
         avatarImageUrl = user.profileImage
         nameString = NSAttributedString(string: user.name, attributes: Styles.name)
         
@@ -36,9 +36,12 @@ struct FollowingUserViewModel: Identifiable {
     }
 }
 
-extension FollowingUserViewModel {
-    
-    private struct Styles {
+extension FollowingUserViewModel: Identifiable {
+    var id: String { userId }
+}
+
+private extension FollowingUserViewModel {
+    enum Styles {
         static let name: [NSAttributedString.Key: Any] = {
             let style = NSMutableParagraphStyle()
             style.lineBreakMode = .byTruncatingTail

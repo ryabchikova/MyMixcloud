@@ -6,26 +6,29 @@
 //  Copyright © 2019 ryabchikova. All rights reserved.
 //
 
-import Foundation
 import UIKit
 
 final class UserProfilePresenter {
 	weak var view: UserProfileViewInput?
-    weak var moduleOutput: UserProfileModuleOutput?
-	private let router: UserProfileRouterInput
+
+	private let router: RoutingTrait
 	private let interactor: UserProfileInteractorInput
+    private weak var moduleOutput: UserProfileModuleOutput?
     
     private let userId: String
     
-    init(router: UserProfileRouterInput, interactor: UserProfileInteractorInput, userId: String) {
+    init(router: RoutingTrait,
+         interactor: UserProfileInteractorInput,
+         moduleOutput: UserProfileModuleOutput?,
+         context: UserProfileContext) {
         self.router = router
         self.interactor = interactor
-        self.userId = userId
+        self.moduleOutput = moduleOutput
+        userId = context.userId
     }
 }
 
-extension UserProfilePresenter: UserProfileModuleInput {
-}
+extension UserProfilePresenter: UserProfileModuleInput {}
 
 extension UserProfilePresenter: UserProfileViewOutput {
     func viewWillAppear() {
@@ -38,29 +41,22 @@ extension UserProfilePresenter: UserProfileViewOutput {
     }
     
     func didTapSettingsButton() {
-        if let viewController = view as? UIViewController {
-            router.showSettingsScreen(in: viewController)
-        }
+        router.showSettingsScreen()
     }
 }
 
 extension UserProfilePresenter: UserProfileInteractorOutput {
-    func gotError(_ error: MMError) {
+    @MainActor
+    func gotError(_ error: MMError) async {
         view?.hideActivity()
-        
-        guard let viewController = view, viewController.isEmpty else {
-            return
-        }
-    
-        viewController.showDummyView(for: error) { [weak self] in
-            guard let sSelf = self else {
-                return
-            }
-            sSelf.interactor.loadUser(userId: sSelf.userId)
+        view?.showDummyView(for: error) { [weak self] in
+            guard let self = self else { return }
+            self.interactor.loadUser(userId: self.userId)
         }
     }
     
-    func didLoadUser(_ user: User) {
+    @MainActor
+    func didLoadUser(_ user: User) async {
         view?.hideActivity()
         view?.hideDummyViewIfNeed()
         view?.set(userProfileViewModel: UserProfileViewModel(user: user))

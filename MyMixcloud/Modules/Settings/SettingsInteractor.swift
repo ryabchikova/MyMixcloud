@@ -6,7 +6,6 @@
 //  Copyright © 2019 ryabchikova. All rights reserved.
 //
 
-import Foundation
 
 final class SettingsInteractor {
 	weak var output: SettingsInteractorOutput?
@@ -21,5 +20,13 @@ extension SettingsInteractor: SettingsInteractorInput {
     func logout() {
         settingsService.removeCurrentUserId()
         output?.didLogout()
+    }
+    
+    func isCacheUsageEnabled() -> Bool {
+        settingsService.isCacheUsageEnabled()
+    }
+    
+    func setCacheUsageEnabled(_ isEnabled: Bool) {
+        settingsService.setCacheUsageEnabled(isEnabled)
     }
 }

@@ -6,32 +6,33 @@
 //  Copyright © 2019 ryabchikova. All rights reserved.
 //
 
-import Foundation
+
 import UIKit
 
-protocol SettingsModuleInput {
-    var moduleOutput: SettingsModuleOutput? { get }
-}
+// MARK: - Module
+protocol SettingsModuleInput: AnyObject {}
 
-protocol SettingsModuleOutput: class {
-}
-
-protocol SettingsViewInput: class {
-}
-
-protocol SettingsViewOutput: class {
-    func didSelectItem(_ item: SettingsItem)
-}
-
-protocol SettingsInteractorInput: class {
-    func logout()
-}
-
-protocol SettingsInteractorOutput: class {
+protocol SettingsModuleOutput: AnyObject {
     func didLogout()
 }
 
-protocol SettingsRouterInput: class {
-    func showLoginScreen()
-    func showLogoutAlert(in viewController: UIViewController, logoutCompletion: @escaping (UIAlertAction) -> Void)
+// MARK: - View
+protocol SettingsViewInput: AnyObject {
+    func set(viewModels: [SettingsViewModel])
+}
+
+protocol SettingsViewOutput: AnyObject {
+    func viewDidLoad()
+    func didSelectOption(_ option: SettingsOption)
+}
+
+// MARK: - Interactor
+protocol SettingsInteractorInput {
+    func logout()
+    func isCacheUsageEnabled() -> Bool
+    func setCacheUsageEnabled(_ isEnabled: Bool)
+}
+
+protocol SettingsInteractorOutput: AnyObject {
+    func didLogout()
 }

@@ -6,32 +6,35 @@
 //  Copyright © 2019 ryabchikova. All rights reserved.
 //
 
-import Foundation
 import UIKit
 
 final class FollowingPresenter {    
 	weak var view: FollowingViewInput?
-    weak var moduleOutput: FollowingModuleOutput?
-	private let router: FollowingRouterInput
+
+	private let router: RoutingTrait
 	private let interactor: FollowingInteractorInput
+    private weak var moduleOutput: FollowingModuleOutput?
     
     private let userId: String
     private var nextPage: Int? = 1
-    private var isLoading = false
     
     var viewIsEmpty: Bool {
         return view?.isEmpty ?? false
     }
     
-    init(router: FollowingRouterInput, interactor: FollowingInteractorInput, userId: String) {
+    init(router: RoutingTrait,
+         interactor: FollowingInteractorInput,
+         moduleOutput: FollowingModuleOutput?,
+         userId: String
+    ) {
         self.router = router
         self.interactor = interactor
+        self.moduleOutput = moduleOutput
         self.userId = userId
     }
 }
 
-extension FollowingPresenter: FollowingModuleInput {
-}
+extension FollowingPresenter: FollowingModuleInput {}
 
 extension FollowingPresenter: FollowingViewOutput {
     func viewWillAppear() {
@@ -45,52 +48,46 @@ extension FollowingPresenter: FollowingViewOutput {
     }
     
     func didPullToRefresh() {
-        guard !isLoading else {
-            return
-        }
-        
-        isLoading = true
-        interactor.loadFollowing(userId: userId, page: 1, reason: .pullToRefresh, useCache: viewIsEmpty)
+        interactor.loadFollowing(userId: userId, page: 1, reason: .pullToRefresh)
     }
     
     private func requestNextPage() {
-        guard !isLoading, let nextPage = nextPage else {
+        guard let nextPage = nextPage else {
             return
         }
-        isLoading = true
-        interactor.loadFollowing(userId: userId, page: nextPage, reason: .regular, useCache: viewIsEmpty)
+
+        interactor.loadFollowing(userId: userId, page: nextPage, reason: .regular)
     }
     
     func didTapOnUser(with userId: String) {
-        if let viewController = view as? UIViewController {
-            router.showUserProfileScreen(in: viewController, userId: userId)
-        }
+        router.showUserProfileScreen(userId: userId, isMyProfile: false)
     }
 }
 
 extension FollowingPresenter: FollowingInteractorOutput {
-    func gotError(_ error: MMError) {
-        isLoading = false
-        if let viewController = view, viewController.isEmpty {
-            viewController.showDummyView(for: error) { [weak self] in
-                self?.requestNextPage()
-            }
+    @MainActor
+    func gotError(_ error: MMError) async {
+        guard viewIsEmpty else {
+            return
+        }
+        
+        view?.showDummyView(for: error) { [weak self] in
+            self?.requestNextPage()
         }
     }
     
-    func didLoadFollowing(_ users: [User], reason: LoadingReason) {
+    @MainActor
+    func didLoadFollowing(_ users: [User], reason: LoadingReason) async {
         view?.hideDummyViewIfNeed()
         
         let viewModels = users.map { FollowingUserViewModel(user: $0) }
+        nextPage = users.isEmpty ? nil : nextPage?.advanced(by: 1)
+        
         switch reason {
         case .regular:
-            nextPage = users.isEmpty ? nil : nextPage?.advanced(by: 1)
             view?.set(viewModels: viewModels)
         case .pullToRefresh:
-            nextPage = 2
             view?.reset(viewModels: viewModels)
         }
-
-        isLoading = false
     }
 }

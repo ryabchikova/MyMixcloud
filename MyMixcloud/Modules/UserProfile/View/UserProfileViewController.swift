@@ -44,7 +44,6 @@ final class UserProfileViewController: MMViewController {
         setupPullToRefresh(in: scrollView) { [weak self] in
             self?.output.didPullToRefresh()
         }
-        setupActivityIndicator()
 	}
     
     override func viewWillAppear(_ animated: Bool) {
@@ -64,15 +63,9 @@ final class UserProfileViewController: MMViewController {
     }
 }
 
-extension UserProfileViewController: EmptyCheck {
-    var isEmpty: Bool {
-        return profileView.isEmpty
-    }
-}
-
 extension UserProfileViewController: UserProfileViewInput {
     func set(userProfileViewModel: UserProfileViewModel) {
-        profileView.update(with: userProfileViewModel)
+        profileView.configure(with: userProfileViewModel)
         view.setNeedsLayout()
     }
 }

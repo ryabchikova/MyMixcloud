@@ -6,40 +6,30 @@
 //  Copyright © 2019 ryabchikova. All rights reserved.
 //
 
-import Foundation
 import UIKit
 
-protocol UserProfileModuleInput {
-	var moduleOutput: UserProfileModuleOutput? { get }
-}
+// MARK: - Module
+protocol UserProfileModuleInput: AnyObject {}
 
-protocol UserProfileModuleOutput: class {
-}
+protocol UserProfileModuleOutput: AnyObject {}
 
-protocol UserProfileViewInput: class {
-    var isEmpty: Bool { get }
+// MARK: - View
+protocol UserProfileViewInput: ActivityIndicatorDisplayable, DummyViewDisplayable {
     func set(userProfileViewModel: UserProfileViewModel)
-    func showDummyView(for error: MMError, retryHandler: @escaping () -> Void)
-    func hideDummyViewIfNeed()
-    func showActivity()
-    func hideActivity()
 }
 
-protocol UserProfileViewOutput: class {
+protocol UserProfileViewOutput {
     func viewWillAppear()
     func didPullToRefresh()
     func didTapSettingsButton()
 }
 
-protocol UserProfileInteractorInput: class {
+// MARK: - Interactor
+protocol UserProfileInteractorInput {
     func loadUser(userId: String)
 }
 
-protocol UserProfileInteractorOutput: class {
-    func gotError(_ error: MMError)
-    func didLoadUser(_ user: User)
-}
-
-protocol UserProfileRouterInput: class {
-    func showSettingsScreen(in viewController: UIViewController)
+protocol UserProfileInteractorOutput: AnyObject {
+    func gotError(_ error: MMError) async
+    func didLoadUser(_ user: User) async
 }

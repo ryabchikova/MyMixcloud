@@ -6,17 +6,11 @@
 //  Copyright © 2019 ryabchikova. All rights reserved.
 //
 
-import Foundation
 
-protocol MainModuleInput {
-	var moduleOutput: MainModuleOutput? { get }
-}
+protocol MainModuleInput {}
 
-protocol MainModuleOutput: class {
-}
+protocol MainModuleOutput: AnyObject {}
 
-protocol MainViewInput: class {
-}
+protocol MainViewInput: AnyObject {}
 
-protocol MainViewOutput: class {
-}
+protocol MainViewOutput: AnyObject {}

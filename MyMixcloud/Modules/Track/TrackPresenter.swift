@@ -6,25 +6,25 @@
 //  Copyright © 2019 ryabchikova. All rights reserved.
 //
 
-import Foundation
 
 final class TrackPresenter {
 	weak var view: TrackViewInput?
-    weak var moduleOutput: TrackModuleOutput?
     
-	private let router: TrackRouterInput
 	private let interactor: TrackInteractorInput
+    private weak var moduleOutput: TrackModuleOutput?
+
     private let trackId: String
     
-    init(router: TrackRouterInput, interactor: TrackInteractorInput, trackId: String) {
-        self.router = router
+    init(interactor: TrackInteractorInput,
+         moduleOutput: TrackModuleOutput?,
+         context: TrackContext) {
         self.interactor = interactor
-        self.trackId = trackId
+        self.moduleOutput = moduleOutput
+        trackId = context.trackId
     }
 }
 
-extension TrackPresenter: TrackModuleInput {
-}
+extension TrackPresenter: TrackModuleInput {}
 
 extension TrackPresenter: TrackViewOutput {
     func viewWillAppear() {
@@ -38,22 +38,17 @@ extension TrackPresenter: TrackViewOutput {
 }
 
 extension TrackPresenter: TrackInteractorOutput {
-    func gotError(_ error: MMError) {
+    @MainActor
+    func gotError(_ error: MMError) async {
         view?.hideActivity()
-        
-        guard let viewController = view, viewController.isEmpty else {
-            return
-        }
-        
-        viewController.showDummyView(for: error) { [weak self] in
-            guard let sSelf = self else {
-                return
-            }
-            sSelf.interactor.loadTrack(trackId: sSelf.trackId)
+        view?.showDummyView(for: error) { [weak self] in
+            guard let self = self else { return }
+            self.interactor.loadTrack(trackId: self.trackId)
         }
     }
     
-    func didLoadTrack(_ track: Track) {
+    @MainActor
+    func didLoadTrack(_ track: Track) async {
         view?.hideActivity()
         view?.hideDummyViewIfNeed()
         view?.set(trackViewModel: TrackViewModel(track: track))

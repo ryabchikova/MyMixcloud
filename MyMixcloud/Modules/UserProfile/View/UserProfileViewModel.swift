@@ -9,7 +9,6 @@
 import Foundation
 
 struct UserProfileViewModel {
-    
     let avatarImageUrl: URL?
     let coverImageUrl: URL?
     let nameString: NSAttributedString
@@ -38,9 +37,8 @@ struct UserProfileViewModel {
     }
 }
 
-extension UserProfileViewModel {
-    
-    private struct Styles {
+private extension UserProfileViewModel {
+    enum Styles {
         static let name: [NSAttributedString.Key: Any] = {
             return [
                 .font: MMFonts.largeBold,

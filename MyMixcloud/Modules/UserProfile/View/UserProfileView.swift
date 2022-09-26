@@ -11,7 +11,6 @@ import FlexLayout
 import SDWebImage
 
 final class UserProfileView: UIView {
-    
     private let avatarImageView = UIImageView()
     private let coverImageView = UIImageView()
     private let nameLabel = UILabel()
@@ -21,8 +20,6 @@ final class UserProfileView: UIView {
     private let followersLabel = UILabel()
     private let followingLabel = UILabel()
     private let cloudcastsLabel = UILabel()
-    
-    private(set) var isEmpty = true
     
     init() {
         super.init(frame: .zero)
@@ -117,8 +114,10 @@ final class UserProfileView: UIView {
                     .alignSelf(.start)
             }
     }
-    
-    func update(with model: UserProfileViewModel) {
+}
+
+extension UserProfileView: ConfigurableView {
+    func configure(with model: UserProfileViewModel) {
         avatarImageView.sd_setImage(with: model.avatarImageUrl)
         
         coverImageView.sd_setImage(with: model.coverImageUrl)
@@ -149,15 +148,12 @@ final class UserProfileView: UIView {
         cloudcastsLabel.flex.display(model.cloudcastsString != nil ? .flex : .none)
         cloudcastsLabel.flex.markDirty()
         
-        isEmpty = false
-        
         setNeedsLayout()
     }
 }
 
-extension UserProfileView {
-    
-    private struct Constants {
+private extension UserProfileView {
+     enum Constants {
         static let coverImageSize: CGFloat = 180.0
         static let contentHorizontalMargin: CGFloat = 20.0
         static let contentVerticalMargin: CGFloat = 30.0
@@ -171,7 +167,7 @@ extension UserProfileView {
         static let counterRightMargin: CGFloat = 20.0
     }
     
-    private struct Styles {
+    enum Styles {
         static let backgroundColor = MMColors.white
         static let borderColor = MMColors.lightGray
     }
